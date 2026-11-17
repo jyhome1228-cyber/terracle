@@ -701,7 +701,7 @@ html{scroll-padding-top:100px}
       const data=new FormData(form);
       const phone=[data.get('tel1'),data.get('tel2'),data.get('tel3')].join('-');
       const subject='[Terracle 문의] '+String(data.get('type'));
-      const body=['이름: '+data.get('name'),'연락처: '+phone,'이메일: '+data.get('email'),'문의유형: '+data.get('type'),'','문의내용:',data.get('message')].join('\\n');
+      const body=['이름: '+data.get('name'),'연락처: '+phone,'이메일: '+data.get('email'),'문의유형: '+data.get('type'),'','문의내용:',data.get('message')].join('\n');
       const link='mailto:info@terracle.im?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
       document.getElementById('tcContactFeedback').textContent='메일 앱이 열리면 내용을 확인하고 보내기를 눌러 주세요. 자동 전송되지는 않습니다.';
       window.location.href=link;
