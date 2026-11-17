@@ -7,7 +7,7 @@
   <meta name="description" content="Terracle — 폐플라스틱을 다시 자원으로. 순환을 만드는 재활용 기술.">
   <title>Terracle | Technology for Circularity</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  <link rel="apple-touch-icon" href="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/02e718d5c1a07.png">
+  <link rel="apple-touch-icon" href="./symbol.svg">
   <style>
     :root{--bg:#050505;--fg:#f4f4f4;--muted:#a5a5a5;--line:#2c2c2c;--header:72px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",Arial,sans-serif;-webkit-font-smoothing:antialiased}
@@ -473,10 +473,32 @@ html{scroll-padding-top:100px}
 }
 @media(max-width:390px){#tc-compact-footer .tc-cf__sitemap{grid-template-columns:1fr}}
 
+
+/* Footer visibility, wordmark and +1px typographic refinements */
+#tc-compact-footer .tc-cf__brand-row{align-items:center;gap:40px}
+#tc-compact-footer .tc-cf__brand{width:225px;flex:0 0 225px;min-width:225px;opacity:1;visibility:visible;color:#fff}
+#tc-compact-footer .tc-footer__logo-svg{display:block;width:100%;height:auto;max-height:68px;fill:currentColor}
+#tc-compact-footer .tc-cf__brand-note{font-size:14px;line-height:1.6}
+#tc-compact-footer .tc-cf__heading{font-size:12px}
+#tc-compact-footer .tc-cf__map-title{font-size:14px}
+#tc-compact-footer .tc-cf__map-list a{font-size:13px;line-height:1.65}
+#tc-compact-footer .tc-cf__data dt,#tc-compact-footer .tc-cf__location strong{font-size:12px}
+#tc-compact-footer .tc-cf__data dd,#tc-compact-footer .tc-cf__location span{font-size:14.5px}
+#tc-compact-footer .tc-cf__action-kicker{font-size:12px}
+#tc-compact-footer .tc-cf__action-title{font-size:19px}
+#tc-compact-footer .tc-cf__action-desc{font-size:14px}
+#tc-compact-footer .tc-cf__search-input{font-size:14px}
+#tc-compact-footer .tc-cf__result-title{font-size:14px}
+#tc-compact-footer .tc-cf__result-desc{font-size:12px}
+#tc-compact-footer .tc-cf__bottom{font-size:12px}
+#tc-compact-footer .tc-cf__no-result{font-size:13px}
+.terracle-intro__symbol{width:clamp(120px,17vw,210px);filter:drop-shadow(0 0 10px rgba(255,255,255,.12))}
+@media(max-width:640px){#tc-compact-footer .tc-cf__brand{width:180px;min-width:0;flex:0 0 auto}#tc-compact-footer .tc-cf__brand-row{gap:15px}}
+
 </style>
 </head>
 <body>
-<div id="terracleIntro" class="terracle-intro" aria-label="Terracle 로딩 화면" role="status"><img class="terracle-intro__symbol" src="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/02e718d5c1a07.png" alt="Terracle"></div>
+<div id="terracleIntro" class="terracle-intro" aria-label="Terracle 로딩 화면" role="status"><img class="terracle-intro__symbol" src="./symbol.svg" alt="Terracle"></div>
 <header class="header">
   <div class="header__inner">
     <a class="brand" href="./" aria-label="Terracle 홈"><svg class="brand__full-logo" viewBox="0 0 762.69 186.6" role="img" aria-label="Terracle"><g fill="currentColor"><path d="M334.02 75.68c-23.11 0-38.68 15.54-38.68 37.42s15.57 37.42 38.68 37.42c18.32 0 34.5-9.7 36.73-25.55h-17.03c-1.91 6.35-10.02 11.82-19.18 11.82-12.57 0-20.82-7.19-22.09-20.28h60.11v-3.41c0-21.88-15.43-37.42-38.54-37.42m-20.82 29.06c2.57-10.25 10.29-15.8 21.34-15.8s18.77 5.56 21.34 15.8h-42.69Z"/><path d="M746.76 116.51h15.93v-3.41c0-21.88-15.43-37.42-38.54-37.42s-38.68 15.54-38.68 37.42 15.57 37.42 38.68 37.42c18.32 0 34.5-9.7 36.73-25.55h-17.03c-1.91 6.35-10.02 11.82-19.18 11.82-12.57 0-20.81-7.19-22.09-20.28h44.18ZM724.67 88.93c11.05 0 18.78 5.56 21.34 15.8h-42.69c2.57-10.25 10.29-15.8 21.34-15.8"/><rect x="657.07" y="49.94" width="17.28" height="97.49"/><polygon points="307 65.24 307 49.93 223.38 49.93 223.38 65.24 256.55 65.24 256.55 147.42 273.83 147.42 273.83 65.24 307 65.24"/><path d="M632.59 123.85c-3.82 6.74-11.1 11.36-19.47 11.36-12.33 0-22.33-9.9-22.33-22.11s10-22.11 22.33-22.11c8.2 0 15.57 4.44 19.45 10.97l13.73-6.57c-6.38-11.74-18.89-19.71-33.29-19.71-20.87 0-37.79 16.75-37.79 37.42s16.92 37.42 37.79 37.42c14.53 0 27.14-8.13 33.46-20.04l-13.87-6.64Z"/><path d="M546.94 89.52c-5.93-9.03-13.17-12.58-24.71-12.58-18.98 0-34.36 13.86-34.36 36.79s15.38 36.79 34.36 36.79c10.28 0 18.99-4.38 24.71-11.32v9.72h16.93V74.58h-16.93v14.94ZM525.35 137.22c-12.09 0-21.93-10.31-21.93-22.97s9.84-22.97 21.93-22.97 21.93 10.31 21.93 22.97-9.84 22.97-21.93 22.97"/><path d="M402.26 90.7h-.38c-.04-5.72-.31-13.66-.57-15.8h-15.92c.15 6.73.15 13.55.15 20.28v52.24h16.35V108.5c.29-19.86 23.42-16.08 27.43-15.48V74.8h-8.21c-9.46 0-16.28 5.97-18.84 15.89"/><path d="M458.35 90.7h-.38c-.04-5.72-.31-13.66-.57-15.8h-15.92c.15 6.73.15 13.55.15 20.28v52.24h16.35V108.5c.29-19.86 23.42-16.08 27.43-15.48V74.8h-8.21c-9.46 0-16.28 5.97-18.84 15.89"/><path d="M110.34 80.22c-9.05-10.07-6.29-24.94-10.83-59.29-4.54 34.34-1.78 49.21-10.83 59.29-8.84 9.84-30.32 8.65-61.27 12.81 30.95 4.16 52.43 2.98 61.27 12.81 9.05 10.07 6.29 24.94 10.83 59.29 4.53-34.35 1.78-49.21 10.83-59.29 8.84-9.84 30.32-8.65 61.27-12.81-30.95-4.16-52.43-2.98-61.27-12.81"/><path d="M184.59 93.28c0 2.65 2.15 4.81 4.81 4.81s4.81-2.15 4.81-4.81-2.15-4.81-4.81-4.81-4.81 2.15-4.81 4.81"/><path d="M102.34 178.02h-.2s-.22 0-.22 0c-46.9 0-85.06-38.37-85.06-85.53S55.02 6.96 101.92 6.96h.22s.2 0 .2 0c38.88 0 72.33 26.24 82.38 62.75 1.01-.2 2.04-.33 3.09-.4C176.88 29.04 139.24 0 95.52 0 42.85 0 0 41.86 0 93.3s42.85 93.3 95.52 93.3c43.74 0 81.39-29.06 92.31-69.35-1.21-.08-2.39-.24-3.54-.49-10.58 35.65-43.85 61.26-81.94 61.26"/></g></svg></a>
