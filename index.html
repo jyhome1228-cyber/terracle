@@ -11,7 +11,7 @@
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",Arial,sans-serif;-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-width:100%}
     .header{height:var(--header);background:#000;position:sticky;top:0;z-index:100;border-bottom:1px solid #141414}
-    .header__inner{height:100%;max-width:1536px;margin:auto;padding:0 44px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+    .header__inner{height:100%;width:100%;max-width:1440px;margin:auto;padding:0 clamp(18px,4.2vw,64px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
     .brand{display:inline-flex;align-items:center;gap:10px;width:max-content;font-weight:600;font-size:22px;letter-spacing:-.05em}
     .brand__icon{width:30px;height:30px}
     .nav{display:flex;align-items:center;gap:29px}.nav a{font-size:13px;font-weight:400;color:#ddd;white-space:nowrap;transition:color .2s}.nav a:hover,.nav a[aria-current="page"]{color:#fff}
@@ -22,11 +22,11 @@
     .hero{position:relative;min-height:min(780px,calc(100svh - var(--header)));background:#080808;display:flex;align-items:flex-end;overflow:hidden}
     .hero__visual{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}
     .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.03) 70%);pointer-events:none}
-    .hero__content{position:relative;z-index:1;width:100%;max-width:1536px;margin:0 auto;padding:80px 68px 92px}
+    .hero__content{position:relative;z-index:1;width:100%;max-width:1440px;margin:0 auto;padding:80px clamp(18px,4.2vw,64px) 92px}
     .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#bbb;margin:0 0 20px}
     .hero h1{font-size:clamp(42px,6vw,96px);line-height:1.09;letter-spacing:-.065em;font-weight:500;margin:0}
     .hero__sub{font-size:clamp(16px,1.6vw,22px);margin:24px 0 0;color:#ddd}
-    .section{max-width:1536px;margin:auto;padding:clamp(88px,7vw,120px) 68px;border-bottom:1px solid var(--line)}
+    .section{width:100%;max-width:1440px;margin:auto;padding:clamp(88px,7vw,120px) clamp(18px,4.2vw,64px);border-bottom:1px solid var(--line)}
     .section h2{font-size:clamp(34px,3.3vw,50px);line-height:1.18;letter-spacing:-.052em;font-weight:700;margin:0 0 26px;word-break:keep-all}
     .section p{max-width:770px;color:#c1c1c1;line-height:1.82;font-size:clamp(15px,1.08vw,18px);letter-spacing:-.025em;word-break:keep-all}
     .section__cols{display:grid;grid-template-columns:minmax(340px,.8fr) minmax(0,1.2fr);gap:clamp(48px,6vw,96px);align-items:center}
@@ -36,7 +36,7 @@
     .page-hero{min-height:360px;display:flex;align-items:end;padding:90px max(44px,calc((100vw - 1400px)/2));border-bottom:1px solid var(--line)}
     .page-hero h1{font-size:clamp(52px,7vw,110px);font-weight:500;letter-spacing:-.06em;margin:0}
     .section__photo{width:100%;max-height:590px;object-fit:cover;margin-top:48px}
-    @media(max-width:1050px){.header__inner{padding:0 24px}.nav{gap:17px}.nav a{font-size:12px}.brand{font-size:20px}}
+    @media(max-width:1050px){.header__inner{padding:0 28px}.nav{gap:17px}.nav a{font-size:12px}.brand{font-size:20px}}
     @media(max-width:800px){:root{--header:66px}.header__inner{display:flex;justify-content:space-between;padding:0 20px}.nav{display:none;position:absolute;top:var(--header);left:0;right:0;background:#000;padding:28px 24px 36px;flex-direction:column;align-items:flex-start;gap:22px;border-top:1px solid #222}.nav.is-open{display:flex}.nav a{font-size:20px}.menu-toggle{display:block}.header__end{gap:10px}.hero{min-height:calc(85svh - var(--header))}.hero__content{padding:40px 24px 65px}.section{padding:76px 24px}.section__cols{grid-template-columns:1fr;gap:32px}.section h2{font-size:31px;line-height:1.22}.section p{font-size:15px;line-height:1.78}.page-hero{min-height:280px;padding:70px 24px}.footer{padding:50px 24px;flex-direction:column}}
     @media(max-width:420px){.section h2{font-size:29px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
   
@@ -66,7 +66,7 @@
 
 
 .terracle-home-news{background:#050505;color:#f5f7f7;padding:clamp(96px,8vw,132px) 0 clamp(104px,8vw,140px);font-family:inherit}
-.terracle-home-news__inner{max-width:1536px;margin:auto;padding:0 68px}
+.terracle-home-news__inner{width:100%;max-width:1440px;margin:auto;padding:0 clamp(18px,4.2vw,64px)}
 .terracle-home-news__header{display:grid;grid-template-columns:1fr minmax(260px,420px);align-items:end;gap:48px;margin-bottom:42px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.1)}
 .terracle-home-news__kicker{color:#9edbe5;font-size:13px;font-weight:750;letter-spacing:.14em;margin:0 0 18px}
 .terracle-home-news__header h2{margin:0;font-size:clamp(34px,3.3vw,50px);letter-spacing:-.052em}
@@ -87,7 +87,7 @@
 .terracle-home-news__more{display:inline-flex;justify-content:center;align-items:center;min-height:50px;padding:0 25px;border:1px solid rgba(158,219,229,.55);color:#9edbe5;font-size:13px;transition:background .22s}
 .terracle-home-news__more:hover{background:#9edbe5;color:#050505}
 #tc-compact-footer{--tc-brand:#9edbe5;--tc-muted:rgba(255,255,255,.46);--tc-line:rgba(255,255,255,.13);background:#000;color:#f5f7f7;border-top:1px solid rgba(158,219,229,.34);position:relative}
-#tc-compact-footer .tc-cf__inner{max-width:1536px;margin:auto;padding:48px 68px 24px}
+#tc-compact-footer .tc-cf__inner{width:100%;max-width:1440px;margin:auto;padding:48px clamp(18px,4.2vw,64px) 24px}
 #tc-compact-footer .tc-cf__brand-row{display:flex;align-items:center;gap:46px}
 #tc-compact-footer .tc-cf__brand{display:inline-flex;width:166px;color:#fff}
 #tc-compact-footer .tc-footer__logo-svg{width:100%;height:auto}
@@ -131,6 +131,20 @@
 @media(max-width:767px){.terracle-home-news{padding:72px 0 84px}.terracle-home-news__inner{padding:0 18px}.terracle-home-news__header{display:block}.terracle-home-news__description{text-align:left;margin-top:18px;font-size:14px}.terracle-home-news__grid{grid-template-columns:1fr;gap:44px}.terracle-home-news__content h3{min-height:0;font-size:20px}#tc-compact-footer .tc-cf__inner{padding:38px 18px 55px}#tc-compact-footer .tc-cf__brand-row{flex-direction:column;align-items:flex-start;gap:16px}#tc-compact-footer .tc-cf__company-grid{grid-template-columns:1fr}#tc-compact-footer .tc-cf__sitemap{grid-template-columns:repeat(2,minmax(0,1fr))}#tc-compact-footer .tc-cf__bottom{flex-direction:column;gap:12px}}
 @media(max-width:390px){#tc-compact-footer .tc-cf__sitemap{grid-template-columns:1fr}}
 
+
+/* Shared original Terracle content grid and waste composition */
+.waste-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.waste-tags span{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border:1px solid rgba(158,219,229,.18);color:rgba(255,255,255,.64);font-size:12px}
+.waste-contact{display:inline-flex;align-items:center;justify-content:center;min-width:144px;min-height:50px;margin-top:34px;padding:0 18px;background:#9edbe5;color:#071012;font-size:14px;font-weight:750}
+.waste-contact:hover{background:#c0eef4}
+.waste-shred{display:grid;gap:4px;margin-top:clamp(64px,7vw,110px)}
+.waste-shred strong,.waste-shred em{display:block;font-size:clamp(24px,2.2vw,34px);line-height:1.1;font-style:normal;font-weight:750;letter-spacing:-.045em}
+.waste-shred em{color:#9edbe5;margin-top:14px}
+#recyclable .eyebrow{color:#9edbe5;font-size:13px;font-weight:750;letter-spacing:.14em}
+#recyclable .section__photo,#recyclable>img{object-fit:contain;background:#000;border:0}
+@media(max-width:800px){.waste-shred{margin-top:64px}.terracle-home-news__inner{padding:0 24px}#tc-compact-footer .tc-cf__inner{padding-left:24px;padding-right:24px}}
+@media(max-width:480px){.terracle-home-news__inner{padding:0 18px}#tc-compact-footer .tc-cf__inner{padding-left:18px;padding-right:18px}}
+
 </style>
 </head>
 <body>
@@ -164,7 +178,7 @@
 <div class="terracle-copy"><h1 class="terracle-title"><span class="line">Magic is just <span class="accent">technology</span></span><span class="line">We haven’t understood <span class="accent">yet.</span></span></h1><p class="terracle-sub">The magic begins now.</p></div>
 </div></section>
   <section class="section section__cols" id="recyclable">
-    <div><div class="eyebrow">RECYCLABLE WASTE</div><h2>테라클에서는<br>재활용이 가능한 폐기물</h2><p>테라클은 지금까지 재활용이 불가능하다고 여겨지던 복합·유색·오염 플라스틱, PET 기반 의류와 혼방 섬유, 필름 등 다양한 폴리에스터 폐기물을 복잡한 전처리 없이 해중합 공정에 투입합니다.</p><a class="cta" href="?page=contact">Contact Us</a></div>
+    <div><div class="eyebrow">RECYCLABLE WASTE</div><h2>테라클에서는<br>재활용이 가능한 폐기물</h2><p>테라클은 지금까지 재활용이 불가능하다고 여겨지던 복합·유색·오염 플라스틱, PET 기반 의류와 혼방 섬유, 필름 등 다양한 폴리에스터 폐기물을 복잡한 전처리 없이 해중합 공정에 투입합니다.</p><div class="waste-tags"><span>복합 PET</span><span>의류·섬유</span><span>필름</span><span>오염 플라스틱</span></div><a class="waste-contact" href="?page=contact">Contact Us</a><div class="waste-shred"><strong>NO SORTING.</strong><strong>NO WASHING.</strong><strong>NO DRYING.</strong><em>JUST SHRED.</em></div></div>
     <img loading="lazy" src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261113-072445-10-11a0002a.webp" alt="테라클이 재활용하는 폐기물">
   </section>
   <section class="section" id="technology"><div class="eyebrow">PROPRIETARY TECHNOLOGY</div><h2>Terra-X™ 해중합</h2><p>테라클은 다양한 가수분해 기반 해중합 기술을 연구·개발해 왔습니다. 6세대 해중합 기술인 Terra-X™는 가시광 촉매 Black TiO₂-X를 활용해 저온·상압 조건에서 라디칼 반응을 유도하고 분해 효율을 향상시키는 기술입니다.</p><img class="section__photo" loading="lazy" src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261113-072448-15-06189328.webp" alt="Terra-X 기술 이미지"><a class="cta" href="?page=technology">Technology</a></section>
