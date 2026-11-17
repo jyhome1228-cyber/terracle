@@ -6,6 +6,8 @@
   <meta name="theme-color" content="#050505">
   <meta name="description" content="Terracle — 폐플라스틱을 다시 자원으로. 순환을 만드는 재활용 기술.">
   <title>Terracle | Technology for Circularity</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="apple-touch-icon" href="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/02e718d5c1a07.png">
   <style>
     :root{--bg:#050505;--fg:#f4f4f4;--muted:#a5a5a5;--line:#2c2c2c;--header:72px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--fg);font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",Arial,sans-serif;-webkit-font-smoothing:antialiased}
@@ -399,9 +401,38 @@ body{font-family:Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,Aria
 .tc-mono-visual{min-width:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .tc-mono-visual img{width:100%;height:auto;max-height:100%;display:block;object-fit:contain}
 @media(max-width:767px){#product .tu-mono-panel{grid-template-columns:1fr}#product .tu-tabs button{width:50%}.tc-mono-copy{border-right:0;border-bottom:1px solid #243031;padding:26px}.tc-mono-visual{min-height:230px}}
+
+/* Shared fixed navigation with translucent video overlay */
+:root{--header:92px}
+.header,
+body:has(.terracle-hero-video-section) .header{
+  position:fixed!important;inset:0 0 auto 0!important;width:100%;height:92px;min-height:92px;z-index:150;
+  background:rgba(0,0,0,.60);border-bottom:1px solid rgba(255,255,255,.06);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  transition:background-color .3s ease,box-shadow .3s ease
+}
+.header.is-scrolled{background:rgba(0,0,0,.94)!important;box-shadow:0 6px 25px rgba(0,0,0,.18)}
+.header__inner{height:92px;min-height:92px}
+body:not(:has(.terracle-hero-video-section)) #app{padding-top:92px}
+html{scroll-padding-top:100px}
+@media(max-width:800px){
+ :root{--header:74px}
+ .header,body:has(.terracle-hero-video-section) .header{height:74px;min-height:74px}
+ .header__inner{height:74px;min-height:74px}
+ body:not(:has(.terracle-hero-video-section)) #app{padding-top:74px}
+ html{scroll-padding-top:82px}
+ .nav{top:74px}
+}
+.terracle-intro{position:fixed;inset:0;z-index:9999;background:#000;display:flex;align-items:center;justify-content:center;opacity:1;visibility:visible;transition:opacity .65s ease,visibility .65s ease}
+.terracle-intro__symbol{width:clamp(115px,17vw,205px);height:auto;object-fit:contain;filter:drop-shadow(0 0 16px rgba(143,208,212,.12));opacity:0;transform:scale(.78);animation:tc-logo-reveal 1.3s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes tc-logo-reveal{0%{opacity:0;transform:scale(.78)}45%{opacity:1;transform:scale(1.02)}100%{opacity:1;transform:scale(1)}}
+.terracle-intro.is-done{opacity:0;visibility:hidden;pointer-events:none}
+@media(prefers-reduced-motion:reduce){.terracle-intro,.terracle-intro__symbol{transition:none!important;animation:none!important}.terracle-intro__symbol{opacity:1;transform:none}}
+
 </style>
 </head>
 <body>
+<div id="terracleIntro" class="terracle-intro" aria-label="Terracle 로딩 화면" role="status"><img class="terracle-intro__symbol" src="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/02e718d5c1a07.png" alt="Terracle"></div>
 <header class="header">
   <div class="header__inner">
     <a class="brand" href="./" aria-label="Terracle 홈"><svg class="brand__full-logo" viewBox="0 0 762.69 186.6" role="img" aria-label="Terracle"><g fill="currentColor"><path d="M334.02 75.68c-23.11 0-38.68 15.54-38.68 37.42s15.57 37.42 38.68 37.42c18.32 0 34.5-9.7 36.73-25.55h-17.03c-1.91 6.35-10.02 11.82-19.18 11.82-12.57 0-20.82-7.19-22.09-20.28h60.11v-3.41c0-21.88-15.43-37.42-38.54-37.42m-20.82 29.06c2.57-10.25 10.29-15.8 21.34-15.8s18.77 5.56 21.34 15.8h-42.69Z"/><path d="M746.76 116.51h15.93v-3.41c0-21.88-15.43-37.42-38.54-37.42s-38.68 15.54-38.68 37.42 15.57 37.42 38.68 37.42c18.32 0 34.5-9.7 36.73-25.55h-17.03c-1.91 6.35-10.02 11.82-19.18 11.82-12.57 0-20.81-7.19-22.09-20.28h44.18ZM724.67 88.93c11.05 0 18.78 5.56 21.34 15.8h-42.69c2.57-10.25 10.29-15.8 21.34-15.8"/><rect x="657.07" y="49.94" width="17.28" height="97.49"/><polygon points="307 65.24 307 49.93 223.38 49.93 223.38 65.24 256.55 65.24 256.55 147.42 273.83 147.42 273.83 65.24 307 65.24"/><path d="M632.59 123.85c-3.82 6.74-11.1 11.36-19.47 11.36-12.33 0-22.33-9.9-22.33-22.11s10-22.11 22.33-22.11c8.2 0 15.57 4.44 19.45 10.97l13.73-6.57c-6.38-11.74-18.89-19.71-33.29-19.71-20.87 0-37.79 16.75-37.79 37.42s16.92 37.42 37.79 37.42c14.53 0 27.14-8.13 33.46-20.04l-13.87-6.64Z"/><path d="M546.94 89.52c-5.93-9.03-13.17-12.58-24.71-12.58-18.98 0-34.36 13.86-34.36 36.79s15.38 36.79 34.36 36.79c10.28 0 18.99-4.38 24.71-11.32v9.72h16.93V74.58h-16.93v14.94ZM525.35 137.22c-12.09 0-21.93-10.31-21.93-22.97s9.84-22.97 21.93-22.97 21.93 10.31 21.93 22.97-9.84 22.97-21.93 22.97"/><path d="M402.26 90.7h-.38c-.04-5.72-.31-13.66-.57-15.8h-15.92c.15 6.73.15 13.55.15 20.28v52.24h16.35V108.5c.29-19.86 23.42-16.08 27.43-15.48V74.8h-8.21c-9.46 0-16.28 5.97-18.84 15.89"/><path d="M458.35 90.7h-.38c-.04-5.72-.31-13.66-.57-15.8h-15.92c.15 6.73.15 13.55.15 20.28v52.24h16.35V108.5c.29-19.86 23.42-16.08 27.43-15.48V74.8h-8.21c-9.46 0-16.28 5.97-18.84 15.89"/><path d="M110.34 80.22c-9.05-10.07-6.29-24.94-10.83-59.29-4.54 34.34-1.78 49.21-10.83 59.29-8.84 9.84-30.32 8.65-61.27 12.81 30.95 4.16 52.43 2.98 61.27 12.81 9.05 10.07 6.29 24.94 10.83 59.29 4.53-34.35 1.78-49.21 10.83-59.29 8.84-9.84 30.32-8.65 61.27-12.81-30.95-4.16-52.43-2.98-61.27-12.81"/><path d="M184.59 93.28c0 2.65 2.15 4.81 4.81 4.81s4.81-2.15 4.81-4.81-2.15-4.81-4.81-4.81-4.81 2.15-4.81 4.81"/><path d="M102.34 178.02h-.2s-.22 0-.22 0c-46.9 0-85.06-38.37-85.06-85.53S55.02 6.96 101.92 6.96h.22s.2 0 .2 0c38.88 0 72.33 26.24 82.38 62.75 1.01-.2 2.04-.33 3.09-.4C176.88 29.04 139.24 0 95.52 0 42.85 0 0 41.86 0 93.3s42.85 93.3 95.52 93.3c43.74 0 81.39-29.06 92.31-69.35-1.21-.08-2.39-.24-3.54-.49-10.58 35.65-43.85 61.26-81.94 61.26"/></g></svg></a>
@@ -476,5 +507,17 @@ body{font-family:Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,Aria
 <script>(function(){const root=document.getElementById('teracleDepolySection');if(!root)return;const cards=[...root.querySelectorAll('.td-item')];const step=root.querySelector('#tdDetailStep'),title=root.querySelector('#tdDetailTitle'),desc=root.querySelector('#tdDetailDesc');function activate(card){cards.forEach(x=>{const selected=x===card;x.classList.toggle('is-active',selected);x.setAttribute('aria-pressed',String(selected))});if(step)step.textContent=card.dataset.step||'';if(title)title.textContent=card.dataset.title||'';if(desc)desc.textContent=card.dataset.desc||''}cards.forEach(card=>{card.addEventListener('mouseenter',()=>activate(card));card.addEventListener('focus',()=>activate(card));card.addEventListener('click',()=>activate(card))});if(cards[0])activate(cards[0])})();</script>
 <script>(function(){const root=document.getElementById('terracleUnifiedMain');if(!root||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const sections=[...root.querySelectorAll('.tu-reveal')];if(!('IntersectionObserver'in window))return;root.classList.add('tu-motion-ready');const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});sections.forEach(section=>{if(section.getBoundingClientRect().top<window.innerHeight*.8)section.classList.add('is-visible');else observer.observe(section)})})();</script>
 <script>(function(){const root=document.getElementById('applications');if(!root)return;const buttons=[...root.querySelectorAll('.tu-hotspot')];buttons.forEach(b=>b.addEventListener('click',()=>{const on=b.classList.contains('is-open');buttons.forEach(x=>{x.classList.remove('is-open');x.setAttribute('aria-pressed','false')});if(!on){b.classList.add('is-open');b.setAttribute('aria-pressed','true')}}));document.addEventListener('click',e=>{if(!root.contains(e.target))buttons.forEach(x=>{x.classList.remove('is-open');x.setAttribute('aria-pressed','false')})})})();</script>
+<script>(function(){
+  const header=document.querySelector('.header');
+  function syncHeader(){if(header)header.classList.toggle('is-scrolled',window.scrollY>35)}
+  syncHeader();window.addEventListener('scroll',syncHeader,{passive:true});
+  const intro=document.getElementById('terracleIntro');if(!intro)return;
+  let visited=false;
+  try{visited=sessionStorage.getItem('terracle-intro-seen')==='1';sessionStorage.setItem('terracle-intro-seen','1')}catch(e){}
+  function finish(){intro.classList.add('is-done');window.setTimeout(()=>intro.remove(),700)}
+  if(visited||window.matchMedia('(prefers-reduced-motion: reduce)').matches){finish();return}
+  document.body.style.overflow='hidden';
+  window.setTimeout(()=>{document.body.style.overflow='';finish()},1600);
+})();</script>
 </body>
 </html>
