@@ -39,7 +39,32 @@
     @media(max-width:1050px){.header__inner{padding:0 24px}.nav{gap:17px}.nav a{font-size:12px}.brand{font-size:20px}}
     @media(max-width:800px){:root{--header:66px}.header__inner{display:flex;justify-content:space-between;padding:0 20px}.nav{display:none;position:absolute;top:var(--header);left:0;right:0;background:#000;padding:28px 24px 36px;flex-direction:column;align-items:flex-start;gap:22px;border-top:1px solid #222}.nav.is-open{display:flex}.nav a{font-size:20px}.menu-toggle{display:block}.header__end{gap:10px}.hero{min-height:calc(85svh - var(--header))}.hero__content{padding:40px 24px 65px}.section{padding:86px 24px}.section__cols{grid-template-columns:1fr;gap:32px}.section p{font-size:15px}.page-hero{min-height:280px;padding:70px 24px}.footer{padding:50px 24px;flex-direction:column}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-  </style>
+  
+/* Terracle Imweb hero recreation */
+.terracle-hero-video-section{position:relative;width:100%;height:100svh;min-height:720px;overflow:hidden;background:#000}
+.terracle-hero-video-bg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#000}
+.terracle-hero-video-bg iframe{position:absolute;top:50%;left:50%;width:max(100vw,177.78vh);height:max(56.25vw,100vh);transform:translate(-50%,-50%);border:0;display:block;pointer-events:none;filter:brightness(1.08) contrast(1.02) saturate(1.04)}
+.terracle-hero-video-shield{position:absolute;inset:0;z-index:3;background:transparent;pointer-events:auto}
+.terracle-hero-v3{position:relative;width:100%;min-height:min(100vh,880px);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:110px 24px 90px;color:#fff;isolation:isolate;background:#000;border:0;box-shadow:none}
+.terracle-hero-v3 .terracle-inner{position:relative;z-index:2;width:100%;max-width:1180px;margin:0 auto;text-align:center}
+.terracle-hero-v3 .terracle-visual{position:relative;width:fit-content;margin:0 auto 24px;transform:translate3d(var(--symbol-x,0px),var(--symbol-y,0px),0) rotate(var(--symbol-r,0deg));transition:transform .18s ease-out;will-change:transform}
+.terracle-hero-v3 .terracle-symbol-wrap{position:relative;width:clamp(200px,20vw,320px);margin:0 auto}
+.terracle-hero-v3 .terracle-symbol{display:block;width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(0,0,0,.24)) drop-shadow(0 0 16px rgba(90,255,247,.08));animation:terracleFloat 6.5s ease-in-out infinite;transform-origin:center}
+.terracle-hero-v3 .terracle-copy{transform:translate3d(var(--text-x,0px),var(--text-y,0px),0);transition:transform .18s ease-out;will-change:transform}
+.terracle-hero-v3 .terracle-title{margin:0;font-weight:700;font-size:clamp(28px,3.9vw,60px);line-height:1.14;letter-spacing:-.05em;color:#f5f6f7;word-break:keep-all}
+.terracle-hero-v3 .terracle-title .line{display:block;transition:transform .28s ease,text-shadow .28s ease}
+.terracle-hero-v3 .terracle-title .line:hover{transform:translateY(-2px);text-shadow:0 0 14px rgba(108,255,245,.10)}
+.terracle-hero-v3 .terracle-title .accent{display:inline-block;background:linear-gradient(90deg,#f3ffff 0%,#abfcf7 45%,#61f4eb 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent;background-size:200% 100%;animation:terracleShine 5.2s linear infinite}
+.terracle-hero-v3 .terracle-sub{margin:24px 0 0;font-weight:400;font-size:clamp(14px,1.45vw,22px);line-height:1.45;letter-spacing:-.02em;color:rgba(255,255,255,.88);transition:transform .28s ease,color .28s ease,text-shadow .28s ease}
+.terracle-hero-v3 .terracle-sub:hover{transform:translateY(-1px);color:#fff;text-shadow:0 0 12px rgba(116,255,246,.10)}
+@keyframes terracleFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-7px) rotate(.45deg)}}
+@keyframes terracleShine{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@media(max-width:1024px){.terracle-hero-video-section{height:100svh;min-height:100svh}.terracle-hero-video-bg iframe{width:max(100vw,177.78svh);height:max(56.25vw,100svh)}.terracle-hero-v3{min-height:720px;padding:100px 24px 80px}.terracle-hero-v3 .terracle-symbol-wrap{width:clamp(180px,25vw,260px)}.terracle-hero-v3 .terracle-title{font-size:clamp(28px,5vw,50px)}}
+@media(max-width:767px){.terracle-hero-video-bg iframe{width:177.78svh;height:100svh;min-width:100vw;min-height:100svh}.terracle-hero-v3{min-height:600px;padding:84px 18px 64px}.terracle-hero-v3 .terracle-symbol-wrap{width:min(52vw,180px)}.terracle-hero-v3 .terracle-title{font-size:clamp(24px,7vw,34px)}.terracle-hero-v3 .terracle-sub{font-size:clamp(13px,4vw,18px)}}
+@media(max-width:480px){.terracle-hero-video-bg iframe{width:190svh;height:107svh}.terracle-hero-v3{min-height:560px;padding:76px 16px 56px}.terracle-hero-v3 .terracle-symbol-wrap{width:min(48vw,160px)}.terracle-hero-v3 .terracle-title{font-size:23px}.terracle-hero-v3 .terracle-sub{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.terracle-hero-v3 .terracle-symbol,.terracle-hero-v3 .terracle-title .accent{animation:none!important}.terracle-hero-v3 .terracle-visual,.terracle-hero-v3 .terracle-copy{transform:none!important;transition:none!important}}
+
+</style>
 </head>
 <body>
 <header class="header">
@@ -64,10 +89,13 @@
   </div>
 </header>
 <main id="app">
-  <section class="hero">
-    <img class="hero__visual" src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261113-072440-1-74ff5703.webp" alt="테라클 메인 비주얼">
-    <div class="hero__content"><p class="eyebrow">TERRACLE</p><h1>Magic is just technology<br>We haven’t understood yet.</h1><p class="hero__sub">The magic begins now.</p></div>
-  </section>
+  <section class="terracle-hero-video-section" aria-label="Terracle factory hero video">
+ <div class="terracle-hero-video-bg"><iframe id="terracleHeroVideo" src="https://player.vimeo.com/video/1204027920?background=1&autoplay=1&muted=1&loop=1&controls=0&title=0&byline=0&portrait=0&playsinline=1&autopause=0&dnt=1" title="Terracle Hero Video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="terracle-hero-video-shield" aria-hidden="true"></div></div>
+</section>
+<section class="terracle-hero-v3" id="terracleHeroV3"><div class="terracle-inner">
+<div class="terracle-visual"><div class="terracle-symbol-wrap"><img class="terracle-symbol" src="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/02e718d5c1a07.png" alt="Terracle Symbol"></div></div>
+<div class="terracle-copy"><h1 class="terracle-title"><span class="line">Magic is just <span class="accent">technology</span></span><span class="line">We haven’t understood <span class="accent">yet.</span></span></h1><p class="terracle-sub">The magic begins now.</p></div>
+</div></section>
   <section class="section section__cols" id="recyclable">
     <div><div class="eyebrow">RECYCLABLE WASTE</div><h2>테라클에서는<br>재활용이 가능한 폐기물</h2><p>테라클은 지금까지 재활용이 불가능하다고 여겨지던 복합·유색·오염 플라스틱, PET 기반 의류와 혼방 섬유, 필름 등 다양한 폴리에스터 폐기물을 복잡한 전처리 없이 해중합 공정에 투입합니다.</p><a class="cta" href="?page=contact">Contact Us</a></div>
     <img loading="lazy" src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261113-072445-10-11a0002a.webp" alt="테라클이 재활용하는 폐기물">
@@ -101,5 +129,6 @@
   }
 })();
 </script>
+<script>(function(){var hero=document.getElementById('terracleHeroV3');if(!hero||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height,mx=(x-.5)*8,my=(y-.5)*6;hero.style.setProperty('--symbol-x',mx.toFixed(2)+'px');hero.style.setProperty('--symbol-y',(my*.8).toFixed(2)+'px');hero.style.setProperty('--symbol-r',(mx*.05).toFixed(2)+'deg');hero.style.setProperty('--text-x',(mx*.08).toFixed(2)+'px');hero.style.setProperty('--text-y',(my*.06).toFixed(2)+'px')});hero.addEventListener('mouseleave',function(){['--symbol-x','--symbol-y','--symbol-r','--text-x','--text-y'].forEach(function(p){hero.style.removeProperty(p)})})})();</script>
 </body>
 </html>
