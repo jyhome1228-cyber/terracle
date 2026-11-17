@@ -335,6 +335,19 @@ body{font-family:Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,Aria
  }
 }
 
+
+/* Increase header breathing room while preserving the video overlay */
+:root{--header:92px}
+.header{height:92px;min-height:92px}
+.header__inner{height:92px;min-height:92px}
+@media(min-width:801px){.nav a{min-height:52px}}
+@media(max-width:800px){
+ :root{--header:74px}
+ .header{height:74px;min-height:74px}
+ .header__inner{height:74px;min-height:74px}
+ .nav{top:74px}
+}
+
 </style>
 </head>
 <body>
