@@ -298,6 +298,43 @@ body{font-family:Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,Aria
  .tu-main.tu-motion-ready .tu-reveal{opacity:0;transform:translateY(22px);transition:opacity .75s cubic-bezier(.2,.8,.2,1),transform .75s cubic-bezier(.2,.8,.2,1)}
  .tu-main.tu-motion-ready .tu-reveal.is-visible{opacity:1;transform:translateY(0)}
 }
+
+/* Hero overlay header — restore the breathing room of the original Terracle screenshot */
+:root{--header:76px}
+.header{height:76px;min-height:76px;background:#000}
+.header__inner{height:76px;min-height:76px}
+.brand,.brand__full-logo{width:145px}
+.brand__full-logo{max-height:44px}
+.header__end{height:100%}
+.lang-trigger{min-height:42px}
+@media(min-width:1051px){
+ .nav a{min-height:48px;font-size:clamp(15px,.85vw,17px)}
+}
+@media(min-width:801px) and (max-width:1050px){
+ .brand,.brand__full-logo{width:135px}
+ .nav a{min-height:44px}
+}
+@media(min-width:801px){
+ body:has(.terracle-hero-video-section) .header{
+   position:absolute;top:0;left:0;right:0;width:100%;z-index:100;
+   background:rgba(0,0,0,.64);border-bottom:1px solid rgba(255,255,255,.08)
+ }
+ body:has(.terracle-hero-video-section) .terracle-hero-video-section{
+   height:100svh;min-height:720px
+ }
+}
+@media(max-width:800px){
+ :root{--header:66px}
+ .header{height:66px;min-height:66px}
+ .header__inner{height:66px;min-height:66px}
+ .brand,.brand__full-logo{width:132px}
+ .nav{top:66px}
+ body:has(.terracle-hero-video-section) .header{
+   position:absolute;top:0;left:0;right:0;z-index:100;
+   background:rgba(0,0,0,.65);border-bottom:1px solid rgba(255,255,255,.08)
+ }
+}
+
 </style>
 </head>
 <body>
