@@ -211,6 +211,28 @@ body{font-family:Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,Aria
  .brand,.brand__full-logo{width:130px}
  .nav a{font-size:19px;line-height:1.5;font-weight:450}
 }
+
+/* Compact original-site header and branded language control */
+:root{--header:50px}
+.header{height:50px;min-height:50px;background:#000;position:sticky;top:0;z-index:100}
+.header__inner{height:50px;min-height:0}
+.brand,.brand__full-logo{width:129px}
+.brand__full-logo{max-height:38px}
+.header__end{gap:12px}
+.lang-switcher{position:relative;z-index:110}
+.lang-trigger{display:flex;align-items:center;justify-content:center;gap:6px;min-height:36px;padding:0 4px;border:0;background:transparent;color:#fff;font-family:Pretendard,"Noto Sans KR",Arial,sans-serif;font-size:14px;font-weight:550;letter-spacing:-.02em;cursor:pointer}
+.lang-trigger svg{transition:transform .2s}
+.lang-trigger[aria-expanded="true"] svg{transform:rotate(180deg)}
+.lang-trigger:hover,.lang-trigger[aria-expanded="true"]{color:#8fd0d4}
+.lang-menu{position:absolute;right:0;top:calc(100% + 7px);width:148px;padding:6px;background:#101314;border:1px solid #353c3d;border-radius:6px;box-shadow:0 15px 36px rgba(0,0,0,.42)}
+.lang-menu[hidden]{display:none!important}
+.lang-menu a{display:block;padding:10px 12px;border-radius:3px;color:#d3d7d7;font-size:14px;font-weight:450;line-height:1.4;letter-spacing:-.02em;white-space:nowrap}
+.lang-menu a:hover,.lang-menu a:focus-visible{background:#252d2e;color:#8fd0d4}
+.lang-menu a.is-current{color:#8fd0d4}
+@media(min-width:1051px){.header__inner{min-height:0}.nav{gap:clamp(22px,1.65vw,32px)}.nav a{font-size:clamp(15px,.85vw,17px);font-weight:450;min-height:40px;line-height:1.4;letter-spacing:-.02em}}
+@media(min-width:801px) and (max-width:1050px){.nav a{font-size:14px;font-weight:450;min-height:40px}.brand,.brand__full-logo{width:120px}}
+@media(max-width:800px){:root{--header:50px}.header{height:50px;min-height:50px}.header__inner{height:50px}.brand,.brand__full-logo{width:122px}.nav{top:50px}.nav a{font-size:20px}.lang-trigger{font-size:13px}.lang-menu{top:calc(100% + 5px)}}
+
 </style>
 </head>
 <body>
@@ -227,7 +249,14 @@ body{font-family:Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,Aria
       <a href="?page=meeting" data-page="meeting">Meeting</a>
     </nav>
     <div class="header__end">
-      <select class="lang" aria-label="언어 선택" title="다국어 페이지는 추후 연결 예정"><option value="ko">한국어</option><option value="en" disabled>English (준비 중)</option><option value="zh" disabled>中文 (준비 중)</option></select>
+      <div class="lang-switcher" id="terracleLanguage">
+        <button class="lang-trigger" id="terracleLanguageButton" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="terracleLanguageMenu">한국어 <svg viewBox="0 0 12 12" width="12" height="12" fill="none" aria-hidden="true"><path d="m3 4.5 3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="lang-menu" id="terracleLanguageMenu" hidden>
+          <a class="is-current" href="./" lang="ko" aria-current="page">한국어</a>
+          <a href="https://terracle.im/" lang="en">English</a>
+          <a href="https://cn.terracle.im/" lang="zh-CN">中文</a>
+        </div>
+      </div>
       <button class="menu-toggle" aria-label="메뉴 열기" aria-controls="main-nav" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
@@ -273,5 +302,6 @@ body{font-family:Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,Aria
 <script>(function(){var hero=document.getElementById('terracleHeroV3');if(!hero||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height,mx=(x-.5)*8,my=(y-.5)*6;hero.style.setProperty('--symbol-x',mx.toFixed(2)+'px');hero.style.setProperty('--symbol-y',(my*.8).toFixed(2)+'px');hero.style.setProperty('--symbol-r',(mx*.05).toFixed(2)+'deg');hero.style.setProperty('--text-x',(mx*.08).toFixed(2)+'px');hero.style.setProperty('--text-y',(my*.06).toFixed(2)+'px')});hero.addEventListener('mouseleave',function(){['--symbol-x','--symbol-y','--symbol-r','--text-x','--text-y'].forEach(function(p){hero.style.removeProperty(p)})})})();</script>
 <script>(function(){const footer=document.getElementById('tc-compact-footer');if(!footer)return;footer.querySelector('#tcCompactYear').textContent=new Date().getFullYear();const input=footer.querySelector('#tcCompactSearchInput'),form=footer.querySelector('#tcCompactSearchForm'),results=footer.querySelector('#tcCompactSearchResults');const pages=[['About us','테라클 기업 소개와 비전','about','회사 소개 기업 비전'],['Technology','해중합과 화학적 재활용 기술','technology','기술 pet polymer tpa eg'],['Recycled Monomer','재생 TPA와 EG 제품','product','모노머 단량체 tpa eg'],['BlackTiO₂','Black TiO₂ 촉매 및 Terra-X 기술','product','blacktio2 black tio2 광촉매'],['Service','재활용 테스트와 협업 지원','service','서비스 협업 테스트'],['News','테라클의 새로운 소식','news','뉴스 보도자료 미디어'],['Contact us','제품·투자·제휴 문의','contact','문의 연락 투자 제휴'],['Recruit','테라클 채용 정보','recruit','채용 입사 지원 인재'],['Online Meeting','커리어 미팅 예약','meeting','온라인 미팅 커리어 상담 예약']];function match(q){const words=q.toLowerCase().trim().split(/\s+/).filter(Boolean);return words.length?pages.map(p=>({p,score:words.reduce((n,w)=>n+(p[0].toLowerCase().includes(w)?4:0)+((p.join(' ').toLowerCase().includes(w))?1:0),0)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,6).map(x=>x.p):[]}function close(){results.classList.remove('is-open');input.setAttribute('aria-expanded','false')}function render(){results.replaceChildren();if(!input.value.trim()){close();return}const found=match(input.value);if(!found.length){const d=document.createElement('div');d.className='tc-cf__no-result';d.textContent='검색 결과가 없습니다.';results.append(d)}found.forEach(p=>{const a=document.createElement('a');a.className='tc-cf__result';a.href='?page='+encodeURIComponent(p[2]);const t=document.createElement('strong');t.className='tc-cf__result-title';t.textContent=p[0];const d=document.createElement('span');d.className='tc-cf__result-desc';d.textContent=p[1];a.append(t,d);results.append(a)});results.classList.add('is-open');input.setAttribute('aria-expanded','true')}input.addEventListener('input',render);input.addEventListener('focus',()=>{if(input.value.trim())render()});input.addEventListener('keydown',e=>{if(e.key==='Escape')close()});form.addEventListener('submit',e=>{e.preventDefault();const a=results.querySelector('a');if(a)location.href=a.href;else render()});document.addEventListener('click',e=>{if(!footer.querySelector('.tc-cf__search-box').contains(e.target))close()});footer.querySelector('#tcCompactTop').addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}))})();</script>
 <script>(function(){const root=document.getElementById('terracleUnifiedMain');if(!root)return;function bind(group,attr){const buttons=root.querySelectorAll('['+attr+']'),panels=root.querySelectorAll('['+attr+'-panel]');buttons.forEach(b=>b.addEventListener('click',()=>{const v=b.getAttribute(attr);buttons.forEach(x=>{const on=x===b;x.classList.toggle('is-active',on);x.setAttribute('aria-selected',String(on))});panels.forEach(p=>{p.hidden=p.getAttribute(attr+'-panel')!==v})}))}bind('monomer','data-mono');bind('chain','data-chain');})();</script>
+<script>(function(){const root=document.getElementById('terracleLanguage');if(!root)return;const button=root.querySelector('#terracleLanguageButton');const menu=root.querySelector('#terracleLanguageMenu');function setOpen(open){menu.hidden=!open;button.setAttribute('aria-expanded',String(open))}button.addEventListener('click',function(){setOpen(menu.hidden)});document.addEventListener('click',function(e){if(!root.contains(e.target))setOpen(false)});root.addEventListener('keydown',function(e){if(e.key==='Escape'){setOpen(false);button.focus()}else if(e.key==='ArrowDown'&&document.activeElement===button){e.preventDefault();setOpen(true);menu.querySelector('a')?.focus()}})})();</script>
 </body>
 </html>
