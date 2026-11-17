@@ -584,6 +584,51 @@ html{scroll-padding-top:100px}
 @media(max-width:1100px){.tc-about-why__grid{grid-template-columns:1fr}.tc-about-why__photo{min-height:380px}.tc-about-hero__copy{margin-left:22%}}
 @media(max-width:767px){.tc-about-hero{min-height:260px}.tc-about-hero__star{left:23%;width:155px;opacity:.5}.tc-about-hero__copy{margin-left:15%}.tc-about-hero h1{font-size:35px}.tc-about-hero p{font-size:14px}.tc-about-business,.tc-about-why,.tc-about-ceo{padding:70px 0}.tc-about-two-col,.tc-about-ceo__grid{grid-template-columns:1fr;gap:12px}.tc-about h2{font-size:32px}.tc-about p{font-size:15px}.tc-about-why__photo{min-height:250px}.tc-about-vision{min-height:0;padding:90px 0}.tc-about-vision h3{font-size:18px}.tc-about-ceo__mark{width:95px;right:5%;bottom:-40px}}
 
+
+/* Contact dropdown in fixed header */
+.nav-contact{position:relative;display:flex;align-items:center}
+.nav-contact__submenu{position:absolute;top:calc(100% + 4px);left:50%;transform:translate(-50%,8px);width:164px;display:grid;gap:2px;padding:8px;background:#121414;border:1px solid #283234;border-radius:6px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s,transform .2s,visibility .2s;box-shadow:0 16px 32px #0009}
+.nav-contact:hover .nav-contact__submenu,.nav-contact:focus-within .nav-contact__submenu{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
+.nav-contact__submenu a{display:block!important;height:auto!important;min-height:0!important;padding:11px 13px!important;font-size:14px!important;font-weight:450!important;line-height:1.4!important;color:#ddd!important;border-radius:3px}
+.nav-contact__submenu a:hover{background:#242d2f;color:#8fd0d4!important}
+.tc-contact-page{background:#000;color:#f5f7f7;font-family:Pretendard,"Noto Sans KR",Arial,sans-serif}
+.tc-contact-intro{position:relative;min-height:200px;display:flex;align-items:center;background:radial-gradient(ellipse at 46% 110%,#04313b88,transparent 55%),#010609}
+.tc-contact-intro__inner,.tc-contact-content__inner{width:100%;padding-left:var(--tc-page-padding);padding-right:var(--tc-page-padding)}
+.tc-contact-label{font-size:12px;font-weight:700;letter-spacing:.15em;color:#8fd0d4}
+.tc-contact-intro h1{font-size:clamp(32px,3vw,48px);line-height:1.2;letter-spacing:-.05em;margin:6px 0 8px;font-weight:650}
+.tc-contact-intro p:not(.tc-contact-label){margin:0;font-size:15px;color:#aaa}
+.tc-contact-content{padding:75px 0 115px}
+.tc-contact-content__inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,70px);align-items:start}
+.tc-contact-form-col h2{font-size:25px;margin:0 0 8px;letter-spacing:-.04em}.tc-contact-help{font-size:14px;color:#9b9b9b;margin:0 0 26px}
+.tc-contact-form{display:flex;flex-direction:column;align-items:stretch}
+.tc-contact-form>label:not(.tc-contact-agree){font-size:13px;color:#eee;margin:15px 0 7px}
+.tc-contact-form label b{font-size:12px;color:#d94a59}
+.tc-contact-form input:not([type=checkbox]),.tc-contact-form textarea,.tc-contact-form select{display:block;width:100%;min-width:0;border:1px solid #636b6c;background:#040505;color:#fff;border-radius:0;font:400 15px Pretendard,Arial,sans-serif;padding:10px 12px;outline-offset:2px}
+.tc-contact-form input:not([type=checkbox]),.tc-contact-form select{height:41px}
+.tc-contact-form textarea{resize:vertical;min-height:108px}
+.tc-contact-form select option{background:#080a0b;color:#fff}
+.tc-contact-phone{display:flex;align-items:center;gap:9px}.tc-contact-phone span{color:#aaa}.tc-contact-phone input{max-width:115px;flex:1}
+.tc-contact-privacy{height:125px;overflow:auto;border:1px solid #636b6c;padding:15px;background:#030303}
+.tc-contact-privacy strong{font-size:13px;font-weight:650}
+.tc-contact-privacy p{font-size:12px;line-height:1.65;color:#c1c1c1;margin:8px 0}
+.tc-contact-agree{display:flex;align-items:center;gap:10px;margin:12px 0 17px;cursor:pointer;font-size:13px}
+.tc-contact-agree input{width:15px;height:15px;accent-color:#8fd0d4}
+.tc-contact-submit{display:block;border:0;border-radius:3px;background:#8fd0d4;color:#001014;min-height:45px;cursor:pointer;font-size:13px;font-weight:700}
+.tc-contact-submit:hover{background:#b1eaed}
+.tc-contact-feedback{font-size:12px;line-height:1.6;color:#aeb5b5;margin:10px 0 0}
+.tc-contact-map{width:100%;aspect-ratio:16/7.4;overflow:hidden;background:#101918}
+.tc-contact-map iframe{border:0;display:block;width:100%;height:100%}
+.tc-contact-details{display:grid;grid-template-columns:125px minmax(0,1fr);gap:22px 30px;margin-top:30px;font-size:14px;line-height:1.65}
+.tc-contact-details__label{font-weight:700}
+.tc-contact-addresses{display:grid;gap:17px}
+.tc-contact-addresses strong{font-size:13px;font-weight:620}
+.tc-contact-addresses p{margin:2px 0 0;font-size:13px;color:#aaa}
+.tc-contact-details>a{color:#c5c9ca}
+.tc-contact-social{display:flex;align-items:center;gap:15px;flex-wrap:wrap;font-size:13px}
+.tc-contact-social span{color:#959b9b}
+@media(max-width:900px){.tc-contact-content__inner{grid-template-columns:1fr}.tc-contact-map{aspect-ratio:16/9}.nav-contact__submenu{top:100%}}
+@media(max-width:800px){.nav-contact{width:100%;display:block}.nav-contact__submenu{position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;box-shadow:none;width:100%;border:0;border-left:1px solid #2b4345;border-radius:0;background:transparent;margin:4px 0 0;padding:0 0 0 12px}.nav-contact__submenu a{font-size:15px!important;padding:8px 10px!important}}
+@media(max-width:600px){.tc-contact-content{padding:55px 0 85px}.tc-contact-intro{min-height:175px}.tc-contact-details{grid-template-columns:88px 1fr;gap:18px}.tc-contact-form-col h2{font-size:23px}}
 </style>
 </head>
 <body>
@@ -597,7 +642,7 @@ html{scroll-padding-top:100px}
       <a href="?page=product" data-page="product">Product</a>
       <a href="?page=service" data-page="service">Service</a>
       <a href="?page=news" data-page="news">News</a>
-      <a href="?page=contact" data-page="contact">Contact</a>
+      <div class="nav-contact"><a href="?page=contact" data-page="contact" class="nav-contact__link" aria-haspopup="true" aria-expanded="false">Contact</a><div class="nav-contact__submenu"><a href="?page=contact">Contact us</a><a href="?page=recruit">Recruit</a></div></div>
       <a href="?page=meeting" data-page="meeting">Meeting</a>
     </nav>
     <div class="header__end">
@@ -645,6 +690,23 @@ html{scroll-padding-top:100px}
     document.title='News | Terracle';
     document.querySelectorAll('[data-page]').forEach(a=>{if(a.dataset.page==='news')a.setAttribute('aria-current','page')});
     document.getElementById('app').innerHTML="<section class=\"terracle-news-archive\"><div class=\"terracle-news-archive-inner\"><div class=\"terracle-news-archive-head\"><p>News</p><span>테라클의 언론 보도 소식을 최신순으로 확인해 주세요.</span></div><div class=\"terracle-news-grid\"><a href=\"https://kr.terracle.im/45\" class=\"terracle-news-card\"><div class=\"terracle-news-thumb\"><img src=\"https://thumb.mt.co.kr/cdn-cgi/image/f%3Davif/21/2026/07/2026072314402438753_1.jpg\" alt=\"SK임팩트부스터 1기 육성기업으로 선정된 테라클\" loading=\"lazy\"></div><div class=\"terracle-news-card-content\"><div class=\"terracle-news-meta\"><span>머니투데이</span><time datetime=\"2026-07-23\">2026.07.23</time></div><h3>“SK멤버사와 사업협력”…소셜벤처 ‘SK임팩트부스터’ 1기 가동</h3><p>테라클이 SK임팩트부스터 1기 육성기업으로 선정돼 SK멤버사와 기술실증 및 사업 협력을 추진합니다.</p><em>Read More</em></div></a><a href=\"https://kr.terracle.im/35\" class=\"terracle-news-card\"><div class=\"terracle-news-thumb\"><img src=\"https://cdn.imweb.me/upload/S2023030963558ef55ba8e/13875a07ea878.png\" alt=\"테라클, 육군과 폐섬유 재활용·자원화 협력 추진\" loading=\"lazy\"></div><div class=\"terracle-news-card-content\"><div class=\"terracle-news-meta\"><span>투데이에너지</span><time datetime=\"2026-05-29\">2026.05.29</time></div><h3>테라클, 육군과 폐섬유 재활용·자원화 협력 추진</h3><p>군 부대 폐섬유를 고순도 재생 원료로 되돌리는 순환경제 협력 사례입니다.</p><em>Read More</em></div></a><a href=\"https://kr.terracle.im/36\" class=\"terracle-news-card\"><div class=\"terracle-news-thumb\"><img src=\"https://cdn.imweb.me/upload/S20251117d55057592d551/9f64d1199aeff.png\" alt=\"재활용 불가능한 해양쓰레기, 원료로 되돌리다\" loading=\"lazy\"></div><div class=\"terracle-news-card-content\"><div class=\"terracle-news-meta\"><span>서울신문</span><time datetime=\"2026-01-07\">2026.01.07</time></div><h3>재활용 불가능한 해양쓰레기, 원료로 되돌리다</h3><p>ISCC PLUS OBP 인증을 통해 해양폐기물 순환 기술력을 국제적으로 검증받았습니다.</p><em>Read More</em></div></a><a href=\"https://kr.terracle.im/37\" class=\"terracle-news-card\"><div class=\"terracle-news-thumb\"><img src=\"https://cdn.platum.kr/wp-content/uploads/2025/11/image-57.png\" alt=\"주한독일상공회의소 이노베이션 어워드 수상\" loading=\"lazy\"></div><div class=\"terracle-news-card-content\"><div class=\"terracle-news-meta\"><span>플래텀</span><time datetime=\"2025-11-21\">2025.11.21</time></div><h3>주한독일상공회의소 이노베이션 어워드 수상</h3><p>KGCCI 이노베이션 어워드에서 테라클의 Terra-X™ 기술이 2등상을 수상했습니다.</p><em>Read More</em></div></a><a href=\"https://kr.terracle.im/38\" class=\"terracle-news-card\"><div class=\"terracle-news-thumb\"><img src=\"https://cdn.imweb.me/upload/S20251117d55057592d551/564716d8e787d.png\" alt=\"대한민국 ESG 친환경대전 참가\" loading=\"lazy\"></div><div class=\"terracle-news-card-content\"><div class=\"terracle-news-meta\"><span>필드뉴스</span><time datetime=\"2025-09-23\">2025.09.23</time></div><h3>대한민국 ESG 친환경대전 자원순환 솔루션관 참가</h3><p>Terra-X 기반 재생소재를 통해 플라스틱 자원순환 솔루션을 소개했습니다.</p><em>Read More</em></div></a><a href=\"https://kr.terracle.im/39\" class=\"terracle-news-card\"><div class=\"terracle-news-thumb\"><img src=\"https://cdn.imweb.me/upload/S20251117d55057592d551/132a9f4ce6940.png\" alt=\"스타트업 마하쿰 2025 참가\" loading=\"lazy\"></div><div class=\"terracle-news-card-content\"><div class=\"terracle-news-meta\"><span>에이빙</span><time datetime=\"2025-03-31\">2025.03.31</time></div><h3>인도 ‘스타트업 마하쿰 2025’ 참가</h3><p>인도 시장에서 해중합 기반 자원순환 기술과 현지 플랜트 설립 가능성을 알렸습니다.</p><em>Read More</em></div></a><a href=\"https://kr.terracle.im/40\" class=\"terracle-news-card\"><div class=\"terracle-news-thumb\"><img src=\"https://cdn.imweb.me/upload/S20251117d55057592d551/9e690fc39e2eb.png\" alt=\"폐플라스틱·의류 재활용 해중합 기술\" loading=\"lazy\"></div><div class=\"terracle-news-card-content\"><div class=\"terracle-news-meta\"><span>세계일보</span><time datetime=\"2024-10-31\">2024.10.31</time></div><h3>폐플라스틱·의류 재활용 해중합 기술로 ESG 실현</h3><p>폐의류와 복합 폐플라스틱을 원재료 TPA와 EG로 되돌리는 기술을 제시했습니다.</p><em>Read More</em></div></a><a href=\"https://kr.terracle.im/41\" class=\"terracle-news-card\"><div class=\"terracle-news-thumb\"><img src=\"https://cdn.widedaily.com/news/photo/202409/245197_249525_2735.jpg\" alt=\"충남 당진 생산공장 투자협약\" loading=\"lazy\"></div><div class=\"terracle-news-card-content\"><div class=\"terracle-news-meta\"><span>와이드경제</span><time datetime=\"2024-09-11\">2024.09.11</time></div><h3>충남 당진에 테라클 등 4개사 생산공장 신설</h3><p>테라클은 합덕일반산단에 친환경 해중합 기술 기반 생산공장을 세우기로 했습니다.</p><em>Read More</em></div></a><a href=\"https://kr.terracle.im/42\" class=\"terracle-news-card\"><div class=\"terracle-news-thumb\"><img src=\"https://img.hankyung.com/photo/202406/AD.37099219.1.jpg\" alt=\"인천강소연구개발특구 기업 CEO 테라클\" loading=\"lazy\"></div><div class=\"terracle-news-card-content\"><div class=\"terracle-news-meta\"><span>한경잡앤조이</span><time datetime=\"2024-06-20\">2024.06.20</time></div><h3>플라스틱을 환경오염 없이 무한하게 사용하도록 하는 기업</h3><p>테라클은 폐플라스틱을 TPA와 EG로 되돌리는 기술로 ESG 솔루션 기업으로 성장하고 있습니다.</p><em>Read More</em></div></a><a href=\"https://kr.terracle.im/43\" class=\"terracle-news-card\"><div class=\"terracle-news-thumb\"><img src=\"https://cdn.news2day.co.kr/data2/content/image/2024/05/02/.cache/512/20240502500177.jpg\" alt=\"뉴스투데이 JOB인터뷰 테라클\" loading=\"lazy\"></div><div class=\"terracle-news-card-content\"><div class=\"terracle-news-meta\"><span>뉴스투데이</span><time datetime=\"2024-05-02\">2024.05.02</time></div><h3>재활용 어려운 폐플라스틱, 순도 99%로 재활용률 97%</h3><p>뉴스투데이가 권기백 대표를 만나 해중합 기술과 자원순환 사업의 방향을 인터뷰했습니다.</p><em>Read More</em></div></a></div></div></section>";
+  }else if(page==='contact'){
+    document.title='Contact us | Terracle';
+    document.querySelectorAll('[data-page]').forEach(a=>{if(a.dataset.page==='contact')a.setAttribute('aria-current','page')});
+    document.getElementById('app').innerHTML="<div class=\"tc-contact-page\">\n<section class=\"tc-contact-intro\"><div class=\"tc-contact-intro__inner\"><p class=\"tc-contact-label\">CONTACT US</p><h1>Contact us</h1><p>We respond to all inquiries within 48 hours.</p></div></section>\n<section class=\"tc-contact-content\"><div class=\"tc-contact-content__inner\">\n<div class=\"tc-contact-form-col\"><h2>Contact us</h2><p class=\"tc-contact-help\">제품, 투자, 제휴 및 사업 관련 문의를 남겨주세요.</p><form id=\"tcContactForm\" class=\"tc-contact-form\">\n<label for=\"tc-contact-name\">이름 / Name <b>*</b></label><input id=\"tc-contact-name\" name=\"name\" required autocomplete=\"name\">\n<label for=\"tc-contact-phone\">연락처 / Contact <b>*</b></label><div class=\"tc-contact-phone\"><input type=\"tel\" name=\"tel1\" aria-label=\"연락처 앞자리\" inputmode=\"numeric\" maxlength=\"4\" required pattern=\"[0-9]{2,4}\"><span>–</span><input type=\"tel\" name=\"tel2\" aria-label=\"연락처 가운데 자리\" inputmode=\"numeric\" maxlength=\"4\" required pattern=\"[0-9]{3,4}\"><span>–</span><input type=\"tel\" name=\"tel3\" aria-label=\"연락처 마지막 자리\" inputmode=\"numeric\" maxlength=\"4\" required pattern=\"[0-9]{4}\"></div>\n<label for=\"tc-contact-email\">이메일 / E-mail <b>*</b></label><input id=\"tc-contact-email\" name=\"email\" type=\"email\" autocomplete=\"email\" required>\n<label for=\"tc-contact-type\">문의유형 / Type of Inquiry <b>*</b></label><select id=\"tc-contact-type\" name=\"type\" required><option value=\"\">(선택)</option><option>제품 문의</option><option>기술·재활용 테스트</option><option>사업 제휴</option><option>투자 문의</option><option>기타 문의</option></select>\n<label for=\"tc-contact-detail\">문의내용 / Inquiry Detail <b>*</b></label><textarea id=\"tc-contact-detail\" name=\"message\" rows=\"5\" required></textarea>\n<label for=\"tc-contact-privacy\">개인정보 수집 및 이용 동의 <b>*</b></label><div class=\"tc-contact-privacy\" tabindex=\"0\"><strong>개인정보 수집·이용 안내</strong><p>문의 회신을 위해 이름, 연락처, 이메일, 문의유형 및 문의내용을 사용합니다. 동의하지 않으실 수 있으나, 이 경우 문의 메일 작성 기능을 이용할 수 없습니다.</p><p>이 화면은 입력값을 서버에 저장하지 않습니다. 아래 버튼을 누르면 사용자의 메일 앱에서 문의 내용을 작성하도록 연결됩니다. 메일 발송 이후의 개인정보 처리에 관한 상세 내용은 테라클에 확인해 주세요.</p></div>\n<label class=\"tc-contact-agree\"><input id=\"tc-contact-agree\" type=\"checkbox\" required><span>개인정보 수집 및 이용에 동의합니다.</span></label>\n<button class=\"tc-contact-submit\" type=\"submit\">이메일로 문의하기</button><p class=\"tc-contact-feedback\" id=\"tcContactFeedback\" role=\"status\" aria-live=\"polite\">메일 앱에서 발송을 완료해야 문의가 전달됩니다.</p>\n</form></div>\n<div class=\"tc-contact-info-col\"><div class=\"tc-contact-map\"><iframe loading=\"lazy\" title=\"테라클 인천 R&D 센터 위치\" referrerpolicy=\"no-referrer-when-downgrade\" src=\"https://www.google.com/maps?q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C%20%EC%84%9C%EA%B5%AC%20%EC%A0%95%EC%84%9C%EC%A7%84%EB%A1%9C%20410&output=embed\"></iframe></div>\n<div class=\"tc-contact-details\"><div class=\"tc-contact-details__label\">Address</div><div class=\"tc-contact-addresses\"><div><strong>본사</strong><p>부산광역시 해운대구 센텀중앙로 78(우동) 센텀그린타워 303호</p></div><div><strong>인천 R&amp;D 센터 및 Pilot Plant</strong><p>인천광역시 서구 정서진로 410, 녹색융합클러스터 D 216호 PT-F동 01호</p></div><div><strong>제1공장</strong><p>충청남도 당진시 합덕읍 소소리 644</p></div></div>\n<div class=\"tc-contact-details__label\">E-mail</div><a href=\"mailto:info@terracle.im\">info@terracle.im</a>\n<div class=\"tc-contact-details__label\">Tel</div><a href=\"tel:+82327102891\">+82 32-710-2891~2</a>\n<div class=\"tc-contact-details__label\">SNS</div><div class=\"tc-contact-social\"><a href=\"https://www.youtube.com/results?search_query=Terracle\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a><span>│</span><span>Threads</span><span>│</span><span>LinkedIn</span></div></div>\n</div></div></section></div>";
+    const form=document.getElementById('tcContactForm');
+    form?.addEventListener('submit',function(event){
+      event.preventDefault();
+      if(!form.reportValidity())return;
+      const data=new FormData(form);
+      const phone=[data.get('tel1'),data.get('tel2'),data.get('tel3')].join('-');
+      const subject='[Terracle 문의] '+String(data.get('type'));
+      const body=['이름: '+data.get('name'),'연락처: '+phone,'이메일: '+data.get('email'),'문의유형: '+data.get('type'),'','문의내용:',data.get('message')].join('\\n');
+      const link='mailto:info@terracle.im?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+      document.getElementById('tcContactFeedback').textContent='메일 앱이 열리면 내용을 확인하고 보내기를 눌러 주세요. 자동 전송되지는 않습니다.';
+      window.location.href=link;
+    });
+    window.scrollTo(0,0);
   }else if(page==='about'){
     document.title='About us | Terracle';
     document.querySelectorAll('[data-page]').forEach(a=>{if(a.dataset.page==='about')a.setAttribute('aria-current','page')});
