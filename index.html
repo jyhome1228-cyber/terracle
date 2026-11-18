@@ -712,7 +712,7 @@ html{scroll-padding-top:100px}
 (function(){
   const nav=document.getElementById('main-nav'),button=document.querySelector('.menu-toggle');
   button.addEventListener('click',()=>{const open=nav.classList.toggle('is-open');button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기')});
-  document.getElementById('year').textContent=new Date().getFullYear();
+  const legacyYear=document.getElementById('year');if(legacyYear)legacyYear.textContent=new Date().getFullYear();
   const page=new URLSearchParams(location.search).get('page');
   const info={
     about:{title:'About us',eyebrow:'OUR BUSINESS',heading:'Terracle의 업무와 철학',body:'테라클은 친환경 재활용 기술을 기반으로 폐PET와 폐의류를 화학적으로 분해·정제하여 고품질 단량체로 되돌립니다.',image:'20261113-073740-25-8e85378a.webp'},
