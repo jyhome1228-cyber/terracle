@@ -1085,6 +1085,45 @@ html{scroll-padding-top:100px}
 @media(max-width:767px){.tc-black-page .tc-black-research{padding:65px 0 90px}.tc-black-research__heading{margin-bottom:30px}.tc-black-research__main h3{font-size:18px}.tc-black-spec th,.tc-black-spec td{font-size:12px;padding:12px 9px}.tc-black-charts{gap:9px}.tc-black-charts figcaption strong{font-size:17px}.tc-black-charts figcaption span{font-size:12px}.tc-black-research__imaging{grid-template-columns:1fr}.tc-black-research__heading h2{font-size:31px}}
 @media(max-width:420px){.tc-black-charts{grid-template-columns:1fr}}
 
+
+/* Subtle ambient mint-light parallax on Product page header only */
+.tc-product-detail .tc-product-hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  --tc-glow-x:0px;
+  --tc-glow-y:0px;
+}
+.tc-product-detail .tc-product-hero::before{
+  content:"";
+  position:absolute;
+  inset:-15%;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 38% 45% at 28% 56%,rgba(13,168,174,.13),transparent 72%),
+    radial-gradient(ellipse 32% 58% at 82% 66%,rgba(15,120,137,.10),transparent 74%);
+  opacity:.52;
+  transform:translate3d(var(--tc-glow-x),var(--tc-glow-y),0);
+  transition:transform .55s ease-out,opacity .55s ease;
+  will-change:transform;
+}
+.tc-product-detail .tc-product-hero__content{
+  position:relative;
+  z-index:1;
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .tc-product-detail .tc-product-hero:hover::before{opacity:.85}
+}
+@media(max-width:800px),(hover:none),(prefers-reduced-motion:reduce){
+  .tc-product-detail .tc-product-hero::before{
+    transform:none!important;
+    transition:none!important;
+    opacity:.55;
+    will-change:auto;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1169,6 +1208,22 @@ html{scroll-padding-top:100px}
           structures.forEach(el=>observer.observe(el));
         }else structures.forEach(reveal);
       }
+    }
+
+    // Subtle pointer-responsive ambient glow; background only, no content motion.
+    const productHero=document.querySelector('.tc-product-detail .tc-product-hero');
+    if(productHero&&window.matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches){
+      productHero.addEventListener('pointermove',event=>{
+        const rect=productHero.getBoundingClientRect();
+        const px=(event.clientX-rect.left)/rect.width-.5;
+        const py=(event.clientY-rect.top)/rect.height-.5;
+        productHero.style.setProperty('--tc-glow-x',Math.round(px*38)+'px');
+        productHero.style.setProperty('--tc-glow-y',Math.round(py*24)+'px');
+      },{passive:true});
+      productHero.addEventListener('pointerleave',()=>{
+        productHero.style.setProperty('--tc-glow-x','0px');
+        productHero.style.setProperty('--tc-glow-y','0px');
+      });
     }
     window.scrollTo(0,0);
   }else if(page==='meeting'){
