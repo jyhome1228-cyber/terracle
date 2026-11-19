@@ -741,8 +741,9 @@ html{scroll-padding-top:100px}
 @media(max-width:430px){.tc-service-hero{background-position:31% center}.tc-service-hero__copy{width:60%}.tc-service-process__steps{grid-template-columns:1fr}.tc-service-process__steps>div{padding:18px 0}.tc-service-process__steps>div>span{margin-bottom:8px}}
 
 
-/* Service hero refinement — restrained height, balanced copy, fixed image scroll */
+/* Service hero: preserve complete source artwork and stable scrolling */
 .tc-service-page .tc-service-hero{
+  position:relative;
   height:300px;
   min-height:300px;
   max-height:300px;
@@ -750,50 +751,65 @@ html{scroll-padding-top:100px}
   display:grid;
   grid-template-columns:1fr 1fr;
   align-items:center;
-  justify-items:stretch;
-  background-position:center center;
-  background-size:cover;
+  background-color:#02080b;
+  background-size:auto 100%;
+  background-position:left center;
+  background-repeat:no-repeat;
+  background-attachment:scroll;
+  overflow:hidden;
+}
+.tc-service-page .tc-service-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent 0%,transparent 30%,rgba(1,6,11,.18) 44%,#02080b 72%);
+  pointer-events:none;
 }
 .tc-service-page .tc-service-hero__copy{
   grid-column:2;
   align-self:center;
-  justify-self:center;
-  width:min(100%,410px);
+  justify-self:start;
+  width:100%;
+  max-width:410px;
   margin:0;
+  padding-left:clamp(16px,3vw,58px);
   text-align:left;
 }
-.tc-service-page .tc-service-hero h1{font-size:clamp(32px,2.6vw,43px);margin:0 0 12px;line-height:1.16}
+.tc-service-page .tc-service-hero h1{
+  font-size:clamp(32px,2.6vw,43px);
+  line-height:1.16;
+  font-weight:620;
+  margin:0 0 12px;
+}
 .tc-service-page .tc-service-hero p{font-size:15px;line-height:1.6}
-.tc-service-page .tc-service-test{padding-top:88px;padding-bottom:88px}
+.tc-service-page .tc-service-test{padding-top:78px;padding-bottom:82px}
 .tc-service-page .tc-service-test .tc-service-split{align-items:center}
-@media (min-width:901px) and (prefers-reduced-motion:no-preference){
-  .tc-service-page .tc-service-hero{background-attachment:fixed}
-}
-@media (max-width:900px){
+@media(max-width:900px){
   .tc-service-page .tc-service-hero{
-    height:265px;min-height:265px;max-height:265px;
-    background-attachment:scroll;
-    background-position:38% center;
+    height:260px;min-height:260px;max-height:260px;
+    background-size:auto 100%;
+    background-position:-30px center;
   }
-  .tc-service-page .tc-service-hero__copy{width:100%;max-width:330px}
+  .tc-service-page .tc-service-hero__copy{max-width:330px;padding-left:18px}
 }
-@media (max-width:767px){
+@media(max-width:767px){
   .tc-service-page .tc-service-hero{
-    height:225px;min-height:225px;max-height:225px;
+    height:224px;min-height:224px;max-height:224px;
     padding:0 20px;
     grid-template-columns:41% 59%;
-    background-position:33% center;
+    background-size:auto 100%;
+    background-position:-85px center;
   }
-  .tc-service-page .tc-service-hero__copy{
-    width:100%;max-width:270px;padding-left:8px;
-    text-align:left;
+  .tc-service-page .tc-service-hero::before{
+    background:linear-gradient(90deg,transparent 0%,rgba(1,6,11,.10) 32%,#02080b 76%);
   }
+  .tc-service-page .tc-service-hero__copy{max-width:270px;padding-left:8px}
   .tc-service-page .tc-service-hero h1{font-size:31px}
   .tc-service-page .tc-service-hero p{font-size:13px}
-  .tc-service-page .tc-service-test{padding-top:64px;padding-bottom:66px}
+  .tc-service-page .tc-service-test{padding-top:62px;padding-bottom:66px}
 }
-@media (max-width:430px){
-  .tc-service-page .tc-service-hero{grid-template-columns:37% 63%;background-position:31% center}
+@media(max-width:430px){
+  .tc-service-page .tc-service-hero{grid-template-columns:37% 63%;background-position:-110px center}
 }
 
 </style>
