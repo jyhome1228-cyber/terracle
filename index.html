@@ -2125,6 +2125,35 @@ html{scroll-padding-top:100px}
 }
 @media(max-width:430px){.tc-service-page .tc-service-test-process-bottom .tc-service-process__steps{grid-template-columns:1fr!important;gap:8px!important}}
 </style>
+<style id="terracle-locale-responsive">
+/* Preserve the Korean design while allowing longer localized text to reflow. */
+html[lang="en"] #app,
+html[lang="en"] #tc-compact-footer{overflow-wrap:break-word;word-break:normal}
+html[lang="en"] #app p,
+html[lang="en"] #app h1,
+html[lang="en"] #app h2,
+html[lang="en"] #app h3,
+html[lang="en"] #app figcaption,
+html[lang="en"] #app strong{overflow-wrap:break-word;word-break:normal}
+html[lang="zh-CN"] body{font-family:"Noto Sans SC","Microsoft YaHei",Pretendard,-apple-system,BlinkMacSystemFont,sans-serif}
+html[lang="zh-CN"] #app p,
+html[lang="zh-CN"] #app h1,
+html[lang="zh-CN"] #app h2,
+html[lang="zh-CN"] #app h3{word-break:normal;overflow-wrap:break-word;line-break:strict}
+html[lang="en"] #terracleRecruitFinal .trf-typing-line,
+html[lang="zh-CN"] #terracleRecruitFinal .trf-typing-line{white-space:normal!important}
+html[lang="en"] .tc-about .tc-about-feature__title{font-size:clamp(20px,2.1vw,28px)}
+html[lang="zh-CN"] .tc-service-page .tc-service-copy p{line-height:1.92}
+@media(max-width:767px){
+html[lang="en"] .tc-about .tc-about-feature__title,
+html[lang="zh-CN"] .tc-about .tc-about-feature__title{font-size:21px}
+html[lang="en"] .tc-native-news .tn-article h1,
+html[lang="zh-CN"] .tc-native-news .tn-article h1{font-size:clamp(24px,6.3vw,31px)}
+html[lang="en"] .tc-service-page .tc-service-section h2{font-size:clamp(24px,6.2vw,29px)}
+html[lang="en"] #terracleRecruitFinal .trf-hero-message p{font-size:19px!important}
+html[lang="zh-CN"] #terracleRecruitFinal .trf-hero-message p{font-size:20px!important}
+}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
@@ -2776,7 +2805,7 @@ html{scroll-padding-top:100px}
   const titleSection=localizedTitles[language][params.get('page')]||'Terracle';
   if(!params.get('article'))document.title=titleSection+' | Terracle';
   const description=document.querySelector('meta[name="description"]');
-  if(description)description.setAttribute('content',language==='zh'?'Terracle 化学回收与资源循环技术：将废塑料转化为高品质再生原料。':'Terracle develops chemical recycling and circularity technologies that turn waste plastics into high-quality recycled feedstocks.');
+  if(description && !params.get('article'))description.setAttribute('content',language==='zh'?'Terracle 化学回收与资源循环技术：将废塑料转化为高品质再生原料。':'Terracle develops chemical recycling and circularity technologies that turn waste plastics into high-quality recycled feedstocks.');
   const activePage=params.get('page');
   const langText={en:'English',zh:'中文'}[language];
   const menu=document.getElementById('terracleLanguageMenu');
