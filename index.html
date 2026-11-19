@@ -2746,5 +2746,88 @@ html{scroll-padding-top:100px}
   },{passive:true});
 })();
 </script>
+<script id="terracle-i18n-runtime">
+(function(){
+  const params=new URLSearchParams(location.search);
+  const language=(params.get('lang')||'ko').toLowerCase();
+  if(!['en','zh'].includes(language))return;
+  document.documentElement.lang=language==='zh'?'zh-CN':'en';
+  const activePage=params.get('page');
+  const langText={en:'English',zh:'中文'}[language];
+  const menu=document.getElementById('terracleLanguageMenu');
+  const toggle=document.getElementById('terracleLanguageButton');
+  if(toggle)toggle.childNodes.forEach(n=>{if(n.nodeType===3)n.textContent=langText+' '});
+  const localizedHref=(href)=>{
+    if(!href||href.startsWith('#')||href.startsWith('mailto:')||href.startsWith('tel:')||href.startsWith('javascript:'))return href;
+    try{
+      const url=new URL(href,location.href);
+      if(url.origin!==location.origin)return href;
+      if(url.pathname.endsWith('recruit-content.html')||url.pathname.endsWith('.json'))return href;
+      url.searchParams.set('lang',language);
+      return url.pathname+url.search+url.hash;
+    }catch(e){return href}
+  };
+  if(menu){
+    const destinations=menu.querySelectorAll('a');
+    const choices=['ko','en','zh'];
+    destinations.forEach((a,index)=>{
+      const dest=new URL(location.pathname,location.origin);
+      if(activePage)dest.searchParams.set('page',activePage);
+      const article=params.get('article');
+      if(article)dest.searchParams.set('article',article);
+      if(choices[index]!=='ko')dest.searchParams.set('lang',choices[index]);
+      a.href=dest.pathname+dest.search;
+      a.classList.toggle('is-current',choices[index]===language);
+      if(choices[index]===language)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+    });
+  }
+  const processed=new WeakSet();
+  function translateString(s,dict){
+    const trimmed=s.trim();
+    if(!trimmed)return s;
+    const direct=dict[trimmed];
+    if(direct!==undefined)return s.slice(0,s.indexOf(trimmed))+direct+s.slice(s.indexOf(trimmed)+trimmed.length);
+    return s;
+  }
+  const skip=node=>node.parentElement?.closest('script,style,code,pre,svg,textarea,[data-no-translate],.lang-menu');
+  let dict={};
+  let scheduled=false;
+  function apply(){
+    scheduled=false;
+    document.querySelectorAll('a[href]').forEach(a=>{
+      if(a.closest('.lang-menu'))return;
+      const href=a.getAttribute('href');
+      const fixed=localizedHref(href);
+      if(fixed!==href)a.setAttribute('href',fixed);
+    });
+    const root=document.querySelector('#app');
+    const roots=[document.querySelector('#main-nav'),document.querySelector('#tc-compact-footer'),root].filter(Boolean);
+    for(const subtree of roots){
+      const walker=document.createTreeWalker(subtree,NodeFilter.SHOW_TEXT);
+      let node;
+      while((node=walker.nextNode())){
+        if(skip(node))continue;
+        const result=translateString(node.nodeValue,dict);
+        if(result!==node.nodeValue)node.nodeValue=result;
+      }
+      subtree.querySelectorAll('[placeholder],[aria-label],[alt],[title]').forEach(el=>{
+        for(const attr of ['placeholder','aria-label','alt','title']){
+          if(!el.hasAttribute(attr))continue;
+          const prev=el.getAttribute(attr);
+          const next=translateString(prev,dict);
+          if(prev!==next)el.setAttribute(attr,next);
+        }
+      });
+    }
+  }
+  const observer=new MutationObserver(()=>{if(!scheduled){scheduled=true;requestAnimationFrame(apply)}});
+  observer.observe(document.body,{subtree:true,childList:true,characterData:true});
+  fetch('./i18n/'+language+'.json',{cache:'no-store'})
+    .then(r=>{if(!r.ok)throw new Error('Locale file unavailable '+r.status);return r.json()})
+    .then(data=>{dict=data;apply()})
+    .catch(err=>{console.error('[Terracle localization]',err);apply()});
+  apply();
+})();
+</script>
 </body>
 </html>
