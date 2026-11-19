@@ -1,10 +1,7 @@
 <svg width="1144" height="580" viewBox="0 0 1144 580" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>
-/* Minimal animated vector accents: keep all labels and layout stationary. */
-.tc-value-flow{stroke:#8fd0d4;stroke-width:.45;stroke-opacity:.34;stroke-dasharray:4 75;animation:tc-flowline 8s linear infinite}
-.tc-value-node{transform-box:fill-box;transform-origin:center;animation:tc-nodepulse 4.5s ease-in-out infinite}
-@keyframes tc-flowline{0%{stroke-dashoffset:160;stroke-opacity:.08}50%{stroke-opacity:.5}100%{stroke-dashoffset:0;stroke-opacity:.08}}
-@keyframes tc-nodepulse{0%,100%{filter:drop-shadow(0 0 0 rgba(143,208,212,0));opacity:1}50%{filter:drop-shadow(0 0 7px rgba(143,208,212,.24));opacity:.97}}
-@media(prefers-reduced-motion:reduce){.tc-value-flow,.tc-value-node{animation:none!important}}
+/* Calm static diagram. Interaction is provided by hoverable node rings in the page. */
+.tc-value-flow{stroke:#8fd0d4;stroke-width:.45;stroke-opacity:.20;stroke-dasharray:none;animation:none!important}
+.tc-value-node{animation:none!important;filter:none}
 </style>
 <path d="M573.498 347.086C573.112 347.086 572.743 347.068 572.496 347.033V345.469C572.707 345.486 573.077 345.504 573.34 345.504C573.92 345.504 574.412 345.451 574.852 344.256L575.08 343.623L571.582 333.955H573.586L575.995 341.355H576.1L578.508 333.955H580.53L576.592 344.766C576.047 346.277 575.063 347.086 573.498 347.086Z" fill="white"/>
 <path d="M564.755 337.84V343.5H562.874V333.955H564.685V335.52H564.79C565.247 334.5 566.179 333.832 567.603 333.832C569.571 333.832 570.855 335.062 570.855 337.436V343.5H568.991V337.664C568.991 336.275 568.235 335.449 566.97 335.449C565.687 335.449 564.755 336.311 564.755 337.84Z" fill="white"/>
