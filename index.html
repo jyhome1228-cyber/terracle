@@ -1233,6 +1233,37 @@ html{scroll-padding-top:100px}
   .tc-black-page .tc-black-charts svg path[stroke]{transition:none!important;stroke-dashoffset:0!important}
 }
 
+
+/* Product hero v3 — taller cinematic gradient with subtle pointer interaction */
+.tc-product-detail .tc-product-hero{
+  min-height:430px;
+  padding-top:98px;
+  padding-bottom:108px;
+}
+.tc-product-detail .tc-product-hero::before{
+  opacity:.63;
+  transition:transform .7s cubic-bezier(.22,.61,.36,1),opacity .65s ease;
+}
+.tc-product-detail .tc-product-hero::after{
+  opacity:.74;
+  animation-duration:18s;
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .tc-product-detail .tc-product-hero:hover::before{opacity:.95}
+  .tc-product-detail .tc-product-hero:hover::after{opacity:.86}
+}
+@media(max-width:767px){
+  .tc-product-detail .tc-product-hero{
+    min-height:330px;
+    padding-top:75px;
+    padding-bottom:82px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .tc-product-detail .tc-product-hero::after{animation:none!important}
+  .tc-product-detail .tc-product-hero::before{transition:none!important;transform:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -1362,8 +1393,8 @@ html{scroll-padding-top:100px}
         const rect=productHero.getBoundingClientRect();
         const px=(event.clientX-rect.left)/rect.width-.5;
         const py=(event.clientY-rect.top)/rect.height-.5;
-        productHero.style.setProperty('--tc-glow-x',Math.round(px*38)+'px');
-        productHero.style.setProperty('--tc-glow-y',Math.round(py*24)+'px');
+        productHero.style.setProperty('--tc-glow-x',Math.round(px*52)+'px');
+        productHero.style.setProperty('--tc-glow-y',Math.round(py*32)+'px');
       },{passive:true});
       productHero.addEventListener('pointerleave',()=>{
         productHero.style.setProperty('--tc-glow-x','0px');
