@@ -1622,6 +1622,32 @@ html{scroll-padding-top:100px}
 @media(max-width:850px){.tc-recruit__inner{width:calc(100% - 44px)}.tc-recruit__section{padding:78px 0}.tc-recruit__lead-grid,.tc-recruit__two,.tc-recruit__grid,.tc-recruit__steps,.tc-recruit__apply-grid{grid-template-columns:1fr}.tc-recruit__lead-grid{gap:36px}.tc-recruit__symbol{width:145px;margin:0}.tc-recruit__card{padding:28px}.tc-recruit__apply-card{padding:26px}.tc-recruit__hero{min-height:350px}.tc-recruit__copy{font-size:14px;line-height:1.86}.tc-recruit__steps{gap:24px}}
 @media(prefers-reduced-motion:reduce){.tc-recruit__reveal{opacity:1;transform:none;transition:none}}
 </style>
+
+<style id="tc-eco-layout-v2">
+/* The framed surface holds only the diagram; editorial description sits below. */
+.tu-ecosystem .tc-eco-layout{align-items:start}
+.tu-ecosystem .tc-eco-visual.tc-eco-svg-visual{background:#070909;border:1px solid rgba(143,208,212,.18);overflow:hidden}
+.tu-ecosystem .tc-eco-visual.tc-eco-svg-visual .tu-chain-panel{padding:26px 18px!important}
+.tu-ecosystem .tc-eco-visual.tc-eco-svg-visual .tc-eco-svg{width:94%;max-width:1040px}
+.tu-ecosystem .tc-eco-panel-caption{display:none!important}
+.tu-ecosystem .tc-eco-diagram{position:relative;isolation:isolate;width:94%;max-width:1040px;margin:0 auto}
+.tu-ecosystem .tc-eco-diagram .tc-eco-svg{width:100%!important;max-width:none!important}
+.tu-ecosystem .tc-eco-flow-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.tu-ecosystem .tc-eco-flow-overlay .tc-moving-point{fill:#b7f8f8;filter:drop-shadow(0 0 5px rgba(143,245,245,.9))}
+.tu-ecosystem .tc-eco-detail{display:grid;grid-template-columns:210px minmax(0,1fr);gap:26px;margin-top:24px;align-items:start}
+.tu-ecosystem .tc-eco-detail__body{grid-column:2;display:grid;grid-template-columns:160px minmax(0,1fr);gap:36px;align-items:start;border-top:1px solid rgba(143,208,212,.25);padding:27px 4px 0;transition:opacity .3s ease}
+.tu-ecosystem .tc-eco-detail__heading{display:flex;flex-direction:column;gap:8px}
+.tu-ecosystem .tc-eco-detail__number{font-size:12px;font-weight:650;letter-spacing:.1em;color:#9edbe5}
+.tu-ecosystem .tc-eco-detail__name{font-size:20px;font-weight:600;letter-spacing:-.035em;line-height:1.45;color:#f5f7f7}
+.tu-ecosystem .tc-eco-detail__description{margin:0!important;font-size:15px;line-height:1.85;color:#acb8ba;max-width:680px;letter-spacing:-.02em;word-break:keep-all}
+.tu-ecosystem .tu-chain-tabs button em{transition:transform .28s ease,background .25s ease,box-shadow .25s ease}
+.tu-ecosystem .tu-chain-tabs button:hover em{transform:translateX(3px);box-shadow:0 0 12px rgba(158,219,229,.2)}
+.tu-ecosystem .tu-chain-tabs button.is-active em{animation:tc-eco-arrow-nudge 2.3s ease-in-out infinite}
+@keyframes tc-eco-arrow-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
+@media(max-width:1100px){.tu-ecosystem .tc-eco-detail{grid-template-columns:180px minmax(0,1fr);gap:20px}.tu-ecosystem .tc-eco-detail__body{grid-template-columns:140px 1fr;gap:22px}}
+@media(max-width:767px){.tu-ecosystem .tc-eco-detail{display:block;margin-top:15px}.tu-ecosystem .tc-eco-detail__body{display:block;padding:23px 1px 0}.tu-ecosystem .tc-eco-detail__heading{margin-bottom:14px}.tu-ecosystem .tc-eco-detail__name{font-size:19px}.tu-ecosystem .tc-eco-detail__description{font-size:14px;line-height:1.8}.tu-ecosystem .tc-eco-visual.tc-eco-svg-visual .tu-chain-panel{padding:14px 8px!important}.tu-ecosystem .tc-eco-diagram{width:100%}}
+@media(prefers-reduced-motion:reduce){.tu-ecosystem .tc-eco-flow-overlay,.tu-ecosystem .tu-chain-tabs button.is-active em{animation:none!important}.tu-ecosystem .tc-eco-flow-overlay{display:none}}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 로딩 화면" role="status"><img class="terracle-intro__symbol" src="./symbol.svg" alt="Terracle"></div>
@@ -1942,10 +1968,72 @@ html{scroll-padding-top:100px}
       });
     });
     visual.classList.add('tc-eco-ready');
+    // Move the stage explanation completely outside the framed diagram.
+    const section=root.querySelector('.tu-ecosystem');
+    let detail=section.querySelector('.tc-eco-detail');
+    if(!detail){
+      detail=document.createElement('div');
+      detail.className='tc-eco-detail';
+      detail.setAttribute('aria-live','polite');
+      detail.innerHTML='<div class="tc-eco-detail__body"><div class="tc-eco-detail__heading"><span class="tc-eco-detail__number"></span><strong class="tc-eco-detail__name"></strong></div><p class="tc-eco-detail__description"></p></div>';
+      section.querySelector('.tc-eco-layout').insertAdjacentElement('afterend',detail);
+    }
+    const captionData=panels.map(panel=>{
+      const caption=panel.querySelector('.tc-eco-panel-caption');
+      return {
+        number:caption?.querySelector('.tc-eco-panel-caption__index')?.textContent?.trim()||'',
+        title:caption?.querySelector('strong')?.textContent?.trim()||'',
+        description:caption?.querySelector('p')?.textContent?.trim()||''
+      };
+    });
+    function updateDetail(value){
+      const data=captionData[Number(value)];
+      if(!data)return;
+      detail.querySelector('.tc-eco-detail__number').textContent=data.number;
+      detail.querySelector('.tc-eco-detail__name').textContent=data.title;
+      detail.querySelector('.tc-eco-detail__description').textContent=data.description;
+    }
+    updateDetail('0');
+    // A restrained signal travels across the main horizontal connections.
+    // Overlay uses the image's exact 1144 × 580 coordinate space.
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      const ns='http://www.w3.org/2000/svg';
+      panels.forEach(panel=>{
+        const img=panel.querySelector('img.tc-eco-svg');
+        if(!img)return;
+        const wrapper=document.createElement('div');
+        wrapper.className='tc-eco-diagram';
+        img.parentNode.insertBefore(wrapper,img);
+        wrapper.appendChild(img);
+        const overlay=document.createElementNS(ns,'svg');
+        overlay.setAttribute('class','tc-eco-flow-overlay');
+        overlay.setAttribute('viewBox','0 0 1144 580');
+        overlay.setAttribute('aria-hidden','true');
+        const tracks=[
+          {d:'M 415 291 L 505 291',duration:'2.8s',delay:'-0.6s'},
+          {d:'M 626 291 L 705 291',duration:'3.1s',delay:'-1.6s'},
+          {d:'M 834 291 L 880 291',duration:'2.6s',delay:'-1.3s'}
+        ];
+        tracks.forEach(track=>{
+          const dot=document.createElementNS(ns,'circle');
+          dot.setAttribute('class','tc-moving-point');
+          dot.setAttribute('r','2.8');
+          const anim=document.createElementNS(ns,'animateMotion');
+          anim.setAttribute('path',track.d);
+          anim.setAttribute('dur',track.duration);
+          anim.setAttribute('begin',track.delay);
+          anim.setAttribute('repeatCount','indefinite');
+          dot.appendChild(anim);
+          overlay.appendChild(dot);
+        });
+        wrapper.appendChild(overlay);
+      });
+    }
     let current='0';
     function activate(value){
       if(current===value)return;
       current=value;
+      updateDetail(value);
       buttons.forEach(button=>{
         const active=button.getAttribute('data-chain')===value;
         button.classList.toggle('is-active',active);
