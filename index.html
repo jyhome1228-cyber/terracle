@@ -1798,7 +1798,9 @@ html{scroll-padding-top:100px}
 .tc-about .tc-about-feature__visual:hover img{transform:scale(1.025);filter:brightness(.94) saturate(.92)}
 .tc-about .tc-about-feature__visual--symbol{background:radial-gradient(ellipse at 50% 48%,rgba(56,173,183,.15),transparent 50%),#03090b;display:grid;place-items:center}
 .tc-about .tc-about-feature__visual--symbol img{width:33%;height:auto;aspect-ratio:1;object-fit:contain;filter:brightness(0) saturate(100%) invert(84%) sepia(12%) saturate(766%) hue-rotate(139deg) brightness(105%);opacity:.72}
-.tc-about .tc-about-feature__visual--symbol:after{content:"";position:absolute;inset:16%;border:1px solid rgba(158,219,229,.22);border-radius:50%;pointer-events:none}
+.tc-about .tc-about-feature__visual--symbol:after{content:none!important;display:none!important}
+.tc-about .tc-about-feature__visual--symbol{border:0!important;background:transparent!important}
+.tc-about .tc-about-feature__visual--symbol img{width:33%!important;max-width:240px;opacity:1!important}
 .tc-about .tc-about-vision{padding:116px 0 128px!important;min-height:0!important;background:radial-gradient(ellipse at 75% 40%,rgba(14,95,101,.12),transparent 55%),#03080b!important}
 .tc-about .tc-about-vision .tc-about-inner{display:block!important}
 .tc-about .tc-about-vision__copy{display:grid!important;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:30px 95px;align-items:start}
