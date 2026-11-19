@@ -2235,7 +2235,7 @@ html{scroll-padding-top:100px}
         main.innerHTML='<div class="tc-native-news"><section class="tc-unified-hero tn-hero"><div class="tn-hero__copy"><h1>News</h1></div></section><section class="tn-list"><div class="tn-inner"><div class="tn-grid">'+news.map(item=>'<a class="tn-card" href="'+detailUrl(item.id)+'"><div class="tn-card__image"><img loading="lazy" src="'+htmlEscape(item.image)+'" alt="'+htmlEscape(item.title)+'"></div><div class="tn-card__meta"><span>'+htmlEscape(item.source)+'</span><time>'+htmlEscape(item.date)+'</time></div><h3>'+htmlEscape(item.title)+'</h3></a>').join('')+'</div></div></section></div>';
       }else{
         const item=news[id-1];
-        document.title=item.title+' | Terracle News';
+        document.title=item.title+(new URLSearchParams(location.search).get('lang')==='zh'?' | Terracle 新闻':' | Terracle News');
         const description=document.querySelector('meta[name="description"]');
         if(description)description.setAttribute('content',(item.summary||[]).join(' ').slice(0,160));
         let body='';
@@ -2765,6 +2765,14 @@ html{scroll-padding-top:100px}
   const language=(params.get('lang')||'ko').toLowerCase();
   if(!['en','zh'].includes(language))return;
   document.documentElement.lang=language==='zh'?'zh-CN':'en';
+  const localizedTitles={
+    en:{about:'About Us',technology:'Technology',monomer:'Recycled Monomer',blacktio2:'BlackTiO₂',service:'Service',contact:'Contact Us',recruit:'Careers',meeting:'Online Meeting',news:'News'},
+    zh:{about:'关于我们',technology:'技术',monomer:'再生单体',blacktio2:'黑色 TiO₂',service:'服务',contact:'联系我们',recruit:'人才招聘',meeting:'在线会议',news:'新闻'}
+  };
+  const titleSection=localizedTitles[language][params.get('page')]||'Terracle';
+  if(!params.get('article'))document.title=titleSection+' | Terracle';
+  const description=document.querySelector('meta[name="description"]');
+  if(description)description.setAttribute('content',language==='zh'?'Terracle 化学回收与资源循环技术：将废塑料转化为高品质再生原料。':'Terracle develops chemical recycling and circularity technologies that turn waste plastics into high-quality recycled feedstocks.');
   const activePage=params.get('page');
   const langText={en:'English',zh:'中文'}[language];
   const menu=document.getElementById('terracleLanguageMenu');
