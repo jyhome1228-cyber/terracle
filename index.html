@@ -1176,6 +1176,42 @@ html{scroll-padding-top:100px}
   .tc-black-page .tc-black-charts figure img{clip-path:none!important;animation:none!important}
 }
 
+
+/* Product hero v2: greater vertical breathing room with slow ambient gradient drift */
+.tc-product-detail .tc-product-hero{
+  min-height:350px;
+  padding-top:72px;
+  padding-bottom:78px;
+  background-color:#01050b;
+}
+.tc-product-detail .tc-product-hero::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:-16% -12%;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 38% 48% at 22% 52%,rgba(20,157,162,.19) 0%,rgba(12,95,105,.09) 47%,transparent 78%),
+    radial-gradient(ellipse 34% 59% at 87% 65%,rgba(4,111,126,.15) 0%,transparent 76%);
+  opacity:.72;
+  transform:translate3d(0,0,0) scale(1);
+  animation:tc-product-ambient 15s ease-in-out infinite alternate;
+  will-change:transform,opacity;
+}
+.tc-product-detail .tc-product-hero__content{position:relative;z-index:2}
+@keyframes tc-product-ambient{
+  0%{transform:translate3d(-2%,1%,0) scale(1);opacity:.56}
+  50%{transform:translate3d(2%,-1%,0) scale(1.055);opacity:.82}
+  100%{transform:translate3d(4%,2%,0) scale(1.025);opacity:.63}
+}
+@media(max-width:767px){
+  .tc-product-detail .tc-product-hero{min-height:290px;padding-top:60px;padding-bottom:67px}
+  .tc-product-detail .tc-product-hero::after{animation-duration:20s;opacity:.55}
+}
+@media(prefers-reduced-motion:reduce){
+  .tc-product-detail .tc-product-hero::after{animation:none!important;transform:none!important;opacity:.6;will-change:auto}
+}
+
 </style>
 </head>
 <body>
