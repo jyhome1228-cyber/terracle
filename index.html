@@ -2218,7 +2218,7 @@ html{scroll-padding-top:100px}
     main.innerHTML='<div class="tc-native-news"><div class="tn-inner tn-status">뉴스를 불러오고 있습니다.</div></div>';
     const htmlEscape=value=>String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const detailUrl=index=>'?page=news&article='+index;
-    fetch('./news-data.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('News data '+r.status);return r.json()}).then(news=>{
+    fetch((['en','zh'].includes(new URLSearchParams(location.search).get('lang'))?'./i18n/news-'+new URLSearchParams(location.search).get('lang')+'.json':'./news-data.json'),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('News data '+r.status);return r.json()}).then(news=>{
       if(!Array.isArray(news)||!news.length)throw new Error('Empty news');
       if(!Number.isInteger(id)||id<1||id>news.length){
         document.title='News | Terracle';
