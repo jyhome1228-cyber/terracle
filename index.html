@@ -740,6 +740,62 @@ html{scroll-padding-top:100px}
 @media(max-width:767px){.tc-service-hero{min-height:250px;background-position:34% center;padding:45px 20px}.tc-service-hero__copy{width:58%;margin-left:auto}.tc-service-hero h1{font-size:32px}.tc-service-hero p{font-size:13px}.tc-service-process{padding:24px}.tc-service-process__steps{gap:0 16px}.tc-service-process__steps strong{font-size:15px}.tc-service-process__steps p{font-size:13px}}
 @media(max-width:430px){.tc-service-hero{background-position:31% center}.tc-service-hero__copy{width:60%}.tc-service-process__steps{grid-template-columns:1fr}.tc-service-process__steps>div{padding:18px 0}.tc-service-process__steps>div>span{margin-bottom:8px}}
 
+
+/* Service hero refinement — restrained height, balanced copy, fixed image scroll */
+.tc-service-page .tc-service-hero{
+  height:300px;
+  min-height:300px;
+  max-height:300px;
+  padding:0 var(--tc-page-padding,6.2vw);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  justify-items:stretch;
+  background-position:center center;
+  background-size:cover;
+}
+.tc-service-page .tc-service-hero__copy{
+  grid-column:2;
+  align-self:center;
+  justify-self:center;
+  width:min(100%,410px);
+  margin:0;
+  text-align:left;
+}
+.tc-service-page .tc-service-hero h1{font-size:clamp(32px,2.6vw,43px);margin:0 0 12px;line-height:1.16}
+.tc-service-page .tc-service-hero p{font-size:15px;line-height:1.6}
+.tc-service-page .tc-service-test{padding-top:88px;padding-bottom:88px}
+.tc-service-page .tc-service-test .tc-service-split{align-items:center}
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  .tc-service-page .tc-service-hero{background-attachment:fixed}
+}
+@media (max-width:900px){
+  .tc-service-page .tc-service-hero{
+    height:265px;min-height:265px;max-height:265px;
+    background-attachment:scroll;
+    background-position:38% center;
+  }
+  .tc-service-page .tc-service-hero__copy{width:100%;max-width:330px}
+}
+@media (max-width:767px){
+  .tc-service-page .tc-service-hero{
+    height:225px;min-height:225px;max-height:225px;
+    padding:0 20px;
+    grid-template-columns:41% 59%;
+    background-position:33% center;
+  }
+  .tc-service-page .tc-service-hero__copy{
+    width:100%;max-width:270px;padding-left:8px;
+    text-align:left;
+  }
+  .tc-service-page .tc-service-hero h1{font-size:31px}
+  .tc-service-page .tc-service-hero p{font-size:13px}
+  .tc-service-page .tc-service-test{padding-top:64px;padding-bottom:66px}
+}
+@media (max-width:430px){
+  .tc-service-page .tc-service-hero{grid-template-columns:37% 63%;background-position:31% center}
+}
+
 </style>
 </head>
 <body>
