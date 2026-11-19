@@ -1,10 +1,7 @@
 <svg width="1144" height="580" viewBox="0 0 1144 580" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>
-/* Minimal animated vector accents: keep all labels and layout stationary. */
-.tc-value-flow{stroke:#8fd0d4;stroke-width:.45;stroke-opacity:.34;stroke-dasharray:4 75;animation:tc-flowline 8s linear infinite}
-.tc-value-node{transform-box:fill-box;transform-origin:center;animation:tc-nodepulse 4.5s ease-in-out infinite}
-@keyframes tc-flowline{0%{stroke-dashoffset:160;stroke-opacity:.08}50%{stroke-opacity:.5}100%{stroke-dashoffset:0;stroke-opacity:.08}}
-@keyframes tc-nodepulse{0%,100%{filter:drop-shadow(0 0 0 rgba(143,208,212,0));opacity:1}50%{filter:drop-shadow(0 0 7px rgba(143,208,212,.24));opacity:.97}}
-@media(prefers-reduced-motion:reduce){.tc-value-flow,.tc-value-node{animation:none!important}}
+/* Calm static diagram. Interaction is provided by hoverable node rings in the page. */
+.tc-value-flow{stroke:#8fd0d4;stroke-width:.45;stroke-opacity:.20;stroke-dasharray:none;animation:none!important}
+.tc-value-node{animation:none!important;filter:none}
 </style>
 <path class="tc-value-node"  d="M614.129 317.5C614.129 356.712 582.341 388.5 543.129 388.5C503.916 388.5 472.129 356.712 472.129 317.5C472.129 278.288 503.916 246.5 543.129 246.5C582.341 246.5 614.129 278.288 614.129 317.5Z" fill="#8FD0D4"/>
 <path d="M613.129 317.5C613.129 278.84 581.789 247.5 543.129 247.5C504.469 247.5 473.129 278.84 473.129 317.5C473.129 356.16 504.469 387.5 543.129 387.5V388.5C503.916 388.5 472.129 356.712 472.129 317.5C472.129 278.288 503.916 246.5 543.129 246.5C582.341 246.5 614.129 278.288 614.129 317.5C614.129 356.712 582.341 388.5 543.129 388.5V387.5C581.789 387.5 613.129 356.16 613.129 317.5Z" fill="#8FD0D4"/>
