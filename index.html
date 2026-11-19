@@ -1981,6 +1981,54 @@ html{scroll-padding-top:100px}
 .tc-black-page .tc-black-lineup .tc-black-types span{font-size:13px!important}
 }
 </style>
+<style id="tc-black-mobile-review-20261119">
+/* BlackTiO₂ smartphone / tablet fitting */
+.tc-black-page .tc-black-spec-scroll{width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#56777b transparent}
+.tc-black-page .tc-black-spec-scroll .tc-black-spec{width:100%;min-width:590px}
+.tc-black-page .tc-black-spec-scroll th,.tc-black-page .tc-black-spec-scroll td{white-space:normal;overflow-wrap:break-word}
+@media(max-width:767px){
+.tc-black-page{overflow-x:clip}
+.tc-black-page .tc-product-inner{width:100%;max-width:100%;padding-left:22px!important;padding-right:22px!important}
+.tc-black-page .tc-black-heading h2{font-size:clamp(25px,6vw,31px)!important;line-height:1.28!important;overflow-wrap:anywhere}
+.tc-black-page .tc-black-layout{grid-template-columns:minmax(0,1fr)!important;gap:28px!important}
+.tc-black-page .tc-black-powder{width:100%;aspect-ratio:1.38!important;max-height:370px!important}
+.tc-black-page .tc-black-powder img{width:100%;height:100%;object-fit:cover;object-position:center}
+.tc-black-page .tc-black-copy{width:100%;min-width:0}
+.tc-black-page .tc-black-copy>p{font-size:14px!important;line-height:1.86!important;max-width:100%;letter-spacing:-.015em}
+.tc-black-page .tc-black-lineup{margin-top:50px!important}
+.tc-black-page .tc-black-lineup .tc-black-types{width:100%;max-width:100%}
+.tc-black-page .tc-black-research__grid{grid-template-columns:minmax(0,1fr)!important}
+.tc-black-page .tc-black-research__main,.tc-black-page .tc-black-research__imaging{min-width:0;max-width:100%}
+.tc-black-page .tc-black-research__heading h2{font-size:clamp(23px,5.6vw,29px)!important;line-height:1.3;overflow-wrap:anywhere}
+.tc-black-page .tc-black-research__heading p{font-size:13px;line-height:1.7}
+.tc-black-page .tc-black-research__main h3{font-size:17px}
+.tc-black-page .tc-black-charts{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tc-black-page .tc-black-charts figure{min-width:0}
+.tc-black-page .tc-black-charts img{max-width:100%;height:auto}
+.tc-black-page .tc-black-research__imaging{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tc-black-page .tc-black-contact{min-height:48px}
+}
+@media(max-width:600px){
+.tc-black-page .tc-black-lineup .tc-black-types figure,
+.tc-black-page .tc-black-lineup .tc-black-types figure:first-child,
+.tc-black-page .tc-black-lineup .tc-black-types figure:last-child{grid-template-columns:96px minmax(0,1fr)!important;gap:16px!important;padding:20px 0!important}
+.tc-black-page .tc-black-lineup .tc-black-types img{width:96px!important;max-width:96px!important}
+.tc-black-page .tc-black-lineup .tc-black-types figcaption{min-width:0!important;overflow-wrap:anywhere}
+.tc-black-page .tc-black-lineup .tc-black-types strong{font-size:18px!important}
+.tc-black-page .tc-black-lineup .tc-black-types span{font-size:12px!important;line-height:1.6;overflow-wrap:anywhere}
+.tc-black-page .tc-black-research__imaging{grid-template-columns:1fr}
+}
+@media(max-width:420px){
+.tc-black-page .tc-product-inner{padding-left:18px!important;padding-right:18px!important}
+.tc-black-page .tc-black-charts{grid-template-columns:1fr}
+.tc-black-page .tc-black-lineup .tc-black-types figure,
+.tc-black-page .tc-black-lineup .tc-black-types figure:first-child,
+.tc-black-page .tc-black-lineup .tc-black-types figure:last-child{grid-template-columns:82px minmax(0,1fr)!important;gap:14px!important}
+.tc-black-page .tc-black-lineup .tc-black-types img{width:82px!important;max-width:82px!important}
+.tc-black-page .tc-black-lineup .tc-black-types strong{font-size:17px!important}
+.tc-black-page .tc-black-lineup .tc-black-types span{font-size:11px!important}
+}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
@@ -2234,6 +2282,17 @@ html{scroll-padding-top:100px}
         lineup.append(heading,types);
         layout.insertAdjacentElement('afterend',lineup);
       }
+      // On small screens keep all specification columns readable through horizontal scrolling.
+      blackPage?.querySelectorAll('.tc-black-spec').forEach(table=>{
+        if(table.parentElement?.classList.contains('tc-black-spec-scroll'))return;
+        const scroll=document.createElement('div');
+        scroll.className='tc-black-spec-scroll';
+        scroll.setAttribute('role','region');
+        scroll.setAttribute('aria-label','제품 사양표, 좌우 스크롤 가능');
+        scroll.tabIndex=0;
+        table.parentNode.insertBefore(scroll,table);
+        scroll.appendChild(table);
+      });
     }
     window.scrollTo(0,0);
   }else if(page==='service'){
