@@ -812,6 +812,53 @@ html{scroll-padding-top:100px}
   .tc-service-page .tc-service-hero{grid-template-columns:37% 63%;background-position:-110px center}
 }
 
+/* Service hero rollback to original dark gradient + CSS symbol */
+.tc-service-page .tc-service-hero{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:320px;
+  min-height:320px;
+  max-height:none;
+  padding:42px var(--tc-page-padding,6.2vw);
+  background:radial-gradient(ellipse at 25% 42%,rgba(0,126,131,.37),transparent 39%),radial-gradient(ellipse at 93% 76%,rgba(0,97,118,.24),transparent 36%),#01050b;
+  background-attachment:scroll;
+  overflow:hidden;
+}
+.tc-service-page .tc-service-hero:before{display:none}
+.tc-service-page .tc-service-hero__star{
+  display:block!important;
+  position:absolute;top:50%;left:23%;
+  transform:translate(-50%,-50%);
+  width:clamp(160px,17vw,310px);
+  height:clamp(160px,17vw,310px);
+  background:#b9ffff;
+  filter:drop-shadow(0 0 34px rgba(92,255,255,.34));
+  clip-path:polygon(50% 0,55% 34%,66% 45%,100% 50%,66% 55%,55% 66%,50% 100%,45% 66%,34% 55%,0 50%,34% 45%,45% 34%);
+}
+.tc-service-page .tc-service-hero__copy{
+  position:relative;z-index:1;
+  display:block;grid-column:auto;
+  width:auto;max-width:none;
+  margin-left:13%;padding-left:0;
+  text-align:center;
+  align-self:center;justify-self:auto;
+}
+.tc-service-page .tc-service-hero h1{
+  font-size:clamp(35px,3.2vw,49px);
+  font-weight:650;letter-spacing:-.045em;
+  margin:0 0 14px;
+}
+.tc-service-page .tc-service-hero p{font-size:15px;color:#c4c4c4;margin:0}
+@media(max-width:767px){
+ .tc-service-page .tc-service-hero{height:255px;min-height:255px;max-height:none;padding:40px 18px}
+ .tc-service-page .tc-service-hero__star{left:18%;width:150px;height:150px;opacity:.5}
+ .tc-service-page .tc-service-hero__copy{margin-left:13%;padding:0;text-align:center;width:auto}
+ .tc-service-page .tc-service-hero h1{font-size:35px}
+ .tc-service-page .tc-service-hero p{font-size:13px}
+}
+
 </style>
 </head>
 <body>
@@ -876,7 +923,7 @@ html{scroll-padding-top:100px}
   }else if(page==='service'){
     document.title='Service | Terracle';
     document.querySelectorAll('[data-page]').forEach(a=>{if(a.dataset.page==='service')a.setAttribute('aria-current','page')});
-    document.getElementById('app').innerHTML="<div class=\"tc-service-page\">\n<section class=\"tc-service-hero\"><div class=\"tc-service-hero__copy\"><h1>Service</h1><p>Terracle’s Support and Collaboration</p></div></section>\n<section class=\"tc-service-section tc-service-test\"><div class=\"tc-service-inner tc-service-split\"><div class=\"tc-service-copy\"><h2>Recycling Test</h2><p>재활용을 원하시는 폐기물 100g 샘플을 저희에게 보내주시면, 테라클이 해당 폐기물의 재활용 가능성과 수율을 평가하고 상세한 테스트 보고서를 제공해 드립니다.</p><p>테스트 후에는 처리 비용과 가용한 처리 용량을 안내해 드립니다.</p><p>이 테스트는 무료로 진행되며, 필요 시 기밀유지협약(NDA, Non-Disclosure Agreement) 체결도 가능합니다.</p><p>더 많은 양의 샘플로 테스트를 진행하기를 원하실 경우, 추가 비용이 발생할 수 있습니다.</p></div><div class=\"tc-service-test-visual tc-service-process\" aria-label=\"재활용 테스트 진행 절차\"><div class=\"tc-service-process__head\"><span>RECYCLING TEST</span><span>PROCESS 01–04</span></div><div class=\"tc-service-process__steps\"><div><span>01</span><strong>Sample Submission</strong><p>폐기물 샘플 100g 접수</p></div><div><span>02</span><strong>Feasibility Test</strong><p>재활용 가능성 및 수율 평가</p></div><div><span>03</span><strong>Test Report</strong><p>상세 테스트 결과 제공</p></div><div><span>04</span><strong>Collaboration</strong><p>처리 비용·가능 용량 협의</p></div></div><a href=\"?page=contact\" class=\"tc-service-process__cta\">테스트 문의하기</a></div></div></section>\n<section class=\"tc-service-section tc-service-events\"><div class=\"tc-service-inner tc-service-split\"><div class=\"tc-service-copy\"><h2>Seminars &amp; Exhibitions</h2><p>테라클은 플라스틱 및 섬유 폐기물 재활용에 관한 기술 세미나에 정기적으로 참여하고 직접 주최합니다. 이 세션들은 유료로 제공되며, 한국어, 영어, 일본어, 또는 중국어로 진행될 수 있습니다. 요청하시는 세미나 유형에 따라 전담 전문가가 배정됩니다.</p><p>다음 이벤트에 테라클을 초청하시면, 저희는 귀하의 주제에 완벽하게 맞춰 실제 데이터, 연구 결과, 그리고 검증된 사례를 담은 맞춤형 세션을 제공해 드릴 것입니다.</p><p>테라클은 ESG, 지속 가능성, 친환경 혁신, 자원 순환, 첨단 기술, 화학 소재 및 첨단 소재에 중점을 둔 전시회에 적극적으로 참여하고 있습니다. 또한, 고객사의 세미나 부스에도 참여하여 기술 전문성과 협력 지원을 제공합니다.</p></div><div class=\"tc-service-events__gallery\"><figure><img src=\"https://cdn.newsquest.co.kr/news/photo/202401/217306_110935_1635.jpg\" alt=\"CES 2024 삼성전자 지속가능성 전시관\" loading=\"lazy\"><figcaption>CES 2024 SAMSUNG</figcaption></figure><figure><img src=\"https://www.hyundaimotorgroup.com/image/upload/asset_library/MDA00000000000057615/7a650390f85c4c26b1f230238e78fb7a.jpg\" alt=\"CES 2025 현대자동차그룹 ZER01NE 테라클 전시\" loading=\"lazy\"><figcaption>CES 2025 Hyundai ZER01NE</figcaption></figure></div></div></section>\n<section class=\"tc-service-section tc-service-cert\"><div class=\"tc-service-inner tc-service-cert__grid\"><h2>Certifications &amp; Data</h2><div class=\"tc-service-cert__content\"><p>테라클의 재활용 기술과 공정은 국제 기준에 따라 검증되며, 투명한 데이터 관리와 공식 인증을 통해 신뢰 가능한 순환경제 솔루션을 제공합니다.</p><p>ISCC 인증을 기반으로 지속가능 원료의 추적성을 확보하고, Mass Balance 방식에 따른 바이오 및 재활용 원료의 공급망을 체계적으로 검증하고 있습니다.</p><p>또한 친환경 공정과 탄소 저감 기준을 충족하는 Green Certification을 통해 ESG 요구사항과 각종 환경 규제에 효과적으로 대응할 수 있는 신뢰성 있는 데이터를 제공합니다.</p><div class=\"tc-service-cert__marks\" aria-label=\"국제 지속가능성 및 녹색 인증 안내\"><div class=\"tc-service-cert__mark\"><strong>ISCC</strong><small>International Sustainability<br> &amp; Carbon Certification</small></div><div class=\"tc-service-cert__mark\"><strong>Green</strong><small>Certification</small></div></div></div></div></section>\n<section class=\"tc-service-cta\"><div class=\"tc-service-cta__inner\"><h2>Have a question about our <span>services?</span></h2><p>Don’t hesitate to reach out — we’ll reply within 48 hours, weekends included.</p><a href=\"?page=contact\">Contact Us</a></div></section></div>";
+    document.getElementById('app').innerHTML="<div class=\"tc-service-page\">\n<section class=\"tc-service-hero\"><span class=\"tc-service-hero__star\" aria-hidden=\"true\"></span><div class=\"tc-service-hero__copy\"><h1>Service</h1><p>Terracle’s Support and Collaboration</p></div></section>\n<section class=\"tc-service-section tc-service-test\"><div class=\"tc-service-inner tc-service-split\"><div class=\"tc-service-copy\"><h2>Recycling Test</h2><p>재활용을 원하시는 폐기물 100g 샘플을 저희에게 보내주시면, 테라클이 해당 폐기물의 재활용 가능성과 수율을 평가하고 상세한 테스트 보고서를 제공해 드립니다.</p><p>테스트 후에는 처리 비용과 가용한 처리 용량을 안내해 드립니다.</p><p>이 테스트는 무료로 진행되며, 필요 시 기밀유지협약(NDA, Non-Disclosure Agreement) 체결도 가능합니다.</p><p>더 많은 양의 샘플로 테스트를 진행하기를 원하실 경우, 추가 비용이 발생할 수 있습니다.</p></div><div class=\"tc-service-test-visual tc-service-process\" aria-label=\"재활용 테스트 진행 절차\"><div class=\"tc-service-process__head\"><span>RECYCLING TEST</span><span>PROCESS 01–04</span></div><div class=\"tc-service-process__steps\"><div><span>01</span><strong>Sample Submission</strong><p>폐기물 샘플 100g 접수</p></div><div><span>02</span><strong>Feasibility Test</strong><p>재활용 가능성 및 수율 평가</p></div><div><span>03</span><strong>Test Report</strong><p>상세 테스트 결과 제공</p></div><div><span>04</span><strong>Collaboration</strong><p>처리 비용·가능 용량 협의</p></div></div><a href=\"?page=contact\" class=\"tc-service-process__cta\">테스트 문의하기</a></div></div></section>\n<section class=\"tc-service-section tc-service-events\"><div class=\"tc-service-inner tc-service-split\"><div class=\"tc-service-copy\"><h2>Seminars &amp; Exhibitions</h2><p>테라클은 플라스틱 및 섬유 폐기물 재활용에 관한 기술 세미나에 정기적으로 참여하고 직접 주최합니다. 이 세션들은 유료로 제공되며, 한국어, 영어, 일본어, 또는 중국어로 진행될 수 있습니다. 요청하시는 세미나 유형에 따라 전담 전문가가 배정됩니다.</p><p>다음 이벤트에 테라클을 초청하시면, 저희는 귀하의 주제에 완벽하게 맞춰 실제 데이터, 연구 결과, 그리고 검증된 사례를 담은 맞춤형 세션을 제공해 드릴 것입니다.</p><p>테라클은 ESG, 지속 가능성, 친환경 혁신, 자원 순환, 첨단 기술, 화학 소재 및 첨단 소재에 중점을 둔 전시회에 적극적으로 참여하고 있습니다. 또한, 고객사의 세미나 부스에도 참여하여 기술 전문성과 협력 지원을 제공합니다.</p></div><div class=\"tc-service-events__gallery\"><figure><img src=\"https://cdn.newsquest.co.kr/news/photo/202401/217306_110935_1635.jpg\" alt=\"CES 2024 삼성전자 지속가능성 전시관\" loading=\"lazy\"><figcaption>CES 2024 SAMSUNG</figcaption></figure><figure><img src=\"https://www.hyundaimotorgroup.com/image/upload/asset_library/MDA00000000000057615/7a650390f85c4c26b1f230238e78fb7a.jpg\" alt=\"CES 2025 현대자동차그룹 ZER01NE 테라클 전시\" loading=\"lazy\"><figcaption>CES 2025 Hyundai ZER01NE</figcaption></figure></div></div></section>\n<section class=\"tc-service-section tc-service-cert\"><div class=\"tc-service-inner tc-service-cert__grid\"><h2>Certifications &amp; Data</h2><div class=\"tc-service-cert__content\"><p>테라클의 재활용 기술과 공정은 국제 기준에 따라 검증되며, 투명한 데이터 관리와 공식 인증을 통해 신뢰 가능한 순환경제 솔루션을 제공합니다.</p><p>ISCC 인증을 기반으로 지속가능 원료의 추적성을 확보하고, Mass Balance 방식에 따른 바이오 및 재활용 원료의 공급망을 체계적으로 검증하고 있습니다.</p><p>또한 친환경 공정과 탄소 저감 기준을 충족하는 Green Certification을 통해 ESG 요구사항과 각종 환경 규제에 효과적으로 대응할 수 있는 신뢰성 있는 데이터를 제공합니다.</p><div class=\"tc-service-cert__marks\" aria-label=\"국제 지속가능성 및 녹색 인증 안내\"><div class=\"tc-service-cert__mark\"><strong>ISCC</strong><small>International Sustainability<br> &amp; Carbon Certification</small></div><div class=\"tc-service-cert__mark\"><strong>Green</strong><small>Certification</small></div></div></div></div></section>\n<section class=\"tc-service-cta\"><div class=\"tc-service-cta__inner\"><h2>Have a question about our <span>services?</span></h2><p>Don’t hesitate to reach out — we’ll reply within 48 hours, weekends included.</p><a href=\"?page=contact\">Contact Us</a></div></section></div>";
     window.scrollTo(0,0);
   }else if(page==='contact'){
     document.title='Contact us | Terracle';
