@@ -2199,6 +2199,16 @@ html{scroll-padding-top:100px}
       const recruit=doc.getElementById('terracleRecruitFinal');
       if(!recruit)throw new Error('Recruit markup missing');
       main.replaceChildren(document.importNode(recruit,true));
+      const langKey=new URLSearchParams(location.search).get('lang');
+      const typewriter=main.querySelector('.trf-typewriter');
+      if(typewriter && ['en','zh'].includes(langKey)){
+        const messages={
+          en:{pc:"We are not looking for people to serve Terracle.|We seek people who use Terracle as their tool.",mobile:"We don't seek people|to serve Terracle.|Use Terracle as your tool."},
+          zh:{pc:"我们寻找的不是成为 Terracle 工具的人，|而是将 Terracle 作为自己工具的人。",mobile:"我们寻找的不是|成为 Terracle 工具的人，|而是将 Terracle 作为自己工具的人。"}
+        };
+        typewriter.setAttribute('data-pc-lines',messages[langKey].pc);
+        typewriter.setAttribute('data-mobile-lines',messages[langKey].mobile);
+      }
       // Scripts inserted through innerHTML are inert; execute the supplied interaction code.
       const original=doc.querySelector('script');
       if(original){
@@ -2452,10 +2462,13 @@ html{scroll-padding-top:100px}
       if(!form.reportValidity())return;
       const data=new FormData(form);
       const phone=[data.get('tel1'),data.get('tel2'),data.get('tel3')].join('-');
-      const subject='[Terracle 문의] '+String(data.get('type'));
-      const body=['이름: '+data.get('name'),'연락처: '+phone,'이메일: '+data.get('email'),'문의유형: '+data.get('type'),'','문의내용:',data.get('message')].join('\n');
+      const locale=new URLSearchParams(location.search).get('lang')||'ko';
+      const prefix=locale==='zh'?'[Terracle 咨询] ':locale==='en'?'[Terracle Inquiry] ':'[Terracle 문의] ';
+      const subject=prefix+String(data.get('type'));
+      const labels=locale==='zh'?['姓名','联系方式','电子邮箱','咨询类型','咨询内容']:locale==='en'?['Name','Phone','Email','Inquiry Type','Message']:['이름','연락처','이메일','문의유형','문의내용'];
+      const body=[labels[0]+': '+data.get('name'),labels[1]+': '+phone,labels[2]+': '+data.get('email'),labels[3]+': '+data.get('type'),' ',labels[4]+':',data.get('message')].join('\n');
       const link='mailto:info@terracle.im?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
-      document.getElementById('tcContactFeedback').textContent='메일 앱이 열리면 내용을 확인하고 보내기를 눌러 주세요. 자동 전송되지는 않습니다.';
+      document.getElementById('tcContactFeedback').textContent=locale==='zh'?'请在邮件应用打开后检查并发送邮件。系统不会自动发送。':locale==='en'?'Review your message and press Send in your email app. It is not sent automatically.':'메일 앱이 열리면 내용을 확인하고 보내기를 눌러 주세요. 자동 전송되지는 않습니다.';
       window.location.href=link;
     });
     window.scrollTo(0,0);
@@ -2827,6 +2840,32 @@ html{scroll-padding-top:100px}
     .then(data=>{dict=data;apply()})
     .catch(err=>{console.error('[Terracle localization]',err);apply()});
   apply();
+})();
+</script>
+<script id="terracle-local-language-menu">
+(function(){
+  const menu=document.querySelector('#terracleLanguageMenu');
+  if(!menu)return;
+  const query=new URLSearchParams(location.search);
+  const curr=query.get('lang')||'ko';
+  menu.querySelectorAll('a').forEach((a,index)=>{
+    const code=['ko','en','zh'][index];
+    if(!code)return;
+    const url=new URL(location.pathname,location.origin);
+    for(const [k,v] of query.entries())if(k!=='lang')url.searchParams.set(k,v);
+    if(code!=='ko')url.searchParams.set('lang',code);
+    a.href=url.pathname+url.search+location.hash;
+    a.classList.toggle('is-current',code===curr);
+    if(code===curr)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+  });
+  ['ko','en','zh'].forEach(code=>{
+    let rel=document.querySelector('link[hreflang="'+(code==='zh'?'zh-CN':code)+'"]');
+    if(!rel){rel=document.createElement('link');rel.rel='alternate';rel.hreflang=code==='zh'?'zh-CN':code;document.head.appendChild(rel)}
+    const url=new URL(location.pathname,location.origin);
+    for(const [k,v] of query.entries())if(k!=='lang')url.searchParams.set(k,v);
+    if(code!=='ko')url.searchParams.set('lang',code);
+    rel.href=url.href;
+  });
 })();
 </script>
 </body>
