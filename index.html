@@ -2209,6 +2209,10 @@ html{scroll-padding-top:100px}
         typewriter.setAttribute('data-pc-lines',messages[langKey].pc);
         typewriter.setAttribute('data-mobile-lines',messages[langKey].mobile);
       }
+      if(['en','zh'].includes(langKey)){
+        const joinTitle=main.querySelector('.trf-join-title');
+        if(joinTitle)joinTitle.innerHTML=langKey==='zh'?'<span>加入</span><br>Terracle':'Join <span>Terracle</span>';
+      }
       // Scripts inserted through innerHTML are inert; execute the supplied interaction code.
       const original=doc.querySelector('script');
       if(original){
