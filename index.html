@@ -1474,6 +1474,39 @@ html{scroll-padding-top:100px}
   .tc-product-detail .tc-molecule-svg .tc-molecule-art .mol-label{opacity:1!important}
 }
 
+
+/* Value Chain: preloaded layered diagram panels, stable height and soft crossfade */
+.tc-eco-visual.tc-eco-ready{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  overflow:hidden;
+}
+.tc-eco-visual.tc-eco-ready>.tu-chain-panel{
+  grid-area:1/1;
+  width:100%;
+  min-width:0;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .42s ease,visibility 0s linear .42s;
+}
+.tc-eco-visual.tc-eco-ready>.tu-chain-panel.is-current{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transition:opacity .42s ease,visibility 0s linear 0s;
+}
+.tc-eco-visual.tc-eco-ready>.tu-chain-panel picture,
+.tc-eco-visual.tc-eco-ready>.tu-chain-panel img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+@media(prefers-reduced-motion:reduce){
+  .tc-eco-visual.tc-eco-ready>.tu-chain-panel{transition:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -1755,7 +1788,56 @@ html{scroll-padding-top:100px}
 </script>
 <script>(function(){var hero=document.getElementById('terracleHeroV3');if(!hero||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height,mx=(x-.5)*8,my=(y-.5)*6;hero.style.setProperty('--symbol-x',mx.toFixed(2)+'px');hero.style.setProperty('--symbol-y',(my*.8).toFixed(2)+'px');hero.style.setProperty('--symbol-r',(mx*.05).toFixed(2)+'deg');hero.style.setProperty('--text-x',(mx*.08).toFixed(2)+'px');hero.style.setProperty('--text-y',(my*.06).toFixed(2)+'px')});hero.addEventListener('mouseleave',function(){['--symbol-x','--symbol-y','--symbol-r','--text-x','--text-y'].forEach(function(p){hero.style.removeProperty(p)})})})();</script>
 <script>(function(){const footer=document.getElementById('tc-compact-footer');if(!footer)return;footer.querySelector('#tcCompactYear').textContent=new Date().getFullYear();const input=footer.querySelector('#tcCompactSearchInput'),form=footer.querySelector('#tcCompactSearchForm'),results=footer.querySelector('#tcCompactSearchResults');const pages=[['About us','테라클 기업 소개와 비전','about','회사 소개 기업 비전'],['Technology','해중합과 화학적 재활용 기술','technology','기술 pet polymer tpa eg'],['Recycled Monomer','재생 TPA와 EG 제품','product','모노머 단량체 tpa eg'],['BlackTiO₂','Black TiO₂ 촉매 및 Terra-X 기술','product','blacktio2 black tio2 광촉매'],['Service','재활용 테스트와 협업 지원','service','서비스 협업 테스트'],['News','테라클의 새로운 소식','news','뉴스 보도자료 미디어'],['Contact us','제품·투자·제휴 문의','contact','문의 연락 투자 제휴'],['Recruit','테라클 채용 정보','recruit','채용 입사 지원 인재'],['Online Meeting','커리어 미팅 예약','meeting','온라인 미팅 커리어 상담 예약']];function match(q){const words=q.toLowerCase().trim().split(/\s+/).filter(Boolean);return words.length?pages.map(p=>({p,score:words.reduce((n,w)=>n+(p[0].toLowerCase().includes(w)?4:0)+((p.join(' ').toLowerCase().includes(w))?1:0),0)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,6).map(x=>x.p):[]}function close(){results.classList.remove('is-open');input.setAttribute('aria-expanded','false')}function render(){results.replaceChildren();if(!input.value.trim()){close();return}const found=match(input.value);if(!found.length){const d=document.createElement('div');d.className='tc-cf__no-result';d.textContent='검색 결과가 없습니다.';results.append(d)}found.forEach(p=>{const a=document.createElement('a');a.className='tc-cf__result';a.href='?page='+encodeURIComponent(p[2]);const t=document.createElement('strong');t.className='tc-cf__result-title';t.textContent=p[0];const d=document.createElement('span');d.className='tc-cf__result-desc';d.textContent=p[1];a.append(t,d);results.append(a)});results.classList.add('is-open');input.setAttribute('aria-expanded','true')}input.addEventListener('input',render);input.addEventListener('focus',()=>{if(input.value.trim())render()});input.addEventListener('keydown',e=>{if(e.key==='Escape')close()});form.addEventListener('submit',e=>{e.preventDefault();const a=results.querySelector('a');if(a)location.href=a.href;else render()});document.addEventListener('click',e=>{if(!footer.querySelector('.tc-cf__search-box').contains(e.target))close()});footer.querySelector('#tcCompactTop').addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}))})();</script>
-<script>(function(){const root=document.getElementById('terracleUnifiedMain');if(!root)return;function bind(group,attr){const buttons=root.querySelectorAll('['+attr+']'),panels=root.querySelectorAll('['+attr+'-panel]');buttons.forEach(b=>b.addEventListener('click',()=>{const v=b.getAttribute(attr);buttons.forEach(x=>{const on=x===b;x.classList.toggle('is-active',on);x.setAttribute('aria-selected',String(on))});panels.forEach(p=>{p.hidden=p.getAttribute(attr+'-panel')!==v})}))}bind('monomer','data-mono');bind('chain','data-chain');})();</script>
+<script>(function(){
+  const root=document.getElementById('terracleUnifiedMain');
+  if(!root)return;
+  function bindMonomer(){
+    const buttons=root.querySelectorAll('[data-mono]');
+    const panels=root.querySelectorAll('[data-mono-panel]');
+    buttons.forEach(button=>button.addEventListener('click',()=>{
+      const value=button.getAttribute('data-mono');
+      buttons.forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-selected',String(active))});
+      panels.forEach(panel=>{panel.hidden=panel.getAttribute('data-mono-panel')!==value});
+    }));
+  }
+  function bindValueChain(){
+    const tabs=root.querySelector('.tu-ecosystem .tu-chain-tabs');
+    const visual=root.querySelector('.tu-ecosystem .tc-eco-visual');
+    if(!tabs||!visual)return;
+    const buttons=[...tabs.querySelectorAll('[data-chain]')];
+    const panels=[...visual.querySelectorAll('[data-chain-panel]')];
+    if(!buttons.length||!panels.length)return;
+    // Keep all diagrams mounted; changing visibility no longer tears down layout.
+    panels.forEach((panel,index)=>{
+      panel.hidden=false;
+      panel.classList.toggle('is-current',index===0);
+      panel.setAttribute('aria-hidden',index===0?'false':'true');
+      panel.querySelectorAll('img').forEach(image=>{
+        image.loading='eager';
+        image.decoding='async';
+      });
+    });
+    visual.classList.add('tc-eco-ready');
+    let current='0';
+    function activate(value){
+      if(current===value)return;
+      current=value;
+      buttons.forEach(button=>{
+        const active=button.getAttribute('data-chain')===value;
+        button.classList.toggle('is-active',active);
+        button.setAttribute('aria-selected',String(active));
+      });
+      panels.forEach(panel=>{
+        const active=panel.getAttribute('data-chain-panel')===value;
+        panel.classList.toggle('is-current',active);
+        panel.setAttribute('aria-hidden',String(!active));
+      });
+    }
+    buttons.forEach(button=>button.addEventListener('click',()=>activate(button.getAttribute('data-chain'))));
+  }
+  bindMonomer();
+  bindValueChain();
+})();</script>
 <script>(function(){const root=document.getElementById('terracleLanguage');if(!root)return;const button=root.querySelector('#terracleLanguageButton');const menu=root.querySelector('#terracleLanguageMenu');function setOpen(open){menu.hidden=!open;button.setAttribute('aria-expanded',String(open))}button.addEventListener('click',function(){setOpen(menu.hidden)});document.addEventListener('click',function(e){if(!root.contains(e.target))setOpen(false)});root.addEventListener('keydown',function(e){if(e.key==='Escape'){setOpen(false);button.focus()}else if(e.key==='ArrowDown'&&document.activeElement===button){e.preventDefault();setOpen(true);menu.querySelector('a')?.focus()}})})();</script>
 <script>(function(){const root=document.getElementById('teracleDepolySection');if(!root)return;const cards=[...root.querySelectorAll('.td-item')];const step=root.querySelector('#tdDetailStep'),title=root.querySelector('#tdDetailTitle'),desc=root.querySelector('#tdDetailDesc');function activate(card){cards.forEach(x=>{const selected=x===card;x.classList.toggle('is-active',selected);x.setAttribute('aria-pressed',String(selected))});if(step)step.textContent=card.dataset.step||'';if(title)title.textContent=card.dataset.title||'';if(desc)desc.textContent=card.dataset.desc||''}cards.forEach(card=>{card.addEventListener('mouseenter',()=>activate(card));card.addEventListener('focus',()=>activate(card));card.addEventListener('click',()=>activate(card))});if(cards[0])activate(cards[0])})();</script>
 <script>(function(){const root=document.getElementById('terracleUnifiedMain');if(!root||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;const sections=[...root.querySelectorAll('.tu-reveal')];if(!('IntersectionObserver'in window))return;root.classList.add('tu-motion-ready');const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});sections.forEach(section=>{if(section.getBoundingClientRect().top<window.innerHeight*.8)section.classList.add('is-visible');else observer.observe(section)})})();</script>
