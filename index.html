@@ -1463,6 +1463,17 @@ html{scroll-padding-top:100px}
  .tc-unified-hero::after{animation:none!important}
 }
 
+
+/* Monomer: animation visibility is driven by WAAPI, not competing transitions */
+.tc-product-detail .tc-molecule-svg .tc-molecule-art .mol-stroke,
+.tc-product-detail .tc-molecule-svg .tc-molecule-art .mol-label{
+  transition:none!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .tc-product-detail .tc-molecule-svg .tc-molecule-art .mol-stroke{stroke-dashoffset:0!important}
+  .tc-product-detail .tc-molecule-svg .tc-molecule-art .mol-label{opacity:1!important}
+}
+
 </style>
 </head>
 <body>
@@ -1562,43 +1573,49 @@ html{scroll-padding-top:100px}
       }
     }
     if(!isBlack){
-      const structures=[...document.querySelectorAll('.tc-molecule-svg')];
-      const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if(!reduce){
-        const reveal=el=>{
-          if(el.dataset.played==='true')return;
-          el.dataset.played='true';
-          requestAnimationFrame(()=>requestAnimationFrame(()=>{
-            el.classList.add('is-drawn');
-          }));
-        };
-        structures.forEach(el=>{
-          const strokes=[...el.querySelectorAll('.mol-stroke')];
-          const labels=[...el.querySelectorAll('.mol-label')];
-          strokes.forEach((shape,i)=>{
+      const molecules=[...document.querySelectorAll('.tc-molecule-svg')];
+      const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(!reduceMotion){
+        const playMolecule=wrapper=>{
+          if(wrapper.dataset.moleculePlayed==='true')return;
+          wrapper.dataset.moleculePlayed='true';
+          const bonds=[...wrapper.querySelectorAll('svg .mol-stroke')];
+          const letters=[...wrapper.querySelectorAll('svg .mol-label')];
+          const bondStep=110;
+          // Web Animations API prevents previously applied CSS transitions from
+          // suppressing the SVG draw effect on the first molecule.
+          bonds.forEach((shape,index)=>{
             try{
-              const length=Math.ceil(shape.getTotalLength()+2);
-              shape.style.setProperty('--molecule-length',length+'px');
-              shape.style.setProperty('--mol-delay',i*95+'ms');
-            }catch(e){}
+              const length=shape.getTotalLength();
+              shape.style.strokeDasharray=length+' '+length;
+              shape.style.strokeDashoffset='0';
+              shape.style.transition='none';
+              shape.animate(
+                [{strokeDashoffset:length},{strokeDashoffset:0}],
+                {duration:1350,delay:index*bondStep,easing:'cubic-bezier(.22,.61,.36,1)',fill:'both'}
+              );
+            }catch(e){shape.style.strokeDashoffset='0'}
           });
-          const labelDelay=Math.max(1000,(strokes.length-1)*95+800);
-          labels.forEach((shape,i)=>{
-            shape.style.setProperty('--mol-label-delay',(labelDelay+i*110)+'ms');
+          const labelStart=Math.max(950,1350+(bonds.length-1)*bondStep-350);
+          letters.forEach((shape,index)=>{
+            shape.style.opacity='1';
+            shape.style.transition='none';
+            shape.animate(
+              [{opacity:0},{opacity:1}],
+              {duration:520,delay:labelStart+index*95,easing:'ease-out',fill:'both'}
+            );
           });
-          el.classList.add('molecule-ready');
-        });
+          wrapper.classList.add('is-drawn');
+        };
         if('IntersectionObserver' in window){
-          const observer=new IntersectionObserver(entries=>{
-            entries.forEach(entry=>{
-              if(entry.isIntersecting){
-                reveal(entry.target);
-                observer.unobserve(entry.target);
-              }
-            });
-          },{threshold:.2,rootMargin:'0px 0px -30px 0px'});
-          structures.forEach(el=>observer.observe(el));
-        }else structures.forEach(reveal);
+          const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+            if(entry.isIntersecting){
+              playMolecule(entry.target);
+              observer.unobserve(entry.target);
+            }
+          }),{threshold:0.15,rootMargin:'0px 0px -20px 0px'});
+          molecules.forEach(el=>observer.observe(el));
+        }else molecules.forEach(playMolecule);
       }
     }
 
@@ -1621,7 +1638,7 @@ html{scroll-padding-top:100px}
   }else if(page==='meeting'){
     document.title='Meeting | Terracle';
     document.querySelectorAll('[data-page]').forEach(a=>{if(a.dataset.page==='meeting')a.setAttribute('aria-current','page')});
-    document.getElementById('app').innerHTML="<section class=\"tc-unified-hero tc-meeting-unified-hero\"><div class=\"terracle-booking-hero\"><p class=\"terracle-booking-kicker tc-unified-kicker\">ONLINE MEETING</p><h1 class=\"terracle-booking-title\">화상 미팅 예약</h1><p class=\"terracle-booking-desc\">일정을 선택하고 Google Meet으로 만나보세요.</p><div class=\"terracle-booking-meta\"><span>30분</span><span>Google Meet</span><span>한국 표준시</span></div></div></section><section class=\"terracle-booking-section\"><div class=\"terracle-booking-inner\">\n<div class=\"terracle-booking-intro\"><div class=\"terracle-intro-title\"><p>BEFORE BOOKING</p><h2>미팅 안내</h2></div><div class=\"terracle-intro-content\"><p>이력서 또는 포트폴리오를 아래 이메일로 보내주세요.</p><div class=\"terracle-email-box\"><a href=\"mailto:info@terracle.im\" class=\"terracle-mail-link\">info@terracle.im</a><button type=\"button\" class=\"terracle-copy-button\" data-copy-email=\"info@terracle.im\">이메일 복사</button></div></div></div>\n<div class=\"terracle-time-area\"><div class=\"terracle-time-head\"><p>AVAILABLE TIME</p><h2>미팅 가능 시간</h2></div><div class=\"terracle-time-list\"><div class=\"terracle-time-item\"><span>평일</span><strong>오후 12:00 – 오후 1:00</strong></div><div class=\"terracle-time-item\"><span>평일</span><strong>오후 7:00 – 오후 10:00</strong></div><div class=\"terracle-time-item\"><span>일요일</span><strong>오후 3:00 – 오후 10:00</strong></div></div></div>\n<div class=\"terracle-booking-guide\"><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>01</span><strong>일정을 선택해 주세요.</strong></div><p>아래 캘린더에서 가능한 날짜와 시간을 선택해 예약을 진행합니다.</p></div><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>02</span><strong>자료를 보내주세요.</strong></div><p>이력서 또는 포트폴리오를 info@terracle.im으로 보내주시면 확인 후 미팅이 진행됩니다.</p></div><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>03</span><strong>화상 미팅이 진행됩니다.</strong></div><p>예약 완료 후 이메일로 Google Meet 링크가 발송되며, 예약 시간에 온라인으로 접속해 진행합니다.</p></div></div>\n<div class=\"terracle-calendar-area\" id=\"terracle-calendar\"><div class=\"terracle-calendar-label\"><div><h2>예약 가능 시간</h2><p>날짜와 시간을 선택하면 예약이 진행됩니다.</p></div><span>Google Calendar</span></div><div class=\"terracle-calendar-frame\"><iframe src=\"https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tLwEnDY_JzCAlKqvS2Petp_LHv0QmKwSo4vcfNuRt6oqIb7Fi2Oy0knPqZucclMopQ2Td-Nd_?gv=true\" title=\"테라클 지원자 화상 미팅 신청\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"fullscreen\" width=\"100%\" height=\"880\"></iframe></div></div>\n<div class=\"terracle-booking-note\"><h2>예약 안내</h2><p>예약 완료 메일에서 Google Meet 링크 확인 및 일정 변경이 가능합니다.</p></div>\n</div></section>";
+    document.getElementById('app').innerHTML="<section class=\"tc-unified-hero tc-meeting-unified-hero\"><div class=\"terracle-booking-hero\"><p class=\"terracle-booking-kicker tc-unified-kicker\">ONLINE MEETING</p><h1 class=\"terracle-booking-title\">화상 미팅 예약</h1><p class=\"terracle-booking-desc\">일정을 선택하고 Google Meet으로 만나보세요.</p></div></section><section class=\"terracle-booking-section\"><div class=\"terracle-booking-inner\">\n<div class=\"terracle-booking-intro\"><div class=\"terracle-intro-title\"><p>BEFORE BOOKING</p><h2>미팅 안내</h2></div><div class=\"terracle-intro-content\"><p>이력서 또는 포트폴리오를 아래 이메일로 보내주세요.</p><div class=\"terracle-email-box\"><a href=\"mailto:info@terracle.im\" class=\"terracle-mail-link\">info@terracle.im</a><button type=\"button\" class=\"terracle-copy-button\" data-copy-email=\"info@terracle.im\">이메일 복사</button></div></div></div>\n<div class=\"terracle-time-area\"><div class=\"terracle-time-head\"><p>AVAILABLE TIME</p><h2>미팅 가능 시간</h2></div><div class=\"terracle-time-list\"><div class=\"terracle-time-item\"><span>평일</span><strong>오후 12:00 – 오후 1:00</strong></div><div class=\"terracle-time-item\"><span>평일</span><strong>오후 7:00 – 오후 10:00</strong></div><div class=\"terracle-time-item\"><span>일요일</span><strong>오후 3:00 – 오후 10:00</strong></div></div></div>\n<div class=\"terracle-booking-guide\"><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>01</span><strong>일정을 선택해 주세요.</strong></div><p>아래 캘린더에서 가능한 날짜와 시간을 선택해 예약을 진행합니다.</p></div><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>02</span><strong>자료를 보내주세요.</strong></div><p>이력서 또는 포트폴리오를 info@terracle.im으로 보내주시면 확인 후 미팅이 진행됩니다.</p></div><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>03</span><strong>화상 미팅이 진행됩니다.</strong></div><p>예약 완료 후 이메일로 Google Meet 링크가 발송되며, 예약 시간에 온라인으로 접속해 진행합니다.</p></div></div>\n<div class=\"terracle-calendar-area\" id=\"terracle-calendar\"><div class=\"terracle-calendar-label\"><div><h2>예약 가능 시간</h2><p>날짜와 시간을 선택하면 예약이 진행됩니다.</p></div><span>Google Calendar</span></div><div class=\"terracle-calendar-frame\"><iframe src=\"https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tLwEnDY_JzCAlKqvS2Petp_LHv0QmKwSo4vcfNuRt6oqIb7Fi2Oy0knPqZucclMopQ2Td-Nd_?gv=true\" title=\"테라클 지원자 화상 미팅 신청\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"fullscreen\" width=\"100%\" height=\"880\"></iframe></div></div>\n<div class=\"terracle-booking-note\"><h2>예약 안내</h2><p>예약 완료 메일에서 Google Meet 링크 확인 및 일정 변경이 가능합니다.</p></div>\n</div></section>";
     const copy=document.querySelector('.terracle-copy-button');
     if(copy) copy.addEventListener('click',async()=>{
       const email=copy.getAttribute('data-copy-email');
