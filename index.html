@@ -2358,21 +2358,6 @@ html{scroll-padding-top:100px}
         productHero.style.setProperty('--tc-glow-y','0px');
       });
     }
-    window.scrollTo(0,0);
-  }else if(page==='meeting'){
-    document.title='Meeting | Terracle';
-    document.querySelectorAll('[data-page]').forEach(a=>{if(a.dataset.page==='meeting')a.setAttribute('aria-current','page')});
-    document.getElementById('app').innerHTML="<section class=\"tc-unified-hero tc-meeting-unified-hero\"><div class=\"terracle-booking-hero\"><p class=\"terracle-booking-kicker tc-unified-kicker\">ONLINE MEETING</p><h1 class=\"terracle-booking-title\">화상 미팅 예약</h1><p class=\"terracle-booking-desc\">일정을 선택하고 Google Meet으로 만나보세요.</p></div></section><section class=\"terracle-booking-section\"><div class=\"terracle-booking-inner\">\n<div class=\"terracle-booking-intro\"><div class=\"terracle-intro-title\"><p>BEFORE BOOKING</p><h2>미팅 안내</h2></div><div class=\"terracle-intro-content\"><p>이력서 또는 포트폴리오를 아래 이메일로 보내주세요.</p><div class=\"terracle-email-box\"><a href=\"mailto:info@terracle.im\" class=\"terracle-mail-link\">info@terracle.im</a><button type=\"button\" class=\"terracle-copy-button\" data-copy-email=\"info@terracle.im\">이메일 복사</button></div></div></div>\n<div class=\"terracle-time-area\"><div class=\"terracle-time-head\"><p>AVAILABLE TIME</p><h2>미팅 가능 시간</h2></div><div class=\"terracle-time-list\"><div class=\"terracle-time-item\"><span>평일</span><strong>오후 12:00 – 오후 1:00</strong></div><div class=\"terracle-time-item\"><span>평일</span><strong>오후 7:00 – 오후 10:00</strong></div><div class=\"terracle-time-item\"><span>일요일</span><strong>오후 3:00 – 오후 10:00</strong></div></div></div>\n<div class=\"terracle-booking-guide\"><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>01</span><strong>일정을 선택해 주세요.</strong></div><p>아래 캘린더에서 가능한 날짜와 시간을 선택해 예약을 진행합니다.</p></div><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>02</span><strong>자료를 보내주세요.</strong></div><p>이력서 또는 포트폴리오를 info@terracle.im으로 보내주시면 확인 후 미팅이 진행됩니다.</p></div><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>03</span><strong>화상 미팅이 진행됩니다.</strong></div><p>예약 완료 후 이메일로 Google Meet 링크가 발송되며, 예약 시간에 온라인으로 접속해 진행합니다.</p></div></div>\n<div class=\"terracle-calendar-area\" id=\"terracle-calendar\"><div class=\"terracle-calendar-label\"><div><h2>예약 가능 시간</h2><p>날짜와 시간을 선택하면 예약이 진행됩니다.</p></div><span>Google Calendar</span></div><div class=\"terracle-calendar-frame\"><iframe src=\"https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tLwEnDY_JzCAlKqvS2Petp_LHv0QmKwSo4vcfNuRt6oqIb7Fi2Oy0knPqZucclMopQ2Td-Nd_?gv=true\" title=\"테라클 지원자 화상 미팅 신청\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"fullscreen\" width=\"100%\" height=\"880\"></iframe></div></div>\n<div class=\"terracle-booking-note\"><h2>예약 안내</h2><p>예약 완료 메일에서 Google Meet 링크 확인 및 일정 변경이 가능합니다.</p></div>\n</div></section>";
-    const copy=document.querySelector('.terracle-copy-button');
-    if(copy) copy.addEventListener('click',async()=>{
-      const email=copy.getAttribute('data-copy-email');
-      try{
-        if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(email)}
-        else {const field=document.createElement('textarea');field.value=email;field.style.position='fixed';field.style.left='-9999px';document.body.append(field);field.select();const ok=document.execCommand('copy');field.remove();if(!ok)throw Error('Copy failed')}
-        copy.textContent='복사 완료';copy.classList.add('is-copied');
-      }catch(e){copy.textContent='복사할 수 없습니다. 이메일을 직접 선택해 주세요.'}
-      window.setTimeout(()=>{copy.textContent='이메일 복사';copy.classList.remove('is-copied')},1600);
-    });
     // Reuse the three supplied product renders in a full-width, always-visible lineup.
     if(isBlack){
       const blackPage=document.querySelector('.tc-black-page');
@@ -2400,6 +2385,21 @@ html{scroll-padding-top:100px}
         scroll.appendChild(table);
       });
     }
+    window.scrollTo(0,0);
+  }else if(page==='meeting'){
+    document.title='Meeting | Terracle';
+    document.querySelectorAll('[data-page]').forEach(a=>{if(a.dataset.page==='meeting')a.setAttribute('aria-current','page')});
+    document.getElementById('app').innerHTML="<section class=\"tc-unified-hero tc-meeting-unified-hero\"><div class=\"terracle-booking-hero\"><p class=\"terracle-booking-kicker tc-unified-kicker\">ONLINE MEETING</p><h1 class=\"terracle-booking-title\">화상 미팅 예약</h1><p class=\"terracle-booking-desc\">일정을 선택하고 Google Meet으로 만나보세요.</p></div></section><section class=\"terracle-booking-section\"><div class=\"terracle-booking-inner\">\n<div class=\"terracle-booking-intro\"><div class=\"terracle-intro-title\"><p>BEFORE BOOKING</p><h2>미팅 안내</h2></div><div class=\"terracle-intro-content\"><p>이력서 또는 포트폴리오를 아래 이메일로 보내주세요.</p><div class=\"terracle-email-box\"><a href=\"mailto:info@terracle.im\" class=\"terracle-mail-link\">info@terracle.im</a><button type=\"button\" class=\"terracle-copy-button\" data-copy-email=\"info@terracle.im\">이메일 복사</button></div></div></div>\n<div class=\"terracle-time-area\"><div class=\"terracle-time-head\"><p>AVAILABLE TIME</p><h2>미팅 가능 시간</h2></div><div class=\"terracle-time-list\"><div class=\"terracle-time-item\"><span>평일</span><strong>오후 12:00 – 오후 1:00</strong></div><div class=\"terracle-time-item\"><span>평일</span><strong>오후 7:00 – 오후 10:00</strong></div><div class=\"terracle-time-item\"><span>일요일</span><strong>오후 3:00 – 오후 10:00</strong></div></div></div>\n<div class=\"terracle-booking-guide\"><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>01</span><strong>일정을 선택해 주세요.</strong></div><p>아래 캘린더에서 가능한 날짜와 시간을 선택해 예약을 진행합니다.</p></div><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>02</span><strong>자료를 보내주세요.</strong></div><p>이력서 또는 포트폴리오를 info@terracle.im으로 보내주시면 확인 후 미팅이 진행됩니다.</p></div><div class=\"terracle-guide-item\"><div class=\"terracle-guide-head\"><span>03</span><strong>화상 미팅이 진행됩니다.</strong></div><p>예약 완료 후 이메일로 Google Meet 링크가 발송되며, 예약 시간에 온라인으로 접속해 진행합니다.</p></div></div>\n<div class=\"terracle-calendar-area\" id=\"terracle-calendar\"><div class=\"terracle-calendar-label\"><div><h2>예약 가능 시간</h2><p>날짜와 시간을 선택하면 예약이 진행됩니다.</p></div><span>Google Calendar</span></div><div class=\"terracle-calendar-frame\"><iframe src=\"https://calendar.google.com/calendar/appointments/schedules/AcZssZ0tLwEnDY_JzCAlKqvS2Petp_LHv0QmKwSo4vcfNuRt6oqIb7Fi2Oy0knPqZucclMopQ2Td-Nd_?gv=true\" title=\"테라클 지원자 화상 미팅 신청\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"fullscreen\" width=\"100%\" height=\"880\"></iframe></div></div>\n<div class=\"terracle-booking-note\"><h2>예약 안내</h2><p>예약 완료 메일에서 Google Meet 링크 확인 및 일정 변경이 가능합니다.</p></div>\n</div></section>";
+    const copy=document.querySelector('.terracle-copy-button');
+    if(copy) copy.addEventListener('click',async()=>{
+      const email=copy.getAttribute('data-copy-email');
+      try{
+        if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(email)}
+        else {const field=document.createElement('textarea');field.value=email;field.style.position='fixed';field.style.left='-9999px';document.body.append(field);field.select();const ok=document.execCommand('copy');field.remove();if(!ok)throw Error('Copy failed')}
+        copy.textContent='복사 완료';copy.classList.add('is-copied');
+      }catch(e){copy.textContent='복사할 수 없습니다. 이메일을 직접 선택해 주세요.'}
+      window.setTimeout(()=>{copy.textContent='이메일 복사';copy.classList.remove('is-copied')},1600);
+    });
     window.scrollTo(0,0);
   }else if(page==='service'){
     document.title='Service | Terracle';
