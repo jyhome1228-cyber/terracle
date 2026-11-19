@@ -1815,7 +1815,7 @@ html{scroll-padding-top:100px}
 .tc-about .tc-about-ceo h2:after{display:none!important}
 .tc-about .tc-about-ceo__intro{grid-column:1;grid-row:2;max-width:390px;font-size:clamp(19px,1.8vw,25px)!important;line-height:1.65!important;letter-spacing:-.035em;color:#e6f0f0;margin:0!important}
 .tc-about .tc-about-ceo__grid{grid-column:2!important;grid-row:1 / span 3!important;padding:0 0 0 35px;border-left:1px solid rgba(158,219,229,.24);max-width:760px}
-.tc-about .tc-about-ceo__grid>div:first-child p:first-child{display:none}
+.tc-about .tc-about-ceo__grid>div:first-child p:first-child{display:block}
 .tc-about .tc-about-ceo__grid p{font-size:15px!important;line-height:1.92!important;margin:0 0 22px!important;color:#b9c5c5}
 .tc-about .tc-about-ceo__grid p:last-child{color:#e1ecec!important}
 .tc-about .tc-about-ceo__mark{right:4%!important;bottom:-100px!important;width:155px!important;opacity:.11!important}
@@ -2137,7 +2137,7 @@ html{scroll-padding-top:100px}
           visual.className='tc-about-feature__visual'+(index===1?' tc-about-feature__visual--symbol':'');
           const img=document.createElement('img');
           img.src=index===0?(image?.getAttribute('src')||'./symbol.svg'):'./symbol.svg';
-          img.alt=index===0?'테라클 생산 설비':'Terracle 심볼';
+          img.alt=index===0?'테라클 기업 비주얼':'Terracle 심볼';
           img.loading='lazy';
           visual.appendChild(img);
           feature.append(copy,visual);
@@ -2159,7 +2159,7 @@ html{scroll-padding-top:100px}
       if(ceo && introParagraph){
         const intro=document.createElement('p');
         intro.className='tc-about-ceo__intro';
-        intro.textContent='기술의 가치는 설명이 아닌 실제 결과로 증명됩니다.';
+        intro.textContent='저희는 기술만으로는 세상의 모든 문제를 해결할 수는 없지만, 기술만이 해결할 수 있는 문제가 분명히 존재한다고 믿습니다.';
         ceo.querySelector('.tc-about-ceo__grid').insertAdjacentElement('beforebegin',intro);
       }
     }
