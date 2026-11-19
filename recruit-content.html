@@ -1,0 +1,2807 @@
+<style>
+  /* ===============================
+     TERRACLE RECRUIT FINAL
+  =============================== */
+
+  #terracleRecruitFinal {
+    --bg: #000;
+    --text: rgba(255,255,255,.92);
+    --body: rgba(255,255,255,.72);
+    --muted: rgba(255,255,255,.48);
+    --line: rgba(255,255,255,.16);
+    --mint: #b7eef0;
+    --max: 1180px;
+
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #000 !important;
+    color: var(--text) !important;
+    font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, sans-serif !important;
+    overflow: hidden !important;
+    word-break: keep-all !important;
+    line-break: strict !important;
+  }
+
+  #terracleRecruitFinal * {
+    box-sizing: border-box !important;
+    font-family: inherit !important;
+    min-width: 0 !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+  }
+
+  #terracleRecruitFinal h1,
+  #terracleRecruitFinal h2,
+  #terracleRecruitFinal h3,
+  #terracleRecruitFinal p {
+    margin-top: 0 !important;
+  }
+
+  #terracleRecruitFinal p {
+    white-space: normal !important;
+  }
+
+  #terracleRecruitFinal img {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+    border: 0 !important;
+  }
+
+  #terracleRecruitFinal .trf-nowrap {
+    white-space: nowrap !important;
+  }
+
+  #terracleRecruitFinal .trf-inner {
+    width: 100% !important;
+    max-width: var(--max) !important;
+    margin: 0 auto !important;
+    padding: 0 36px !important;
+    position: relative !important;
+    z-index: 3 !important;
+  }
+
+  #terracleRecruitFinal .trf-section {
+    position: relative !important;
+    padding: 150px 0 !important;
+    background: #000 !important;
+    overflow: hidden !important;
+  }
+
+  #terracleRecruitFinal .trf-bg-section {
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: cover !important;
+  }
+
+  #terracleRecruitFinal .trf-bg-section::before {
+    content: "";
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    background: linear-gradient(
+      90deg,
+      rgba(0,0,0,.88),
+      rgba(0,0,0,.55) 48%,
+      rgba(0,0,0,.74)
+    ) !important;
+    pointer-events: none !important;
+  }
+
+  #terracleRecruitFinal .trf-stars::before {
+    content: "";
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    background-image: url("https://cdn.imweb.me/upload/S2023030963558ef55ba8e/8645293d553d9.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    opacity: .72 !important;
+    pointer-events: none !important;
+  }
+
+  #terracleRecruitFinal .trf-stars::after {
+    content: "";
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,.42), rgba(0,0,0,.14) 48%, rgba(0,0,0,.46)),
+      linear-gradient(180deg, rgba(0,0,0,.04), rgba(0,0,0,.32)) !important;
+    pointer-events: none !important;
+  }
+
+  /* Mouse Trail */
+  #terracleRecruitFinal .trf-trail-section {
+    --mx: 50%;
+    --my: 50%;
+    --mopacity: 0;
+  }
+
+  #terracleRecruitFinal .trf-trail-layer {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+    overflow: hidden !important;
+  }
+
+  #terracleRecruitFinal .trf-trail-layer::before {
+    content: "";
+    position: absolute !important;
+    left: var(--mx) !important;
+    top: var(--my) !important;
+    width: 260px !important;
+    height: 260px !important;
+    transform: translate(-50%, -50%) !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle, rgba(183,238,240,.18) 0%, rgba(183,238,240,.09) 32%, rgba(183,238,240,0) 72%) !important;
+    filter: blur(8px) !important;
+    opacity: var(--mopacity) !important;
+    transition: opacity .22s ease !important;
+  }
+
+  #terracleRecruitFinal .trf-trail-dot {
+    position: absolute !important;
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 50% !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+    background: rgba(183,238,240,.28) !important;
+    box-shadow:
+      0 0 14px rgba(183,238,240,.72),
+      0 0 30px rgba(183,238,240,.30) !important;
+    animation: trfTrailFade .9s ease-out forwards !important;
+  }
+
+  @keyframes trfTrailFade {
+    0% {
+      opacity: .82;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(2.6);
+    }
+  }
+
+  /* Motion */
+  #terracleRecruitFinal .trf-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity .9s cubic-bezier(.22,1,.36,1),
+      transform .9s cubic-bezier(.22,1,.36,1);
+  }
+
+  #terracleRecruitFinal .trf-reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Typography */
+  #terracleRecruitFinal .trf-eyebrow {
+    display: block !important;
+    margin: 0 0 18px !important;
+    color: var(--mint) !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    line-height: 1.45 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  #terracleRecruitFinal .trf-title {
+    margin: 0 !important;
+    color: var(--text) !important;
+    font-size: 32px !important;
+    font-weight: 800 !important;
+    line-height: 1.34 !important;
+    letter-spacing: -0.055em !important;
+  }
+
+  #terracleRecruitFinal .trf-title-md {
+    font-size: 34px !important;
+    line-height: 1.34 !important;
+  }
+
+  #terracleRecruitFinal .trf-title-sm {
+    font-size: 28px !important;
+    line-height: 1.4 !important;
+  }
+
+  #terracleRecruitFinal .trf-copy {
+    margin: 18px 0 0 !important;
+    color: var(--body) !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 1.9 !important;
+    letter-spacing: -0.028em !important;
+    max-width: 860px !important;
+  }
+
+  #terracleRecruitFinal .trf-copy strong {
+    color: var(--text) !important;
+    font-weight: 800 !important;
+  }
+
+  /* Hero */
+  #terracleRecruitFinal .trf-hero {
+    position: relative !important;
+    min-height: 820px !important;
+    background: #030505 !important;
+    overflow: hidden !important;
+  }
+
+  #terracleRecruitFinal .trf-hero::after {
+    content: "";
+    position: absolute !important;
+    inset: auto 0 0 !important;
+    height: 34% !important;
+    z-index: 1 !important;
+    background: linear-gradient(180deg, transparent, #000 90%) !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-img {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    overflow: hidden !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    opacity: .94 !important;
+    animation: trfHeroSlow 14s ease-in-out infinite alternate;
+  }
+
+  @keyframes trfHeroSlow {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.025); }
+  }
+
+  #terracleRecruitFinal .trf-hero-shade {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    background: linear-gradient(
+      90deg,
+      rgba(0,0,0,.78),
+      rgba(0,0,0,.22) 56%,
+      rgba(0,0,0,.45)
+    ) !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-inner {
+    position: relative !important;
+    z-index: 3 !important;
+    width: 100% !important;
+    max-width: var(--max) !important;
+    min-height: 820px !important;
+    margin: 0 auto !important;
+    padding: 130px 36px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-label {
+    margin: 0 !important;
+    color: #fff !important;
+    font-size: 42px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
+    letter-spacing: -0.06em !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-sub {
+    margin: 10px 0 0 !important;
+    color: rgba(255,255,255,.62) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-message {
+    max-width: 860px !important;
+    margin-top: auto !important;
+    padding-top: 54px !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-message p {
+    margin: 0 !important;
+    color: rgba(255,255,255,.84) !important;
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    line-height: 1.72 !important;
+    letter-spacing: -0.05em !important;
+  }
+
+  #terracleRecruitFinal .trf-typing-line {
+    display: block !important;
+    min-height: 1.72em !important;
+    line-height: 1.72 !important;
+    white-space: nowrap !important;
+  }
+
+  #terracleRecruitFinal .trf-typing-line--mint {
+    color: var(--mint) !important;
+    font-weight: 900 !important;
+  }
+
+  #terracleRecruitFinal .trf-typing-text {
+    display: inline !important;
+  }
+
+  #terracleRecruitFinal .trf-type-caret {
+    display: inline-block !important;
+    width: 2px !important;
+    height: .95em !important;
+    margin-left: 5px !important;
+    vertical-align: -0.1em !important;
+    background: var(--mint) !important;
+    animation: trfCaretBlink .72s steps(1) infinite !important;
+  }
+
+  #terracleRecruitFinal .trf-typewriter.is-done .trf-type-caret {
+    opacity: 0 !important;
+    animation: none !important;
+  }
+
+  @keyframes trfCaretBlink {
+    0%, 48% { opacity: 1; }
+    49%, 100% { opacity: 0; }
+  }
+
+  /* Intro */
+  #terracleRecruitFinal .trf-intro-section {
+    position: relative !important;
+  }
+
+  #terracleRecruitFinal .trf-intro {
+    display: grid !important;
+    grid-template-columns: .82fr 1.18fr !important;
+    gap: 72px !important;
+    align-items: center !important;
+  }
+
+  #terracleRecruitFinal .trf-symbol {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 300px !important;
+  }
+
+  #terracleRecruitFinal .trf-symbol img {
+    width: min(340px, 82%) !important;
+    animation: trfFloat 5.4s ease-in-out infinite;
+  }
+
+  @keyframes trfFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Mission / Vision */
+  #terracleRecruitFinal .trf-mv {
+    background: #000 !important;
+  }
+
+  #terracleRecruitFinal .trf-two {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 84px !important;
+    align-items: start !important;
+  }
+
+  #terracleRecruitFinal .trf-panel {
+    position: relative !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  #terracleRecruitFinal .trf-panel-title {
+    margin: 0 0 34px !important;
+    color: var(--text) !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    line-height: 1.45 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  #terracleRecruitFinal .trf-panel-subtitle {
+    margin: 54px 0 22px !important;
+    color: var(--text) !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
+    line-height: 1.45 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  #terracleRecruitFinal .trf-panel-desc {
+    margin: 0 0 34px !important;
+    color: var(--body) !important;
+    font-size: 15px !important;
+    line-height: 1.95 !important;
+    letter-spacing: -0.028em !important;
+    max-width: 100% !important;
+  }
+
+  #terracleRecruitFinal .trf-panel-desc:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Values - boxed */
+  #terracleRecruitFinal .trf-values {
+    background: #000 !important;
+  }
+
+  #terracleRecruitFinal .trf-values-head {
+    max-width: 700px !important;
+    margin-bottom: 54px !important;
+  }
+
+  #terracleRecruitFinal .trf-values-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px !important;
+  }
+
+  #terracleRecruitFinal .trf-value {
+    min-height: 320px !important;
+    padding: 30px !important;
+    background: #000 !important;
+    border: 1px solid rgba(255,255,255,.1) !important;
+    transition:
+      transform .45s cubic-bezier(.22,1,.36,1),
+      border-color .35s ease,
+      box-shadow .35s ease !important;
+  }
+
+  #terracleRecruitFinal .trf-value:hover {
+    transform: translateY(-7px) !important;
+    border-color: rgba(183,238,240,.28) !important;
+    box-shadow: 0 18px 44px rgba(0,0,0,.28) !important;
+  }
+
+  #terracleRecruitFinal .trf-value-title {
+    margin: 0 0 24px !important;
+    color: var(--text) !important;
+    font-size: 21px !important;
+    font-weight: 900 !important;
+    line-height: 1.36 !important;
+    letter-spacing: -0.05em !important;
+  }
+
+  #terracleRecruitFinal .trf-value-body {
+    margin: 0 0 24px !important;
+    color: var(--body) !important;
+    font-size: 15px !important;
+    line-height: 1.92 !important;
+    letter-spacing: -0.028em !important;
+  }
+
+  #terracleRecruitFinal .trf-value-body:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* Join */
+  #terracleRecruitFinal .trf-join {
+    min-height: 980px !important;
+    display: flex !important;
+    align-items: center !important;
+    background-image: url("https://cdn.imweb.me/upload/S2023030963558ef55ba8e/84d0650b9cfe2.jpg") !important;
+    background-position: center !important;
+    background-size: cover !important;
+  }
+
+  #terracleRecruitFinal .trf-join::before {
+    background: linear-gradient(
+      90deg,
+      rgba(0,0,0,.56),
+      rgba(0,0,0,.32) 46%,
+      rgba(0,0,0,.46)
+    ) !important;
+  }
+
+  #terracleRecruitFinal .trf-join .trf-inner {
+    min-height: 760px !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 64px !important;
+  }
+
+  #terracleRecruitFinal .trf-join-content {
+    width: min(860px, 100%) !important;
+    padding-top: 12px !important;
+  }
+
+  #terracleRecruitFinal .trf-join-kicker {
+    margin: 0 0 110px !important;
+    color: rgba(255,255,255,.86) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.7 !important;
+    letter-spacing: -0.028em !important;
+  }
+
+  #terracleRecruitFinal .trf-join-logo {
+    position: absolute !important;
+    right: 36px !important;
+    top: 0 !important;
+    width: 230px !important;
+    height: auto !important;
+  }
+
+  #terracleRecruitFinal .trf-join-logo img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+  }
+
+  #terracleRecruitFinal .trf-join-title {
+    margin: 0 0 46px !important;
+    color: var(--text) !important;
+    font-size: 34px !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.055em !important;
+  }
+
+  #terracleRecruitFinal .trf-join-title span {
+    color: var(--mint) !important;
+    font-weight: 900 !important;
+  }
+
+  #terracleRecruitFinal .trf-join-body {
+    max-width: 860px !important;
+  }
+
+  #terracleRecruitFinal .trf-join-body p {
+    margin: 0 0 28px !important;
+    color: rgba(255,255,255,.86) !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 1.92 !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  #terracleRecruitFinal .trf-join-body p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* 3D WORD - smaller / title matched */
+  #terracleRecruitFinal .trf-3d-force {
+    display: block !important;
+    width: 100% !important;
+    margin: 34px 0 44px !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    text-align: left !important;
+  }
+
+  #terracleRecruitFinal .trf-3d-force-word {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #fff !important;
+    font-size: 42px !important;
+    font-weight: 850 !important;
+    line-height: 0.98 !important;
+    letter-spacing: -0.058em !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+  }
+
+  #terracleRecruitFinal .trf-3d-force-word span {
+    color: #b7eef0 !important;
+    font-size: inherit !important;
+    font-weight: 900 !important;
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+  }
+
+  /* Work */
+  #terracleRecruitFinal .trf-work {
+    background: #000 !important;
+  }
+
+  #terracleRecruitFinal .trf-work-head {
+    max-width: 720px !important;
+    margin-bottom: 68px !important;
+  }
+
+  #terracleRecruitFinal .trf-work-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 28px !important;
+  }
+
+  #terracleRecruitFinal .trf-work-card {
+    min-height: 320px !important;
+    padding: 30px !important;
+    background: #000 !important;
+    border: 1px solid rgba(255,255,255,.1) !important;
+    transition:
+      transform .45s cubic-bezier(.22,1,.36,1),
+      border-color .35s ease,
+      box-shadow .35s ease !important;
+  }
+
+  #terracleRecruitFinal .trf-work-card:hover {
+    transform: translateY(-7px) !important;
+    border-color: rgba(183,238,240,.28) !important;
+    box-shadow: 0 18px 44px rgba(0,0,0,.28) !important;
+  }
+
+  #terracleRecruitFinal .trf-work-icon {
+    width: 66px !important;
+    height: 66px !important;
+    margin-bottom: 26px !important;
+    object-fit: contain !important;
+    animation: trfIconFloat 5s ease-in-out infinite;
+  }
+
+  @keyframes trfIconFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  #terracleRecruitFinal .trf-work-card h3 {
+    margin: 0 !important;
+    color: var(--text) !important;
+    font-size: 19px !important;
+    font-weight: 800 !important;
+    line-height: 1.4 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  #terracleRecruitFinal .trf-work-card p {
+    margin: 14px 0 0 !important;
+    color: var(--body) !important;
+    font-size: 15px !important;
+    line-height: 1.9 !important;
+    letter-spacing: -0.028em !important;
+  }
+
+  /* Journey */
+  #terracleRecruitFinal .trf-journey {
+    min-height: 1080px !important;
+    background-image: url("https://cdn.imweb.me/upload/S2023030963558ef55ba8e/11da549041136.jpg") !important;
+    background-position: center !important;
+    background-size: cover !important;
+    overflow: hidden !important;
+  }
+
+  #terracleRecruitFinal .trf-journey::before {
+    background: linear-gradient(
+      90deg,
+      rgba(0,0,0,.78),
+      rgba(0,0,0,.42) 52%,
+      rgba(0,0,0,.68)
+    ) !important;
+  }
+
+  #terracleRecruitFinal .trf-journey .trf-inner {
+    position: relative !important;
+    z-index: 3 !important;
+  }
+
+  #terracleRecruitFinal .trf-journey-wrap {
+    max-width: 980px !important;
+  }
+
+  #terracleRecruitFinal .trf-journey-block + .trf-journey-block {
+    margin-top: 100px !important;
+  }
+
+  #terracleRecruitFinal .trf-journey-title {
+    margin: 0 0 26px !important;
+    color: var(--mint) !important;
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    line-height: 1.45 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  #terracleRecruitFinal .trf-rules {
+    display: grid !important;
+    gap: 40px !important;
+  }
+
+  #terracleRecruitFinal .trf-rule h3 {
+    margin: 0 0 12px !important;
+    color: var(--text) !important;
+    font-size: 21px !important;
+    font-weight: 800 !important;
+    line-height: 1.58 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  #terracleRecruitFinal .trf-rule p {
+    margin: 0 !important;
+    color: rgba(255,255,255,.86) !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    line-height: 1.9 !important;
+    letter-spacing: -0.028em !important;
+  }
+
+  #terracleRecruitFinal .trf-journey-about p {
+    margin: 0 0 28px !important;
+    color: rgba(255,255,255,.86) !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 1.92 !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  #terracleRecruitFinal .trf-journey-about p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  #terracleRecruitFinal .trf-journey-about strong {
+    color: #fff !important;
+    font-weight: 800 !important;
+  }
+
+  /* Apply */
+  #terracleRecruitFinal .trf-apply {
+    padding: 160px 0 !important;
+    background: #000 !important;
+  }
+
+  #terracleRecruitFinal .trf-apply-box {
+    padding: 62px 64px !important;
+    border: 1px solid rgba(255,255,255,.11) !important;
+    background: #000 !important;
+    transition:
+      transform .45s cubic-bezier(.22,1,.36,1),
+      border-color .35s ease,
+      box-shadow .35s ease !important;
+  }
+
+  #terracleRecruitFinal .trf-apply-box:hover {
+    transform: translateY(-4px) !important;
+    border-color: rgba(183,238,240,.24) !important;
+    box-shadow: 0 16px 38px rgba(0,0,0,.24) !important;
+  }
+
+  #terracleRecruitFinal .trf-apply-content {
+    display: grid !important;
+    grid-template-columns: 1fr 180px !important;
+    gap: 48px !important;
+    align-items: end !important;
+  }
+
+  #terracleRecruitFinal .trf-apply .trf-title {
+    max-width: 660px !important;
+    font-size: 32px !important;
+    line-height: 1.42 !important;
+  }
+
+  #terracleRecruitFinal .trf-email {
+    display: block !important;
+    margin-top: 34px !important;
+    color: #fff !important;
+    font-size: 30px !important;
+    font-weight: 900 !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.055em !important;
+    text-decoration: none !important;
+  }
+
+  #terracleRecruitFinal .trf-email:hover {
+    color: var(--mint) !important;
+  }
+
+  #terracleRecruitFinal .trf-buttons {
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+
+  #terracleRecruitFinal .trf-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 150px !important;
+    height: 46px !important;
+    padding: 0 20px !important;
+    border: 1px solid rgba(183,238,240,.55) !important;
+    color: var(--mint) !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+    transition:
+      transform .35s cubic-bezier(.22,1,.36,1),
+      background .3s ease,
+      border-color .3s ease,
+      color .3s ease !important;
+  }
+
+  #terracleRecruitFinal .trf-btn:hover {
+    transform: translateY(-3px) !important;
+    background: rgba(183,238,240,.08) !important;
+    border-color: var(--mint) !important;
+    color: #fff !important;
+  }
+
+  /* Jobs */
+  #terracleRecruitFinal .trf-jobs {
+    padding: 0 0 160px !important;
+    background: #000 !important;
+  }
+
+  #terracleRecruitFinal .trf-jobs .trf-title-md {
+    font-size: 40px !important;
+    line-height: 1.28 !important;
+  }
+
+  #terracleRecruitFinal .trf-job-list {
+    margin-top: 54px !important;
+    border-top: 1px solid rgba(255,255,255,.2) !important;
+  }
+
+  #terracleRecruitFinal .trf-job-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+    padding: 28px 16px !important;
+    border-bottom: 1px solid rgba(255,255,255,.2) !important;
+    color: rgba(255,255,255,.9) !important;
+    text-decoration: none !important;
+    transition:
+      padding-left .35s cubic-bezier(.22,1,.36,1),
+      color .3s ease,
+      background .3s ease,
+      border-color .3s ease !important;
+  }
+
+  #terracleRecruitFinal .trf-job-row:hover {
+    padding-left: 26px !important;
+    color: var(--mint) !important;
+    background: rgba(183,238,240,.035) !important;
+    border-bottom-color: rgba(183,238,240,.38) !important;
+  }
+
+  #terracleRecruitFinal .trf-job-title {
+    display: block !important;
+    color: inherit !important;
+    font-size: 22px !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  #terracleRecruitFinal .trf-job-arrow {
+    flex: 0 0 auto !important;
+    color: inherit !important;
+    font-size: 18px !important;
+    opacity: .5 !important;
+    transition: transform .35s ease, opacity .35s ease !important;
+  }
+
+  #terracleRecruitFinal .trf-job-row:hover .trf-job-arrow {
+    opacity: 1 !important;
+    transform: translateX(6px) !important;
+  }
+
+  /* Jobs — Imweb board auto sync */
+  #terracleRecruitFinal .trf-job-status {
+    padding: 28px 16px !important;
+    border-bottom: 1px solid rgba(255,255,255,.2) !important;
+    color: var(--muted) !important;
+    font-size: 15px !important;
+    line-height: 1.65 !important;
+  }
+
+  #terracleRecruitFinal .trf-job-status a {
+    color: var(--mint) !important;
+    text-decoration: none !important;
+  }
+
+  #terracleRecruitFinal .trf-job-status a:hover {
+    text-decoration: underline !important;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    #terracleRecruitFinal .trf-inner,
+    #terracleRecruitFinal .trf-hero-inner {
+      padding-left: 26px !important;
+      padding-right: 26px !important;
+    }
+
+    #terracleRecruitFinal .trf-section {
+      padding: 120px 0 !important;
+    }
+
+    #terracleRecruitFinal .trf-intro,
+    #terracleRecruitFinal .trf-two,
+    #terracleRecruitFinal .trf-apply-content,
+    #terracleRecruitFinal .trf-values-grid,
+    #terracleRecruitFinal .trf-work-grid {
+      grid-template-columns: 1fr !important;
+      gap: 46px !important;
+    }
+
+    #terracleRecruitFinal .trf-symbol {
+      justify-content: flex-start !important;
+      min-height: auto !important;
+    }
+
+    #terracleRecruitFinal .trf-symbol img {
+      width: 260px !important;
+    }
+
+    #terracleRecruitFinal .trf-join {
+      min-height: auto !important;
+    }
+
+    #terracleRecruitFinal .trf-join .trf-inner {
+      min-height: auto !important;
+      display: block !important;
+    }
+
+    #terracleRecruitFinal .trf-join-logo {
+      position: relative !important;
+      right: auto !important;
+      top: auto !important;
+      width: 210px !important;
+      margin-bottom: 84px !important;
+    }
+
+    #terracleRecruitFinal .trf-join-kicker {
+      margin-bottom: 90px !important;
+    }
+
+    #terracleRecruitFinal .trf-3d-force-word {
+      font-size: 38px !important;
+      line-height: 1 !important;
+      letter-spacing: -0.052em !important;
+    }
+
+    #terracleRecruitFinal .trf-buttons {
+      justify-content: flex-start !important;
+    }
+  }
+
+  @media (max-width: 640px) {
+    #terracleRecruitFinal {
+      word-break: keep-all !important;
+    }
+
+    #terracleRecruitFinal * {
+      word-break: keep-all !important;
+      overflow-wrap: normal !important;
+    }
+
+    #terracleRecruitFinal .trf-inner,
+    #terracleRecruitFinal .trf-hero-inner {
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+
+    #terracleRecruitFinal .trf-section {
+      padding: 96px 0 !important;
+    }
+
+    #terracleRecruitFinal .trf-hero,
+    #terracleRecruitFinal .trf-hero-inner {
+      min-height: 660px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-inner {
+      padding-top: 86px !important;
+      padding-bottom: 86px !important;
+    }
+
+    #terracleRecruitFinal .trf-eyebrow {
+      font-size: 16px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-label {
+      font-size: 32px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-message {
+      max-width: 100% !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-message p {
+      font-size: 21px !important;
+      line-height: 1.64 !important;
+      letter-spacing: -0.055em !important;
+    }
+
+    #terracleRecruitFinal .trf-typing-line {
+      white-space: nowrap !important;
+      min-height: 1.64em !important;
+      line-height: 1.64 !important;
+    }
+
+    #terracleRecruitFinal .trf-title {
+      font-size: 26px !important;
+    }
+
+    #terracleRecruitFinal .trf-title-md {
+      font-size: 28px !important;
+    }
+
+    #terracleRecruitFinal .trf-title-sm {
+      font-size: 24px !important;
+    }
+
+    #terracleRecruitFinal .trf-copy,
+    #terracleRecruitFinal .trf-panel-desc,
+    #terracleRecruitFinal .trf-value-body,
+    #terracleRecruitFinal .trf-work-card p,
+    #terracleRecruitFinal .trf-rule p,
+    #terracleRecruitFinal .trf-journey-about p {
+      font-size: 14px !important;
+      line-height: 1.84 !important;
+    }
+
+    #terracleRecruitFinal .trf-panel-title,
+    #terracleRecruitFinal .trf-panel-subtitle {
+      font-size: 20px !important;
+    }
+
+    #terracleRecruitFinal .trf-value {
+      min-height: auto !important;
+      padding: 24px !important;
+    }
+
+    #terracleRecruitFinal .trf-value-title {
+      font-size: 20px !important;
+      line-height: 1.32 !important;
+    }
+
+    #terracleRecruitFinal .trf-join-title {
+      font-size: 28px !important;
+    }
+
+    #terracleRecruitFinal .trf-join-logo {
+      width: 170px !important;
+      margin-bottom: 64px !important;
+    }
+
+    #terracleRecruitFinal .trf-join-body p {
+      font-size: 14.5px !important;
+      line-height: 1.86 !important;
+      margin-bottom: 22px !important;
+    }
+
+    #terracleRecruitFinal .trf-3d-force {
+      margin: 30px 0 36px !important;
+    }
+
+    #terracleRecruitFinal .trf-3d-force-word {
+      font-size: 34px !important;
+      line-height: 1.02 !important;
+      letter-spacing: -0.045em !important;
+    }
+
+    #terracleRecruitFinal .trf-journey {
+      min-height: auto !important;
+      background-position: 62% center !important;
+    }
+
+    #terracleRecruitFinal .trf-journey-block + .trf-journey-block {
+      margin-top: 68px !important;
+    }
+
+    #terracleRecruitFinal .trf-journey-title {
+      font-size: 16px !important;
+      margin-bottom: 20px !important;
+    }
+
+    #terracleRecruitFinal .trf-rule h3 {
+      font-size: 18px !important;
+      line-height: 1.55 !important;
+      margin-bottom: 10px !important;
+    }
+
+    #terracleRecruitFinal .trf-apply-box {
+      padding: 34px 24px !important;
+    }
+
+    #terracleRecruitFinal .trf-apply .trf-title {
+      font-size: 26px !important;
+    }
+
+    #terracleRecruitFinal .trf-email {
+      font-size: 24px !important;
+    }
+
+    #terracleRecruitFinal .trf-btn {
+      width: 100% !important;
+    }
+
+    #terracleRecruitFinal .trf-pc {
+      display: none !important;
+    }
+
+    #terracleRecruitFinal .trf-jobs .trf-title-md {
+      font-size: 30px !important;
+    }
+
+    #terracleRecruitFinal .trf-job-row {
+      align-items: flex-start !important;
+      padding: 22px 0 !important;
+    }
+
+    #terracleRecruitFinal .trf-job-row:hover {
+      padding-left: 0 !important;
+    }
+
+    #terracleRecruitFinal .trf-job-title {
+      font-size: 17px !important;
+      line-height: 1.55 !important;
+    }
+
+    #terracleRecruitFinal .trf-job-arrow {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 390px) {
+    #terracleRecruitFinal .trf-hero-message p {
+      font-size: 19px !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #terracleRecruitFinal .trf-reveal,
+    #terracleRecruitFinal .trf-symbol img,
+    #terracleRecruitFinal .trf-work-icon,
+    #terracleRecruitFinal .trf-hero-img img {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+
+    #terracleRecruitFinal .trf-type-caret {
+      display: none !important;
+    }
+  }
+</style>
+
+
+
+<style>
+  /* ===============================
+     TERRACLE RECRUIT — WIDTH & TYPE REFINEMENT
+     2026-08-03
+  =============================== */
+
+  /* Desktop container: 1180px → 1440px */
+  #terracleRecruitFinal {
+    --max: 1440px !important;
+  }
+
+  #terracleRecruitFinal .trf-inner {
+    padding-left: 48px !important;
+    padding-right: 48px !important;
+  }
+
+  #terracleRecruitFinal .trf-section {
+    padding-top: 140px !important;
+    padding-bottom: 140px !important;
+  }
+
+  /* Headline hierarchy: heavy 800–900 → controlled semibold */
+  #terracleRecruitFinal .trf-eyebrow {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.015em !important;
+  }
+
+  #terracleRecruitFinal .trf-title {
+    font-size: 34px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  #terracleRecruitFinal .trf-title-md {
+    font-size: 38px !important;
+    font-weight: 600 !important;
+    line-height: 1.34 !important;
+  }
+
+  #terracleRecruitFinal .trf-title-sm {
+    font-size: 31px !important;
+    font-weight: 600 !important;
+    line-height: 1.42 !important;
+  }
+
+  #terracleRecruitFinal .trf-copy {
+    font-size: 16px !important;
+    line-height: 1.85 !important;
+    letter-spacing: -0.02em !important;
+    max-width: 920px !important;
+  }
+
+  #terracleRecruitFinal .trf-copy strong {
+    font-weight: 600 !important;
+  }
+
+  /* Hero */
+  #terracleRecruitFinal .trf-hero,
+  #terracleRecruitFinal .trf-hero-inner {
+    min-height: 850px !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-inner {
+    padding: 120px 48px 108px !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-label {
+    font-size: 48px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-sub {
+    margin-top: 12px !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-message {
+    max-width: 1040px !important;
+  }
+
+  #terracleRecruitFinal .trf-hero-message p {
+    font-size: 30px !important;
+    font-weight: 500 !important;
+    line-height: 1.62 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  #terracleRecruitFinal .trf-typing-line {
+    min-height: 1.62em !important;
+    line-height: 1.62 !important;
+  }
+
+  #terracleRecruitFinal .trf-typing-line--mint {
+    font-weight: 600 !important;
+  }
+
+  /* Intro / mission layout */
+  #terracleRecruitFinal .trf-intro {
+    grid-template-columns: .88fr 1.12fr !important;
+    gap: 104px !important;
+  }
+
+  #terracleRecruitFinal .trf-two {
+    gap: 104px !important;
+  }
+
+  #terracleRecruitFinal .trf-panel-title,
+  #terracleRecruitFinal .trf-panel-subtitle {
+    font-size: 23px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  #terracleRecruitFinal .trf-panel-desc {
+    font-size: 16px !important;
+    line-height: 1.88 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  /* Values / work cards */
+  #terracleRecruitFinal .trf-values-grid,
+  #terracleRecruitFinal .trf-work-grid {
+    gap: 24px !important;
+  }
+
+  #terracleRecruitFinal .trf-value,
+  #terracleRecruitFinal .trf-work-card {
+    padding: 36px !important;
+  }
+
+  #terracleRecruitFinal .trf-value-title {
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  #terracleRecruitFinal .trf-value-body,
+  #terracleRecruitFinal .trf-work-card p {
+    font-size: 16px !important;
+    line-height: 1.85 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  #terracleRecruitFinal .trf-work-card h3 {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  /* Join */
+  #terracleRecruitFinal .trf-join-logo {
+    right: 48px !important;
+  }
+
+  #terracleRecruitFinal .trf-join-title {
+    font-size: 38px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  #terracleRecruitFinal .trf-join-title span {
+    font-weight: 600 !important;
+  }
+
+  #terracleRecruitFinal .trf-join-body p {
+    font-size: 16px !important;
+    line-height: 1.88 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  #terracleRecruitFinal .trf-3d-force-word {
+    font-size: 46px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  #terracleRecruitFinal .trf-3d-force-word span {
+    font-weight: 700 !important;
+  }
+
+  /* Journey */
+  #terracleRecruitFinal .trf-journey-wrap {
+    max-width: 1080px !important;
+  }
+
+  #terracleRecruitFinal .trf-journey-title {
+    font-weight: 600 !important;
+  }
+
+  #terracleRecruitFinal .trf-rule h3 {
+    font-weight: 600 !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  #terracleRecruitFinal .trf-rule p,
+  #terracleRecruitFinal .trf-journey-about p {
+    font-size: 16px !important;
+    line-height: 1.86 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  #terracleRecruitFinal .trf-journey-about strong {
+    font-weight: 600 !important;
+  }
+
+  /* Apply stack */
+  #terracleRecruitFinal .trf-apply-stack {
+    display: grid !important;
+    gap: 24px !important;
+  }
+
+  #terracleRecruitFinal .trf-meeting-meta {
+    display: block !important;
+    margin-top: 34px !important;
+    color: #fff !important;
+    font-size: 25px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.035em !important;
+    text-decoration: none !important;
+  }
+
+  #terracleRecruitFinal .trf-meeting-meta span {
+    color: var(--mint) !important;
+  }
+
+  /* Apply / jobs */
+  #terracleRecruitFinal .trf-apply .trf-title {
+    font-size: 34px !important;
+    font-weight: 600 !important;
+  }
+
+  #terracleRecruitFinal .trf-email {
+    font-weight: 700 !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  #terracleRecruitFinal .trf-btn {
+    font-weight: 600 !important;
+  }
+
+  #terracleRecruitFinal .trf-jobs .trf-title-md {
+    font-size: 42px !important;
+    font-weight: 600 !important;
+  }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    #terracleRecruitFinal .trf-inner,
+    #terracleRecruitFinal .trf-hero-inner {
+      padding-left: 28px !important;
+      padding-right: 28px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-inner {
+      padding-top: 108px !important;
+      padding-bottom: 96px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-message p {
+      font-size: 27px !important;
+    }
+
+    #terracleRecruitFinal .trf-3d-force-word {
+      font-size: 40px !important;
+    }
+  }
+
+  /* Mobile: preserve the existing compact hierarchy */
+  @media (max-width: 640px) {
+    #terracleRecruitFinal .trf-inner,
+    #terracleRecruitFinal .trf-hero-inner {
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+
+    #terracleRecruitFinal .trf-section {
+      padding-top: 96px !important;
+      padding-bottom: 96px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero,
+    #terracleRecruitFinal .trf-hero-inner {
+      min-height: 660px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-inner {
+      padding-top: 86px !important;
+      padding-bottom: 86px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-label {
+      font-size: 32px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-message p {
+      font-size: 21px !important;
+      line-height: 1.64 !important;
+    }
+
+    #terracleRecruitFinal .trf-typing-line {
+      min-height: 1.64em !important;
+      line-height: 1.64 !important;
+    }
+
+    #terracleRecruitFinal .trf-title {
+      font-size: 26px !important;
+    }
+
+    #terracleRecruitFinal .trf-title-md {
+      font-size: 28px !important;
+    }
+
+    #terracleRecruitFinal .trf-title-sm {
+      font-size: 24px !important;
+    }
+
+    #terracleRecruitFinal .trf-copy,
+    #terracleRecruitFinal .trf-panel-desc,
+    #terracleRecruitFinal .trf-value-body,
+    #terracleRecruitFinal .trf-work-card p,
+    #terracleRecruitFinal .trf-rule p,
+    #terracleRecruitFinal .trf-journey-about p {
+      font-size: 14px !important;
+      line-height: 1.84 !important;
+    }
+
+    #terracleRecruitFinal .trf-value,
+    #terracleRecruitFinal .trf-work-card {
+      padding: 24px !important;
+    }
+
+    #terracleRecruitFinal .trf-join-title {
+      font-size: 28px !important;
+    }
+
+    #terracleRecruitFinal .trf-3d-force-word {
+      font-size: 34px !important;
+    }
+
+    #terracleRecruitFinal .trf-apply-stack {
+      gap: 16px !important;
+    }
+
+    #terracleRecruitFinal .trf-meeting-meta {
+      margin-top: 28px !important;
+      font-size: 21px !important;
+      line-height: 1.3 !important;
+    }
+
+    #terracleRecruitFinal .trf-apply .trf-title {
+      font-size: 26px !important;
+    }
+
+    #terracleRecruitFinal .trf-jobs .trf-title-md {
+      font-size: 30px !important;
+    }
+  }
+</style>
+
+
+
+<style>
+  /* =========================================================
+     TERRACLE RECRUIT — FINAL MOBILE LAYOUT FIX
+     - 모든 2단 구조를 모바일에서 상하 1단으로 전환
+     - 고정 헤더와 히어로 문구 겹침 방지
+     - JOIN 로고의 화면 이탈 및 잘림 방지
+  ========================================================= */
+
+  @media (max-width: 767px) {
+    #terracleRecruitFinal {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: clip !important;
+    }
+
+    #terracleRecruitFinal * {
+      max-width: 100% !important;
+    }
+
+    #terracleRecruitFinal .trf-inner,
+    #terracleRecruitFinal .trf-hero-inner {
+      width: 100% !important;
+      max-width: none !important;
+      padding-left: 22px !important;
+      padding-right: 22px !important;
+    }
+
+    #terracleRecruitFinal .trf-section {
+      padding-top: 82px !important;
+      padding-bottom: 82px !important;
+    }
+
+    #terracleRecruitFinal .trf-nowrap {
+      white-space: normal !important;
+    }
+
+    /* HERO — 모바일 고정 헤더 아래로 문구를 안전하게 배치 */
+    #terracleRecruitFinal .trf-hero,
+    #terracleRecruitFinal .trf-hero-inner {
+      min-height: 720px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-inner {
+      padding-top: calc(136px + env(safe-area-inset-top)) !important;
+      padding-bottom: 70px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-img img {
+      object-position: 61% center !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-label {
+      font-size: 35px !important;
+      font-weight: 700 !important;
+      line-height: 1.05 !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-sub {
+      margin-top: 10px !important;
+      font-size: 13px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-message {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-top: auto !important;
+      padding-top: 44px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-message p {
+      width: 100% !important;
+      font-size: 21px !important;
+      font-weight: 500 !important;
+      line-height: 1.55 !important;
+      letter-spacing: -0.035em !important;
+    }
+
+    #terracleRecruitFinal .trf-typing-line {
+      display: block !important;
+      width: 100% !important;
+      min-height: 0 !important;
+      line-height: 1.55 !important;
+      white-space: normal !important;
+    }
+
+    /* INTRO / MISSION / VISION — 무조건 상하 배치 */
+    #terracleRecruitFinal .trf-intro,
+    #terracleRecruitFinal .trf-two,
+    #terracleRecruitFinal .trf-values-grid,
+    #terracleRecruitFinal .trf-work-grid,
+    #terracleRecruitFinal .trf-apply-content {
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) !important;
+      width: 100% !important;
+    }
+
+    #terracleRecruitFinal .trf-intro {
+      gap: 44px !important;
+      align-items: start !important;
+    }
+
+    #terracleRecruitFinal .trf-symbol {
+      width: 100% !important;
+      min-height: 0 !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 4px 0 8px !important;
+    }
+
+    #terracleRecruitFinal .trf-symbol img {
+      width: min(190px, 56vw) !important;
+      max-width: 190px !important;
+      margin: 0 auto !important;
+    }
+
+    #terracleRecruitFinal .trf-intro > div:last-child {
+      width: 100% !important;
+    }
+
+    #terracleRecruitFinal .trf-two {
+      gap: 66px !important;
+    }
+
+    #terracleRecruitFinal .trf-panel {
+      width: 100% !important;
+    }
+
+    #terracleRecruitFinal .trf-panel + .trf-panel {
+      padding-top: 66px !important;
+      border-top: 1px solid rgba(255,255,255,.13) !important;
+    }
+
+    /* 모바일 타이포 위계 */
+    #terracleRecruitFinal .trf-eyebrow {
+      margin-bottom: 14px !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+    }
+
+    #terracleRecruitFinal .trf-title {
+      font-size: 27px !important;
+      font-weight: 600 !important;
+      line-height: 1.42 !important;
+      letter-spacing: -0.035em !important;
+    }
+
+    #terracleRecruitFinal .trf-title-md {
+      font-size: 29px !important;
+      line-height: 1.38 !important;
+    }
+
+    #terracleRecruitFinal .trf-title-sm {
+      font-size: 26px !important;
+      line-height: 1.45 !important;
+    }
+
+    #terracleRecruitFinal .trf-copy,
+    #terracleRecruitFinal .trf-panel-desc,
+    #terracleRecruitFinal .trf-value-body,
+    #terracleRecruitFinal .trf-work-card p,
+    #terracleRecruitFinal .trf-rule p,
+    #terracleRecruitFinal .trf-journey-about p {
+      font-size: 15px !important;
+      line-height: 1.82 !important;
+      letter-spacing: -0.02em !important;
+    }
+
+    #terracleRecruitFinal .trf-panel-title,
+    #terracleRecruitFinal .trf-panel-subtitle {
+      font-size: 21px !important;
+      font-weight: 600 !important;
+      line-height: 1.5 !important;
+    }
+
+    #terracleRecruitFinal .trf-panel-title {
+      margin-bottom: 26px !important;
+    }
+
+    #terracleRecruitFinal .trf-panel-subtitle {
+      margin-top: 42px !important;
+      margin-bottom: 16px !important;
+    }
+
+    /* VALUES / WORK — 카드 1열 */
+    #terracleRecruitFinal .trf-values-head,
+    #terracleRecruitFinal .trf-work-head {
+      margin-bottom: 38px !important;
+    }
+
+    #terracleRecruitFinal .trf-values-grid,
+    #terracleRecruitFinal .trf-work-grid {
+      gap: 16px !important;
+    }
+
+    #terracleRecruitFinal .trf-value,
+    #terracleRecruitFinal .trf-work-card {
+      width: 100% !important;
+      min-height: 0 !important;
+      padding: 26px 22px !important;
+    }
+
+    #terracleRecruitFinal .trf-value-title {
+      font-size: 20px !important;
+      font-weight: 600 !important;
+    }
+
+    #terracleRecruitFinal .trf-work-card h3 {
+      font-size: 19px !important;
+      font-weight: 600 !important;
+    }
+
+    #terracleRecruitFinal .trf-work-icon {
+      width: 56px !important;
+      height: 56px !important;
+      margin-bottom: 22px !important;
+    }
+
+    /* JOIN — 로고가 왼쪽 화면 밖으로 밀리는 문제 제거 */
+    #terracleRecruitFinal .trf-join {
+      min-height: 0 !important;
+      background-position: 58% center !important;
+    }
+
+    #terracleRecruitFinal .trf-join::before {
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.54),
+        rgba(0,0,0,.68) 44%,
+        rgba(0,0,0,.84)
+      ) !important;
+    }
+
+    #terracleRecruitFinal .trf-join .trf-inner {
+      display: block !important;
+      min-height: 0 !important;
+    }
+
+    #terracleRecruitFinal .trf-join-content {
+      width: 100% !important;
+      max-width: none !important;
+      padding-top: 0 !important;
+    }
+
+    #terracleRecruitFinal .trf-join-logo {
+      position: static !important;
+      inset: auto !important;
+      right: auto !important;
+      left: auto !important;
+      top: auto !important;
+      width: 172px !important;
+      max-width: 52vw !important;
+      margin: 0 0 54px 0 !important;
+      transform: none !important;
+    }
+
+    #terracleRecruitFinal .trf-join-logo img {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      object-fit: contain !important;
+    }
+
+    #terracleRecruitFinal .trf-join-kicker {
+      width: 100% !important;
+      margin: 0 0 62px !important;
+      font-size: 14px !important;
+      line-height: 1.72 !important;
+    }
+
+    #terracleRecruitFinal .trf-join-title {
+      margin-bottom: 34px !important;
+      font-size: 30px !important;
+      line-height: 1.32 !important;
+    }
+
+    #terracleRecruitFinal .trf-join-body p {
+      font-size: 15px !important;
+      line-height: 1.82 !important;
+      margin-bottom: 24px !important;
+    }
+
+    #terracleRecruitFinal .trf-3d-force {
+      margin: 30px 0 38px !important;
+    }
+
+    /* JOURNEY */
+    #terracleRecruitFinal .trf-journey {
+      min-height: 0 !important;
+      background-position: 67% center !important;
+    }
+
+    #terracleRecruitFinal .trf-journey-wrap {
+      width: 100% !important;
+      max-width: none !important;
+    }
+
+    #terracleRecruitFinal .trf-journey-block + .trf-journey-block {
+      margin-top: 68px !important;
+    }
+
+    #terracleRecruitFinal .trf-rules {
+      gap: 34px !important;
+    }
+
+    #terracleRecruitFinal .trf-rule h3 {
+      font-size: 19px !important;
+      line-height: 1.56 !important;
+    }
+
+    /* APPLY / ONLINE MEETING */
+    #terracleRecruitFinal .trf-apply {
+      padding-top: 82px !important;
+      padding-bottom: 82px !important;
+    }
+
+    #terracleRecruitFinal .trf-apply-stack {
+      gap: 16px !important;
+    }
+
+    #terracleRecruitFinal .trf-apply-box {
+      width: 100% !important;
+      padding: 32px 22px !important;
+    }
+
+    #terracleRecruitFinal .trf-apply-content {
+      gap: 30px !important;
+      align-items: start !important;
+    }
+
+    #terracleRecruitFinal .trf-apply .trf-title {
+      font-size: 26px !important;
+      line-height: 1.44 !important;
+    }
+
+    #terracleRecruitFinal .trf-email {
+      margin-top: 28px !important;
+      font-size: 24px !important;
+      line-height: 1.2 !important;
+      overflow-wrap: anywhere !important;
+    }
+
+    #terracleRecruitFinal .trf-meeting-meta {
+      margin-top: 28px !important;
+      font-size: 19px !important;
+      line-height: 1.35 !important;
+    }
+
+    #terracleRecruitFinal .trf-buttons {
+      width: 100% !important;
+      justify-content: flex-start !important;
+    }
+
+    #terracleRecruitFinal .trf-btn {
+      width: 100% !important;
+      min-width: 0 !important;
+      height: 50px !important;
+    }
+
+    /* JOBS */
+    #terracleRecruitFinal .trf-jobs {
+      padding-bottom: 94px !important;
+    }
+
+    #terracleRecruitFinal .trf-jobs .trf-title-md {
+      font-size: 30px !important;
+    }
+
+    #terracleRecruitFinal .trf-job-list {
+      margin-top: 38px !important;
+    }
+
+    #terracleRecruitFinal .trf-job-row {
+      width: 100% !important;
+      padding: 22px 0 !important;
+    }
+
+    #terracleRecruitFinal .trf-job-title {
+      font-size: 17px !important;
+      line-height: 1.55 !important;
+    }
+  }
+
+  @media (max-width: 390px) {
+    #terracleRecruitFinal .trf-inner,
+    #terracleRecruitFinal .trf-hero-inner {
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero,
+    #terracleRecruitFinal .trf-hero-inner {
+      min-height: 690px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-inner {
+      padding-top: calc(126px + env(safe-area-inset-top)) !important;
+      padding-bottom: 62px !important;
+    }
+
+    #terracleRecruitFinal .trf-hero-message p {
+      font-size: 19px !important;
+    }
+
+    #terracleRecruitFinal .trf-title,
+    #terracleRecruitFinal .trf-apply .trf-title {
+      font-size: 24px !important;
+    }
+
+    #terracleRecruitFinal .trf-title-sm {
+      font-size: 23px !important;
+    }
+
+    #terracleRecruitFinal .trf-symbol img {
+      width: min(170px, 54vw) !important;
+    }
+
+    #terracleRecruitFinal .trf-join-logo {
+      width: 158px !important;
+    }
+  }
+</style>
+
+<div id="terracleRecruitFinal">
+
+  <!-- HERO -->
+  <section class="trf-hero">
+    <div class="trf-hero-img">
+      <img src="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/7cfeeea63bb64.jpg" alt="Terracle Recruit Hero">
+    </div>
+    <div class="trf-hero-shade"></div>
+
+    <div class="trf-hero-inner">
+      <div class="trf-reveal">
+        <h1 class="trf-hero-label">Recruit</h1>
+        <p class="trf-hero-sub">Explore careers at Terracle.</p>
+      </div>
+
+      <div class="trf-hero-message trf-reveal">
+        <p
+          class="trf-typewriter"
+          data-pc-lines="우리는 테라클의 도구가 될 사람을 찾는 게 아니라,|테라클을 도구로 활용할 분을 찾습니다."
+          data-mobile-lines="우리는 테라클의 도구가|될 사람을 찾는 게 아니라,|테라클을 도구로 활용할 분을 찾습니다."
+          data-pc-mint-index="1"
+          data-mobile-mint-index="2"
+        ></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="trf-section trf-stars trf-trail-section trf-intro-section">
+    <div class="trf-trail-layer" aria-hidden="true"></div>
+
+    <div class="trf-inner">
+      <div class="trf-intro">
+        <div class="trf-symbol trf-reveal">
+          <img src="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/166eb4417d34f.png" alt="Terracle Symbol">
+        </div>
+
+        <div class="trf-reveal">
+          <p class="trf-eyebrow">소개글</p>
+          <h2 class="trf-title trf-title-sm">
+            테라클은 2021년 설립된<br>
+            화학적 재활용 기업입니다.
+          </h2>
+          <p class="trf-copy">
+            우리는 해중합 기술로 폐 PET를 원료(모노머)로 되돌려 다시 시장에 공급하며 산업 내 순환 구조를 구축하고 있습니다.
+          </p>
+          <p class="trf-copy">
+            플라스틱은 더 이상 일회용품뿐 아니라 섬유, 의료, 전자제품, 건축, 자동차 등 산업 전반을 구성하는 핵심 소재입니다. 이미 우리는 ‘플라스틱 시대’에 살고 있습니다.
+          </p>
+          <p class="trf-copy">
+            테라클은 대안 없는 탈플라스틱이 아니라 환경오염 없이 플라스틱을 반복 사용할 수 있는 실질적인 대안을 제시합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION / VISION -->
+  <section class="trf-section trf-mv">
+    <div class="trf-inner">
+      <div class="trf-two">
+        <article class="trf-panel trf-reveal">
+          <p class="trf-eyebrow">미션</p>
+          <h2 class="trf-panel-title">선의가 아니라, 기술로 해결한다.</h2>
+
+          <p class="trf-panel-desc">
+            자원순환 문제는 개인의 행동 문제가 아닌, 생산과 설계에서 시작된 산업의 문제입니다. 지금까지의 산업은 생산에만 최적화되어 있었고 폐기 이후를 고려하지 않은 채 설계되어 왔습니다.
+          </p>
+
+          <p class="trf-panel-desc">
+            세상의 모든 문제를 기술로 해결할 수는 없지만 자원순환 만큼은 기술과 산업의 영역입니다. 테라클의 기술은 문제를 해결하고 산업으로 증명하며 결국 구조를 바꿉니다.
+          </p>
+        </article>
+
+        <article class="trf-panel trf-reveal">
+          <p class="trf-eyebrow">비전</p>
+          <h2 class="trf-panel-title">환경오염 없이 플라스틱의 무한한 사용을 허락한다.</h2>
+
+          <p class="trf-panel-desc">
+            사업의 지속가능성과 관련되어 있으며 기술과 사업의 방향성입니다.
+          </p>
+
+          <h3 class="trf-panel-subtitle">플라스틱의 무한한 사용</h3>
+          <p class="trf-panel-desc">
+            해중합 기술의 완벽한 구현을 의미합니다.
+          </p>
+
+          <h3 class="trf-panel-subtitle">허락한다</h3>
+          <p class="trf-panel-desc">
+            플라스틱은 환경 오염의 주범이라는 굴레에 갇혀 인류의 죄책감이 되었습니다. 하지만 <span class="trf-nowrap">테라클은 기술을 통해</span> 플라스틱을 환경오염 없이 무한히 사용할 수 있는 시대를 열 것입니다.
+          </p>
+
+          <p class="trf-panel-desc">
+            이 기술과 사업은 누구도 상업화에 성공하지 못한 미지의 영역입니다. 테라클이 실현할 ‘허락’은 <span class="trf-nowrap">최초이자,</span> 세계가 기억할 ‘우리의 업적’이 될 것입니다.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="trf-section trf-values">
+    <div class="trf-inner">
+      <div class="trf-values-head trf-reveal">
+        <p class="trf-eyebrow">테라클의 핵심가치</p>
+      </div>
+
+      <div class="trf-values-grid">
+        <article class="trf-value trf-reveal">
+          <h3 class="trf-value-title">1. Speed</h3>
+          <p class="trf-value-body">
+            속도는 경쟁력이 아니라 생존 조건입니다. 완벽함은 중요합니다. 하지만 그 어떤 완벽함도 실행 없이는 도달할 수 없습니다.
+          </p>
+          <p class="trf-value-body">
+            테라클은 빠르게 실행하고 데이터로 검증하며, 반복을 통해 완성도를 높입니다. 중요한 것은 올바른 방향과 압도적인 속도입니다.
+          </p>
+        </article>
+
+        <article class="trf-value trf-reveal">
+          <h3 class="trf-value-title">2. Communication &amp; Teamwork</h3>
+          <p class="trf-value-body">
+            우리의 도전은 결코 혼자 달성할 수 없습니다.
+          </p>
+          <p class="trf-value-body">
+            그래서 개인이 아닌 팀으로 움직입니다. 자신의 의견을 논리적으로 명확하게 전달하며, 동시에 더 나은 결과를 위해서라면 언제든 수정합니다.
+          </p>
+          <p class="trf-value-body">
+            협력은 미덕이 아니라, 필수 역량입니다.
+          </p>
+        </article>
+
+        <article class="trf-value trf-reveal">
+          <h3 class="trf-value-title">3. Growth</h3>
+          <p class="trf-value-body">
+            성장은 선택이 아니라 전제입니다. 테라클은 빠르게 성장하는 조직입니다. 개인의 성장 속도가 조직의 속도를 따라가지 못하면 결국 전체의 속도가 느려집니다. 우리는 스스로를 업그레이드하는 사람과 함께합니다. 회사는 개인의 성장을 전폭적으로 지원합니다. 그러나 성장은 철저히 개인의 책임입니다.
+          </p>
+        </article>
+
+        <article class="trf-value trf-reveal">
+          <h3 class="trf-value-title">4. Performance &amp; Reward</h3>
+          <p class="trf-value-body">
+            우리는 결과 중심 조직이며 창출된 성과는 반드시 보상합니다. 협력을 강조하고 팀으로 일하더라도 개별 성과는 철저히 기록되고 측정됩니다. 성과를 낸 사람은 그 가치를 분명하게 인정받는 구조를 지향합니다. 반대의 경우 또한 마찬가지입니다.
+          </p>
+          <p class="trf-value-body">
+            우리의 성과는 대부분 실패에서 출발했습니다. 때문에 좋은 실패는 성과로 규정합니다.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section class="trf-section trf-bg-section trf-join">
+    <div class="trf-inner">
+      <div class="trf-join-logo">
+        <img src="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/ac9dbdba45acb.png" alt="Terracle Logo">
+      </div>
+
+      <div class="trf-join-content trf-reveal">
+        <p class="trf-join-kicker">
+          세상이 정한 안정 대신, 스스로의 가능성을 선택한 사람들을 모읍니다.
+        </p>
+
+        <h2 class="trf-join-title">
+          <span>Terracle</span>에<br>
+          합류하세요.
+        </h2>
+
+        <div class="trf-join-body">
+          <p>
+            세상에 아직 비즈니스 모델로 검증되지 못한 사업과 기술을 영위하는 조직. 테라클은 스타트업을 이렇게 정의합니다.
+          </p>
+
+          <p>
+            우리는 불완전한 상태로 존재하고 있으며 기술적, 사업적 완성을 1차 목표로 합니다. 때문에 안정적인 직장을 찾는 분들에게는 적합하지 않습니다.
+          </p>
+
+          <p>
+            우리는 흔히 알려진 화려한 복지와 근무환경을 갖춘 IT 스타트업과 매우 다릅니다. 폐기물을 다루고 화학이라는 위험함과 누구도 풀지 못한 난제에 도전합니다. 즉 3D업입니다.
+          </p>
+
+          <div class="trf-3d-force">
+            <div class="trf-3d-force-word">
+              <span>D</span>irty
+            </div>
+            <div class="trf-3d-force-word">
+              <span>D</span>angerous
+            </div>
+            <div class="trf-3d-force-word">
+              <span>D</span>ifficult
+            </div>
+          </div>
+
+          <p>결코 화려하거나 안락하지 않습니다.</p>
+
+          <p>
+            하지만 우리의 기술로 산업 구조가 바뀌고 자원순환의 기준이 다시 정의됩니다. 테라클은 우리가 원하는 세상을 만들기 위한 시뮬레이션이자 도구입니다. 우리는 이 도구의 가치를 스톡옵션과 보상을 연결합니다.
+          </p>
+
+          <p>
+            우리는 각자의 인생을 스스로 설계하고, 이 길을 선택한 사람들입니다.
+          </p>
+
+          <p>
+            테라클에서 각각의 역할과 팀, 직무는 서로 다른 강점을 요구하기에 채용기준 또한 달라집니다. 그러나 우리가 전사적으로 공유하는 것은 우리의 핵심 가치입니다. 즉 속도, 소통, 팀워크, 개인의 성장 그리고 성과의 공유입니다.
+          </p>
+
+          <p>
+            이것이 바로 우리가 ‘우리의 세계관’을 공유하는 사람들을 찾는 이유입니다.
+          </p>
+
+          <p>
+            만약 자신이 스스로 유능하다고 생각한다면, 자신의 강점과 약점을 명확히 알고 있다면, 속해 있던 조직이나 환경 때문에 제약 받는다고 느껴본 적이 있다면 지원하십시오.
+          </p>
+
+          <p>
+            이제 지구에 살고 있는 사람들에게 기적을 전달합시다. 창백한 푸른 점을 위하여.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="trf-section trf-work">
+    <div class="trf-inner">
+      <div class="trf-work-head trf-reveal">
+        <p class="trf-eyebrow">우리는 이렇게 일해요</p>
+        <h2 class="trf-title trf-title-md">
+          문제를 해결하는 방식이<br>
+          곧 우리의 문화입니다.
+        </h2>
+      </div>
+
+      <div class="trf-work-grid">
+        <article class="trf-work-card trf-reveal">
+          <img class="trf-work-icon" src="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/1414a7e2fc317.png" alt="">
+          <h3>워라밸 보장되나요?</h3>
+          <p>
+            보장되지 않습니다. 문제가 해결되지 않았는데 퇴근하는 문화는 없습니다. 다만 이는 단순히 오래 남아 있는 문화가 아닙니다. 할 일을 끝낸 사람은 자유롭게 퇴근합니다.
+          </p>
+        </article>
+
+        <article class="trf-work-card trf-reveal">
+          <img class="trf-work-icon" src="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/2a164f69ea9fc.png" alt="">
+          <h3>자유로운 연차 사용이 가능한가요?</h3>
+          <p>
+            대표이사의 승인 없이 팀 내 조율만으로 연차를 사용합니다. 다만 조직이 작기에 자신의 공백이 동료에게 과한 짐이 되지 않도록 소통하고 일정을 조율합니다.
+          </p>
+        </article>
+
+        <article class="trf-work-card trf-reveal">
+          <img class="trf-work-icon" src="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/c88f4121f087f.png" alt="">
+          <h3>연봉과 스톡옵션에 대하여</h3>
+          <p>
+            기여한 만큼 가져갑니다. 팀원의 요청 없이 1년에 연봉을 3번 인상한 사례가 있는 반면, 2년간 동결된 사례도 있습니다. 현재 구성원의 70%가 스톡옵션을 보유하고 있습니다.
+          </p>
+        </article>
+
+        <article class="trf-work-card trf-reveal">
+          <img class="trf-work-icon" src="https://cdn.imweb.me/upload/S2023030963558ef55ba8e/c47ac08e4cf15.png" alt="">
+          <h3>복지는 어떤 것이 있나요?</h3>
+          <p>
+            거의 없습니다. 우리는 복지보다 성과와 보상에 집중합니다. 다만 몰입을 위해 필요한 지원은 아끼지 않습니다. 성장을 위한 투자를 복지로 정의합니다.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="trf-section trf-bg-section trf-trail-section trf-journey">
+    <div class="trf-trail-layer" aria-hidden="true"></div>
+
+    <div class="trf-inner">
+      <div class="trf-journey-wrap">
+
+        <div class="trf-journey-block trf-reveal">
+          <h3 class="trf-journey-title">여정을 시작하기 전에</h3>
+
+          <div class="trf-rules">
+            <article class="trf-rule">
+              <h3>1. 테라클에는 각자의 역할 안에서 무엇을 이루고 싶은지가 명확한 사람들이 모여있으며 팀의 기대 또한 분명합니다.</h3>
+              <p>회사를 단순히 노동을 제공하고 급여를 받는 거래관계로 인식한다면 적응하기 어렵습니다.</p>
+            </article>
+
+            <article class="trf-rule">
+              <h3>2. 직급, 경력, 분야에 상관없이 수평적으로 의견을 교환합니다.</h3>
+              <p>
+                모든 구성원은 논리와 근거를 바탕으로 상대를 설득해야 합니다. 자신의 의견을 명확히 표현하지 못하거나 피한다면 적응하기 어렵습니다. 이는 수평적인 문화를 만들기 위함이 아니라, 더 나은 의사결정을 위한 방식입니다.
+              </p>
+            </article>
+
+            <article class="trf-rule">
+              <h3>3. 일을 힘들게 만드는 요소는 업무 자체보다 감정인 경우가 많습니다.</h3>
+              <p>
+                우리는 감정보다 문제해결에 에너지를 집중합니다. 불편한 의견을 마주하고 피드백을 통해 개선하는 과정이 어렵다면 적응하기 어렵습니다.
+              </p>
+            </article>
+
+            <article class="trf-rule">
+              <h3>4. 우리는 학습을 중요하게 생각하며 이를 위한 자원과 기회를 제공합니다.</h3>
+              <p>그러나 스스로 배우고 익히는 과정에 능동적이지 않다면 적응하기 어렵습니다.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="trf-journey-block trf-journey-about trf-reveal">
+          <h3 class="trf-journey-title">여정에 대하여</h3>
+
+          <p>
+            신입, 경력, 임원을 포함한 모든 구성원은 수습기간을 거치며 테라클의 컬처덱을 기준으로 팀과 개인의 핏이 맞는지를 살펴봅니다. 업무에서는 문서나 설명보다 실제 일하는 방식과 결과를 기준으로 판단합니다.
+          </p>
+
+          <p>
+            또한 합류 시점과 무관하게 모든 구성원은 동일한 기준으로 평가받습니다. 우리는 테라클의 도구가 될 사람을 찾는 게 아니라, 테라클을 도구로 활용할 분을 찾습니다. 테라클은 좋은 일을 하고 싶은 사람이 아니라 문제를 해결하고 싶은 사람이 필요합니다.
+          </p>
+
+          <p>
+            이 여정이 본인의 방향과 맞는다고 판단하시면 잘 찾아오셨습니다. <strong>여기가 당신이 찾던 곳입니다.</strong>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section class="trf-apply" id="terracle-apply">
+    <div class="trf-inner">
+      <div class="trf-apply-stack">
+
+        <!-- EMAIL APPLY -->
+        <div class="trf-apply-box trf-reveal">
+          <div class="trf-apply-content">
+            <div>
+              <p class="trf-eyebrow">지원 방법 안내</p>
+              <h2 class="trf-title">
+                테라클과 함께할 준비가 되었다면,<br class="trf-pc">
+                이력서와 포트폴리오를 보내주세요.
+              </h2>
+              <p class="trf-copy">
+                지원 형식에는 제한이 없습니다. 다만 본인의 경험, 문제 해결 과정, 그리고 어떤 방식으로 성장해왔는지가 드러나는 자료를 권장합니다.
+              </p>
+              <a class="trf-email" href="mailto:info@terracle.im">info@terracle.im</a>
+            </div>
+
+            <div class="trf-buttons">
+              <a class="trf-btn" href="mailto:info@terracle.im">메일 보내기</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ONLINE MEETING -->
+        <div class="trf-apply-box trf-reveal">
+          <div class="trf-apply-content">
+            <div>
+              <p class="trf-eyebrow">온라인 미팅 안내</p>
+              <h2 class="trf-title">
+                지원 전후로 더 자세한 이야기가 필요하다면,<br class="trf-pc">
+                화상 미팅을 신청해주세요.
+              </h2>
+              <p class="trf-copy">
+                테라클 지원자를 위한 약 30분 온라인 미팅입니다. 가능한 일정을 선택하면 Google Meet로 진행되며, 예약 전후로 이력서 또는 포트폴리오를 보내주세요.
+              </p>
+              <a class="trf-meeting-meta" href="https://kr.terracle.im/OnlineMeeting" target="_blank" rel="noopener">
+                약 30분 <span>·</span> Google Meet
+              </a>
+            </div>
+
+            <div class="trf-buttons">
+              <a class="trf-btn" href="https://kr.terracle.im/OnlineMeeting" target="_blank" rel="noopener">미팅 신청하기</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- JOBS -->
+  <section class="trf-jobs" id="terracle-jobs">
+    <div class="trf-inner">
+      <div class="trf-reveal">
+        <p class="trf-eyebrow">채용 직무 안내</p>
+        <h2 class="trf-title trf-title-md">현재 열려있는 여정</h2>
+      </div>
+
+      <div
+        class="trf-job-list trf-reveal"
+        id="terracleRecruitJobList"
+        data-board-url="https://kr.terracle.im/recu2/"
+        aria-live="polite">
+        <div class="trf-job-status">채용공고를 불러오는 중입니다.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  (function () {
+    var root = document.querySelector("#terracleRecruitFinal");
+    if (!root) return;
+
+    var reduceMotion = window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var revealItems = root.querySelectorAll(".trf-reveal");
+    var jobList = root.querySelector("#terracleRecruitJobList");
+
+    /* ---------------------------------------------------------
+       RECRUIT BOARD AUTO SYNC
+       - Source: Imweb board page /recu2/
+       - New board posts are reflected automatically.
+       - No job title / post URL needs to be hard-coded here.
+    --------------------------------------------------------- */
+    function cleanJobText(value) {
+      return String(value || "")
+        .replace(/[\u200B-\u200D\uFEFF]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+    }
+
+    function extractJobsFromDocument(doc, boardUrl) {
+      var jobsById = new Map();
+      var boardPath = new URL(boardUrl, window.location.href)
+        .pathname
+        .replace(/\/+$/, "");
+
+      doc.querySelectorAll("a[href]").forEach(function (anchor) {
+        var rawHref = anchor.getAttribute("href");
+        if (!rawHref) return;
+
+        var url;
+        try {
+          url = new URL(rawHref, boardUrl);
+        } catch (e) {
+          return;
+        }
+
+        var targetPath = url.pathname.replace(/\/+$/, "");
+        var idx = url.searchParams.get("idx");
+        var bmode = url.searchParams.get("bmode");
+
+        if (targetPath !== boardPath || bmode !== "view" || !idx) return;
+
+        var title = cleanJobText(
+          anchor.textContent ||
+          anchor.getAttribute("title") ||
+          anchor.getAttribute("aria-label")
+        );
+
+        /* Some Imweb skins put the visible title in a nearby title node. */
+        if (title.length < 4) {
+          var parent = anchor.parentElement;
+          var titleNode = parent && parent.querySelector
+            ? parent.querySelector('[class*="title"], [class*="subject"], h3, h4')
+            : null;
+
+          if (titleNode) {
+            title = cleanJobText(titleNode.textContent);
+          }
+        }
+
+        if (!title || title.length < 4) return;
+        if (/^(view|more|보기|자세히)$/i.test(title)) return;
+
+        var existing = jobsById.get(idx);
+
+        /* Same post may have thumbnail/title links. Keep the best title. */
+        if (!existing || title.length > existing.title.length) {
+          jobsById.set(idx, {
+            id: idx,
+            title: title,
+            url: url.href
+          });
+        }
+      });
+
+      return Array.from(jobsById.values());
+    }
+
+    function renderJobs(jobs) {
+      if (!jobList) return;
+      jobList.innerHTML = "";
+
+      if (!jobs.length) {
+        jobList.innerHTML =
+          '<div class="trf-job-status">' +
+          '현재 등록된 채용공고가 없습니다.' +
+          '</div>';
+        return;
+      }
+
+      jobs.forEach(function (job) {
+        var link = document.createElement("a");
+        var title = document.createElement("span");
+        var arrow = document.createElement("span");
+
+        link.className = "trf-job-row";
+        link.href = job.url;
+        link.target = "_blank";
+        link.rel = "noopener";
+
+        title.className = "trf-job-title";
+        title.textContent = job.title;
+
+        arrow.className = "trf-job-arrow";
+        arrow.textContent = "→";
+        arrow.setAttribute("aria-hidden", "true");
+
+        link.appendChild(title);
+        link.appendChild(arrow);
+        jobList.appendChild(link);
+      });
+    }
+
+    function renderJobError() {
+      if (!jobList) return;
+      jobList.innerHTML =
+        '<div class="trf-job-status">' +
+        '채용공고를 불러오지 못했습니다. ' +
+        '<a href="/recu2/" target="_blank" rel="noopener">채용 게시판에서 확인하기 →</a>' +
+        '</div>';
+    }
+
+    function loadJobsWithIframe(boardUrl) {
+      return new Promise(function (resolve, reject) {
+        var iframe = document.createElement("iframe");
+        var finished = false;
+        var timeoutId;
+
+        iframe.setAttribute("aria-hidden", "true");
+        iframe.tabIndex = -1;
+        iframe.style.position = "absolute";
+        iframe.style.width = "1px";
+        iframe.style.height = "1px";
+        iframe.style.opacity = "0";
+        iframe.style.pointerEvents = "none";
+        iframe.style.border = "0";
+        iframe.src = boardUrl;
+
+        function finish(error, jobs) {
+          if (finished) return;
+          finished = true;
+          clearTimeout(timeoutId);
+          iframe.remove();
+          if (error) reject(error);
+          else resolve(jobs || []);
+        }
+
+        iframe.addEventListener("load", function () {
+          var tries = 0;
+          var timer = setInterval(function () {
+            tries += 1;
+
+            try {
+              var doc = iframe.contentDocument;
+              var jobs = doc ? extractJobsFromDocument(doc, boardUrl) : [];
+
+              if (jobs.length) {
+                clearInterval(timer);
+                finish(null, jobs);
+                return;
+              }
+            } catch (e) {
+              clearInterval(timer);
+              finish(e);
+              return;
+            }
+
+            if (tries >= 10) {
+              clearInterval(timer);
+              finish(new Error("No board posts found in iframe."));
+            }
+          }, 350);
+        });
+
+        iframe.addEventListener("error", function () {
+          finish(new Error("Board iframe failed to load."));
+        });
+
+        timeoutId = setTimeout(function () {
+          finish(new Error("Board iframe timed out."));
+        }, 6000);
+
+        document.body.appendChild(iframe);
+      });
+    }
+
+    async function loadRecruitJobs() {
+      if (!jobList) return;
+
+      var boardUrl = new URL(
+        jobList.getAttribute("data-board-url") || "/recu2/",
+        window.location.href
+      ).href;
+
+      try {
+        var response = await fetch(boardUrl, {
+          method: "GET",
+          credentials: "same-origin",
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          throw new Error("Board request failed: " + response.status);
+        }
+
+        var html = await response.text();
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var jobs = extractJobsFromDocument(doc, boardUrl);
+
+        /* Fallback: if the board list is injected by Imweb JS, render it in
+           a hidden same-origin iframe and read the finished DOM. */
+        if (!jobs.length) {
+          jobs = await loadJobsWithIframe(boardUrl);
+        }
+
+        renderJobs(jobs);
+      } catch (error) {
+        console.warn("[Terracle Recruit] board auto sync failed:", error);
+        renderJobError();
+      }
+    }
+
+    function runTypewriter() {
+      var box = root.querySelector(".trf-typewriter");
+      if (!box || box.dataset.typed === "true") return;
+
+      box.dataset.typed = "true";
+
+      var isMobile = window.innerWidth <= 640;
+      var rawLines = isMobile
+        ? box.getAttribute("data-mobile-lines")
+        : box.getAttribute("data-pc-lines");
+
+      var mintIndex = Number(
+        isMobile
+          ? box.getAttribute("data-mobile-mint-index")
+          : box.getAttribute("data-pc-mint-index")
+      );
+
+      var lines = (rawLines || "").split("|").filter(Boolean);
+
+      box.innerHTML = "";
+
+      lines.forEach(function (text, index) {
+        var line = document.createElement("span");
+        var textSpan = document.createElement("span");
+
+        line.className = "trf-typing-line";
+        if (index === mintIndex) {
+          line.className += " trf-typing-line--mint";
+        }
+
+        textSpan.className = "trf-typing-text";
+        textSpan.setAttribute("data-text", text);
+
+        line.appendChild(textSpan);
+        box.appendChild(line);
+      });
+
+      var textSpans = box.querySelectorAll(".trf-typing-text");
+      var caret = document.createElement("span");
+      caret.className = "trf-type-caret";
+
+      if (reduceMotion) {
+        textSpans.forEach(function (span) {
+          span.textContent = span.getAttribute("data-text") || "";
+        });
+        box.classList.add("is-done");
+        return;
+      }
+
+      var lineIndex = 0;
+      var charIndex = 0;
+      var speed = 42;
+      var delayBetweenLines = 220;
+
+      function moveCaretTo(span) {
+        if (!span) return;
+        span.parentNode.appendChild(caret);
+      }
+
+      function typeNext() {
+        if (lineIndex >= textSpans.length) {
+          setTimeout(function () {
+            box.classList.add("is-done");
+          }, 900);
+          return;
+        }
+
+        var span = textSpans[lineIndex];
+        var text = span.getAttribute("data-text") || "";
+
+        moveCaretTo(span);
+
+        if (charIndex <= text.length) {
+          span.textContent = text.slice(0, charIndex);
+          charIndex += 1;
+          setTimeout(typeNext, speed);
+        } else {
+          lineIndex += 1;
+          charIndex = 0;
+          setTimeout(typeNext, delayBetweenLines);
+        }
+      }
+
+      setTimeout(typeNext, 380);
+    }
+
+    function initTrailSections() {
+      if (reduceMotion) return;
+      if (window.innerWidth <= 767) return;
+      if (!window.matchMedia("(pointer:fine)").matches) return;
+
+      var sections = root.querySelectorAll(".trf-trail-section");
+
+      sections.forEach(function (section) {
+        var layer = section.querySelector(".trf-trail-layer");
+        if (!layer) return;
+
+        var lock = false;
+
+        section.addEventListener("mouseenter", function () {
+          section.style.setProperty("--mopacity", "1");
+        });
+
+        section.addEventListener("mouseleave", function () {
+          section.style.setProperty("--mopacity", "0");
+        });
+
+        section.addEventListener("mousemove", function (e) {
+          var rect = section.getBoundingClientRect();
+          var x = e.clientX - rect.left;
+          var y = e.clientY - rect.top;
+
+          section.style.setProperty("--mx", x + "px");
+          section.style.setProperty("--my", y + "px");
+
+          if (lock) return;
+          lock = true;
+
+          var dot = document.createElement("span");
+          dot.className = "trf-trail-dot";
+          dot.style.left = x + "px";
+          dot.style.top = y + "px";
+          layer.appendChild(dot);
+
+          setTimeout(function () {
+            dot.remove();
+          }, 900);
+
+          setTimeout(function () {
+            lock = false;
+          }, 22);
+        });
+      });
+    }
+
+    function force3DWords() {
+      var words = root.querySelectorAll(".trf-3d-force-word");
+
+      words.forEach(function (word) {
+        var size = "46px";
+        var lineHeight = "1";
+        var letterSpacing = "-0.045em";
+        var weight = "700";
+
+        if (window.innerWidth <= 640) {
+          size = "34px";
+          lineHeight = "1.02";
+          letterSpacing = "-0.045em";
+        } else if (window.innerWidth <= 1024) {
+          size = "40px";
+          lineHeight = "1";
+          letterSpacing = "-0.045em";
+        }
+
+        word.style.setProperty("display", "block", "important");
+        word.style.setProperty("margin", "0", "important");
+        word.style.setProperty("padding", "0", "important");
+        word.style.setProperty("color", "#fff", "important");
+        word.style.setProperty("font-size", size, "important");
+        word.style.setProperty("font-weight", weight, "important");
+        word.style.setProperty("line-height", lineHeight, "important");
+        word.style.setProperty("letter-spacing", letterSpacing, "important");
+        word.style.setProperty("white-space", "nowrap", "important");
+        word.style.setProperty("text-align", "left", "important");
+      });
+    }
+
+    // GitHub Pages cannot query the Imweb board across origins.
+    // Preserve the supplied Jobs layout and link to the live board instead.
+    if(jobList){
+      jobList.innerHTML='<a class="trf-job-row" href="https://kr.terracle.im/recu2/" target="_blank" rel="noopener"><span class="trf-job-title">공식 채용 게시판에서 공고 확인하기</span><span class="trf-job-arrow" aria-hidden="true">→</span></a>';
+    }
+
+    force3DWords();
+    window.addEventListener("resize", force3DWords);
+    window.addEventListener("load", force3DWords);
+    setTimeout(force3DWords, 300);
+    setTimeout(force3DWords, 1000);
+
+    if (reduceMotion) {
+      revealItems.forEach(function (el) {
+        el.classList.add("is-in");
+      });
+      runTypewriter();
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-in");
+
+          if (entry.target.querySelector(".trf-typewriter")) {
+            runTypewriter();
+          }
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -10% 0px"
+    });
+
+    revealItems.forEach(function (el, index) {
+      el.style.transitionDelay = Math.min(index * 0.025, 0.18) + "s";
+      observer.observe(el);
+    });
+
+    initTrailSections();
+  })();
+</script>
