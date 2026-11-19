@@ -2029,6 +2029,76 @@ html{scroll-padding-top:100px}
 .tc-black-page .tc-black-lineup .tc-black-types span{font-size:11px!important}
 }
 </style>
+<style id="tc-service-editorial-clean-20261119">
+/* Service: compact editorial hierarchy, preserve original paragraphs, photos, and links. */
+.tc-service-page{background:#030505;color:#f1f5f5;overflow-x:clip}
+.tc-service-page .tc-service-inner{width:min(100%,1440px)!important;max-width:1440px!important;margin:0 auto!important;padding-left:clamp(22px,4.2vw,64px)!important;padding-right:clamp(22px,4.2vw,64px)!important}
+.tc-service-page .tc-service-section{border-bottom:1px solid rgba(255,255,255,.11);padding:106px 0!important;background:#030505}
+.tc-service-page .tc-service-section h2{font-size:clamp(27px,2.45vw,35px);line-height:1.33;font-weight:590;letter-spacing:-.045em;margin:0 0 30px}
+.tc-service-page .tc-service-copy p,.tc-service-page .tc-service-cert__content>p{font-size:15px;line-height:1.94;letter-spacing:-.015em;color:#b7c1c2;margin:0 0 20px;word-break:keep-all}
+.tc-service-page .tc-service-copy p:last-child{margin-bottom:0}
+.tc-service-page .tc-service-test .tc-service-split{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);align-items:start;gap:clamp(40px,6vw,95px)}
+.tc-service-page .tc-service-test .tc-service-copy{padding-top:7px}
+.tc-service-page .tc-service-process{min-height:0!important;aspect-ratio:auto!important;border:1px solid rgba(143,208,212,.18);background:#070b0c;padding:31px 36px;box-shadow:none}
+.tc-service-page .tc-service-process__head{padding-bottom:18px;font-size:10px;font-weight:550;letter-spacing:.06em}
+.tc-service-page .tc-service-process__steps{margin:2px 0 23px;gap:0 22px}
+.tc-service-page .tc-service-process__steps>div{padding:19px 0 20px}
+.tc-service-page .tc-service-process__steps>div>span{margin-bottom:10px;font-size:11px;font-weight:550}
+.tc-service-page .tc-service-process__steps strong{font-size:15px;font-weight:550;line-height:1.4}
+.tc-service-page .tc-service-process__steps p{font-size:13px;line-height:1.7;margin:8px 0 0}
+.tc-service-page .tc-service-process__cta{background:transparent;border:1px solid #7eb7bc;color:#a5dce0;font-weight:550;min-height:44px;padding:0 20px;font-size:13px}
+.tc-service-page .tc-service-process__cta:hover{background:#9edbe5;color:#061114}
+.tc-service-page .tc-service-events .tc-service-split{display:block}
+.tc-service-page .tc-service-events .tc-service-copy{display:grid;grid-template-columns:minmax(240px,.62fr) minmax(0,1fr);gap:0 clamp(42px,7vw,110px);align-items:start}
+.tc-service-page .tc-service-events .tc-service-copy h2{grid-column:1;grid-row:1 / span 3;max-width:380px;margin:0}
+.tc-service-page .tc-service-events .tc-service-copy p{grid-column:2;max-width:790px;margin-bottom:20px}
+.tc-service-page .tc-service-events__gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:44px;padding:0}
+.tc-service-page .tc-service-events__gallery figure{margin:0;min-width:0}
+.tc-service-page .tc-service-events__gallery img{display:block;width:100%;aspect-ratio:1.65;object-fit:cover;background:#111}
+.tc-service-page .tc-service-events__gallery figcaption{padding-top:11px;margin:0;font-size:12px;line-height:1.5;color:#99a9aa}
+.tc-service-page .tc-service-cert .tc-service-cert__grid{display:grid;grid-template-columns:minmax(240px,.62fr) minmax(0,1fr);gap:0 clamp(42px,7vw,110px);align-items:start}
+.tc-service-page .tc-service-cert h2{margin-top:0}
+.tc-service-page .tc-service-cert__content{max-width:790px}
+.tc-service-page .tc-service-cert__marks{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;padding:0;border-top:1px solid rgba(255,255,255,.13)}
+.tc-service-page .tc-service-cert__mark{display:flex;align-items:center;gap:15px;padding:27px 0;min-width:0}
+.tc-service-page .tc-service-cert__mark strong{font-size:27px;font-weight:680;letter-spacing:-.055em}
+.tc-service-page .tc-service-cert__mark small{font-size:11px;color:#b9c5c6;line-height:1.45}
+.tc-service-page .tc-service-cta{min-height:0;padding:85px 24px 95px;background:radial-gradient(ellipse at 50% 100%,rgba(8,87,95,.15),transparent 55%),#030708}
+.tc-service-page .tc-service-cta__inner{width:min(100%,900px);margin:0 auto}
+.tc-service-page .tc-service-cta h2{font-size:clamp(25px,2.6vw,34px);font-weight:580;line-height:1.4;margin:0 0 16px}
+.tc-service-page .tc-service-cta p{font-size:14px;color:#aab7b8;line-height:1.75;margin:0 0 28px}
+.tc-service-page .tc-service-cta a{border-radius:0;min-height:46px;font-size:13px;font-weight:600}
+@media(max-width:960px){
+.tc-service-page .tc-service-test .tc-service-split{grid-template-columns:1fr;gap:32px}
+.tc-service-page .tc-service-events .tc-service-copy,.tc-service-page .tc-service-cert .tc-service-cert__grid{grid-template-columns:1fr;gap:14px}
+.tc-service-page .tc-service-events .tc-service-copy h2,.tc-service-page .tc-service-events .tc-service-copy p{grid-column:1;grid-row:auto}
+.tc-service-page .tc-service-events__gallery{gap:15px;margin-top:28px}
+}
+@media(max-width:767px){
+.tc-service-page .tc-service-inner{padding-left:22px!important;padding-right:22px!important}
+.tc-service-page .tc-service-section{padding:72px 0!important}
+.tc-service-page .tc-service-section h2{font-size:27px;margin:0 0 24px}
+.tc-service-page .tc-service-copy p,.tc-service-page .tc-service-cert__content>p{font-size:14px;line-height:1.85;margin-bottom:18px}
+.tc-service-page .tc-service-process{padding:22px}
+.tc-service-page .tc-service-process__steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}
+.tc-service-page .tc-service-process__steps strong{font-size:14px}
+.tc-service-page .tc-service-process__steps p{font-size:12px}
+.tc-service-page .tc-service-events__gallery{grid-template-columns:1fr;gap:30px;margin-top:27px}
+.tc-service-page .tc-service-events__gallery img{aspect-ratio:1.6}
+.tc-service-page .tc-service-cert__marks{grid-template-columns:1fr 1fr;gap:15px}
+.tc-service-page .tc-service-cert__mark{flex-direction:column;align-items:flex-start;gap:9px;padding:22px 0}
+.tc-service-page .tc-service-cert__mark strong{font-size:24px}
+.tc-service-page .tc-service-cta{padding:76px 22px}
+.tc-service-page .tc-service-cta h2{font-size:26px}
+}
+@media(max-width:420px){
+.tc-service-page .tc-service-inner{padding-left:18px!important;padding-right:18px!important}
+.tc-service-page .tc-service-process__steps{grid-template-columns:1fr}
+.tc-service-page .tc-service-process__steps>div{padding:15px 0}
+.tc-service-page .tc-service-cert__marks{grid-template-columns:1fr 1fr}
+.tc-service-page .tc-service-cert__mark strong{font-size:22px}
+}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
