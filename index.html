@@ -1942,6 +1942,45 @@ html{scroll-padding-top:100px}
   .tc-about .tc-about-ceo__intro{font-size:17px!important}
 }
 </style>
+<style id="tc-black-lineup-refine">
+/* BlackTiO2: no selector, all three types visible in a calm editorial lineup. */
+.tc-black-page .tc-black-section{padding-bottom:110px}
+.tc-black-page .tc-black-layout{align-items:start}
+.tc-black-page .tc-black-copy>p{max-width:690px;font-size:15px;line-height:1.95;margin-bottom:22px;letter-spacing:-.015em}
+.tc-black-page .tc-black-lineup{margin-top:92px;padding-top:35px;border-top:1px solid rgba(143,208,212,.22)}
+.tc-black-page .tc-black-lineup__heading{margin:0 0 28px;font-size:clamp(23px,2vw,29px);font-weight:550;line-height:1.4;letter-spacing:-.04em;color:#f0f4f4}
+.tc-black-page .tc-black-lineup .tc-black-types{width:100%;max-width:none!important;margin:0!important;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0!important;align-items:start}
+.tc-black-page .tc-black-lineup .tc-black-types figure{margin:0;padding:35px clamp(16px,3vw,42px) 42px;min-width:0;text-align:left;display:flex;flex-direction:column;align-items:stretch;border-right:1px solid rgba(143,208,212,.17);transition:background .3s ease}
+.tc-black-page .tc-black-lineup .tc-black-types figure:first-child{padding-left:0}
+.tc-black-page .tc-black-lineup .tc-black-types figure:last-child{border-right:0;padding-right:0}
+.tc-black-page .tc-black-lineup .tc-black-types figure:hover{background:rgba(143,208,212,.025)}
+.tc-black-page .tc-black-lineup .tc-black-types img{width:min(80%,220px)!important;max-width:220px!important;height:auto;aspect-ratio:1;object-fit:contain;display:block;margin:0 auto 34px!important;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.tc-black-page .tc-black-lineup .tc-black-types figure:hover img{transform:translateY(-4px)}
+.tc-black-page .tc-black-lineup .tc-black-types figcaption{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left}
+.tc-black-page .tc-black-lineup .tc-black-types strong{font-size:21px!important;font-weight:570!important;line-height:1.35;color:#eff5f5!important;letter-spacing:-.03em}
+.tc-black-page .tc-black-lineup .tc-black-types span{font-size:14px!important;line-height:1.7;letter-spacing:-.015em;color:#aebbbc;word-break:keep-all}
+.tc-black-page .tc-black-contact{margin-top:26px}
+@media(max-width:900px){
+.tc-black-page .tc-black-lineup{margin-top:68px}
+.tc-black-page .tc-black-lineup .tc-black-types figure{padding:25px 18px 34px}
+.tc-black-page .tc-black-lineup .tc-black-types img{width:min(90%,180px)!important}
+.tc-black-page .tc-black-lineup .tc-black-types strong{font-size:18px!important}
+.tc-black-page .tc-black-lineup .tc-black-types span{font-size:12px!important}
+}
+@media(max-width:600px){
+.tc-black-page .tc-black-section{padding-bottom:78px}
+.tc-black-page .tc-black-lineup{margin-top:55px;padding-top:27px}
+.tc-black-page .tc-black-lineup__heading{font-size:23px;margin-bottom:20px}
+.tc-black-page .tc-black-lineup .tc-black-types{grid-template-columns:1fr!important;gap:0!important}
+.tc-black-page .tc-black-lineup .tc-black-types figure,
+.tc-black-page .tc-black-lineup .tc-black-types figure:first-child,
+.tc-black-page .tc-black-lineup .tc-black-types figure:last-child{display:grid;grid-template-columns:110px minmax(0,1fr);align-items:center;gap:22px;padding:26px 0;border:0;border-bottom:1px solid rgba(143,208,212,.15);text-align:left}
+.tc-black-page .tc-black-lineup .tc-black-types img{width:110px!important;max-width:110px!important;margin:0!important}
+.tc-black-page .tc-black-lineup .tc-black-types figcaption{gap:8px}
+.tc-black-page .tc-black-lineup .tc-black-types strong{font-size:19px!important}
+.tc-black-page .tc-black-lineup .tc-black-types span{font-size:13px!important}
+}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
@@ -2180,6 +2219,22 @@ html{scroll-padding-top:100px}
       }catch(e){copy.textContent='복사할 수 없습니다. 이메일을 직접 선택해 주세요.'}
       window.setTimeout(()=>{copy.textContent='이메일 복사';copy.classList.remove('is-copied')},1600);
     });
+    // Reuse the three supplied product renders in a full-width, always-visible lineup.
+    if(isBlack){
+      const blackPage=document.querySelector('.tc-black-page');
+      const layout=blackPage?.querySelector('.tc-black-layout');
+      const types=blackPage?.querySelector('.tc-black-types');
+      if(layout&&types){
+        const lineup=document.createElement('section');
+        lineup.className='tc-black-lineup';
+        lineup.setAttribute('aria-label','BlackTiO₂ 제품 유형');
+        const heading=document.createElement('h3');
+        heading.className='tc-black-lineup__heading';
+        heading.textContent='Product Types';
+        lineup.append(heading,types);
+        layout.insertAdjacentElement('afterend',lineup);
+      }
+    }
     window.scrollTo(0,0);
   }else if(page==='service'){
     document.title='Service | Terracle';
