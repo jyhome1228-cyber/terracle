@@ -1647,6 +1647,15 @@ html{scroll-padding-top:100px}
 @media(max-width:1100px){.tu-ecosystem .tc-eco-detail{grid-template-columns:180px minmax(0,1fr);gap:20px}.tu-ecosystem .tc-eco-detail__body{grid-template-columns:140px 1fr;gap:22px}}
 @media(max-width:767px){.tu-ecosystem .tc-eco-detail{display:block;margin-top:15px}.tu-ecosystem .tc-eco-detail__body{display:block;padding:23px 1px 0}.tu-ecosystem .tc-eco-detail__heading{margin-bottom:14px}.tu-ecosystem .tc-eco-detail__name{font-size:19px}.tu-ecosystem .tc-eco-detail__description{font-size:14px;line-height:1.8}.tu-ecosystem .tc-eco-visual.tc-eco-svg-visual .tu-chain-panel{padding:14px 8px!important}.tu-ecosystem .tc-eco-diagram{width:100%}}
 @media(prefers-reduced-motion:reduce){.tu-ecosystem .tu-chain-tabs button.is-active em{animation:none!important}}
+
+/* Node-only hover feedback: anchored exactly to the original 1144 x 580 SVG coordinates. */
+.tu-ecosystem .tc-eco-node-graphic{position:relative;width:94%;max-width:1040px;margin:0 auto}
+.tu-ecosystem .tc-eco-node-graphic>.tc-eco-svg{width:100%!important;max-width:none!important}
+.tu-ecosystem .tc-eco-node-hover{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.tu-ecosystem .tc-eco-node-hotspot{pointer-events:all;fill:rgba(158,219,229,0);stroke:rgba(158,219,229,0);stroke-width:1.7;transform-box:fill-box;transform-origin:center;transition:fill .3s ease,stroke .3s ease,filter .3s ease,transform .4s cubic-bezier(.22,1,.36,1)}
+.tu-ecosystem .tc-eco-node-hotspot:hover,.tu-ecosystem .tc-eco-node-hotspot:focus-visible{fill:rgba(158,219,229,.065);stroke:rgba(158,219,229,.75);filter:drop-shadow(0 0 8px rgba(158,219,229,.48));transform:scale(1.045);outline:none}
+@media(max-width:767px){.tu-ecosystem .tc-eco-node-graphic{width:100%}}
+@media(prefers-reduced-motion:reduce){.tu-ecosystem .tc-eco-node-hotspot{transition:none!important}}
 </style>
 </head>
 <body>
@@ -1994,6 +2003,41 @@ html{scroll-padding-top:100px}
       detail.querySelector('.tc-eco-detail__description').textContent=data.description;
     }
     updateDetail('0');
+    // Per-circle hover, without moving dots, looping lights, or link actions.
+    const ns='http://www.w3.org/2000/svg';
+    const nodePositions=[
+      {x:113.129,y:204.5,r:82,label:'Household Waste'},
+      {x:113.129,y:430.5,r:82,label:'Industrial Waste'},
+      {x:290.151,y:317.67,r:71.1,label:'Terracle'},
+      {x:543.129,y:317.5,r:70,label:'Chemical Materials Company'},
+      {x:819.129,y:317.5,r:70,label:'End User'}
+    ];
+    panels.forEach(panel=>{
+      const img=panel.querySelector('img.tc-eco-svg');
+      if(!img)return;
+      const wrap=document.createElement('div');
+      wrap.className='tc-eco-node-graphic';
+      img.parentNode.insertBefore(wrap,img);
+      wrap.appendChild(img);
+      const overlay=document.createElementNS(ns,'svg');
+      overlay.setAttribute('class','tc-eco-node-hover');
+      overlay.setAttribute('viewBox','0 0 1144 580');
+      overlay.setAttribute('aria-label','자원순환 도식의 주요 단계');
+      nodePositions.forEach(node=>{
+        const circle=document.createElementNS(ns,'circle');
+        circle.setAttribute('class','tc-eco-node-hotspot');
+        circle.setAttribute('cx',node.x);
+        circle.setAttribute('cy',node.y);
+        circle.setAttribute('r',node.r);
+        circle.setAttribute('tabindex','0');
+        circle.setAttribute('aria-label',node.label);
+        const title=document.createElementNS(ns,'title');
+        title.textContent=node.label;
+        circle.appendChild(title);
+        overlay.appendChild(circle);
+      });
+      wrap.appendChild(overlay);
+    });
     // Keep the supplied SVG arrows unchanged. Do not place artificial points on the diagram.
     let current='0';
     function activate(value){
