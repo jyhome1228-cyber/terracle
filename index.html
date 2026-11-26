@@ -2154,6 +2154,45 @@ html[lang="en"] #terracleRecruitFinal .trf-hero-message p{font-size:19px!importa
 html[lang="zh-CN"] #terracleRecruitFinal .trf-hero-message p{font-size:20px!important}
 }
 </style>
+<style id="terracle-responsive-qa-20261126">
+/* Mobile QA: preserve existing Terracle editorial design and keep all page widths contained. */
+html{overflow-x:clip}
+body,#app{max-width:100%;min-width:0}
+#app section,#app article,#app figure,#app .tc-product-inner,#app .tc-service-inner{min-width:0}
+#app img,#app video,#app svg{max-width:100%}
+#app img{height:auto}
+#app iframe{max-width:100%}
+#app :is(h1,h2,h3,p,figcaption){overflow-wrap:break-word}
+#app :is(.tc-black-spec-scroll,.tc-product-spec-scroll,[class*="table-scroll"]){max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.header .lang-switcher{flex-shrink:0}
+@media(max-width:800px){
+ .header{z-index:1000}
+ .header__inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-inline:clamp(16px,4vw,24px)}
+ .header__end{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
+ .brand,.brand__full-logo{width:clamp(104px,31vw,122px);max-width:100%}
+ #main-nav{position:absolute;top:100%;left:0;right:0;width:100%;max-height:calc(100dvh - 50px);overflow-y:auto;overscroll-behavior:contain;padding:24px clamp(20px,5vw,32px) 38px;background:#050505;border-top:1px solid rgba(255,255,255,.16);z-index:999}
+ #main-nav.is-open{display:flex;flex-direction:column;align-items:stretch;gap:0}
+ #main-nav>a,#main-nav>.nav-product,#main-nav>.nav-contact{width:100%;min-width:0;border-bottom:1px solid rgba(255,255,255,.11)}
+ #main-nav>a,#main-nav>.nav-product>a,#main-nav>.nav-contact>a{display:flex;align-items:center;min-height:52px;padding:12px 0;font-size:18px;white-space:normal;overflow-wrap:break-word}
+ #main-nav .nav-product__submenu,#main-nav .nav-contact__submenu{position:static;transform:none;box-shadow:none;width:100%;max-width:100%;min-width:0;padding:0 0 12px 12px;margin:0;border:0;background:transparent;opacity:1;visibility:visible;display:flex;flex-direction:column;gap:0;pointer-events:auto}
+ #main-nav .nav-product__submenu a,#main-nav .nav-contact__submenu a{display:block;min-height:42px;padding:10px 0;font-size:14px;white-space:normal;color:#bfc7c7}
+ .menu-toggle{flex:0 0 40px;min-width:40px;min-height:44px;display:block}
+ .lang-trigger{min-height:44px}
+ .lang-menu{max-width:calc(100vw - 24px);z-index:1100}
+ body.tc-mobile-menu-open{overflow:hidden}
+ #app .terracle-hero-video-section{min-height:0;height:100svh}
+ #app .terracle-hero-v3{min-height:0}
+ #app .tc-black-spec-scroll .tc-black-spec{min-width:560px}
+}
+@media(max-width:480px){
+ #app :is(.tc-service-inner,.tc-product-inner,.terracle-inner,.terracle-home-news__inner){max-width:100%;padding-inline:18px}
+ #app :is(.terracle-title,.tc-unified-hero h1,.tc-black-heading h1){overflow-wrap:break-word}
+ #app .tc-black-charts,#app .tc-black-research__imaging{max-width:100%}
+ #app .tc-black-spec-scroll .tc-black-spec{min-width:540px}
+ .header__end{gap:5px}
+}
+@media(prefers-reduced-motion:reduce){#app *,#app *::before,#app *::after{scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
@@ -2197,7 +2236,11 @@ html[lang="zh-CN"] #terracleRecruitFinal .trf-hero-message p{font-size:20px!impo
 <script>
 (function(){
   const nav=document.getElementById('main-nav'),button=document.querySelector('.menu-toggle');
-  button.addEventListener('click',()=>{const open=nav.classList.toggle('is-open');button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기')});
+  const closeMobileNav=()=>{nav.classList.remove('is-open');document.body.classList.remove('tc-mobile-menu-open');button.setAttribute('aria-expanded','false');button.setAttribute('aria-label','메뉴 열기')};
+  button.addEventListener('click',()=>{const open=nav.classList.toggle('is-open');document.body.classList.toggle('tc-mobile-menu-open',open);button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'메뉴 닫기':'메뉴 열기');if(open)nav.querySelector('a')?.focus({preventScroll:true})});
+  nav.addEventListener('click',event=>{if(event.target.closest('a')&&window.matchMedia('(max-width:800px)').matches)closeMobileNav()});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classList.contains('is-open')){closeMobileNav();button.focus()}});
+  window.addEventListener('resize',()=>{if(window.innerWidth>800&&nav.classList.contains('is-open'))closeMobileNav()});
   const legacyYear=document.getElementById('year');if(legacyYear)legacyYear.textContent=new Date().getFullYear();
   const page=new URLSearchParams(location.search).get('page');
   const info={
