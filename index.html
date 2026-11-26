@@ -2098,6 +2098,67 @@ html{scroll-padding-top:100px}
 .tc-service-page .tc-service-cert__marks{grid-template-columns:1fr 1fr}
 .tc-service-page .tc-service-cert__mark strong{font-size:22px}
 }
+
+/* Phase 6 — 2026-11-26: precise Service typography, media and responsive flow. */
+.tc-service-page{--service-copy:#b9c5c6;--service-rule:rgba(255,255,255,.13);--service-gutter:var(--tc-content-gutter,clamp(20px,4.2vw,64px))}
+.tc-service-page .tc-service-inner{width:100%!important;max-width:var(--tc-content-max,1440px)!important;padding-inline:var(--service-gutter)!important;box-sizing:border-box;min-width:0}
+.tc-service-page .tc-service-section{padding-block:clamp(78px,7.2vw,112px)!important;border-bottom-color:var(--service-rule)}
+.tc-service-page .tc-service-section h2{font-size:clamp(28px,2.65vw,38px);font-weight:590;letter-spacing:-.04em;line-height:1.3;margin-bottom:26px;text-wrap:pretty}
+.tc-service-page .tc-service-copy p,.tc-service-page .tc-service-cert__content>p{max-width:770px;color:var(--service-copy);font-size:clamp(14px,1.05vw,16px);line-height:1.85;letter-spacing:-.012em;overflow-wrap:break-word}
+.tc-service-page .tc-service-test .tc-service-split{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(34px,5vw,82px);align-items:start}
+.tc-service-page .tc-service-split>*{min-width:0}
+.tc-service-page .tc-service-process{padding:clamp(22px,2.45vw,34px);border-color:var(--service-rule);min-width:0}
+.tc-service-page .tc-service-process__head{font-size:11px;line-height:1.5;color:#9edbe5;font-weight:600}
+.tc-service-page .tc-service-process__steps{gap:0 clamp(14px,2vw,25px)}
+.tc-service-page .tc-service-process__steps>div{min-width:0}
+.tc-service-page .tc-service-process__steps strong{font-size:clamp(14px,1.08vw,16px);font-weight:580;line-height:1.45;overflow-wrap:break-word}
+.tc-service-page .tc-service-process__steps p{font-size:13px;line-height:1.75;color:#aab9ba}
+.tc-service-page .tc-service-process__cta{display:inline-flex;align-items:center;justify-content:center;min-height:46px;line-height:1.5;text-align:center;white-space:normal}
+.tc-service-page .tc-service-events .tc-service-copy{grid-template-columns:minmax(200px,.58fr) minmax(0,1fr);gap:0 clamp(35px,5.5vw,94px)}
+.tc-service-page .tc-service-events__gallery{gap:clamp(15px,2vw,26px);margin-top:38px}
+.tc-service-page .tc-service-events__gallery img{width:100%;height:auto;aspect-ratio:1.62;object-fit:cover}
+.tc-service-page .tc-service-events__gallery figcaption{font-size:12px;line-height:1.65;color:#a5b2b4;overflow-wrap:break-word}
+.tc-service-page .tc-service-cert .tc-service-cert__grid{grid-template-columns:minmax(200px,.58fr) minmax(0,1fr);gap:0 clamp(35px,5.5vw,94px)}
+.tc-service-page .tc-service-cert__content{min-width:0}
+.tc-service-page .tc-service-cert__marks{gap:clamp(15px,2vw,25px);border-top-color:var(--service-rule)}
+.tc-service-page .tc-service-cert__mark{min-width:0;padding-block:24px}
+.tc-service-page .tc-service-cert__mark strong{font-size:clamp(22px,2vw,27px);font-weight:610;letter-spacing:-.035em;overflow-wrap:break-word}
+.tc-service-page .tc-service-cert__mark small{font-size:12px;line-height:1.6;color:#acbabc;overflow-wrap:break-word}
+.tc-service-page .tc-service-cta{padding:clamp(72px,7vw,98px) var(--service-gutter)}
+.tc-service-page .tc-service-cta__inner{max-width:820px}
+.tc-service-page .tc-service-cta h2{font-size:clamp(27px,2.7vw,37px);font-weight:590;line-height:1.33;letter-spacing:-.035em}
+.tc-service-page .tc-service-cta p{font-size:clamp(14px,1vw,16px);line-height:1.82;color:#bbc5c6}
+.tc-service-page .tc-service-cta a{min-height:46px;font-weight:590;line-height:1.5}
+.tc-service-page :is(a,button):focus-visible{outline:2px solid #9edbe5;outline-offset:3px}
+@media(max-width:960px){
+ .tc-service-page .tc-service-test .tc-service-split{grid-template-columns:minmax(0,1fr);gap:30px}
+ .tc-service-page .tc-service-events .tc-service-copy,.tc-service-page .tc-service-cert .tc-service-cert__grid{grid-template-columns:minmax(0,1fr);gap:14px}
+ .tc-service-page .tc-service-events .tc-service-copy h2,.tc-service-page .tc-service-events .tc-service-copy p{grid-column:1;grid-row:auto}
+}
+@media(max-width:767px){
+ .tc-service-page{--service-gutter:20px}
+ .tc-service-page .tc-service-inner{padding-inline:20px!important}
+ .tc-service-page .tc-service-section{padding-block:clamp(62px,9vw,78px)!important}
+ .tc-service-page .tc-service-section h2{font-size:clamp(26px,6.5vw,32px);line-height:1.34;margin-bottom:21px}
+ .tc-service-page .tc-service-copy p,.tc-service-page .tc-service-cert__content>p{font-size:14px;line-height:1.83}
+ .tc-service-page .tc-service-process{padding:20px}
+ .tc-service-page .tc-service-process__steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 16px}
+ .tc-service-page .tc-service-events__gallery{grid-template-columns:minmax(0,1fr);gap:27px}
+ .tc-service-page .tc-service-events__gallery img{aspect-ratio:1.6}
+ .tc-service-page .tc-service-cert__marks{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ .tc-service-page .tc-service-cta{padding:72px 20px}
+}
+@media(max-width:420px){
+ .tc-service-page{--service-gutter:18px}
+ .tc-service-page .tc-service-inner{padding-inline:18px!important}
+ .tc-service-page .tc-service-process__steps{grid-template-columns:minmax(0,1fr)}
+ .tc-service-page .tc-service-cert__marks{grid-template-columns:minmax(0,1fr)}
+ .tc-service-page .tc-service-cert__mark{flex-direction:row;align-items:center;gap:15px}
+ .tc-service-page .tc-service-cta{padding-inline:18px}
+}
+html[lang="en"] .tc-service-page :is(h1,h2,h3,p,figcaption),
+html[lang="zh-CN"] .tc-service-page :is(h1,h2,h3,p,figcaption){overflow-wrap:break-word;word-break:normal}
+@media(prefers-reduced-motion:reduce){.tc-service-page *, .tc-service-page *::before,.tc-service-page *::after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
 </style>
 <style id="tc-service-media-update-20261119">
 .tc-service-page .tc-service-test .tc-service-split{align-items:center!important}
