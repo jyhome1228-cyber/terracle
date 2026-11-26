@@ -2662,6 +2662,220 @@ html[lang="zh-CN"] .tc-tech-page :is(h1,h2,h3,p){
  .tc-tech-page #teracleDepolySection .td-card img{transition:none!important;transform:none!important}
 }
 </style>
+<style id="tc-product-design-qa-20261126">
+/* Phase 5 · Product editorial refinement. Preserve source images, specifications and scientific data. */
+.tc-product-detail,.tc-black-page{
+  --product-line:rgba(255,255,255,.14);
+  --product-copy:#bcc6c8;
+  --product-gutter:var(--tc-content-gutter,clamp(20px,4.2vw,64px));
+  --product-max:var(--tc-content-max,1440px);
+}
+.tc-product-detail .tc-product-inner,.tc-black-page .tc-product-inner{
+  width:100%;max-width:var(--product-max)!important;
+  padding-inline:var(--product-gutter);margin-inline:auto;
+  box-sizing:border-box;min-width:0;
+}
+.tc-product-detail .tc-product-hero{
+  min-height:clamp(260px,26vw,340px);
+  padding:64px var(--product-gutter);
+}
+.tc-product-detail .tc-product-hero h1{
+  font-size:clamp(32px,3vw,45px);font-weight:590;
+  line-height:1.23;letter-spacing:-.043em;margin-bottom:14px;
+}
+.tc-product-detail .tc-product-hero p:not(.tc-product-kicker){
+  max-width:680px;margin-inline:auto;font-size:clamp(14px,1.05vw,16px);
+  line-height:1.78;color:var(--product-copy);
+}
+.tc-product-detail .tc-product-kicker,.tc-black-page .tc-product-kicker{
+  font-size:11px;font-weight:650;letter-spacing:.11em;line-height:1.5;
+}
+.tc-product-detail .tc-product-tabs a{
+  min-height:48px;line-height:1.4;overflow-wrap:break-word;
+}
+.tc-product-detail .tc-product-information{padding-block:clamp(68px,6.6vw,108px)}
+.tc-product-detail .tc-product-information h2,.tc-black-page .tc-black-heading h2{
+  font-size:clamp(27px,2.6vw,39px);
+  line-height:1.3;letter-spacing:-.04em;font-weight:590;
+}
+.tc-product-detail .tc-product-item{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(28px,5.2vw,82px);padding-block:clamp(42px,5vw,76px);
+  border-color:var(--product-line);
+}
+.tc-product-detail .tc-product-structure{min-width:0;gap:18px}
+.tc-product-detail .tc-product-structure img{
+  max-width:88%;max-height:300px;object-fit:contain;
+}
+.tc-product-detail .tc-product-structure>span{
+  font-size:11px;font-weight:590;letter-spacing:.11em;line-height:1.5;
+}
+.tc-product-detail .tc-product-details{min-width:0}
+.tc-product-detail .tc-product-details h3{
+  font-size:clamp(24px,2vw,31px);
+  font-weight:590;line-height:1.32;
+  letter-spacing:-.035em;margin-bottom:23px;
+}
+.tc-product-detail .tc-product-spec-scroll{
+  width:100%;max-width:100%;overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.tc-product-detail .tc-product-spec{
+  width:100%;border-color:var(--product-line);
+}
+.tc-product-detail .tc-product-spec th,
+.tc-product-detail .tc-product-spec td{
+  font-size:clamp(13px,1.02vw,15px);
+  line-height:1.67;vertical-align:top;
+  padding:15px 8px 15px 0;overflow-wrap:break-word;
+}
+.tc-product-detail .tc-product-spec th{
+  width:37%;font-weight:570;color:#eef3f3;
+}
+.tc-product-detail .tc-product-spec td{color:var(--product-copy)}
+.tc-product-detail .tc-product-actions{gap:11px;margin-top:25px}
+.tc-product-detail .tc-product-actions a,
+.tc-product-detail .tc-product-contact-link,
+.tc-product-detail .tc-product-msds{
+  min-height:46px;font-weight:590;
+  font-size:13px;line-height:1.4;
+  text-align:center;
+}
+.tc-black-page .tc-black-section{
+  padding-block:clamp(75px,7vw,112px);
+}
+.tc-black-page .tc-black-heading{margin-bottom:clamp(28px,3.4vw,44px)}
+.tc-black-page .tc-black-layout{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(32px,5vw,82px);
+}
+.tc-black-page .tc-black-powder{max-width:100%;aspect-ratio:1.2}
+.tc-black-page .tc-black-powder img{
+  width:100%;height:100%;object-fit:cover;
+}
+.tc-black-page .tc-black-copy{min-width:0}
+.tc-black-page .tc-black-copy>p{
+  font-size:clamp(14px,1.07vw,16px);
+  line-height:1.86;letter-spacing:-.012em;
+  color:var(--product-copy);
+}
+.tc-black-page .tc-black-types{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(10px,1.5vw,20px);
+  margin-top:34px;
+}
+.tc-black-page .tc-black-types figure{min-width:0}
+.tc-black-page .tc-black-types img{
+  max-width:100%;object-fit:contain;
+}
+.tc-black-page .tc-black-research{padding-block:clamp(68px,6.6vw,108px)}
+.tc-black-page .tc-black-research__heading{
+  margin-bottom:clamp(28px,3.4vw,44px);
+}
+.tc-black-page .tc-black-research__heading h2{
+  font-size:clamp(27px,2.6vw,39px);
+  font-weight:590;line-height:1.3;
+  letter-spacing:-.04em;
+}
+.tc-black-page .tc-black-research__grid{
+  grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr);
+  gap:clamp(25px,3.7vw,58px);
+}
+.tc-black-page .tc-black-research__main,
+.tc-black-page .tc-black-research__imaging{min-width:0}
+.tc-black-page .tc-black-research__main h3{
+  font-size:clamp(17px,1.35vw,20px);
+  line-height:1.5;font-weight:590;
+}
+.tc-black-page .tc-black-spec-scroll{
+  width:100%;max-width:100%;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+}
+.tc-black-page .tc-black-spec{
+  width:100%;border-collapse:collapse;
+}
+.tc-black-page .tc-black-spec th,
+.tc-black-page .tc-black-spec td{
+  font-size:13px;line-height:1.6;
+  padding:13px 11px;overflow-wrap:break-word;
+}
+.tc-black-page .tc-black-charts{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(12px,1.5vw,20px);
+}
+.tc-black-page .tc-black-charts figure,
+.tc-black-page .tc-black-research__imaging figure{min-width:0}
+.tc-black-page .tc-black-charts img,
+.tc-black-page .tc-black-research__imaging img{
+  display:block;width:100%;height:auto;object-fit:contain;
+}
+.tc-black-page .tc-black-charts figcaption strong{
+  font-size:clamp(15px,1.35vw,19px);font-weight:580;line-height:1.4;
+}
+.tc-black-page .tc-black-charts figcaption span{
+  font-size:12px;line-height:1.6;
+}
+.tc-black-page .tc-black-research__imaging{
+  grid-template-columns:minmax(0,1fr);gap:18px;
+}
+.tc-black-page .tc-black-research__imaging figcaption{
+  font-size:clamp(12px,1vw,15px);font-weight:600;
+  line-height:1.5;padding:9px 12px;
+}
+@media(max-width:1050px){
+ .tc-black-page .tc-black-research__grid{grid-template-columns:minmax(0,1fr);gap:32px}
+ .tc-black-page .tc-black-research__imaging{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:850px){
+ .tc-product-detail .tc-product-item{grid-template-columns:minmax(0,1fr);gap:24px}
+ .tc-product-detail .tc-product-structure{min-height:0}
+ .tc-product-detail .tc-product-structure img{max-width:85%;max-height:270px}
+ .tc-black-page .tc-black-layout{grid-template-columns:minmax(0,1fr);gap:30px}
+}
+@media(max-width:767px){
+ .tc-product-detail,.tc-black-page{--product-gutter:20px}
+ .tc-product-detail .tc-product-hero{min-height:245px;padding:54px 20px}
+ .tc-product-detail .tc-product-hero h1{font-size:clamp(29px,7vw,36px)}
+ .tc-product-detail .tc-product-information{padding-block:64px}
+ .tc-product-detail .tc-product-information h2,
+ .tc-black-page .tc-black-heading h2,
+ .tc-black-page .tc-black-research__heading h2{
+   font-size:clamp(26px,6.5vw,32px);line-height:1.34;
+ }
+ .tc-product-detail .tc-product-item{padding-block:44px}
+ .tc-product-detail .tc-product-details h3{font-size:clamp(23px,5.5vw,27px)}
+ .tc-product-detail .tc-product-spec th,
+ .tc-product-detail .tc-product-spec td{font-size:13px;line-height:1.65}
+ .tc-product-detail .tc-product-actions{align-items:stretch}
+ .tc-product-detail .tc-product-actions a{min-height:46px}
+ .tc-black-page .tc-black-section,
+ .tc-black-page .tc-black-research{padding-block:66px}
+ .tc-black-page .tc-black-copy>p{font-size:14px;line-height:1.83}
+ .tc-black-page .tc-black-spec{min-width:590px}
+ .tc-black-page .tc-black-spec th,
+ .tc-black-page .tc-black-spec td{font-size:12px}
+ .tc-black-page .tc-black-charts{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+}
+@media(max-width:480px){
+ .tc-product-detail,.tc-black-page{--product-gutter:18px}
+ .tc-product-detail .tc-product-hero{padding-inline:18px}
+ .tc-product-detail .tc-product-spec th{width:40%}
+ .tc-product-detail .tc-product-spec th,
+ .tc-product-detail .tc-product-spec td{font-size:12px;padding-block:13px}
+ .tc-black-page .tc-black-charts,
+ .tc-black-page .tc-black-research__imaging{grid-template-columns:minmax(0,1fr)}
+ .tc-black-page .tc-black-spec{min-width:540px}
+ .tc-black-page .tc-black-types{gap:9px}
+}
+html[lang="en"] :is(.tc-product-detail,.tc-black-page) :is(h1,h2,h3,p,th,td),
+html[lang="zh-CN"] :is(.tc-product-detail,.tc-black-page) :is(h1,h2,h3,p,th,td){
+  overflow-wrap:break-word;word-break:normal;
+}
+@media(prefers-reduced-motion:reduce){
+ .tc-black-page .tc-black-powder img{transition:none!important;transform:none!important}
+}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
