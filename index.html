@@ -2259,6 +2259,90 @@ body,#app{max-width:100%;min-width:0}
   #app *,#app *::before,#app *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 </style>
+<style id="terracle-home-editorial-v2-20261126">
+/* Phase 2 — Terracle home: one editorial rhythm across the original dark visual language. */
+#app .terracle-hero-v3 .terracle-inner,
+#app .tu-main .tu-inner,
+#app .terracle-home-news__inner{
+  width:100%;max-width:var(--tc-content-max,1440px);margin-inline:auto;
+  padding-inline:var(--tc-content-gutter,clamp(20px,4.2vw,64px));box-sizing:border-box;
+}
+#app .terracle-hero-v3 .terracle-copy{min-width:0}
+#app .terracle-hero-v3 .terracle-title{line-height:1.16;letter-spacing:-.045em;text-wrap:balance}
+#app .terracle-hero-v3 .terracle-sub{line-height:1.6;letter-spacing:-.01em}
+#app .tu-main .tu-section{
+  padding-block:var(--tc-space-section,clamp(76px,7.5vw,116px));
+  border-bottom-color:var(--tc-rule,rgba(255,255,255,.13));
+}
+#app .tu-main .tu-split{grid-template-columns:minmax(0,.93fr) minmax(0,1.07fr);gap:clamp(38px,5.5vw,88px)}
+#app .tu-main .tu-copy,#app .tu-main .td-wrap,#app .tu-main .tu-mono-panel>div{min-width:0}
+#app .tu-main .tu-kicker{font-size:var(--tc-type-label,12px);font-weight:650;letter-spacing:.11em;line-height:1.5;margin-bottom:18px}
+#app .tu-main .tu-title{
+  font-size:clamp(29px,2.9vw,43px);line-height:1.26;font-weight:600;
+  letter-spacing:-.042em;margin-bottom:24px;text-wrap:pretty;
+}
+#app .tu-main .tu-body{
+  max-width:670px;font-size:var(--tc-type-body,16px);
+  line-height:1.87;letter-spacing:-.012em;color:var(--tc-copy,#bbc4c5);margin-bottom:18px;
+}
+#app .tu-main .tu-lead{font-size:clamp(16px,1.35vw,19px);line-height:1.64}
+#app .tu-main :is(.tu-waste-visual,.tu-mono-panel>img){min-width:0}
+#app .tu-main .tu-waste-visual img{max-height:580px;object-fit:contain}
+#app .tu-main .tu-tags{gap:8px;margin-top:26px}
+#app .tu-main .tu-tags span,#app .tu-main .tu-app-labels span{line-height:1.5;letter-spacing:0}
+#app .tu-main .tu-btn{min-height:46px;padding:13px 22px;font-size:13px;font-weight:600;margin-top:26px}
+#app .tu-main .tu-molecule-grid{gap:clamp(12px,1.5vw,22px)}
+#app .tu-main .tu-molecule-grid figure{min-width:0}
+#app .tu-main .tu-molecule-grid figcaption{line-height:1.45}
+#app .tu-main .tu-mono-panel{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,72px)}
+#app .tu-main .tu-mono-panel h3{font-size:clamp(25px,2.65vw,39px);font-weight:590;line-height:1.25}
+#app .tu-main .tu-tabs button,#app .tu-main .tu-chain-tabs button{
+  min-height:44px;padding:11px 18px;line-height:1.35;white-space:normal;
+}
+#app .tu-main .tu-tabs button:focus-visible,#app .tu-main .tu-chain-tabs button:focus-visible{
+  outline:2px solid #9edbe5;outline-offset:3px;
+}
+#app .terracle-home-news{
+  padding-block:var(--tc-space-section,clamp(76px,7.5vw,116px));
+}
+#app .terracle-home-news__header{gap:clamp(24px,4vw,58px);margin-bottom:34px}
+#app .terracle-home-news__header h2{font-size:clamp(29px,2.9vw,43px);line-height:1.26;font-weight:600;letter-spacing:-.04em}
+#app .terracle-home-news__description{color:var(--tc-copy,#bbc4c5);font-size:15px;line-height:1.75}
+#app .terracle-home-news__grid{gap:clamp(16px,1.7vw,24px)}
+#app .terracle-home-news__image{aspect-ratio:1.48}
+#app .terracle-home-news__content{padding-top:17px}
+#app .terracle-home-news__meta{line-height:1.5;padding-bottom:12px}
+#app .terracle-home-news__content h3{line-height:1.47;font-weight:570;letter-spacing:-.025em}
+@media(max-width:1000px){
+  #app .tu-main .tu-split{grid-template-columns:minmax(0,1fr);gap:34px}
+  #app .tu-main .tu-mono-panel{grid-template-columns:minmax(0,1fr);gap:30px}
+  #app .terracle-home-news__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:767px){
+  #app .terracle-hero-v3 .terracle-inner,
+  #app .tu-main .tu-inner,
+  #app .terracle-home-news__inner{padding-inline:var(--tc-content-gutter,20px)}
+  #app .tu-main .tu-section{padding-block:clamp(60px,9vw,78px)}
+  #app .tu-main .tu-title{font-size:clamp(27px,6.5vw,33px);line-height:1.31;font-weight:600;margin-bottom:18px}
+  #app .tu-main .tu-body{font-size:14px;line-height:1.85;max-width:100%}
+  #app .tu-main .tu-kicker{font-size:11px;margin-bottom:14px}
+  #app .tu-main .tu-molecule-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  #app .tu-main .tu-molecule-grid figure{padding:12px}
+  #app .tu-main .tu-molecule-grid figcaption{font-size:12px}
+  #app .tu-main .tu-shred-copy{margin-top:48px}
+  #app .tu-main .tu-tabs,#app .tu-main .tu-chain-tabs{gap:8px;margin-block:26px}
+  #app .tu-main .tu-tabs button,#app .tu-main .tu-chain-tabs button{padding:10px 14px}
+  #app .terracle-home-news{padding-block:clamp(64px,9vw,82px)}
+  #app .terracle-home-news__header{display:block}
+  #app .terracle-home-news__header h2{font-size:clamp(27px,6.5vw,33px)}
+  #app .terracle-home-news__description{text-align:left;max-width:100%;margin-top:16px;font-size:14px}
+}
+@media(max-width:540px){
+  #app .terracle-home-news__grid{grid-template-columns:minmax(0,1fr);gap:32px}
+  #app .terracle-home-news__image{aspect-ratio:1.52}
+  #app .tu-main .tu-molecule-grid figure{padding:10px 6px}
+}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
