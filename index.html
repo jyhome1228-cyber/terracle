@@ -3111,7 +3111,7 @@ html[lang="zh-CN"] .tc-native-news :is(h1,h2,h3,p){word-break:normal;overflow-wr
     const main=document.getElementById('app');
     const id=Number(new URLSearchParams(location.search).get('article'));
     document.querySelectorAll('[data-page]').forEach(a=>{if(a.dataset.page==='news')a.setAttribute('aria-current','page')});
-    main.innerHTML='<div class="tc-native-news"><div class="tn-inner tn-status">뉴스를 불러오고 있습니다.</div></div>';
+    /* Loading copy is rendered after the active news locale has been selected. */
     const htmlEscape=value=>String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     const newsLocale=new URLSearchParams(location.search).get('lang')||'ko';
     const newsLabels={
@@ -3121,6 +3121,7 @@ html[lang="zh-CN"] .tc-native-news :is(h1,h2,h3,p){word-break:normal;overflow-wr
     }[newsLocale]||{back:'← Back to News',previous:'Previous article',next:'Next article',navigation:'More news',loading:'Loading news…',error:'Unable to load news.',list:'Back to News'};
     const detailUrl=index=>'?page=news&article='+index+(newsLocale==='ko'?'':'&lang='+encodeURIComponent(newsLocale));
     const newsListUrl='?page=news'+(newsLocale==='ko'?'':'&lang='+encodeURIComponent(newsLocale));
+    main.innerHTML='<div class="tc-native-news"><div class="tn-inner tn-status">'+newsLabels.loading+'</div></div>';
     fetch((['en','zh'].includes(new URLSearchParams(location.search).get('lang'))?'./i18n/news-'+new URLSearchParams(location.search).get('lang')+'.json':'./news-data.json'),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('News data '+r.status);return r.json()}).then(news=>{
       if(!Array.isArray(news)||!news.length)throw new Error('Empty news');
       if(!Number.isInteger(id)||id<1||id>news.length){
