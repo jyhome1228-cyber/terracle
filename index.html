@@ -2343,6 +2343,141 @@ body,#app{max-width:100%;min-width:0}
   #app .tu-main .tu-molecule-grid figure{padding:10px 6px}
 }
 </style>
+<style id="tc-about-design-qa-20261126">
+/* Phase 3 About us. Editorial hierarchy, responsive ordering and consistent gutters.
+   Content, photographic assets, and existing brand details remain unchanged. */
+.tc-about{
+  --tc-about-section-space:clamp(82px,8vw,118px);
+  --tc-about-heading:clamp(29px,2.6vw,37px);
+  --tc-about-text:#b9c5c5;
+  --tc-about-gutter:var(--tc-content-gutter,clamp(20px,4.2vw,64px));
+}
+.tc-about .tc-about-inner{
+  box-sizing:border-box;
+  width:100%!important;
+  max-width:var(--tc-content-max,1440px)!important;
+  margin-inline:auto!important;
+  padding-inline:var(--tc-about-gutter)!important;
+  min-width:0;
+}
+.tc-about :is(.tc-about-business,.tc-about-why,.tc-about-vision,.tc-about-ceo){
+  padding-block:var(--tc-about-section-space)!important;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.tc-about :is(.tc-about-business,.tc-about-why,.tc-about-vision,.tc-about-ceo) h2{
+  font-size:var(--tc-about-heading)!important;
+  line-height:1.29!important;
+  font-weight:590!important;
+  letter-spacing:-.04em!important;
+  text-wrap:pretty;
+}
+.tc-about .tc-about-business>.tc-about-inner{
+  grid-template-columns:minmax(210px,.35fr) minmax(0,1fr);
+  gap:clamp(34px,5vw,86px);
+  align-items:start;
+}
+.tc-about .tc-about-business h2{margin:0!important}
+.tc-about .tc-about-two-col{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(24px,3.2vw,54px);
+}
+.tc-about :is(.tc-about-two-col p,.tc-about-feature__body p,.tc-about-vision__prose p,.tc-about-ceo__grid p){
+  font-size:15px!important;
+  line-height:1.9!important;
+  letter-spacing:-.012em!important;
+  color:var(--tc-about-text);
+  overflow-wrap:break-word;
+}
+.tc-about .tc-about-two-col p:last-child{margin-bottom:0}
+.tc-about .tc-about-why h2{margin:0 0 clamp(35px,4.3vw,55px)!important}
+.tc-about .tc-about-feature-list{gap:clamp(65px,7vw,94px)}
+.tc-about .tc-about-feature{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(40px,5.2vw,80px);
+  align-items:center;
+  padding-bottom:clamp(60px,6vw,86px);
+}
+.tc-about .tc-about-feature__number{
+  font-size:11px;line-height:1.55;letter-spacing:.12em;
+  margin-bottom:18px;
+}
+.tc-about .tc-about-feature__title{
+  font-size:clamp(23px,2.05vw,29px)!important;
+  font-weight:570!important;line-height:1.36!important;
+  letter-spacing:-.035em!important;margin-bottom:24px!important;
+  text-wrap:pretty;
+}
+.tc-about .tc-about-feature__body{max-width:610px}
+.tc-about .tc-about-feature__body p{margin:0 0 18px!important}
+.tc-about .tc-about-feature__visual:not(.tc-about-feature__visual--symbol){
+  aspect-ratio:1.22;
+  border-color:rgba(255,255,255,.12);
+}
+.tc-about .tc-about-feature__visual img{display:block;max-width:100%}
+.tc-about .tc-about-vision__copy,
+.tc-about .tc-about-ceo>.tc-about-inner{
+  grid-template-columns:minmax(220px,.82fr) minmax(0,1.18fr);
+  column-gap:clamp(42px,5vw,88px)!important;
+}
+.tc-about .tc-about-vision h3{
+  font-size:clamp(20px,1.55vw,24px)!important;
+  font-weight:500!important;
+  line-height:1.61!important;
+  letter-spacing:-.025em!important;
+  max-width:510px!important;
+}
+.tc-about .tc-about-vision__prose{min-width:0;max-width:730px}
+.tc-about .tc-about-vision__prose p{margin:0 0 22px!important}
+.tc-about .tc-about-ceo__intro{
+  font-size:clamp(18px,1.4vw,21px)!important;
+  font-weight:450!important;
+  line-height:1.7!important;
+}
+.tc-about .tc-about-ceo__grid{max-width:760px;min-width:0}
+.tc-about .tc-about-ceo__grid p{margin:0 0 22px!important}
+.tc-about .tc-about-ceo__mark{pointer-events:none}
+@media(max-width:1050px){
+  .tc-about .tc-about-feature{gap:32px}
+  .tc-about .tc-about-business>.tc-about-inner{grid-template-columns:minmax(180px,.32fr) minmax(0,1fr)}
+}
+@media(max-width:800px){
+  .tc-about{--tc-about-section-space:72px;--tc-about-heading:28px}
+  .tc-about .tc-about-business>.tc-about-inner{display:block}
+  .tc-about .tc-about-business h2{margin:0 0 30px!important}
+  .tc-about .tc-about-two-col{grid-template-columns:minmax(0,1fr);gap:0}
+  .tc-about .tc-about-feature{display:flex;flex-direction:column;align-items:stretch;gap:24px}
+  .tc-about .tc-about-feature:nth-child(even) .tc-about-feature__visual{order:initial}
+  .tc-about .tc-about-feature__copy{width:100%;min-width:0}
+  .tc-about .tc-about-feature__visual:not(.tc-about-feature__visual--symbol){width:100%;aspect-ratio:4/3}
+  .tc-about .tc-about-feature__title{font-size:clamp(21px,3vw,25px)!important;margin-bottom:19px!important}
+  .tc-about .tc-about-vision__copy,.tc-about .tc-about-ceo>.tc-about-inner{display:block!important}
+  .tc-about .tc-about-vision h2,.tc-about .tc-about-ceo h2{margin-bottom:24px!important}
+  .tc-about .tc-about-vision h3{max-width:100%!important;font-size:20px!important;margin-bottom:27px!important}
+  .tc-about .tc-about-vision__prose,.tc-about .tc-about-ceo__grid{max-width:100%}
+  .tc-about :is(.tc-about-two-col p,.tc-about-feature__body p,.tc-about-vision__prose p,.tc-about-ceo__grid p){
+    font-size:14px!important;line-height:1.85!important;
+  }
+  .tc-about .tc-about-ceo__intro{font-size:18px!important;max-width:100%!important;margin:0 0 26px!important}
+}
+@media(max-width:480px){
+  .tc-about{--tc-about-gutter:18px;--tc-about-section-space:66px;--tc-about-heading:26px}
+  .tc-about .tc-about-inner{padding-inline:18px!important}
+  .tc-about .tc-about-why h2{margin-bottom:30px!important}
+  .tc-about .tc-about-feature-list{gap:50px}
+  .tc-about .tc-about-feature{padding-bottom:46px;gap:22px}
+  .tc-about .tc-about-feature__number{margin-bottom:13px}
+  .tc-about .tc-about-feature__title{font-size:21px!important;line-height:1.42!important}
+  .tc-about .tc-about-vision h3{font-size:19px!important}
+  .tc-about .tc-about-ceo__mark{max-width:90px}
+}
+html[lang="en"] .tc-about :is(h1,h2,h3,p),
+html[lang="zh-CN"] .tc-about :is(h1,h2,h3,p){
+  overflow-wrap:break-word;word-break:normal;
+}
+@media(prefers-reduced-motion:reduce){
+  .tc-about .tc-about-feature__visual img{transition:none!important}
+}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
