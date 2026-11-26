@@ -2478,6 +2478,190 @@ html[lang="zh-CN"] .tc-about :is(h1,h2,h3,p){
   .tc-about .tc-about-feature__visual img{transition:none!important}
 }
 </style>
+<style id="tc-technology-design-qa-20261126">
+/* Phase 4 / Technology: same brand, clearer process hierarchy, responsive assets. */
+.tc-tech-page{
+ --tc-tech-content:var(--tc-content-max,1440px);
+ --tc-tech-gutter:var(--tc-content-gutter,clamp(20px,4.2vw,64px));
+ --tc-tech-rule:rgba(255,255,255,.13);
+ --tc-tech-body:#b9c5c6;
+}
+.tc-tech-page .tc-technology-hero{
+ min-height:clamp(260px,28vw,360px);
+ padding:70px var(--tc-tech-gutter);
+}
+.tc-tech-page .tc-technology-hero__copy{width:min(100%,920px);margin-inline:auto;min-width:0}
+.tc-tech-page .tc-technology-hero h1{
+ font-size:clamp(34px,3.15vw,47px);font-weight:590;
+ line-height:1.2;letter-spacing:-.04em;margin:0 0 12px;
+}
+.tc-tech-page .tc-technology-hero p:not(.tc-unified-kicker){
+ font-size:clamp(14px,1.15vw,17px);line-height:1.72;
+ color:var(--tc-tech-body);
+}
+.tc-tech-page :is(.tu-inner,.td-wrap){
+ width:100%;max-width:var(--tc-tech-content);
+ margin-inline:auto;min-width:0;box-sizing:border-box;
+}
+.tc-tech-page .tu-inner{padding-inline:var(--tc-tech-gutter)}
+.tc-tech-page #teracleDepolySection{
+ padding-block:clamp(78px,7vw,114px);
+ border-bottom:1px solid var(--tc-tech-rule);
+}
+.tc-tech-page #teracleDepolySection .td-copy{
+ grid-template-columns:minmax(0,1fr) minmax(0,.88fr);
+ gap:clamp(34px,5vw,88px);align-items:start;
+ margin-bottom:clamp(34px,4vw,58px);
+}
+.tc-tech-page #teracleDepolySection .td-copy-left,
+.tc-tech-page #teracleDepolySection .td-copy-right{min-width:0}
+.tc-tech-page #teracleDepolySection .td-copy-right{padding-top:clamp(35px,3.8vw,57px)}
+.tc-tech-page #teracleDepolySection .td-kicker{
+ font-size:clamp(16px,1.45vw,20px);font-weight:500;
+ letter-spacing:-.02em;line-height:1.5;margin-bottom:20px;
+}
+.tc-tech-page #teracleDepolySection .td-title{
+ font-size:clamp(28px,2.75vw,40px);
+ line-height:1.35;letter-spacing:-.042em;font-weight:600;
+ text-wrap:pretty;
+}
+.tc-tech-page #teracleDepolySection .td-body,
+.tc-tech-page .tu-terrax .tu-body{
+ font-size:clamp(14px,1.1vw,16px);line-height:1.86;
+ letter-spacing:-.012em;color:var(--tc-tech-body);
+ overflow-wrap:break-word;
+}
+.tc-tech-page #teracleDepolySection .td-detail-panel{
+ min-height:0;padding:24px clamp(20px,2.4vw,32px);
+ border-radius:3px;background:#06090a;
+ border-color:var(--tc-tech-rule);
+}
+.tc-tech-page #teracleDepolySection .td-detail-head{
+ font-size:12px;line-height:1.5;font-weight:650;letter-spacing:.035em;
+}
+.tc-tech-page #teracleDepolySection .td-detail-panel h3{
+ font-size:clamp(22px,2vw,27px);line-height:1.3;
+ font-weight:590;letter-spacing:-.03em;
+}
+.tc-tech-page #teracleDepolySection .td-detail-panel p{
+ font-size:14px;line-height:1.8;color:var(--tc-tech-body);
+}
+.tc-tech-page #teracleDepolySection .td-card-label strong{
+ font-weight:580;line-height:1.4;
+}
+.tc-tech-page #teracleDepolySection .td-card-side .td-card-label strong{
+ font-size:clamp(17px,1.5vw,20px);font-weight:600;
+}
+.tc-tech-page #teracleDepolySection .td-card-label small{line-height:1.5}
+.tc-tech-page #teracleDepolySection .td-card:focus-visible{
+ outline:2px solid #9edbe5;outline-offset:3px;
+}
+.tc-tech-page .tu-terrax{
+ padding-block:clamp(78px,7vw,114px)!important;
+ border-bottom:1px solid var(--tc-tech-rule);
+}
+.tc-tech-page .tu-terrax .tu-split--technology{
+ grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr);
+ gap:clamp(32px,5vw,80px);align-items:center;
+}
+.tc-tech-page .tu-terrax .tu-title{
+ font-size:clamp(29px,2.75vw,41px);
+ font-weight:600;line-height:1.28;letter-spacing:-.04em;
+ margin-bottom:22px;
+}
+.tc-tech-page .tu-terrax .tu-feature-grid{
+ grid-template-columns:repeat(3,minmax(0,1fr));
+ gap:12px;margin-top:30px;
+}
+.tc-tech-page .tu-terrax .tu-feature-grid article{
+ min-width:0;min-height:142px;padding:19px 17px;
+ display:flex;flex-direction:column;align-items:flex-start;
+ background:#080b0c;border:1px solid var(--tc-tech-rule);
+}
+.tc-tech-page .tu-terrax .tu-feature-grid article>span{
+ font-size:11px;letter-spacing:.07em;font-weight:600;line-height:1.5;
+}
+.tc-tech-page .tu-terrax .tu-feature-grid article>strong{
+ font-size:clamp(14px,1.05vw,16px);font-weight:590;line-height:1.45;
+ margin-top:17px;overflow-wrap:break-word;
+}
+.tc-tech-page .tu-terrax .tu-feature-grid article>p{
+ font-size:12px;line-height:1.7;color:#a3b0b0;margin-top:9px;
+ overflow-wrap:break-word;
+}
+.tc-tech-page .tu-terrax .tu-tech-visual{
+ min-width:0;overflow:hidden;border-color:var(--tc-tech-rule);
+ background:#050708;
+}
+.tc-tech-page .tu-terrax .tu-tech-visual img{
+ display:block;max-width:100%;width:100%;height:auto;object-fit:contain;
+}
+@media(max-width:1180px){
+ .tc-tech-page .tu-terrax .tu-split--technology{grid-template-columns:minmax(0,1fr);gap:32px}
+}
+@media(max-width:1080px){
+ .tc-tech-page #teracleDepolySection .td-copy{
+  grid-template-columns:minmax(0,1fr);gap:18px;
+ }
+ .tc-tech-page #teracleDepolySection .td-copy-right{padding-top:0}
+ .tc-tech-page #teracleDepolySection .td-mobile{
+  max-width:900px;margin-inline:auto;overflow:hidden;
+ }
+ .tc-tech-page #teracleDepolySection .td-mobile img{
+  display:block;max-width:100%;height:auto;object-fit:contain;border-radius:0;
+ }
+}
+@media(max-width:767px){
+ .tc-tech-page{--tc-tech-gutter:20px}
+ .tc-tech-page .tc-technology-hero{
+  min-height:245px;padding:52px 20px;
+ }
+ .tc-tech-page .tc-technology-hero h1{
+  font-size:clamp(30px,7vw,36px);line-height:1.22;
+ }
+ .tc-tech-page .tc-technology-hero p:not(.tc-unified-kicker){font-size:13px;line-height:1.65}
+ .tc-tech-page #teracleDepolySection,
+ .tc-tech-page .tu-terrax{padding-block:clamp(65px,9vw,82px)!important}
+ .tc-tech-page #teracleDepolySection .td-kicker{font-size:16px;margin-bottom:13px}
+ .tc-tech-page #teracleDepolySection .td-title{
+  font-size:clamp(26px,6.6vw,32px);line-height:1.36;
+ }
+ .tc-tech-page #teracleDepolySection .td-title-line{
+  display:inline;white-space:normal;
+ }
+ .tc-tech-page #teracleDepolySection .td-body,
+ .tc-tech-page .tu-terrax .tu-body{
+  font-size:14px;line-height:1.86;
+ }
+ .tc-tech-page .tu-terrax .tu-title{
+  font-size:clamp(27px,6.5vw,33px);line-height:1.33;
+ }
+ .tc-tech-page .tu-terrax .tu-feature-grid{
+  grid-template-columns:minmax(0,1fr);gap:10px;margin-top:24px;
+ }
+ .tc-tech-page .tu-terrax .tu-feature-grid article{
+  min-height:0;padding:19px 20px;
+ }
+ .tc-tech-page .tu-terrax .tu-feature-grid article>strong{
+  font-size:15px;margin-top:9px;
+ }
+ .tc-tech-page .tu-terrax .tu-tech-visual{padding:5px}
+}
+@media(max-width:420px){
+ .tc-tech-page{--tc-tech-gutter:18px}
+ .tc-tech-page .tc-technology-hero{padding-inline:18px}
+ .tc-tech-page .tc-technology-hero__star{opacity:.22}
+ .tc-tech-page #teracleDepolySection .td-title{font-size:26px}
+}
+html[lang="en"] .tc-tech-page :is(h1,h2,h3,p),
+html[lang="zh-CN"] .tc-tech-page :is(h1,h2,h3,p){
+ word-break:normal;overflow-wrap:break-word;
+}
+@media(prefers-reduced-motion:reduce){
+ .tc-tech-page #teracleDepolySection .td-card,
+ .tc-tech-page #teracleDepolySection .td-card img{transition:none!important;transform:none!important}
+}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
