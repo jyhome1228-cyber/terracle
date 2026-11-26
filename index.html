@@ -2937,6 +2937,72 @@ html[lang="zh-CN"] :is(.tc-product-detail,.tc-black-page) :is(h1,h2,h3,p,th,td){
  .tc-black-page .tc-black-powder img{transition:none!important;transform:none!important}
 }
 </style>
+<style id="tc-news-design-qa-20261126">
+/* Phase 7: News list and articles — measured editorial typography and responsive media. */
+.tc-native-news{--news-muted:#b8c5c6;--news-rule:rgba(255,255,255,.13);--news-gutter:var(--tc-content-gutter,clamp(20px,4.2vw,64px))}
+.tc-native-news .tn-inner{width:100%;max-width:var(--tc-content-max,1440px);margin-inline:auto;padding-inline:var(--news-gutter);min-width:0}
+.tc-native-news .tn-hero{min-height:clamp(270px,28vw,380px)!important;padding-inline:var(--news-gutter)}
+.tc-native-news .tn-hero h1{font-size:clamp(36px,3.2vw,48px);line-height:1.22;font-weight:590;letter-spacing:-.042em}
+.tc-native-news .tn-list{padding-block:clamp(68px,6.8vw,110px)}
+.tc-native-news .tn-list__intro{gap:24px;margin-bottom:34px;padding-bottom:24px;border-color:var(--news-rule)}
+.tc-native-news .tn-list__intro h2{font-size:clamp(27px,2.55vw,36px);line-height:1.31;font-weight:590;letter-spacing:-.035em}
+.tc-native-news .tn-kicker{font-size:11px;line-height:1.5;letter-spacing:.1em;font-weight:650}
+.tc-native-news .tn-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(40px,4.1vw,60px) clamp(18px,2.1vw,30px)}
+.tc-native-news .tn-card{display:block;min-width:0}
+.tc-native-news .tn-card__image{aspect-ratio:1.52;border-color:var(--news-rule)}
+.tc-native-news .tn-card__image img{width:100%;height:100%;object-fit:cover}
+.tc-native-news .tn-card__meta{padding-block:16px 12px;font-size:11px;line-height:1.55;gap:14px}
+.tc-native-news .tn-card__meta time{white-space:nowrap}
+.tc-native-news .tn-card h3{font-size:clamp(18px,1.6vw,22px);font-weight:580;line-height:1.48;letter-spacing:-.03em;margin:17px 0 10px;overflow-wrap:break-word}
+.tc-native-news .tn-card__summary{font-size:13px;line-height:1.8;color:var(--news-muted)}
+.tc-native-news .tn-card:focus-visible{outline:2px solid #9edbe5;outline-offset:5px}
+.tc-native-news .tn-article{padding-block:clamp(45px,5.5vw,74px) clamp(86px,9vw,134px)}
+.tc-native-news .tn-article__inner{max-width:1120px;margin-inline:auto}
+.tc-native-news .tn-back{margin-bottom:clamp(40px,4.4vw,62px);min-height:36px;line-height:1.55;font-size:13px}
+.tc-native-news .tn-article__meta{gap:12px 18px;line-height:1.6;margin-bottom:17px;font-size:12px}
+.tc-native-news .tn-article h1{max-width:1050px;font-size:clamp(29px,3.1vw,43px);line-height:1.37;font-weight:590;letter-spacing:-.035em;overflow-wrap:break-word;text-wrap:pretty}
+.tc-native-news .tn-article__lead{font-size:clamp(15px,1.35vw,18px);line-height:1.84;color:var(--news-muted);margin:clamp(22px,3vw,35px) 0 clamp(32px,4vw,52px);max-width:960px}
+.tc-native-news .tn-article__lead p{margin-bottom:9px}
+.tc-native-news .tn-article__cover img{display:block;width:100%;height:auto;max-height:620px;object-fit:contain}
+.tc-native-news figcaption{font-size:12px;line-height:1.7;color:#a1afb0;margin-top:12px}
+.tc-native-news .tn-article__body{max-width:800px;margin:clamp(36px,5vw,68px) auto 0}
+.tc-native-news .tn-article__body p{font-size:clamp(15px,1.07vw,17px);line-height:1.99;letter-spacing:-.01em;color:#c8d0d0;margin-bottom:23px;overflow-wrap:break-word}
+.tc-native-news .tn-article__body h2{font-size:clamp(21px,1.7vw,25px);font-weight:590;line-height:1.5;letter-spacing:-.025em;margin:clamp(38px,5vw,60px) 0 20px}
+.tc-native-news .tn-article__body figure{margin:clamp(32px,4vw,52px) 0}
+.tc-native-news .tn-article__source,.tc-native-news .tn-article__nav{max-width:800px}
+.tc-native-news .tn-article__source{margin-top:50px;padding-top:22px;border-color:var(--news-rule);line-height:1.6}
+.tc-native-news .tn-article__nav{margin-top:56px;gap:clamp(20px,3vw,40px)}
+.tc-native-news .tn-article__nav a{min-width:0;padding-top:18px;border-color:var(--news-rule)}
+.tc-native-news .tn-article__nav a:focus-visible,.tc-native-news .tn-back:focus-visible{outline:2px solid #9edbe5;outline-offset:4px}
+.tc-native-news .tn-article__nav strong{font-size:14px;line-height:1.6;font-weight:520;overflow-wrap:break-word}
+.tc-native-news .tn-article__nav small{font-size:12px;line-height:1.45;color:#aab8b9}
+@media(max-width:1000px){.tc-native-news .tn-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 22px}}
+@media(max-width:700px){
+ .tc-native-news{--news-gutter:20px}
+ .tc-native-news .tn-inner{padding-inline:20px;width:100%}
+ .tc-native-news .tn-hero{min-height:270px!important}
+ .tc-native-news .tn-list{padding-block:60px 82px}
+ .tc-native-news .tn-list__intro{display:block;margin-bottom:28px}
+ .tc-native-news .tn-count{margin-top:14px}
+ .tc-native-news .tn-grid{grid-template-columns:minmax(0,1fr);gap:36px}
+ .tc-native-news .tn-card__image{aspect-ratio:1.52}
+ .tc-native-news .tn-card h3{font-size:19px;line-height:1.47}
+ .tc-native-news .tn-article{padding-block:36px 78px}
+ .tc-native-news .tn-back{margin-bottom:36px}
+ .tc-native-news .tn-article h1{font-size:clamp(26px,6.6vw,33px);line-height:1.4}
+ .tc-native-news .tn-article__lead{font-size:15px;line-height:1.85;margin:20px 0 30px}
+ .tc-native-news .tn-article__body{margin-top:36px}
+ .tc-native-news .tn-article__body p{font-size:15px;line-height:1.92}
+ .tc-native-news .tn-article__body h2{font-size:21px}
+ .tc-native-news .tn-article__nav{grid-template-columns:minmax(0,1fr);gap:20px}
+ .tc-native-news .tn-article__nav a:last-child{text-align:left}
+ .tc-native-news .tn-article__nav strong{font-size:13px}
+}
+@media(max-width:400px){.tc-native-news{--news-gutter:18px}.tc-native-news .tn-inner{padding-inline:18px}.tc-native-news .tn-card h3{font-size:18px}}
+html[lang="en"] .tc-native-news :is(h1,h2,h3,p),
+html[lang="zh-CN"] .tc-native-news :is(h1,h2,h3,p){word-break:normal;overflow-wrap:break-word}
+@media(prefers-reduced-motion:reduce){.tc-native-news .tn-card__image img{transform:none!important;transition:none!important}}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
@@ -3047,7 +3113,14 @@ html[lang="zh-CN"] :is(.tc-product-detail,.tc-black-page) :is(h1,h2,h3,p,th,td){
     document.querySelectorAll('[data-page]').forEach(a=>{if(a.dataset.page==='news')a.setAttribute('aria-current','page')});
     main.innerHTML='<div class="tc-native-news"><div class="tn-inner tn-status">뉴스를 불러오고 있습니다.</div></div>';
     const htmlEscape=value=>String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    const detailUrl=index=>'?page=news&article='+index;
+    const newsLocale=new URLSearchParams(location.search).get('lang')||'ko';
+    const newsLabels={
+      ko:{back:'← 뉴스 목록으로 돌아가기',previous:'이전 기사',next:'다음 기사',navigation:'다른 뉴스',loading:'뉴스를 불러오고 있습니다.',error:'뉴스를 불러오지 못했습니다.',list:'뉴스 목록으로 돌아가기'},
+      en:{back:'← Back to News',previous:'Previous article',next:'Next article',navigation:'More news',loading:'Loading news…',error:'Unable to load news.',list:'Back to News'},
+      zh:{back:'← 返回新闻列表',previous:'上一篇',next:'下一篇',navigation:'其他新闻',loading:'正在加载新闻…',error:'无法加载新闻。',list:'返回新闻列表'}
+    }[newsLocale]||{back:'← Back to News',previous:'Previous article',next:'Next article',navigation:'More news',loading:'Loading news…',error:'Unable to load news.',list:'Back to News'};
+    const detailUrl=index=>'?page=news&article='+index+(newsLocale==='ko'?'':'&lang='+encodeURIComponent(newsLocale));
+    const newsListUrl='?page=news'+(newsLocale==='ko'?'':'&lang='+encodeURIComponent(newsLocale));
     fetch((['en','zh'].includes(new URLSearchParams(location.search).get('lang'))?'./i18n/news-'+new URLSearchParams(location.search).get('lang')+'.json':'./news-data.json'),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('News data '+r.status);return r.json()}).then(news=>{
       if(!Array.isArray(news)||!news.length)throw new Error('Empty news');
       if(!Number.isInteger(id)||id<1||id>news.length){
@@ -3073,12 +3146,12 @@ html[lang="zh-CN"] :is(.tc-product-detail,.tc-black-page) :is(h1,h2,h3,p,th,td){
         });
         const sourceLabel=new URLSearchParams(location.search).get('lang')==='zh'?'来源':new URLSearchParams(location.search).get('lang')==='en'?'Source':'출처';
         const nav=(other,direction,label)=>other?'<a href="'+detailUrl(other.id)+'"><small>'+label+'</small><strong>'+htmlEscape(other.title)+'</strong></a>':'<span></span>';
-        main.innerHTML='<div class="tc-native-news"><section class="tn-article"><div class="tn-inner"><div class="tn-article__inner"><a class="tn-back" href="?page=news">← 뉴스 목록으로 돌아가기</a><div class="tn-article__meta"><span>'+htmlEscape(item.category)+'</span><span>'+htmlEscape(item.source)+'</span><time>'+htmlEscape(item.date)+'</time></div><h1>'+htmlEscape(item.title)+'</h1><div class="tn-article__lead">'+(item.summary||[]).map(t=>'<p>'+htmlEscape(t)+'</p>').join('')+'</div><figure class="tn-article__cover"><img src="'+htmlEscape(item.image)+'" alt="'+htmlEscape(item.title)+'"><figcaption>'+htmlEscape(item.caption)+'</figcaption></figure><div class="tn-article__body">'+body+'</div><div class="tn-article__source">'+sourceLabel+': '+htmlEscape(item.source)+'</div><nav class="tn-article__nav" aria-label="다른 뉴스">'+nav(news[id-2],'previous','이전 기사')+nav(news[id],'next','다음 기사')+'</nav></div></div></section></div>';
+        main.innerHTML='<div class="tc-native-news"><section class="tn-article"><div class="tn-inner"><div class="tn-article__inner"><a class="tn-back" href="'+newsListUrl+'">'+newsLabels.back+'</a><div class="tn-article__meta"><span>'+htmlEscape(item.category)+'</span><span>'+htmlEscape(item.source)+'</span><time>'+htmlEscape(item.date)+'</time></div><h1>'+htmlEscape(item.title)+'</h1><div class="tn-article__lead">'+(item.summary||[]).map(t=>'<p>'+htmlEscape(t)+'</p>').join('')+'</div><figure class="tn-article__cover"><img src="'+htmlEscape(item.image)+'" alt="'+htmlEscape(item.title)+'"><figcaption>'+htmlEscape(item.caption)+'</figcaption></figure><div class="tn-article__body">'+body+'</div><div class="tn-article__source">'+sourceLabel+': '+htmlEscape(item.source)+'</div><nav class="tn-article__nav" aria-label="'+newsLabels.navigation+'">'+nav(news[id-2],'previous',newsLabels.previous)+nav(news[id],'next',newsLabels.next)+'</nav></div></div></section></div>';
       }
       window.scrollTo(0,0);
     }).catch(err=>{
       console.error('[Terracle News]',err);
-      main.innerHTML='<div class="tc-native-news"><div class="tn-inner tn-status"><p>뉴스를 불러오지 못했습니다.</p><a class="tn-back" href="?page=news">뉴스 목록으로 돌아가기</a></div></div>';
+      main.innerHTML='<div class="tc-native-news"><div class="tn-inner tn-status"><p>'+newsLabels.error+'</p><a class="tn-back" href="'+newsListUrl+'">'+newsLabels.list+'</a></div></div>';
     });
   }else if(page==='monomer'||page==='product'||page==='blacktio2'){
     const isBlack=page==='blacktio2';
