@@ -287,6 +287,26 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 .career-process span:last-child{border-right:0}
 .career-process span:before{content:"";width:5px;height:5px;flex:0 0 5px;margin-right:10px;background:#9edbe5}
 @media(max-width:640px){.career-process{grid-template-columns:repeat(2,minmax(0,1fr))}.career-process span:nth-child(2){border-right:0}.career-process span:nth-child(-n+2){border-bottom:1px solid #35494b}.detail-content .detail-section li{font-size:14px}}
+
+/* Careers application: branded dropdowns with native validation preserved. */
+.apply-form .apply-select-wrap{position:relative;min-width:0;margin-top:9px}
+.apply-form .apply-select-wrap>select{position:absolute;inset:0 auto auto 0;width:1px;height:1px;min-height:1px;padding:0;opacity:0;pointer-events:none;z-index:-1}
+.apply-form .apply-select-trigger{display:flex;width:100%;min-height:52px;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border:1px solid #52696c;background:#0d1a1d;color:#f1f8f8;text-align:left;font-size:15px;font-weight:510}
+.apply-form .apply-select-trigger.is-placeholder{color:#a3b4b6}
+.apply-form .apply-select-trigger:hover,.apply-form .apply-select-wrap.is-open .apply-select-trigger{border-color:#9edbe5;background:#14262a}
+.apply-form .apply-select-trigger:focus-visible{outline:2px solid #9edbe5;outline-offset:2px}
+.apply-form .apply-select-trigger.is-invalid{border-color:#e4b8a0}
+.apply-form .apply-select-arrow{width:9px;height:9px;flex:0 0 9px;border-right:1.6px solid #acc5c8;border-bottom:1.6px solid #acc5c8;transform:rotate(45deg) translateY(-3px)}
+.apply-form .apply-select-wrap.is-open .apply-select-arrow{transform:rotate(225deg) translateY(-2px)}
+.apply-form .apply-select-menu{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:25;padding:6px;border:1px solid #506b70;background:#152326;box-shadow:0 18px 40px rgba(0,0,0,.45);max-height:290px;overflow-y:auto;scrollbar-width:thin}
+.apply-form .apply-select-menu[hidden]{display:none}
+.apply-form .apply-select-option{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:45px;padding:10px 13px;border:0;background:transparent;color:#dce8e9;text-align:left;font-size:14px;line-height:1.5;white-space:normal}
+.apply-form .apply-select-option:hover:not(:disabled),.apply-form .apply-select-option.is-focused:not(:disabled){background:#294247;color:#fff}
+.apply-form .apply-select-option[aria-selected=true]{color:#a9e5e9;font-weight:650}
+.apply-form .apply-select-option[aria-selected=true]:after{content:"✓";margin-left:12px;color:#a9e5e9}
+.apply-form .apply-select-option:disabled{opacity:.4;cursor:not-allowed}
+.career-process span:before{width:8px!important;height:8px!important;flex:0 0 8px!important;border-radius:50%!important;margin-right:12px!important}
+.apply-form #submitApplyDemo{min-width:170px}
 </style>
 </head>
 <body>
@@ -564,6 +584,9 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  }
 
  function showApply(id,push=true){
+  if(window.__terracleApplicationController)window.__terracleApplicationController.abort();
+  const applicationController=new AbortController();
+  window.__terracleApplicationController=applicationController;
   const x=jobs.find(job=>job.id===id&&job.headcount>0)||null;
   const initialId=x?.id||"";
   $("listPage").classList.add("hidden");
@@ -590,18 +613,18 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
       '<label class="full">핵심 경력 및 수행 프로젝트 <span class="required">*</span><textarea name="experience" maxlength="1800" required placeholder="담당 업무, 참여 프로젝트, 성과 등을 구체적으로 작성해 주세요."></textarea></label>'+
       '<label class="full">보유 자격증 및 활용 가능 기술<textarea name="skills" maxlength="1000" placeholder="직무 관련 자격증, 프로그램, 기술 등을 작성해 주세요."></textarea></label>'+
       '<label class="full">이력서 또는 포트폴리오 URL<input name="portfolio" type="url" maxlength="450" placeholder="https://"></label>'+
-    '</div><p class="form-help">파일 업로드 기능은 제공되지 않습니다. 이메일 앱에서 발송할 때 이력서·포트폴리오 파일을 직접 첨부해 주세요.</p></section>'+
+    '</div><p class="form-help">테스트 화면에는 파일 업로드가 없습니다. 현재는 포트폴리오 URL만 입력할 수 있습니다.</p></section>'+
     '<section><h2>자기소개</h2><div class="form-grid">'+
       '<label class="full">자기소개 <span class="required">*</span><textarea name="introduction" maxlength="1800" required placeholder="본인의 강점과 일하는 방식을 소개해 주세요."></textarea></label>'+
       '<label class="full">테라클 지원동기 <span class="required">*</span><textarea name="motivation" maxlength="1800" required placeholder="테라클에 지원하게 된 계기와 이유를 작성해 주세요."></textarea></label>'+
       '<label class="full">입사 후 기여할 수 있는 부분<textarea name="contribution" maxlength="1500" placeholder="담당 직무와 연결해 작성해 주세요."></textarea></label>'+
     '</div></section>'+
-    '<section><h2>내용 확인 및 이메일 작성</h2><div class="apply-notice">이 페이지는 채용 사이트 시안입니다. 입력한 내용은 서버에 저장하거나 자동 전송하지 않습니다. 아래 버튼을 누르면 이메일 앱에서 지원서 초안을 작성하며, 실제 발송 여부는 이메일 앱에서 확인해야 합니다. 실제 채용 접수처가 확정되기 전까지는 테스트 용도로만 사용해 주세요.</div>'+
-      '<label class="consent-label"><input name="consent" type="checkbox" required><span>테스트 페이지의 처리 방식을 확인했습니다. 이메일 앱으로 전달될 지원서 내용에 개인정보가 포함되는 것을 이해합니다. <span class="required">*</span></span></label>'+
-      '<div class="form-buttons"><button type="submit">이메일 지원서 초안 열기</button><button type="button" class="secondary" id="copyApply">지원서 내용 복사</button></div><p class="form-help" id="applyStatus" role="status">실제 채용 접수 완료를 의미하지 않습니다.</p>'+
+    '<section><h2>최종 확인 및 제출</h2><div class="apply-notice">현재는 채용사이트 디자인 테스트입니다. 아래 제출하기 버튼은 실제 채용 접수로 연결되지 않으며 입력한 개인정보를 서버에 저장하거나 전송하지 않습니다. 정식 채용 접수 기능은 별도로 구축할 예정입니다.</div>'+
+      '<label class="consent-label"><input name="consent" type="checkbox" required><span>테스트 페이지의 처리 방식을 확인했으며 현재 제출하기 버튼으로 실제 지원서가 접수되지 않는다는 점을 이해합니다. <span class="required">*</span></span></label>'+
+      '<div class="form-buttons"><button type="button" id="submitApplyDemo">제출하기</button><button type="button" class="secondary" id="copyApply">지원서 내용 복사</button></div><p class="form-help" id="applyStatus" role="status">테스트 페이지로, 제출하기는 실제 지원 접수가 진행되지 않습니다.</p>'+
     '</section>'+
    '</form></div><aside class="apply-summary"><span class="summary-eyebrow">APPLICATION GUIDE</span><h3 id="applySummaryTitle">'+(x?escapeText(x.title):'지원 직군을 선택해 주세요')+'</h3><p id="applySummaryMeta">'+(x?escapeText(jobMeta(x)):'현재 지원 가능한 포지션 4개')+'</p>'+
-     '<ul><li>필수항목 입력 후 이메일 초안 작성</li><li>이력서·자격증 등 파일은 이메일에서 직접 첨부</li><li>별도의 서버 저장이나 자동 접수 없음</li></ul></aside></div>';
+     '<ul><li>지원 직군과 기본정보를 선택해 작성</li><li>경력·자기소개·포트폴리오 정보 입력</li><li>현재 제출하기는 테스트용이며 접수되지 않음</li></ul></aside></div>';
   $("applyBack").addEventListener("click",()=>x?showDetail(x.id):showList());
   const form=$("careerApplyForm");
   const roleSelect=$("applyPosition");
@@ -610,6 +633,107 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
    $("applySummaryTitle").textContent=selected?.title||"지원 직군을 선택해 주세요";
    $("applySummaryMeta").textContent=selected?jobMeta(selected):"현재 지원 가능한 포지션 4개";
   });
+  function enhanceApplicationSelects(){
+   const controls=[];
+   function closeOther(current){
+    for(const c of controls){if(c!==current)c.close();}
+   }
+   form.querySelectorAll('select').forEach((select,index)=>{
+    const wrap=document.createElement("div");
+    wrap.className="apply-select-wrap";
+    select.parentNode.insertBefore(wrap,select);
+    wrap.appendChild(select);
+    const button=document.createElement("button");
+    button.type="button";
+    button.className="apply-select-trigger";
+    button.setAttribute("aria-haspopup","listbox");
+    button.setAttribute("aria-expanded","false");
+    button.setAttribute("aria-label",(select.name==="position"?"지원 직군":"최종 학력")+" 선택");
+    const label=document.createElement("span");
+    const arrow=document.createElement("span");
+    arrow.className="apply-select-arrow";
+    button.append(label,arrow);
+    const menu=document.createElement("div");
+    menu.id="apply-options-"+index;
+    menu.className="apply-select-menu";
+    menu.setAttribute("role","listbox");
+    menu.setAttribute("aria-label",select.name==="position"?"지원 직군 목록":"최종 학력 목록");
+    button.setAttribute("aria-controls",menu.id);
+    menu.hidden=true;
+    let currentIndex=0;
+    const options=[...select.options];
+    const repaint=()=>{
+     label.textContent=select.selectedOptions[0]?.textContent||"선택해 주세요";
+     button.classList.toggle("is-placeholder",!select.value);
+     menu.querySelectorAll("[role=option]").forEach((node,i)=>{
+      node.setAttribute("aria-selected",String(options[i].value===select.value));
+      node.classList.toggle("is-focused",i===currentIndex);
+     });
+    };
+    const focusIndex=i=>{
+     currentIndex=i;
+     const nodes=[...menu.querySelectorAll('[role="option"]')];
+     nodes.forEach((node,j)=>node.classList.toggle("is-focused",i===j));
+     nodes[i]?.scrollIntoView({block:"nearest"});
+    };
+    let api;
+    const close=()=>{menu.hidden=true;wrap.classList.remove("is-open");button.setAttribute("aria-expanded","false")};
+    const open=()=>{
+     closeOther(api);
+     menu.hidden=false;wrap.classList.add("is-open");button.setAttribute("aria-expanded","true");
+     currentIndex=Math.max(0,options.findIndex(o=>o.value===select.value));
+     focusIndex(currentIndex);
+    };
+    const choose=i=>{
+     const opt=options[i];
+     if(!opt||opt.disabled)return;
+     select.value=opt.value;
+     select.dispatchEvent(new Event("change",{bubbles:true}));
+     repaint();close();button.focus();
+    };
+    options.forEach((opt,i)=>{
+     const item=document.createElement("button");
+     item.type="button";
+     item.className="apply-select-option";
+     item.textContent=opt.textContent;
+     item.setAttribute("role","option");
+     item.disabled=opt.disabled;
+     item.addEventListener("click",()=>choose(i));
+     item.addEventListener("mouseenter",()=>{if(!opt.disabled)currentIndex=i;repaint()});
+     menu.appendChild(item);
+    });
+    button.addEventListener("click",()=>menu.hidden?open():close());
+    button.addEventListener("keydown",event=>{
+     const key=event.key;
+     if(key==="Escape"){close();event.preventDefault();return}
+     if(["ArrowDown","ArrowUp","Home","End","Enter"," "].includes(key)){
+      event.preventDefault();
+      if(menu.hidden){open();return}
+      if(key==="Enter"||key===" "){choose(currentIndex);return}
+      if(key==="Home"){currentIndex=0}else if(key==="End"){currentIndex=options.length-1}
+      else{const dir=key==="ArrowDown"?1:-1;for(let tries=0;tries<options.length;tries++){currentIndex=(currentIndex+dir+options.length)%options.length;if(!options[currentIndex].disabled)break}}
+      focusIndex(currentIndex);
+     }
+    });
+    select.addEventListener("change",repaint);
+    select.addEventListener("invalid",()=>{
+     button.classList.add("is-invalid");
+     button.setAttribute("aria-invalid","true");
+     button.focus();
+    });
+    select.addEventListener("change",()=>{button.classList.remove("is-invalid");button.removeAttribute("aria-invalid")});
+    wrap.append(button,menu);
+    wrap.classList.add("is-enhanced");
+    api={close};controls.push(api);repaint();
+   });
+   document.addEventListener("pointerdown",event=>{
+    if(!event.target.closest(".apply-select-wrap"))controls.forEach(c=>c.close());
+   },{signal:applicationController.signal});
+   document.addEventListener("keydown",event=>{
+    if(event.key==="Escape")controls.forEach(c=>c.close());
+   },{signal:applicationController.signal});
+  }
+  enhanceApplicationSelects();
   function applicationText(){
    const d=new FormData(form);
    const chosen=jobs.find(job=>job.id===d.get("position"));
@@ -620,15 +744,11 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
   $("copyApply").addEventListener("click",async()=>{
    if(!valid())return;
    try{await navigator.clipboard.writeText(applicationText());$("applyStatus").textContent="지원서 내용을 복사했습니다. 이메일에 붙여넣어 활용해 주세요.";}
-   catch(e){$("applyStatus").textContent="브라우저에서 자동 복사할 수 없습니다. 이메일 초안 열기를 이용해 주세요.";}
+   catch(e){$("applyStatus").textContent="브라우저에서 자동 복사할 수 없습니다. 브라우저 권한을 확인해 주세요.";}
   });
-  form.addEventListener("submit",e=>{
-   e.preventDefault();if(!valid())return;
-   const chosen=jobs.find(job=>job.id===roleSelect.value);
-   const subject="[Terracle Careers TEST] "+(chosen?.title||"통합 지원")+" 지원서 초안";
-   const mailto="mailto:info@terracle.im?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(applicationText());
-   $("applyStatus").textContent="이메일 앱으로 이동합니다. 이력서 등 파일을 첨부하고 발송 여부를 직접 확인해 주세요. 실제 접수 완료가 아닙니다.";
-   window.location.href=mailto;
+  form.addEventListener("submit",e=>e.preventDefault());
+  $("submitApplyDemo").addEventListener("click",()=>{
+   $("applyStatus").textContent="현재 제출하기는 디자인 테스트용입니다. 지원서는 전송되거나 접수되지 않았습니다.";
   });
   if(push)history.pushState({apply:initialId||"general"},"","#apply="+encodeURIComponent(initialId||"general"));
   window.scrollTo(0,0);
