@@ -124,6 +124,58 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 @media(max-width:1100px){.detail-layout{grid-template-columns:230px minmax(0,1fr);gap:26px}.detail-top>div:first-child{flex-basis:280px}}
 @media(max-width:850px){.detail-layout{grid-template-columns:minmax(0,1fr)}.detail-side-list{width:100%}.detail-main{width:100%}.detail-top>div:first-child{flex-basis:100%}}
 @media(max-width:600px){.detail-top{gap:14px}.detail-top h1{font-size:clamp(25px,7vw,31px)}.detail-banner{height:190px}.detail-section .long-copy,.detail-section li{font-size:14px;line-height:1.85}.side-card strong{font-size:14px}}
+
+/* Careers visual refinement: crisp editorial type and custom select controls */
+:root{--ink:#f8fafa;--muted:#c5d0d1;--sub:#9eadb0;--accent:#a9e5e9;--line:rgba(215,237,238,.17)}
+.hero{overflow:visible;z-index:4}
+.hero-inner{padding-top:91px;padding-bottom:84px}
+.hero h1{font-size:clamp(35px,3.25vw,49px);font-weight:640;line-height:1.28;letter-spacing:-.044em}
+.hero p{color:#c3d2d3;font-size:15px;line-height:1.85}
+.hero-eyebrow{font-weight:700;letter-spacing:.13em}
+.filters{position:relative;z-index:6;gap:11px}
+.filter-field{min-height:54px;border-radius:11px;border-color:#405155;background:#111c1f;transition:border-color .2s,box-shadow .2s,background .2s}
+.filter-field:focus-within{border-color:#a9e5e9;box-shadow:0 0 0 2px rgba(169,229,233,.13);background:#132126}
+.filter-field input,.filter-field select{font-size:14px;font-weight:530;color:#f0f5f5}
+.filter-field input::placeholder{color:#a6b5b7}
+.filter-field.select:after{display:none}
+.filter-field.select{display:block;padding:0;position:relative;overflow:visible}
+.filter-field.select select{width:100%;height:54px;padding-inline:16px;cursor:pointer;color:#f0f5f5;border-radius:11px}
+.filter-field.select select option{background:#111b1e;color:#eaf3f3}
+.filter-field.select.is-enhanced select{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
+.tc-select-trigger{width:100%;min-height:54px;border:0;background:transparent;color:#eff6f6;padding:0 15px;display:flex;gap:12px;align-items:center;justify-content:space-between;text-align:left;font-size:14px;font-weight:560}
+.tc-select-trigger .select-label{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tc-select-trigger svg{width:17px;height:17px;stroke:#a7babc;flex-shrink:0;transition:transform .18s ease}
+.filter-field.select.is-open{z-index:20;border-color:#8ccfd3;box-shadow:0 0 0 2px rgba(169,229,233,.12)}
+.filter-field.select.is-open .tc-select-trigger svg{transform:rotate(180deg)}
+.tc-select-menu{position:absolute;left:0;right:0;top:calc(100% + 9px);background:#172326;border:1px solid #506569;border-radius:12px;padding:7px;box-shadow:0 20px 44px rgba(0,0,0,.45);z-index:50;min-width:100%;max-height:260px;overflow:auto;scrollbar-width:thin}
+.tc-select-menu[hidden]{display:none!important}
+.tc-select-option{display:flex;width:100%;min-height:43px;padding:10px 11px;border:0;border-radius:8px;background:none;color:#d4dfe0;text-align:left;align-items:center;justify-content:space-between;gap:12px;line-height:1.5;font-size:14px}
+.tc-select-option:hover,.tc-select-option.is-focused{background:#294145;color:#fff}
+.tc-select-option[aria-selected="true"]{color:#a9e5e9;font-weight:650}
+.tc-select-option[aria-selected="true"]:after{content:"✓";color:#a9e5e9;font-weight:700}
+.clear{color:#c5d2d4;font-size:13px;font-weight:550}
+.results-head strong{font-size:16px;font-weight:630;color:#f3f8f8}
+.results-head span{color:#a6b5b7;font-size:13px}
+.job{padding-block:29px}
+.job h3{font-size:19px;line-height:1.5;font-weight:630;color:#f5f9f9}
+.job p{font-size:13px;color:#acbbbc}
+.job-tags span{border-radius:99px;background:#172225;border-color:#263b3e;color:#b8c9ca;font-weight:560}
+.side-title{font-size:14px;font-weight:680}
+.side-card{padding:21px 0}
+.side-card strong{font-size:15px;font-weight:610;color:#f0f5f5;line-height:1.6}
+.side-foot{border-radius:14px;background:#111b1d;padding:25px 23px}
+.side-foot p{color:#b0bfc1}
+.detail-side-job{border-radius:12px;background:#0e1719;border-color:#334346}
+.detail-side-job.is-active{background:#132326}
+.detail-side-job strong{font-size:15px!important;font-weight:620!important}
+.detail-top h1{font-weight:640}
+.detail-section h2{font-weight:640}
+.detail-section .long-copy,.detail-section li{color:#c5d0d1}
+.detail-icon-btn,.detail-apply{border-radius:9px}
+.detail-banner{border-radius:13px}
+.sample-label{border-radius:99px}
+@media(max-width:1100px){.filters{gap:10px}}
+@media(max-width:600px){.hero-inner{padding-top:65px;padding-bottom:63px}.hero h1{font-size:clamp(29px,7vw,37px)}.filters{gap:9px}.filter-field,.tc-select-trigger{min-height:52px}.tc-select-menu{max-height:230px}.job h3{font-size:18px}.results-head{flex-wrap:wrap}}
 </style>
 </head>
 <body>
@@ -247,6 +299,76 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
    box.innerHTML='<p class="side-status">뉴스를 불러올 수 없습니다. <a href="./?page=news" style="color:#9edbe5;text-decoration:underline">뉴스 페이지로 이동</a></p>';
   }
  }
+
+ function initializeCustomFilters(){
+  const controls=[];
+  function closeAll(except){
+   for(const c of controls){
+    if(c===except)continue;
+    c.box.classList.remove("is-open");
+    c.menu.hidden=true;
+    c.trigger.setAttribute("aria-expanded","false");
+   }
+  }
+  document.querySelectorAll(".filters .filter-field.select").forEach((box,index)=>{
+   const select=box.querySelector("select");if(!select)return;
+   const trigger=document.createElement("button");
+   trigger.type="button";trigger.className="tc-select-trigger";
+   trigger.setAttribute("aria-haspopup","listbox");trigger.setAttribute("aria-expanded","false");
+   trigger.setAttribute("aria-label",select.getAttribute("aria-label")||"필터 선택");
+   const label=document.createElement("span");label.className="select-label";
+   const chevron=document.createElementNS("http://www.w3.org/2000/svg","svg");
+   chevron.setAttribute("viewBox","0 0 24 24");chevron.setAttribute("fill","none");chevron.setAttribute("stroke-width","1.8");
+   const path=document.createElementNS("http://www.w3.org/2000/svg","path");path.setAttribute("d","m5 9 7 7 7-7");path.setAttribute("stroke","currentColor");path.setAttribute("stroke-linecap","round");chevron.appendChild(path);
+   trigger.append(label,chevron);
+   const menu=document.createElement("div");menu.className="tc-select-menu";menu.hidden=true;
+   menu.id="tc-filter-menu-"+index;menu.setAttribute("role","listbox");menu.setAttribute("aria-label",select.getAttribute("aria-label")||"필터 목록");
+   trigger.setAttribute("aria-controls",menu.id);
+   const choices=Array.from(select.options);
+   let focusIndex=0;
+   const renderOptions=()=>{
+    menu.replaceChildren();
+    choices.forEach((option,i)=>{
+     const b=document.createElement("button");b.type="button";b.className="tc-select-option";
+     b.textContent=option.textContent;b.setAttribute("role","option");b.setAttribute("aria-selected",String(select.value===option.value));b.tabIndex=-1;
+     b.id=menu.id+"-option-"+i;
+     b.addEventListener("click",()=>choose(i));
+     b.addEventListener("mouseenter",()=>{focusIndex=i;paintFocus()});
+     menu.appendChild(b);
+    });
+    label.textContent=select.selectedOptions[0]?.textContent||choices[0]?.textContent||"선택";
+   };
+   const paintFocus=()=>{menu.querySelectorAll(".tc-select-option").forEach((el,i)=>el.classList.toggle("is-focused",i===focusIndex))};
+   const open=()=>{
+    closeAll();menu.hidden=false;box.classList.add("is-open");trigger.setAttribute("aria-expanded","true");
+    focusIndex=Math.max(0,choices.findIndex(o=>o.value===select.value));paintFocus();
+   };
+   const close=()=>{menu.hidden=true;box.classList.remove("is-open");trigger.setAttribute("aria-expanded","false")};
+   const choose=i=>{
+    const opt=choices[i];if(!opt)return;
+    select.value=opt.value;close();renderOptions();select.dispatchEvent(new Event("change",{bubbles:true}));trigger.focus();
+   };
+   trigger.addEventListener("click",()=>menu.hidden?open():close());
+   trigger.addEventListener("keydown",e=>{
+    if(["ArrowDown","ArrowUp","Enter"," "].includes(e.key)){
+     e.preventDefault();
+     if(menu.hidden)open();
+     else if(e.key==="ArrowDown"||e.key==="ArrowUp"){focusIndex=(focusIndex+(e.key==="ArrowDown"?1:-1)+choices.length)%choices.length;paintFocus();menu.children[focusIndex]?.scrollIntoView({block:"nearest"})}
+     else choose(focusIndex);
+    }else if(e.key==="Escape"){close();e.stopPropagation()}
+   });
+   menu.addEventListener("keydown",e=>{
+    if(e.key==="Escape"){e.preventDefault();close();trigger.focus()}
+    if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();focusIndex=(focusIndex+(e.key==="ArrowDown"?1:-1)+choices.length)%choices.length;paintFocus()}
+    if(e.key==="Enter"||e.key===" "){e.preventDefault();choose(focusIndex)}
+   });
+   select.addEventListener("change",renderOptions);
+   box.classList.add("is-enhanced");box.append(trigger,menu);renderOptions();
+   controls.push({box,menu,trigger});
+  });
+  document.addEventListener("pointerdown",e=>{if(!e.target.closest(".filter-field.select"))closeAll()});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")closeAll()});
+ }
  function render(){
   const query=$("searchInput").value.trim().toLowerCase(),role=$("roleFilter").value,site=$("siteFilter").value,type=$("typeFilter").value;
   const found=jobs.filter(x=>(!role||x.role===role)&&(!site||x.site===site)&&(!type||x.type===type)&&(!query||[x.title,x.role,x.site,x.intro,...x.tags].join(" ").toLowerCase().includes(query)));
@@ -280,7 +402,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  document.querySelectorAll(".filters input,.filters select").forEach(node=>node.addEventListener(node.tagName==="INPUT"?"input":"change",render));
  $("clearFilters").addEventListener("click",()=>{$("searchInput").value="";["roleFilter","siteFilter","typeFilter"].forEach(id=>$(id).value="");render();$("searchInput").focus();});
  window.addEventListener("popstate",()=>{const m=location.hash.match(/^#job=([a-z0-9_-]+)$/);m?showDetail(m[1],false):showList(false);});
- render();loadCareerNews();const m=location.hash.match(/^#job=([a-z0-9_-]+)$/);if(m)showDetail(m[1],false);
+ initializeCustomFilters();render();loadCareerNews();const m=location.hash.match(/^#job=([a-z0-9_-]+)$/);if(m)showDetail(m[1],false);
 })();
 </script>
 </body>
