@@ -1119,6 +1119,28 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
   padding-block:clamp(23px,4vh,40px)!important;
  }
 }
+
+/* Application hero legibility: stronger black dim, slightly smaller body copy. */
+#applyPage .apply-hero{
+ background-image:
+  linear-gradient(90deg,rgba(0,0,0,.26) 0%,rgba(0,0,0,.58) 31%,rgba(0,0,0,.74) 72%,rgba(0,0,0,.76) 100%),
+  url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-102043-rectangle-3964-31a40d2d.webp")!important;
+ background-size:cover!important;
+ background-position:center 47%!important;
+}
+#applyPage .apply-hero-prose p{
+ font-size:12px!important;
+ line-height:1.78!important;
+ color:#e3e3e3!important;
+}
+@media(max-width:760px){
+ #applyPage .apply-hero{
+  background-image:
+   linear-gradient(90deg,rgba(0,0,0,.79),rgba(0,0,0,.75)),
+   url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-102043-rectangle-3964-31a40d2d.webp")!important;
+ }
+ #applyPage .apply-hero-prose p{font-size:12px!important;line-height:1.75!important}
+}
 </style>
 </head>
 <body>
