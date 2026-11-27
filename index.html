@@ -3003,6 +3003,73 @@ html[lang="en"] .tc-native-news :is(h1,h2,h3,p),
 html[lang="zh-CN"] .tc-native-news :is(h1,h2,h3,p){word-break:normal;overflow-wrap:break-word}
 @media(prefers-reduced-motion:reduce){.tc-native-news .tn-card__image img{transform:none!important;transition:none!important}}
 </style>
+<style id="terracle-contact-meeting-qa-20261127">
+/* Phase 8 — Contact / Meeting, restrained editorial system; original flows preserved. */
+.tc-contact-page,.terracle-booking-section{--form-gutter:var(--tc-content-gutter,clamp(20px,4.2vw,64px));--form-max:var(--tc-content-max,1440px);--form-line:rgba(255,255,255,.16);--form-muted:#b9c5c6}
+.tc-contact-page :is(.tc-contact-intro__inner,.tc-contact-content__inner){max-width:var(--form-max);width:100%;margin-inline:auto;padding-inline:var(--form-gutter);box-sizing:border-box}
+.tc-contact-page .tc-contact-intro{min-height:clamp(240px,24vw,330px)}
+.tc-contact-page .tc-contact-intro h1{font-size:clamp(32px,3vw,44px);font-weight:590;letter-spacing:-.04em;line-height:1.25}
+.tc-contact-page .tc-contact-intro p:not(.tc-contact-label){font-size:clamp(14px,1.1vw,16px);line-height:1.75;color:var(--form-muted)}
+.tc-contact-page .tc-contact-label{font-size:11px;font-weight:650;letter-spacing:.12em}
+.tc-contact-page .tc-contact-content{padding-block:clamp(70px,7vw,110px)}
+.tc-contact-page .tc-contact-content__inner{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(35px,5vw,85px)}
+.tc-contact-page .tc-contact-content__inner>*{min-width:0}
+.tc-contact-page .tc-contact-form-col h2{font-size:clamp(24px,2.2vw,31px);font-weight:590;line-height:1.32;margin:0 0 12px}
+.tc-contact-page .tc-contact-help{font-size:14px;line-height:1.75;color:var(--form-muted);margin-bottom:25px}
+.tc-contact-page .tc-contact-form>label:not(.tc-contact-agree){font-size:13px;line-height:1.55;font-weight:540;margin:17px 0 8px}
+.tc-contact-page .tc-contact-form :is(input:not([type=checkbox]),textarea,select){min-height:48px;width:100%;max-width:100%;font-size:16px;line-height:1.5;padding:12px 13px;background:#080b0b;border:1px solid #647173;color:#f5f7f7;border-radius:0}
+.tc-contact-page .tc-contact-form textarea{min-height:150px;resize:vertical}
+.tc-contact-page .tc-contact-form :is(input,textarea,select):focus-visible{outline:2px solid #9edbe5;outline-offset:2px;border-color:#9edbe5}
+.tc-contact-page .tc-contact-phone{min-width:0;gap:8px}
+.tc-contact-page .tc-contact-phone input{flex:1 1 0;min-width:0;max-width:none}
+.tc-contact-page .tc-contact-privacy{height:auto;max-height:180px;min-height:115px;overflow:auto;padding:16px;border-color:var(--form-line)}
+.tc-contact-page .tc-contact-privacy p{font-size:12px;line-height:1.8;color:#b4bfc0}
+.tc-contact-page .tc-contact-agree{min-height:44px;align-items:center;gap:12px;line-height:1.6}
+.tc-contact-page .tc-contact-agree input{width:18px;height:18px;flex-shrink:0}
+.tc-contact-page .tc-contact-submit{min-height:50px;font-size:14px;font-weight:600;line-height:1.5;border-radius:0}
+.tc-contact-page .tc-contact-feedback{font-size:13px;line-height:1.75;color:var(--form-muted)}
+.tc-contact-page .tc-contact-map{max-width:100%;aspect-ratio:16/8;min-height:260px}
+.tc-contact-page .tc-contact-details{gap:18px 26px;line-height:1.72}
+.terracle-booking-section{padding:clamp(70px,7vw,110px) var(--form-gutter);box-sizing:border-box}
+.terracle-booking-section .terracle-booking-inner{max-width:var(--form-max);margin-inline:auto;min-width:0}
+.terracle-booking-section .terracle-booking-hero{max-width:850px;margin-bottom:clamp(38px,5vw,68px)}
+.terracle-booking-section .terracle-booking-title{font-size:clamp(31px,3vw,44px);font-weight:590;line-height:1.27;letter-spacing:-.04em}
+.terracle-booking-section .terracle-booking-desc{font-size:clamp(14px,1.12vw,16px);line-height:1.84;color:var(--form-muted)}
+.terracle-booking-section .terracle-booking-intro{gap:clamp(30px,5vw,80px);border-color:var(--form-line)}
+.terracle-booking-section :is(.terracle-intro-title h2,.terracle-time-head h2){font-size:clamp(21px,1.8vw,26px);font-weight:590;line-height:1.36}
+.terracle-booking-section .terracle-intro-content p{font-size:15px;line-height:1.85;color:var(--form-muted)}
+.terracle-booking-section .terracle-time-list,.terracle-booking-section .terracle-booking-guide{border-color:var(--form-line)}
+.terracle-booking-section .terracle-time-item,.terracle-booking-section .terracle-guide-item{min-width:0;padding:clamp(20px,2.4vw,30px)}
+.terracle-booking-section .terracle-time-item strong{font-size:clamp(16px,1.5vw,19px);font-weight:590;line-height:1.5;overflow-wrap:break-word}
+.terracle-booking-section .terracle-guide-head strong{font-size:16px;font-weight:590;line-height:1.45}
+.terracle-booking-section .terracle-guide-item p{font-size:13px;line-height:1.8;color:var(--form-muted)}
+.terracle-booking-section .terracle-calendar-area{padding:clamp(15px,2vw,26px);min-width:0}
+.terracle-booking-section .terracle-calendar-frame{height:clamp(650px,70vw,880px);max-width:100%;overflow:auto}
+.terracle-booking-section .terracle-calendar-frame iframe{min-width:0;width:100%;height:100%;border:0}
+.terracle-booking-section .terracle-booking-note{gap:24px;border-color:var(--form-line)}
+@media(max-width:900px){
+ .tc-contact-page .tc-contact-content__inner{grid-template-columns:minmax(0,1fr);gap:42px}
+ .terracle-booking-section .terracle-booking-intro{grid-template-columns:minmax(0,1fr);gap:18px}
+ .terracle-booking-section .terracle-time-list,.terracle-booking-section .terracle-booking-guide{grid-template-columns:minmax(0,1fr)}
+ .terracle-booking-section .terracle-time-item,.terracle-booking-section .terracle-guide-item{border-right:0;border-bottom:1px solid var(--form-line)}
+ .terracle-booking-section .terracle-booking-note{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:600px){
+ .tc-contact-page,.terracle-booking-section{--form-gutter:20px}
+ .tc-contact-page .tc-contact-content{padding-block:64px}
+ .tc-contact-page .tc-contact-map{aspect-ratio:auto;height:260px;min-height:0}
+ .tc-contact-page .tc-contact-details{grid-template-columns:minmax(0,1fr);gap:8px}
+ .tc-contact-page .tc-contact-phone{gap:5px}
+ .tc-contact-page .tc-contact-phone input{padding-inline:8px}
+ .terracle-booking-section{padding-block:65px}
+ .terracle-booking-section .terracle-booking-meta{gap:12px 18px}
+ .terracle-booking-section .terracle-calendar-frame{height:700px}
+ .terracle-booking-section .terracle-calendar-label{flex-wrap:wrap;gap:12px}
+}
+@media(max-width:390px){.tc-contact-page,.terracle-booking-section{--form-gutter:18px}.terracle-booking-section .terracle-calendar-area{padding:10px}}
+html[lang="en"] :is(.tc-contact-page,.terracle-booking-section) :is(h1,h2,h3,p,label),
+html[lang="zh-CN"] :is(.tc-contact-page,.terracle-booking-section) :is(h1,h2,h3,p,label){overflow-wrap:break-word;word-break:normal}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
