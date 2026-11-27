@@ -96,6 +96,52 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 @media(max-width:1100px){.filters{grid-template-columns:repeat(3,minmax(0,1fr)) auto}.filters .search{grid-column:1/-1}.content-grid,.detail-grid{grid-template-columns:minmax(0,1fr) 245px;gap:32px}}
 @media(max-width:760px){.site-header{height:65px}.brand{font-size:22px}.brand small{font-size:11px}.main-nav{display:none}.hero-inner{padding-top:62px;padding-bottom:58px}.hero h1{font-size:clamp(32px,7vw,41px)}.hero p{font-size:14px;margin-bottom:27px}.filters{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.filters .search{grid-column:1/-1}.clear{min-height:48px}.career-content{padding-top:42px;padding-bottom:75px}.content-grid,.detail-grid{grid-template-columns:minmax(0,1fr);gap:42px}.sidebar{border-top:1px solid var(--line);padding-top:34px}.job{grid-template-columns:minmax(0,1fr);gap:11px}.job-tags{justify-content:start}.results-head{align-items:start}.detail-back{margin-bottom:26px}.apply-card{position:static}.footer-inner{flex-direction:column;align-items:start}}
 @media(max-width:460px){.filters{grid-template-columns:1fr}.filters .search{grid-column:auto}.hero-inner{padding-top:51px}.hero h1{font-size:31px}.wrap{padding-inline:20px}.job h3{font-size:17px}.header-action{font-size:12px;padding:9px 12px}}
+
+
+/* Detail view v2 — editorial two-column with persistent job navigator */
+.detail-page{width:min(100%,var(--max));padding-top:44px;padding-bottom:100px}
+.detail-layout{display:grid;grid-template-columns:minmax(235px,290px) minmax(0,1fr);gap:clamp(42px,5.5vw,100px);align-items:start}
+.detail-left{position:sticky;top:107px;align-self:start;min-width:0;max-height:calc(100dvh - 125px);display:flex;flex-direction:column}
+.detail-back{margin:0 0 32px;font-size:14px;color:#27373c;font-weight:600;width:max-content}
+.detail-list-label{font-size:13px;color:#425259;font-weight:650;margin:0 0 16px}
+.detail-list-label em{font-style:normal;color:#087f88}
+.detail-side-list{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;display:grid;gap:10px;padding:0 8px 15px 0}
+.detail-side-job{display:block;width:100%;padding:19px 19px 17px;text-align:left;border:1px solid #dce5e7;border-radius:12px;background:#fff;min-height:118px;transition:border-color .2s,background .2s}
+.detail-side-job.is-active{border-color:#125b62;background:#f4fafa}
+.detail-side-job:hover{border-color:#6cabb0}
+.detail-side-job .unit{display:block;font-size:11px;font-weight:570;color:#839397;margin-bottom:10px}
+.detail-side-job strong{display:block;font-size:15px;line-height:1.45;font-weight:630;color:#27343a}
+.detail-side-job small{display:block;margin-top:17px;color:#8b989b;font-size:12px}
+.detail-side-job[aria-current="true"]{box-shadow:inset 3px 0 0 #0a8d95}
+.detail-main{min-width:0}
+.detail-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:26px}
+.detail-top h1{font-size:clamp(27px,2.4vw,38px);font-weight:650;letter-spacing:-.04em;line-height:1.28;margin:0 0 12px}
+.detail-top .detail-sub{font-size:13px;line-height:1.8;color:#849198}
+.detail-controls{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.detail-icon-btn{display:grid;place-items:center;background:#fff;border:1px solid #dae4e5;width:43px;height:43px;border-radius:8px;color:#405258}
+.detail-icon-btn svg{width:20px;height:20px}
+.detail-apply{height:45px;min-width:124px;padding:0 20px;background:#102a30;color:white;border:1px solid #102a30;border-radius:7px;font-size:13px;font-weight:600}
+.detail-apply:disabled{opacity:.55;cursor:not-allowed;background:#cbd3d5;color:#5e6c70;border-color:#cbd3d5}
+.detail-banner{height:clamp(190px,21vw,285px);border-radius:12px;background:radial-gradient(circle at 70% 25%,rgba(124,240,231,.43),transparent 28%),linear-gradient(115deg,#102f37,#154f55 55%,#0b262e);overflow:hidden;position:relative;margin-bottom:52px}
+.detail-banner:before{content:"";position:absolute;display:block;width:55%;aspect-ratio:1;border:1px solid rgba(207,255,254,.3);border-radius:50%;right:8%;top:-70%;box-shadow:0 0 0 95px rgba(36,139,143,.11),0 0 0 190px rgba(75,176,181,.07)}
+.detail-banner:after{content:"";position:absolute;right:12%;bottom:-39%;width:32%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 38%,rgba(139,232,225,.73),rgba(17,107,114,.13) 71%);filter:blur(1px)}
+.detail-banner .banner-logo{position:absolute;top:28px;left:34px;color:#fff;letter-spacing:-.04em;font-size:23px;font-weight:670}
+.detail-banner .banner-bottom{position:absolute;left:34px;bottom:29px;font-size:11px;letter-spacing:.15em;font-weight:600;color:#b6e5e3}
+.detail-content{max-width:865px}
+.detail-section{margin-bottom:47px}
+.detail-section h2{font-size:19px;line-height:1.4;font-weight:650;letter-spacing:-.025em;margin:0 0 17px}
+.detail-section .long-copy,.detail-section li{font-size:15px;line-height:1.91;color:#526169}
+.detail-section .long-copy{margin:0;white-space:pre-line}
+.detail-section ul{padding-left:21px;margin:0}
+.detail-section li{padding-left:3px;margin-bottom:6px}
+.detail-divider{border:0;border-top:1px solid #e3e9eb;margin:47px 0}
+.detail-footer-action{display:flex;gap:12px;align-items:center;padding:24px 0}
+.detail-footer-action .detail-apply{min-width:170px}
+.detail-note{font-size:12px;color:#859399;line-height:1.7}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:#142a30;color:#fff;padding:12px 19px;border-radius:9px;z-index:70;font-size:13px;box-shadow:0 12px 36px #142a3033}
+@media(max-width:1000px){.detail-layout{grid-template-columns:215px minmax(0,1fr);gap:30px}.detail-controls{gap:6px}.detail-apply{min-width:100px}}
+@media(max-width:760px){.detail-page{padding-top:26px}.detail-layout{grid-template-columns:minmax(0,1fr);gap:22px}.detail-left{position:static;max-height:none}.detail-back{margin-bottom:12px}.detail-list-label{display:none}.detail-side-list{display:flex;overflow-x:auto;overflow-y:hidden;padding:0 0 12px;gap:10px;scroll-snap-type:x mandatory}.detail-side-job{flex:0 0 205px;min-height:105px;scroll-snap-align:start}.detail-top{margin-top:12px}.detail-top h1{font-size:27px}.detail-banner{height:200px;margin-bottom:37px}.detail-content{max-width:100%}}
+@media(max-width:490px){.detail-top{flex-direction:column;gap:10px}.detail-controls{width:100%}.detail-apply{flex:1}.detail-banner .banner-logo{left:22px;top:22px}.detail-banner .banner-bottom{left:22px}.detail-side-job{flex-basis:190px}.detail-section{margin-bottom:33px}.detail-section .long-copy,.detail-section li{font-size:14px;line-height:1.85}}
 </style>
 </head>
 <body>
@@ -118,9 +164,9 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
    <p>우리는 버려진 자원을 새로운 가능성으로 바꾸는 기술을 연구합니다.<br>함께 도전하고 성장할 수 있는 사람을 기다립니다.</p>
    <div class="filters" role="search" aria-label="채용공고 검색 및 필터">
     <label class="filter-field search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.7" cy="10.7" r="6.8"/><path d="m16 16 5 5"/></svg><input type="search" id="searchInput" placeholder="직무명, 기술 분야, 주요 업무를 검색해보세요" aria-label="채용공고 검색"></label>
-    <label class="filter-field select"><select id="roleFilter" aria-label="직무 선택"><option value="">모든 직무</option><option value="연구개발">연구개발</option><option value="공정기술">공정기술</option><option value="사업개발">사업개발</option><option value="운영관리">운영관리</option></select></label>
-    <label class="filter-field select"><select id="siteFilter" aria-label="근무지 선택"><option value="">모든 근무지</option><option value="인천">인천</option><option value="당진">당진</option><option value="부산">부산</option></select></label>
-    <label class="filter-field select"><select id="typeFilter" aria-label="고용형태 선택"><option value="">모든 고용형태</option><option value="정규직">정규직</option><option value="계약직">계약직</option></select></label>
+    <label class="filter-field select"><select id="roleFilter" aria-label="직무 선택"><option value="">모든 직무</option><option value="인프라팀">인프라팀</option><option value="환경안전팀">환경안전팀</option><option value="생산기술팀">생산기술팀</option></select></label>
+    <label class="filter-field select"><select id="siteFilter" aria-label="근무지 선택"><option value="">모든 근무지</option><option value="당진">당진</option></select></label>
+    <label class="filter-field select"><select id="typeFilter" aria-label="고용형태 선택"><option value="">모든 고용형태</option><option value="모집중">모집중</option><option value="모집인원 0명">모집인원 0명</option></select></label>
     <button type="button" class="clear" id="clearFilters">초기화</button>
    </div>
   </div>
@@ -128,7 +174,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
  <div class="wrap career-content">
   <div class="content-grid">
    <section>
-    <div class="results-head"><strong><em id="resultCount">4</em>개의 예시 포지션이 있습니다.</strong><span>직무명을 누르면 상세 내용을 볼 수 있습니다.</span></div>
+    <div class="results-head"><strong><em id="resultCount">6</em>개의 샘플 포지션이 있습니다.</strong><span>직무명을 누르면 상세 내용을 볼 수 있습니다.</span></div>
     <div id="jobList" class="job-list" aria-live="polite"></div>
    </section>
    <aside class="sidebar">
@@ -148,38 +194,79 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 <footer class="site-footer"><div class="wrap footer-inner"><div><strong>Terracle Careers</strong><p>디자인 시안 · 실제 채용공고 및 지원 시스템과 연결되지 않습니다.</p></div><div><a href="./">Terracle 홈페이지</a> · info@terracle.im</div></div></footer>
 <script>
 (() => {
+ const commonSite="당진";
  const jobs=[
-  {id:"rd",title:"화학적 재활용 R&D 연구원",role:"연구개발",site:"인천",type:"정규직",tags:["고분자","촉매","실험"],summary:"해중합 기술 연구 및 실험 프로세스 개선",tasks:["PET 등 폴리에스터 기반 해중합 연구 및 실험을 수행합니다.","분석 결과를 체계적으로 기록하고 기술 검증을 지원합니다.","연구개발 과정의 개선 과제를 발굴합니다."],qual:["화학, 화학공학, 고분자 및 유관 전공 지식","실험 데이터 정리와 문서화 역량","새로운 기술을 탐구하는 자세"],extra:"관련 연구 경험 및 분석 장비 사용 경험"},
-  {id:"process",title:"공정기술 엔지니어",role:"공정기술",site:"당진",type:"정규직",tags:["공정","파일럿","설비"],summary:"재활용 공정 검토와 생산기술 고도화",tasks:["화학적 재활용 공정 운영 및 개선 업무를 검토합니다.","설비 및 생산 데이터의 운영 지표를 관리합니다.","R&D와 생산 현장의 기술 협업을 지원합니다."],qual:["공정 엔지니어링에 대한 이해","문제 원인을 분석하고 개선안을 수립하는 역량","관련 부서와의 협업 역량"],extra:"화학 공정 또는 생산 설비 관련 경험"},
-  {id:"biz",title:"사업개발 담당자",role:"사업개발",site:"부산",type:"정규직",tags:["B2B","파트너십","시장조사"],summary:"기술 기반 사업 기회 발굴 및 파트너 협력",tasks:["고객과 시장을 조사하고 신규 사업 기회를 발굴합니다.","파트너사 커뮤니케이션과 제안 자료를 지원합니다.","기술의 사업화 과정을 관련 팀과 조율합니다."],qual:["B2B 커뮤니케이션 역량","자료 기획과 논리적인 문서 작성 능력","기술과 시장을 함께 이해하려는 태도"],extra:"소재·화학 산업 관련 비즈니스 경험"},
-  {id:"ops",title:"생산 운영관리 담당자",role:"운영관리",site:"당진",type:"계약직",tags:["생산관리","운영","품질"],summary:"생산 현장 운영 및 품질 관리 지원",tasks:["생산 운영 계획과 일정 관리를 지원합니다.","현장 기록 및 기본 품질 데이터를 정리합니다.","유관 부서와 협력해 운영 효율을 높입니다."],qual:["책임감 있는 업무 수행과 꼼꼼한 기록 관리","현장 커뮤니케이션 역량","기본적인 업무 문서 활용 능력"],extra:"제조 현장 운영 또는 품질 관련 경험"}
+ {id:"mechanical",title:"인프라팀 · 기계",role:"인프라팀",site:commonSite,type:"모집중",headcount:2,tags:["기계설비","유틸리티","공정"],
+ intro:"해당 포지션은 플랜트 생산설비 및 유틸리티 설비의 설계, 시공, 관리를 경험한 분께 적합합니다.\n본 채용은 테라클 당진공장의 설비에 대한 예방정비 및 설비 신뢰성 관리 체계를 구축하고, 신규 설비 신설/증설 시 설계부터 시운전까지 전 과정을 관리함으로써 플랜트 공정운영에 대한 안정성과 효율성을 확보하는 역할을 수행합니다.",
+ tasks:["설비(생산/유틸리티) 유지보수 및 개선 관리","유틸리티 사용량 분석 및 에너지 효율 개선","신규 설비 설계 및 시공/시운전 관리","에너지 이용합리화법, 고압가스안전관리법, 도시가스사업법 등 관련 인허가 대응"],
+ qual:["기계공학 관련 전공자(4년제 학사)","공조냉동기계산업기사","AUTO CAD 사용 가능자","경력 5년 이상"],
+ extra:["화학 플랜트 증설 프로젝트 경험자","에너지관리산업기사 보유자"]},
+ {id:"electrical",title:"인프라팀 · 전기",role:"인프라팀",site:commonSite,type:"모집중",headcount:1,tags:["PLC","전기설비","자동제어"],
+ intro:"해당 포지션은 PLC 기반 공정 자동제어 시스템과 수·변전설비를 포함한 전력계통 전반의 운영 및 개선 경험을 보유한 분께 적합합니다.\n\n본 채용은 테라클 당진공장에서 전력 및 제어설비의 안정적인 운영과 예방 정비·신뢰성 관리 체계를 구축하고, 전력 사용량 분석을 통한 에너지 효율 개선을 수행합니다.\n또한 설비 증설 시 전력계통 설계 검토부터 시공·시운전까지 전 과정을 총괄 관리함으로써 플랜트 전력 및 제어 시스템의 안정성과 효율성을 동시에 확보하는 역할을 수행합니다.",
+ tasks:["PLC 기반 공정 자동제어 시스템 유지관리","수·변전설비, 변압기 등 주요 전기 설비 운영 관리","전력 사용량 모니터링 및 효율 개선 방안 수립","신규 설비 전력계통 설계 및 시공/시운전 관리","전기안전 관리 및 관련 인허가 대응"],
+ qual:["전기/전자공학 관련 전공자(4년제 학사)","전기산업기사","AUTO CAD 사용 가능자","경력 8년 이상"],
+ extra:["화학 플랜트 증설 프로젝트 경험자","인버터(LS), PLC(XGT), Cimon / Edge 경험자"]},
+ {id:"safety",title:"환경안전팀 · 안전보건",role:"환경안전팀",site:commonSite,type:"모집중",headcount:1,tags:["안전보건","산업안전","PSM"],
+ intro:"해당 포지션은 사업장 내 산업안전 및 보건 관련 업무를 경험한 분께 적합합니다.\n본 채용은 산업안전보건법 등 관련 법규에 따른 기준을 준수하고, 유해·위험 요인을 사전에 발굴·개선하여 산업재해를 예방하는 역할을 수행합니다. 테라클은 당진공장의 임직원이 안전하고 건강한 환경에서 근무할 수 있는 안전보건체계를 구축하며, 사업장의 안전보건 수준을 향상시킬 인재를 찾고 있습니다.",
+ tasks:["산업안전보건법 및 중대재해 처벌법 안전 관리체계 구축","위험성 평가 수행 및 개선 조치 관리","안전보건교육 계획 수립 및 교육 실시","재해/아차사고 조사 및 재발방지 대책 수립","PSM, 유해 방지 계획서 작성 등 인허가 대응","사업장 내 보건 관리(작업환경측정, 일반 및 특수검진 등)"],
+ qual:["경력 5년 이상","환경/안전공학 관련 전공자(4년제 학사)","산업안전기사"],
+ extra:["화학 플랜트 안전 관리 경험자","PSM 대상 사업장 경험자","안전보건관리체계 구축 및 대응 경험","ISO 45001 인증 취득 및 운영 경험자","AUTO CAD 사용 가능자","위험물산업기사"]},
+ {id:"environment",title:"환경안전팀 · 환경",role:"환경안전팀",site:commonSite,type:"모집중",headcount:1,tags:["환경인허가","ISO 14001","ESG"],
+ intro:"해당 포지션은 환경 인허가 및 환경 규제 대응을 경험한 분께 적합합니다.\n본 채용은 환경보전법, 대기환경보전법, 폐기물 관리법, 화학물질 관리법 등 관련 법규에 따른 기준을 준수하고, 오염물질 발생 요인 및 환경영향 요소를 사전에 파악·개선하여 환경오염을 예방하는 역할을 수행합니다.",
+ tasks:["배출시설 운영 및 관리","사업장 내 환경 관련 인허가 대응 및 대관업무","ISO 14001 인증 운영","ESG 지표 관리"],
+ qual:["경력 5년 이상","환경/화학공학 관련 전공자(4년제 학사)","대기환경기사"],
+ extra:["화학플랜트 환경관리 경험자","ISO 14001 운영 경험자","탄소배출/온실가스 관리 경험자","AUTO CAD 사용가능자","수질환경기사"]},
+ {id:"engineering",title:"생산기술팀 · 설계",role:"생산기술팀",site:commonSite,type:"모집인원 0명",headcount:0,tags:["Aspen Plus","공정설계","PFD/P&ID"],
+ intro:"해당 포지션은 공정모사 프로그램(Aspen Plus)을 활용한 공정설계를 경험한 분께 적합합니다.\n본 채용은 Aspen 기반의 공정 시뮬레이션을 통해 물질/열수지 수립 및 공정 모델링을 수행하며, PFD/P&ID 작성 등 공정 설계 전반을 담당합니다.\n테라클은 해중합 플랜트 설계 및 운영 기술 지원을 통해 공정 효율성과 운전 안정성을 동시에 확보하고, 차후 해중합 양산설비 스케일업에 기여하는 핵심 인재를 찾고 있습니다.",
+ tasks:["Aspen Plus 기반 물질/열수지 수립 및 공정 모델링","공정 조건 최적화 및 Scale-up 검토","Design Basis 및 Engineering Spec 수립","PFD / P&ID 작성 및 검토"],
+ qual:["경력 5년 이상","화학공학 관련 전공자(4년제 학사)","Aspen Plus 사용 가능자","AUTO CAD 사용 가능자"],
+ extra:["스케일업 경험자 (Lab → Pilot → Commercial)"]},
+ {id:"supervisor",title:"생산기술팀 · 현장관리 조장급",role:"생산기술팀",site:commonSite,type:"모집인원 0명",headcount:0,tags:["현장운영","생산관리","설비점검"],
+ intro:"해당 포지션은 화공 플랜트에서 생산활동을 경험한 분께 적합합니다.\n본 채용의 해당 포지션은 교대 근무 체계 내에서 생산공정 관리와 현장 운영을 담당하며, 작업자 지휘·감독, 설비 이상 대응 및 안전 관리를 수행합니다. 또한 생산공정의 운전 상태를 모니터링하고 공정Data를 관리하며, 이상 발생 시 신속한 대응과 예방보전 활동을 통해 생산현장의 안정적인 가동과 생산 품질 확보 역할을 수행합니다.",
+ tasks:["생산공정 운전 및 상태 모니터링 (PLC 기반)","생산 스케줄 및 공정 Data 이력 관리","공정 설비 이상발생 시 초기 대응 및 조치","정기점검 및 예방보전 업무 지원","공정효율 향상 활동 참여"],
+ qual:["화학무관","교대 근무 가능자","경력 5년 이상"],
+ extra:["화공플랜트 생산 업무 경험자","PLC 운전 경험 (HMI System)","폐수처리장 관리 경험","지게차 운전 자격증"]}
  ];
- const el=id=>document.getElementById(id);
- const escapeText=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ const $=id=>document.getElementById(id);
+ const escapeText=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+ let bookmarked=new Set();
+ let activeJob=null;
+ function notify(message){document.querySelector(".toast")?.remove();const n=document.createElement("div");n.className="toast";n.role="status";n.textContent=message;document.body.appendChild(n);setTimeout(()=>n.remove(),2300);}
+ function jobMeta(x){return x.role+" · "+x.site+" · "+(x.headcount?"모집 "+x.headcount+"명":"모집인원 0명");}
  function render(){
-  const query=el("searchInput").value.trim().toLowerCase();
-  const role=el("roleFilter").value,site=el("siteFilter").value,type=el("typeFilter").value;
-  const results=jobs.filter(x=>(!role||x.role===role)&&(!site||x.site===site)&&(!type||x.type===type)&&(!query||[x.title,x.role,x.site,x.summary,...x.tags].join(" ").toLowerCase().includes(query)));
-  el("resultCount").textContent=results.length;
-  el("jobList").innerHTML=results.length?results.map(x=>'<button class="job" type="button" data-job="'+x.id+'"><div><h3>'+escapeText(x.title)+'<span class="sample-label">예시</span></h3><p>'+escapeText(x.summary)+' · '+escapeText(x.site)+'</p></div><div class="job-tags"><span>'+x.role+'</span><span>'+x.type+'</span></div></button>').join(""):'<div class="empty"><h3>검색 결과가 없습니다.</h3><p>검색어 또는 필터 조건을 변경해보세요.</p></div>';
-  el("jobList").querySelectorAll("[data-job]").forEach(btn=>btn.addEventListener("click",()=>showDetail(btn.dataset.job)));
+  const query=$("searchInput").value.trim().toLowerCase(),role=$("roleFilter").value,site=$("siteFilter").value,type=$("typeFilter").value;
+  const found=jobs.filter(x=>(!role||x.role===role)&&(!site||x.site===site)&&(!type||x.type===type)&&(!query||[x.title,x.role,x.site,x.intro,...x.tags].join(" ").toLowerCase().includes(query)));
+  $("resultCount").textContent=found.length;
+  $("jobList").innerHTML=found.length?found.map(x=>'<button class="job" type="button" data-job="'+x.id+'"><div><h3>'+escapeText(x.title)+(x.headcount===0?'<span class="sample-label">모집인원 0명</span>':'')+'</h3><p>'+escapeText(x.tags.join(" · "))+' · '+x.site+'</p></div><div class="job-tags"><span>'+x.role+'</span><span>'+(x.headcount?x.headcount+"명":"모집 미정")+'</span></div></button>').join(""):'<div class="empty"><h3>검색 결과가 없습니다.</h3><p>검색어 또는 필터를 변경해보세요.</p></div>';
+  $("jobList").querySelectorAll("[data-job]").forEach(btn=>btn.addEventListener("click",()=>showDetail(btn.dataset.job)));
  }
+ function icons(){
+  return {share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 16V3m0 0L7 8m5-5 5 5M5 14v5h14v-5"/></svg>',mark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 4h12v17l-6-4-6 4z"/></svg>'};
+ }
+ function renderSide(){
+  $("detailSideList").innerHTML=jobs.map(x=>'<button type="button" class="detail-side-job'+(activeJob===x.id?' is-active':'')+'" data-side-job="'+x.id+'" '+(activeJob===x.id?'aria-current="true"':'')+'><span class="unit">TERRACLE · '+escapeText(x.role)+'</span><strong>'+escapeText(x.title)+'</strong><small>'+(x.headcount?'모집 '+x.headcount+'명':'모집인원 0명')+' · '+x.site+'</small></button>').join("");
+  $("detailSideList").querySelectorAll("[data-side-job]").forEach(b=>b.addEventListener("click",()=>showDetail(b.dataset.sideJob)));
+ }
+ function section(label,content){return '<section class="detail-section"><h2>'+label+'</h2>'+content+'</section>';}
+ function list(items){return '<ul>'+items.map(v=>'<li>'+escapeText(v)+'</li>').join("")+'</ul>';}
  function showDetail(id,push=true){
   const x=jobs.find(job=>job.id===id);if(!x){showList(false);return;}
-  el("listPage").classList.add("hidden");
-  el("detailPage").classList.add("active");
-  el("detailPage").innerHTML='<button type="button" class="detail-back" id="backToList">← 전체 포지션으로 돌아가기</button><div class="detail-head"><div class="eyebrow">CAREER OPPORTUNITY · DESIGN SAMPLE</div><h1>'+escapeText(x.title)+'</h1><div class="detail-chips"><span>'+x.role+'</span><span>'+x.site+'</span><span>'+x.type+'</span><span>예시 공고</span></div></div><div class="detail-grid"><div><section class="detail-section"><h2>주요 업무</h2><ul>'+x.tasks.map(v=>'<li>'+escapeText(v)+'</li>').join("")+'</ul></section><section class="detail-section"><h2>자격 요건</h2><ul>'+x.qual.map(v=>'<li>'+escapeText(v)+'</li>').join("")+'</ul></section><section class="detail-section"><h2>우대 사항</h2><p>'+escapeText(x.extra)+'</p></section><section class="detail-section"><h2>안내</h2><p>본 페이지의 채용공고는 디자인 및 기능 검토용 예시입니다. 실제 근무조건·채용 여부·지원 절차는 확정되지 않았습니다.</p></section></div><aside><div class="apply-card"><strong>테라클과 함께할 준비가 되셨나요?</strong><p>현재는 시안입니다. 지원 버튼 대신 공식 채용 페이지를 확인할 수 있습니다.</p><button type="button" id="officialRecruit">공식 채용 페이지 확인</button><small>실제 지원은 공식 채용 공고에서만 진행해 주세요.</small></div></aside></div>';
-  el("backToList").addEventListener("click",()=>showList());
-  el("officialRecruit").addEventListener("click",()=>location.assign("./?page=recruit"));
+  activeJob=id;$("listPage").classList.add("hidden");$("detailPage").classList.add("active");
+  $("detailPage").innerHTML='<div class="detail-layout"><aside class="detail-left"><button type="button" class="detail-back" id="backToList">← 전체 공고로 돌아가기</button><p class="detail-list-label">포지션 <em>6개</em></p><div class="detail-side-list" id="detailSideList" aria-label="다른 채용 포지션"></div></aside><article class="detail-main"><div class="detail-top"><div><h1>'+escapeText(x.title)+'</h1><div class="detail-sub">'+escapeText(jobMeta(x))+' · 디자인 검토용</div></div><div class="detail-controls"><button class="detail-icon-btn" id="shareJob" aria-label="공고 링크 복사" title="공고 링크 복사">'+icons().share+'</button><button class="detail-icon-btn" id="bookmarkJob" aria-label="관심 공고 저장" title="관심 공고 저장" aria-pressed="'+bookmarked.has(id)+'">'+icons().mark+'</button><button class="detail-apply" id="applyJob" '+(x.headcount===0?'disabled':'')+'>'+(x.headcount?'지원하기':'모집 미정')+'</button></div></div><div class="detail-banner"><span class="banner-logo">✧ Terracle</span><span class="banner-bottom">TECHNOLOGY FOR CIRCULARITY</span></div><div class="detail-content">'+section("직무 개요",'<p class="long-copy">'+escapeText(x.intro)+'</p>')+section("담당 업무",list(x.tasks))+section("자격 요건",list(x.qual))+section("우대 사항",list(x.extra))+'<hr class="detail-divider">'+section("안내",'<p class="long-copy">본 공고의 내용은 제공된 채용자료를 바탕으로 구성한 디자인 검토용 샘플입니다. 실제 공고 게시 및 지원 접수는 공식 채용 페이지에서 확인해 주세요. 모집 인원이 0명인 포지션은 지원 기능을 제공하지 않습니다.</p>')+'<div class="detail-footer-action"><button type="button" class="detail-apply" id="applyBottom" '+(x.headcount===0?'disabled':'')+'>'+(x.headcount?'공식 채용 페이지 확인':'모집 미정')+'</button><span class="detail-note">지원 접수 기능은 연결되지 않았습니다.</span></div></div></article></div>';
+  renderSide();
+  $("backToList").addEventListener("click",()=>showList());
+  $("shareJob").addEventListener("click",()=>{const url=location.origin+location.pathname+"#job="+encodeURIComponent(id);if(navigator.clipboard?.writeText){navigator.clipboard.writeText(url).then(()=>notify("공고 링크를 복사했습니다.")).catch(()=>notify("주소창의 링크를 복사해 주세요."));}else notify("주소창의 링크를 복사해 주세요.");});
+  $("bookmarkJob").addEventListener("click",()=>{bookmarked.has(id)?bookmarked.delete(id):bookmarked.add(id);$("bookmarkJob").setAttribute("aria-pressed",String(bookmarked.has(id)));notify(bookmarked.has(id)?"관심 공고로 표시했습니다.":"관심 표시를 해제했습니다.");});
+  const apply=()=>location.assign("./?page=recruit");
+  if(x.headcount){$("applyJob").addEventListener("click",apply);$("applyBottom").addEventListener("click",apply);}
   if(push)history.pushState({job:id},"","#job="+encodeURIComponent(id));
-  window.scrollTo({top:0,behavior:"instant"});
+  window.scrollTo(0,0);
  }
- function showList(push=true){el("listPage").classList.remove("hidden");el("detailPage").classList.remove("active");if(push)history.pushState({},"",location.pathname);window.scrollTo({top:0,behavior:"instant"});}
+ function showList(push=true){activeJob=null;$("listPage").classList.remove("hidden");$("detailPage").classList.remove("active");if(push)history.pushState({},"",location.pathname);window.scrollTo(0,0);}
  document.querySelectorAll(".filters input,.filters select").forEach(node=>node.addEventListener(node.tagName==="INPUT"?"input":"change",render));
- el("clearFilters").addEventListener("click",()=>{el("searchInput").value="";["roleFilter","siteFilter","typeFilter"].forEach(id=>el(id).value="");render();el("searchInput").focus();});
+ $("clearFilters").addEventListener("click",()=>{$("searchInput").value="";["roleFilter","siteFilter","typeFilter"].forEach(id=>$(id).value="");render();$("searchInput").focus();});
  window.addEventListener("popstate",()=>{const m=location.hash.match(/^#job=([a-z0-9_-]+)$/);m?showDetail(m[1],false):showList(false);});
- render();
- const m=location.hash.match(/^#job=([a-z0-9_-]+)$/);if(m)showDetail(m[1],false);
+ render();const m=location.hash.match(/^#job=([a-z0-9_-]+)$/);if(m)showDetail(m[1],false);
 })();
 </script>
 </body>
