@@ -843,6 +843,54 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  #listPage .hero:hover .hero-backdrop::before{transform:scale(1.018)!important}
 }
 @media(prefers-reduced-motion:reduce){#listPage .hero-backdrop::before{transition:none!important}}
+
+/* Neutral monochrome pass — remove cool blue/teal cast from Careers main only. */
+#listPage{background:#050505!important;color:#f4f4f4}
+#listPage .hero{background-color:#050505!important}
+#listPage .hero-backdrop::before{
+ filter:grayscale(1) saturate(0)!important;
+}
+#listPage .career-search-section{
+ background:#090909!important;
+ border-top:1px solid #303030!important;
+ border-bottom:1px solid #303030!important;
+}
+#listPage .career-search-section .filter-field,
+#listPage .career-search-section .filter-field.select{
+ background:#171717!important;
+ border:1px solid #434343!important;
+}
+#listPage .career-search-section .filter-field:focus-within,
+#listPage .career-search-section .filter-field.select.is-open{
+ background:#202020!important;
+ border-color:#d4d4d4!important;
+ box-shadow:none!important;
+}
+#listPage .career-search-section .tc-select-trigger{color:#f0f0f0!important}
+#listPage .career-search-section .tc-select-trigger svg{stroke:#c7c7c7!important}
+#listPage .career-search-section .tc-select-menu{
+ background:#1b1b1b!important;border-color:#4b4b4b!important;
+ box-shadow:0 15px 30px rgba(0,0,0,.5)!important;
+}
+#listPage .career-search-section .tc-select-option{color:#e0e0e0!important}
+#listPage .career-search-section .tc-select-option:hover,
+#listPage .career-search-section .tc-select-option.is-focused{background:#343434!important;color:#fff!important}
+#listPage .career-search-section .tc-select-option[aria-selected=true],
+#listPage .career-search-section .tc-select-option[aria-selected=true]::after{color:#fff!important}
+#listPage .career-search-section .clear{
+ background:#171717!important;
+ border-color:#434343!important;
+ color:#eee!important;
+}
+#listPage .career-search-section .clear:hover{background:#2b2b2b!important;border-color:#ddd!important}
+#listPage .career-content{background:#050505!important}
+#listPage .job{border-bottom-color:#303030!important}
+#listPage .job:hover{background:#181818!important}
+#listPage .job-tags span{background:#1b1b1b!important;border-color:#414141!important;color:#e5e5e5!important}
+#listPage .side-card{border-color:#303030!important}
+#listPage .side-foot{background:#151515!important;border-color:#3a3a3a!important}
+#listPage .results-head{border-bottom-color:#343434!important}
+#listPage .results-head span,#listPage .job p,#listPage .side-card time{color:#b3b3b3!important}
 </style>
 </head>
 <body>
