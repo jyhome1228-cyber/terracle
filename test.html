@@ -1031,6 +1031,71 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  #applyPage .apply-hero{padding:30px 19px!important}
  #applyPage .apply-hero-prose p{font-size:12px!important}
 }
+
+/* Careers fixed stage v2 — hero and search fixed, only job list/insights scrolls */
+@media(min-width:851px){
+ #listPage.list-page:not(.hidden){
+  height:calc(100dvh - 126px)!important;
+  min-height:0!important;
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+ }
+ #listPage .hero{
+  flex:0 1 auto!important;
+  height:clamp(240px,35dvh,420px)!important;
+  min-height:0!important;
+ }
+ #listPage .hero-inner{
+  min-height:0!important;
+  height:100%!important;
+  padding-top:clamp(30px,4vh,70px)!important;
+  padding-bottom:clamp(30px,4vh,70px)!important;
+ }
+ #listPage>.career-search-section{
+  flex:0 0 auto!important;
+  position:relative!important;
+  z-index:22!important;
+  background:#080808!important;
+  border-top:1px solid #363636!important;
+  border-bottom:1px solid #363636!important;
+ }
+ #listPage>.career-search-section .career-search-inner{
+  padding-block:clamp(16px,2.2vh,26px)!important;
+ }
+ #listPage>.career-search-section .filters{position:relative;z-index:23}
+ #listPage>.career-scroll-region{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  overscroll-behavior-y:contain;
+  background:#050505!important;
+  scrollbar-width:thin;
+  scrollbar-color:#777 #151515;
+ }
+ #listPage>.career-scroll-region .career-content{padding-top:clamp(36px,4.5vw,64px)!important;padding-bottom:80px!important}
+}
+@media(max-width:850px){
+ #listPage>.career-search-section{background:#080808!important;border-color:#393939!important}
+ #listPage>.career-scroll-region{overflow:visible!important;height:auto!important}
+}
+/* Neutralize leftover blue-green surfaces in job detail and application pages. */
+#detailPage .detail-side-job{background:#121212!important;border-color:#444!important}
+#detailPage .detail-side-job.is-active,#detailPage .detail-side-job.is-active:hover{background:#252525!important;border-color:#ddd!important}
+#detailPage .detail-side-job:hover{background:#1f1f1f!important;border-color:#969696!important}
+#detailPage .detail-banner{background:#080808!important;border-color:#3f3f3f!important}
+#detailPage .detail-controls .detail-icon-btn{background:#171717!important;border-color:#575757!important}
+#detailPage .detail-sub,#detailPage .detail-secondary{color:#b9b9b9!important}
+#applyPage .apply-top,#applyPage .apply-form,#applyPage .apply-summary{color:#ededed}
+#applyPage .apply-form :is(input,textarea,select){background:#151515!important;border-color:#505050!important;color:#f4f4f4!important}
+#applyPage .apply-select-trigger{background:#171717!important;border-color:#585858!important;color:#f4f4f4!important}
+#applyPage .apply-select-wrap.is-open .apply-select-trigger,#applyPage .apply-select-trigger:hover{background:#262626!important;border-color:#d0d0d0!important}
+#applyPage .apply-select-menu{background:#1a1a1a!important;border-color:#555!important}
+#applyPage .apply-select-option:hover:not(:disabled),#applyPage .apply-select-option.is-focused:not(:disabled){background:#363636!important}
+#applyPage .apply-summary{background:#111!important;border-color:#454545!important}
+#applyPage .apply-notice{background:#171717!important;border-left-color:#fff!important}
+#applyPage .apply-form .form-help{color:#a8a8a8!important}
 </style>
 </head>
 <body>
@@ -1070,7 +1135,6 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
    <p>우리는 버려진 자원을 새로운 가능성으로 바꾸는 기술을 연구합니다.<br>함께 도전하고 성장할 수 있는 사람을 기다립니다.</p>
   </div>
  </section>
- <div class="career-scroll-region" role="region" aria-label="채용공고 검색 및 목록" tabindex="0">
  <section class="career-search-section" aria-label="채용공고 검색">
   <div class="wrap career-search-inner">
    <div class="filters" role="search" aria-label="채용공고 검색 및 필터">
@@ -1082,6 +1146,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
    </div>
   </div>
  </section>
+ <div class="career-scroll-region" role="region" aria-label="채용공고 목록과 뉴스" tabindex="0">
  <div class="wrap career-content">
   <div class="content-grid">
    <section>
