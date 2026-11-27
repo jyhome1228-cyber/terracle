@@ -1141,6 +1141,69 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  }
  #applyPage .apply-hero-prose p{font-size:12px!important;line-height:1.75!important}
 }
+
+/* Careers mobile detail QA — compact carousel cards and calmer typography. */
+@media(max-width:850px){
+ #detailPage.detail-page{
+  width:100%!important;
+  max-width:100%!important;
+  padding:26px 20px 76px!important;
+  overflow-x:clip!important;
+ }
+ #detailPage .detail-layout{display:flex!important;flex-direction:column!important;gap:28px!important;min-width:0!important}
+ #detailPage .detail-left{width:100%!important;max-width:100%!important;position:static!important;min-width:0!important;overflow:hidden!important}
+ #detailPage .detail-back{font-size:13px!important;min-height:38px;margin-bottom:17px!important}
+ #detailPage .detail-side-list{
+  display:flex!important;flex-direction:row!important;
+  width:100%!important;max-width:100%!important;
+  gap:9px!important;overflow-x:auto!important;overflow-y:hidden!important;
+  scroll-snap-type:x proximity;
+  scrollbar-width:none!important;-ms-overflow-style:none;
+  padding:0 0 12px!important;overscroll-behavior-x:contain;
+ }
+ #detailPage .detail-side-list::-webkit-scrollbar{display:none!important}
+ #detailPage .detail-side-job{
+  flex:0 0 clamp(162px,39vw,200px)!important;
+  width:clamp(162px,39vw,200px)!important;
+  min-width:0!important;min-height:91px!important;
+  padding:13px 14px!important;scroll-snap-align:start;
+  border-width:1px!important;
+ }
+ #detailPage .detail-side-job .unit{font-size:10px!important;line-height:1.4!important;margin-bottom:6px!important}
+ #detailPage .detail-side-job strong{font-size:13px!important;line-height:1.43!important;letter-spacing:-.02em}
+ #detailPage .detail-side-job small{font-size:11px!important;margin-top:8px!important;line-height:1.45!important}
+ #detailPage .detail-main{width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important}
+ #detailPage .detail-top{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:16px!important;margin-bottom:27px!important}
+ #detailPage .detail-top>div:first-child{flex:none!important;min-width:0}
+ #detailPage .detail-main .detail-top h1{font-size:clamp(26px,5.5vw,32px)!important;line-height:1.3!important;margin:0 0 9px!important;letter-spacing:-.03em}
+ #detailPage .detail-sub{font-size:12px!important;line-height:1.6!important}
+ #detailPage .detail-controls{display:grid!important;grid-template-columns:44px 44px minmax(0,1fr)!important;gap:9px!important;width:100%!important}
+ #detailPage .detail-icon-btn{width:44px!important;height:44px!important;min-width:0!important}
+ #detailPage .detail-icon-btn svg{width:18px!important;height:18px!important}
+ #detailPage .detail-controls .detail-apply{width:100%!important;min-width:0!important;height:44px!important;min-height:44px!important;flex:none!important;font-size:13px!important}
+ #detailPage .detail-banner.detail-banner--careers{width:100%!important;max-width:100%!important;margin-bottom:40px!important}
+ #detailPage .detail-banner--careers img{display:block;width:100%!important;max-width:100%!important;height:auto!important;margin:0!important;object-fit:contain!important}
+ #detailPage .detail-content{max-width:100%!important;min-width:0!important}
+ #detailPage .detail-content .detail-section{margin-bottom:38px!important}
+ #detailPage .detail-content .detail-section:first-child h2{font-size:21px!important;margin-bottom:20px!important}
+ #detailPage .detail-content .detail-section h2{font-size:18px!important;line-height:1.42!important;margin-bottom:15px!important}
+ #detailPage .career-letter .career-letter__lead{font-size:16px!important;line-height:1.65!important;margin-bottom:20px!important}
+ #detailPage .career-letter p,
+ #detailPage .detail-content .detail-section .long-copy,
+ #detailPage .detail-content .detail-section li{font-size:14px!important;line-height:1.84!important;letter-spacing:-.008em!important;overflow-wrap:anywhere!important;word-break:keep-all}
+ #detailPage .career-letter p{margin-bottom:17px!important}
+ #detailPage .detail-content .detail-section ul{padding-left:20px!important}
+ #detailPage .detail-content .detail-section li{margin-bottom:8px!important}
+ #detailPage .detail-content .detail-section:first-child{padding-bottom:30px!important;margin-bottom:37px!important}
+ #detailPage .detail-footer-action{flex-direction:column!important;align-items:stretch!important;gap:12px!important}
+ #detailPage .detail-footer-action .detail-apply{width:100%!important;min-height:46px}
+}
+@media(max-width:390px){
+ #detailPage.detail-page{padding-inline:17px!important}
+ #detailPage .detail-side-job{flex-basis:155px!important;width:155px!important;padding:11px 12px!important}
+ #detailPage .detail-main .detail-top h1{font-size:25px!important}
+ #detailPage .detail-controls{grid-template-columns:42px 42px minmax(0,1fr)!important;gap:7px!important}
+}
 </style>
 </head>
 <body>
