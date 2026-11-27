@@ -254,6 +254,27 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 .apply-notice{border-left:2px solid #9edbe5;padding:16px 18px;background:#0e1d20;margin:20px 0;font-size:13px;line-height:1.8;color:#d3dfdf}
 @media(max-width:920px){.apply-shell{grid-template-columns:minmax(0,1fr)}.apply-summary{position:static}}
 @media(max-width:600px){.apply-page{padding-block:48px 80px}.apply-form .form-grid{grid-template-columns:minmax(0,1fr)}.apply-top{margin-bottom:28px}.apply-form section{padding-block:25px}.apply-form h2{font-size:19px}.apply-form .form-buttons button{flex:1 1 100%}}
+
+/* Unified Careers application: one shared hero and role selection. */
+.apply-page{padding-top:32px}
+.apply-hero{
+ position:relative;isolation:isolate;overflow:hidden;
+ padding:clamp(58px,7vw,100px) clamp(25px,4.5vw,76px);
+ margin:0 0 clamp(45px,6vw,76px);
+ border:1px solid #273e41;background:linear-gradient(105deg,#071012 8%,#0d2529 75%,#0a171a);
+}
+.apply-hero:before{content:"";position:absolute;right:-8%;top:-76%;width:55%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(158,219,229,.18);box-shadow:0 0 0 75px rgba(158,219,229,.025),0 0 0 150px rgba(158,219,229,.017);z-index:-1}
+.apply-hero-label{font-size:11px;font-weight:650;letter-spacing:.13em;color:#9edbe5}
+.apply-hero h1{font-size:clamp(29px,3.15vw,47px);line-height:1.32;letter-spacing:-.048em;font-weight:620;margin:23px 0 19px}
+.apply-hero p{font-size:15px;line-height:1.85;color:#bdcbcd;max-width:730px;margin:0}
+.apply-shell{max-width:none}
+.apply-top h1{font-size:clamp(26px,2.5vw,35px)}
+.apply-top{margin-bottom:27px}
+.apply-form #applyPosition{border-color:#729ba0;background:#102025;color:#f5fbfb;cursor:pointer}
+.apply-form #applyPosition option{background:#0c181a;color:#f2f7f7}
+.hero-apply-link{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:#b6e8ea;border:1px solid #52888c;min-height:46px;padding:0 22px;font-size:13px;font-weight:590;margin:0 0 25px;transition:background .2s,border-color .2s}
+.hero-apply-link:hover{background:#153136;border-color:#a1dfe2;color:#fff}
+@media(max-width:600px){.apply-hero{padding:52px 22px;margin-bottom:37px}.apply-hero h1{font-size:29px}.apply-hero p{font-size:14px}}
 </style>
 </head>
 <body>
@@ -291,6 +312,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
    <span class="hero-eyebrow">WORK AT TERRACLE</span>
    <h1>지속가능한 미래를 만드는 기술,<br>그 변화를 함께 설계할 동료를 찾습니다.</h1>
    <p>우리는 버려진 자원을 새로운 가능성으로 바꾸는 기술을 연구합니다.<br>함께 도전하고 성장할 수 있는 사람을 기다립니다.</p>
+   <a href="#apply=general" class="hero-apply-link" id="generalApplyLink">통합 지원서 작성</a>
    <div class="filters" role="search" aria-label="채용공고 검색 및 필터">
     <label class="filter-field search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.7" cy="10.7" r="6.8"/><path d="m16 16 5 5"/></svg><input type="search" id="searchInput" placeholder="직무명, 기술 분야, 주요 업무를 검색해보세요" aria-label="채용공고 검색"></label>
     <div class="filter-field select"><select id="roleFilter" aria-label="직무 선택"><option value="">모든 직무</option><option value="인프라팀">인프라팀</option><option value="환경안전팀">환경안전팀</option><option value="생산기술팀">생산기술팀</option></select></div>
@@ -480,17 +502,20 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  }
 
  function showApply(id,push=true){
-  const x=jobs.find(job=>job.id===id);
-  if(!x||!x.headcount){showList(false);return;}
+  const x=jobs.find(job=>job.id===id&&job.headcount>0)||null;
+  const initialId=x?.id||"";
   $("listPage").classList.add("hidden");
   $("detailPage").classList.remove("active");
   $("applyPage").classList.add("active");
-  const safeTitle=escapeText(x.title);
+  const safeTitle="통합 입사지원";
+  const positionOptions='<option value="">지원 직군을 선택해 주세요</option>'+jobs.map(job=>'<option value="'+job.id+'" '+(job.headcount===0?'disabled':'')+' '+(job.id===initialId?'selected':'')+'>'+escapeText(job.title)+' · '+(job.headcount?job.headcount+'명 모집':'모집인원 0명')+'</option>').join("");
   $("applyPage").innerHTML=
-   '<button type="button" class="detail-back" id="applyBack">← 포지션 상세로 돌아가기</button>'+
-   '<div class="apply-shell"><div><header class="apply-top"><div class="apply-eyebrow">TERRACLE CAREERS / APPLICATION TEST</div><h1>'+safeTitle+' 지원서 작성</h1>'+
+   '<button type="button" class="detail-back" id="applyBack">← 채용공고로 돌아가기</button>'+
+   '<header class="apply-hero"><span class="apply-hero-label">TERRACLE CAREERS</span><h1>미래의 자원순환을 함께 만들어갈<br>동료를 기다립니다.</h1><p>직군을 선택하고 경험과 역량을 소개해 주세요. 모든 포지션이 하나의 지원서로 연결됩니다.</p></header>'+ 
+   '<div class="apply-shell"><div><header class="apply-top"><div class="apply-eyebrow">APPLICATION / DESIGN TEST</div><h1>'+safeTitle+'</h1>'+
    '<p>지원자 정보와 자기소개를 작성할 수 있는 테스트 화면입니다. <strong>사이트에서 자동 접수되지는 않습니다.</strong></p></header>'+
    '<form id="careerApplyForm" class="apply-form">'+
+    '<section><h2>지원 포지션</h2><div class="form-grid"><label class="full">지원 직군 <span class="required">*</span><select name="position" id="applyPosition" required>'+positionOptions+'</select></label></div><p class="form-help">현재 모집 인원이 있는 직군만 선택할 수 있습니다. 모집인원 0명 포지션은 선택할 수 없습니다.</p></section>'+ 
     '<section><h2>기본 정보</h2><div class="form-grid">'+
       '<label>이름 <span class="required">*</span><input name="name" type="text" maxlength="60" autocomplete="name" placeholder="이름을 입력해 주세요" required></label>'+
       '<label>연락처 <span class="required">*</span><input name="phone" type="tel" maxlength="30" autocomplete="tel" placeholder="010-0000-0000" required></label>'+
@@ -513,13 +538,20 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
       '<label class="consent-label"><input name="consent" type="checkbox" required><span>테스트 페이지의 처리 방식을 확인했습니다. 이메일 앱으로 전달될 지원서 내용에 개인정보가 포함되는 것을 이해합니다. <span class="required">*</span></span></label>'+
       '<div class="form-buttons"><button type="submit">이메일 지원서 초안 열기</button><button type="button" class="secondary" id="copyApply">지원서 내용 복사</button></div><p class="form-help" id="applyStatus" role="status">실제 채용 접수 완료를 의미하지 않습니다.</p>'+
     '</section>'+
-   '</form></div><aside class="apply-summary"><span class="summary-eyebrow">SELECTED POSITION</span><h3>'+safeTitle+'</h3><p>'+escapeText(jobMeta(x))+'</p>'+
+   '</form></div><aside class="apply-summary"><span class="summary-eyebrow">APPLICATION GUIDE</span><h3 id="applySummaryTitle">'+(x?escapeText(x.title):'지원 직군을 선택해 주세요')+'</h3><p id="applySummaryMeta">'+(x?escapeText(jobMeta(x)):'현재 지원 가능한 포지션 4개')+'</p>'+
      '<ul><li>필수항목 입력 후 이메일 초안 작성</li><li>이력서·자격증 등 파일은 이메일에서 직접 첨부</li><li>별도의 서버 저장이나 자동 접수 없음</li></ul></aside></div>';
-  $("applyBack").addEventListener("click",()=>showDetail(id));
+  $("applyBack").addEventListener("click",()=>x?showDetail(x.id):showList());
   const form=$("careerApplyForm");
+  const roleSelect=$("applyPosition");
+  roleSelect.addEventListener("change",()=>{
+   const selected=jobs.find(job=>job.id===roleSelect.value);
+   $("applySummaryTitle").textContent=selected?.title||"지원 직군을 선택해 주세요";
+   $("applySummaryMeta").textContent=selected?jobMeta(selected):"현재 지원 가능한 포지션 4개";
+  });
   function applicationText(){
    const d=new FormData(form);
-   const fields=[["지원 포지션",x.title],["이름",d.get("name")],["연락처",d.get("phone")],["이메일",d.get("email")],["최종 학력",d.get("education")],["총 경력 (년)",d.get("years")],["최근 직무",d.get("recentRole")],["주요 경력",d.get("experience")],["자격증·기술",d.get("skills")],["포트폴리오 URL",d.get("portfolio")],["자기소개",d.get("introduction")],["지원동기",d.get("motivation")],["입사 후 기여",d.get("contribution")]];
+   const chosen=jobs.find(job=>job.id===d.get("position"));
+   const fields=[["지원 포지션",chosen?.title||"미선택"],["이름",d.get("name")],["연락처",d.get("phone")],["이메일",d.get("email")],["최종 학력",d.get("education")],["총 경력 (년)",d.get("years")],["최근 직무",d.get("recentRole")],["주요 경력",d.get("experience")],["자격증·기술",d.get("skills")],["포트폴리오 URL",d.get("portfolio")],["자기소개",d.get("introduction")],["지원동기",d.get("motivation")],["입사 후 기여",d.get("contribution")]];
    return "TERRACLE CAREERS · 테스트 지원서\n\n"+fields.map(([k,v])=>k+"\n"+String(v||"미기재")).join("\n\n")+"\n\n이력서 및 증빙파일은 메일에 직접 첨부해 주세요.";
   }
   function valid(){return form.reportValidity();}
@@ -530,12 +562,13 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
   });
   form.addEventListener("submit",e=>{
    e.preventDefault();if(!valid())return;
-   const subject="[Terracle Careers TEST] "+x.title+" 지원서 초안";
+   const chosen=jobs.find(job=>job.id===roleSelect.value);
+   const subject="[Terracle Careers TEST] "+(chosen?.title||"통합 지원")+" 지원서 초안";
    const mailto="mailto:info@terracle.im?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(applicationText());
    $("applyStatus").textContent="이메일 앱으로 이동합니다. 이력서 등 파일을 첨부하고 발송 여부를 직접 확인해 주세요. 실제 접수 완료가 아닙니다.";
    window.location.href=mailto;
   });
-  if(push)history.pushState({apply:id},"","#apply="+encodeURIComponent(id));
+  if(push)history.pushState({apply:initialId||"general"},"","#apply="+encodeURIComponent(initialId||"general"));
   window.scrollTo(0,0);
  }
 
@@ -543,6 +576,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  document.querySelectorAll(".filters input,.filters select").forEach(node=>node.addEventListener(node.tagName==="INPUT"?"input":"change",render));
  $("clearFilters").addEventListener("click",()=>{$("searchInput").value="";["roleFilter","siteFilter","typeFilter"].forEach(id=>$(id).value="");render();$("searchInput").focus();});
  window.addEventListener("popstate",()=>{const a=location.hash.match(/^#apply=([a-z0-9_-]+)$/),m=location.hash.match(/^#job=([a-z0-9_-]+)$/);a?showApply(a[1],false):m?showDetail(m[1],false):showList(false);});
+ $("generalApplyLink").addEventListener("click",e=>{e.preventDefault();showApply("general");});
  initializeCustomFilters();render();loadCareerNews();const a=location.hash.match(/^#apply=([a-z0-9_-]+)$/),m=location.hash.match(/^#job=([a-z0-9_-]+)$/);if(a)showApply(a[1],false);else if(m)showDetail(m[1],false);
 })();
 </script>
