@@ -644,6 +644,105 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  .apply-page .apply-hero{background-image:linear-gradient(90deg,rgba(0,0,0,.77),rgba(0,0,0,.55)),url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-102043-rectangle-3964-31a40d2d.webp")!important}
 }
 @media(max-width:430px){.apply-page .apply-hero{padding:37px 20px!important}.apply-page .apply-hero-prose p{font-size:12.5px!important;line-height:1.78!important}}
+
+/* Careers QA — restore original overlaid hero and NHN-inspired editorial type rhythm. */
+#listPage .hero{
+ display:block!important;
+ position:relative!important;
+ isolation:isolate!important;
+ min-height:clamp(445px,38vw,600px);
+ background:#030607!important;
+ overflow:visible!important;
+}
+#listPage .hero-backdrop{
+ position:absolute!important;
+ inset:0!important;
+ width:100%!important;
+ height:100%!important;
+ z-index:-1!important;
+ overflow:hidden!important;
+ pointer-events:none!important;
+ background:transparent!important;
+}
+#listPage .hero-backdrop .hero-art{display:none!important}
+#listPage .hero-backdrop::before{
+ content:""!important;
+ display:block!important;
+ position:absolute;
+ inset:0;
+ background-image:url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-101631-group-83-6999d6da.webp");
+ background-repeat:no-repeat;
+ background-size:cover;
+ background-position:center 48%;
+ opacity:.25;
+ transform:none!important;
+ filter:none!important;
+}
+#listPage .hero-backdrop::after{
+ content:""!important;
+ display:block!important;
+ position:absolute;inset:0;
+ background:linear-gradient(90deg,rgba(0,4,5,.8) 0%,rgba(0,4,5,.43) 52%,rgba(0,4,5,.28) 100%);
+}
+#listPage .hero-inner{
+ position:relative;z-index:2;
+ padding-top:clamp(96px,7vw,132px)!important;
+ padding-bottom:clamp(92px,7vw,126px)!important;
+}
+#listPage .hero-inner>h1{
+ position:static!important;clip:auto!important;width:auto!important;height:auto!important;
+ margin:0 0 23px!important;padding:0!important;overflow:visible!important;
+ white-space:normal!important;border:0!important;
+ font-size:clamp(34px,3vw,45px);
+ max-width:880px;line-height:1.32;font-weight:620;
+}
+#listPage .hero-inner>p{
+ position:static!important;clip:auto!important;width:auto!important;height:auto!important;
+ margin:0 0 38px!important;padding:0!important;overflow:visible!important;
+ white-space:normal!important;border:0!important;
+ max-width:730px;font-size:15px;line-height:1.85;color:#d8e0e1!important;
+}
+#listPage .hero .filters{position:relative;z-index:10}
+@media(max-width:760px){
+ #listPage .hero{min-height:0}
+ #listPage .hero-backdrop::before{background-position:62% center;opacity:.22}
+ #listPage .hero-backdrop::after{background:rgba(0,3,4,.73)}
+ #listPage .hero-inner{padding-top:72px!important;padding-bottom:73px!important}
+ #listPage .hero-inner>h1{font-size:clamp(29px,6.5vw,37px);margin-bottom:20px!important}
+ #listPage .hero-inner>p{font-size:14px;margin-bottom:27px!important}
+}
+/* Careers details: clear hierarchy without oversized job headlines. */
+.detail-page .detail-layout{column-gap:clamp(40px,4.5vw,78px)!important}
+.detail-main .detail-top h1{
+ font-size:clamp(28px,2.15vw,35px)!important;
+ line-height:1.31!important;
+ font-weight:620!important;
+ letter-spacing:-.036em!important;
+}
+.detail-main .detail-sub{font-size:13px!important;line-height:1.65!important;color:#aeb9ba!important}
+.detail-main .detail-content{max-width:860px!important}
+.detail-main .detail-content .detail-section{margin-bottom:clamp(39px,4vw,53px)!important}
+.detail-main .detail-content .detail-section h2{
+ font-size:clamp(19px,1.4vw,22px)!important;
+ font-weight:620!important;
+ line-height:1.45!important;
+ margin-bottom:16px!important;
+ letter-spacing:-.022em!important;
+}
+.detail-main .detail-content .detail-section .long-copy,
+.detail-main .detail-content .detail-section li{
+ font-size:15px!important;line-height:1.9!important;color:#c1cbcc!important;
+}
+.detail-main .career-letter .career-letter__lead{font-size:clamp(16px,1.25vw,19px)!important}
+.detail-main .career-letter p{font-size:15px!important;line-height:1.9!important}
+.detail-main .detail-content .detail-section:first-child h2{font-size:clamp(21px,1.7vw,26px)!important}
+.detail-page .detail-side-job strong{font-size:15px!important;line-height:1.5!important}
+@media(max-width:850px){
+ .detail-main .detail-top h1{font-size:clamp(26px,5vw,33px)!important}
+ .detail-main .detail-content .detail-section .long-copy,
+ .detail-main .detail-content .detail-section li,
+ .detail-main .career-letter p{font-size:14px!important}
+}
 </style>
 </head>
 <body>
