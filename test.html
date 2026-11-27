@@ -423,6 +423,49 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  .hero-backdrop::before{transition:none;will-change:auto}
  .hero:hover .hero-backdrop::before{transform:none;filter:none}
 }
+
+/* Careers monochrome refinement — pure white accents over charcoal UI. */
+:root{--accent:#f5f7f7;--ink:#f8f9f9;--muted:#c3c8c9;--sub:#999fa1;--line:rgba(255,255,255,.16)}
+.results-head strong em,.detail-list-label em{color:#fff}
+.job-tags span{background:#171b1d!important;border:1px solid #41494b!important;color:#e3e6e6!important;font-weight:540}
+.sample-label{background:transparent!important;border:1px solid #677174!important;color:#e4e7e8!important;font-weight:550}
+.sidebar .side-title a,.side-foot a{color:#eff2f2!important}
+.sidebar .side-title a:hover,.side-foot a:hover{color:#fff!important;text-decoration:underline;text-underline-offset:4px}
+.sidebar .side-title,.side-card strong{color:#f4f5f5}
+.side-foot{background:#101416;border-color:#3a4244}
+.side-foot strong{color:#fff}
+.filter-field,.filter-field.select{background:#111618;border-color:#434b4d}
+.filter-field:focus-within,.filter-field.select.is-open{border-color:#f0f3f3!important;box-shadow:0 0 0 1px rgba(255,255,255,.16)!important}
+.filter-field .tc-select-trigger{color:#f5f6f6}
+.tc-select-menu,.apply-form .apply-select-menu{background:#1a1e20!important;border-color:#5a6466!important}
+.tc-select-option:hover,.tc-select-option.is-focused,.apply-form .apply-select-option:hover:not(:disabled),.apply-form .apply-select-option.is-focused:not(:disabled){background:#353b3e!important;color:#fff!important}
+.tc-select-option[aria-selected=true],.tc-select-option[aria-selected=true]:after,.apply-form .apply-select-option[aria-selected=true],.apply-form .apply-select-option[aria-selected=true]:after{color:#fff!important}
+.clear,.filters .clear{background:#14191b;border-color:#454d50;color:#f3f4f4}
+.filters .clear:hover{background:#252b2e;border-color:#fff}
+.job:hover{background:#151a1c!important}
+.job:hover h3{color:#fff!important}
+.detail-side-job{background:#0e1315;border-color:#343d40}
+.detail-side-job:hover{background:#1b2225!important;border-color:#8d9699!important}
+.detail-side-job:hover::before{background:#fff!important}
+.detail-side-job.is-active,.detail-side-job.is-active:hover{background:#20282b!important;border-color:#c3c9ca!important}
+.detail-side-job.is-active::before{background:#fff!important}
+.detail-side-job strong{color:#f5f6f6!important}
+.detail-apply,.apply-form .form-buttons button:not(.secondary){background:#f5f5f5!important;border-color:#f5f5f5!important;color:#101517!important}
+.detail-apply:hover:not(:disabled),.apply-form .form-buttons button:not(.secondary):hover{background:#fff!important}
+.detail-apply:disabled{background:#303537!important;color:#9ca3a5!important;border-color:#303537!important}
+.detail-icon-btn{background:#14191b;border-color:#50595c;color:#f5f6f6}
+.detail-icon-btn:hover{border-color:#fff}
+.detail-banner{border-color:#343e41}
+.banner-bottom,.apply-hero-label,.apply-top .apply-eyebrow,.apply-summary .summary-eyebrow{color:#fff}
+.career-process span:before{background:#fff!important}
+.apply-form .required{color:#fff}
+.apply-form :is(input,textarea,select):focus,.apply-form .apply-select-trigger:hover,.apply-form .apply-select-wrap.is-open .apply-select-trigger{border-color:#f5f5f5!important}
+.apply-form .apply-select-trigger:focus-visible{outline-color:#f5f5f5}
+.apply-notice{border-left-color:#fff;background:#151a1c}
+.apply-form .consent-label input{accent-color:#f5f5f5}
+.hero-apply-link{color:#fff;border-color:#858e90}
+.hero-apply-link:hover{background:#252b2e;border-color:#fff}
+:where(.job,.detail-side-job,.side-card,.clear,.tc-select-trigger,.tc-select-menu,.tc-select-option,.detail-apply,.detail-icon-btn,.sample-label,.job-tags span,.side-foot){border-radius:0!important}
 </style>
 </head>
 <body>
