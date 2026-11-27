@@ -603,6 +603,47 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  .detail-content .career-process span{width:118px;height:118px;min-height:0!important;border:1px solid #8d989a!important}
 }
 @media(prefers-reduced-motion:reduce){#listPage .hero-art{transition:none!important}}
+
+/* Unified application editorial hero: supplied photo with text overlaid. */
+.apply-page .apply-hero{
+  background-image:linear-gradient(90deg,rgba(0,0,0,.19) 0%,rgba(0,0,0,.04) 55%,rgba(0,0,0,.16) 100%),url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-102043-rectangle-3964-31a40d2d.webp")!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  background-color:#050607!important;
+  padding:clamp(48px,5.2vw,78px) clamp(30px,5vw,82px)!important;
+  min-height:clamp(480px,39vw,640px);
+  border:0!important;
+  display:flex;
+  align-items:center;
+  margin-bottom:clamp(50px,5vw,75px);
+}
+.apply-page .apply-hero::before,.apply-page .apply-hero::after{content:none!important;display:none!important}
+.apply-page .apply-hero-content{position:relative;z-index:1;width:100%;max-width:900px;margin-left:clamp(160px,17vw,310px);min-width:0}
+.apply-page .apply-hero h1{font-size:clamp(27px,2.45vw,38px)!important;line-height:1.34!important;letter-spacing:-.042em;font-weight:650;margin:0 0 32px!important;color:#fff}
+.apply-page .apply-hero-prose{max-width:830px}
+.apply-page .apply-hero-prose p{font-size:clamp(13px,.95vw,15px)!important;line-height:1.85!important;letter-spacing:-.006em;color:#e0e4e4!important;max-width:none!important;margin:0 0 22px!important;overflow-wrap:break-word;word-break:keep-all}
+.apply-page .apply-hero-prose p:last-child{margin-bottom:0!important}
+.apply-page .apply-top .apply-eyebrow,.apply-page .apply-summary .summary-eyebrow{color:#e7eded!important}
+.apply-page .apply-form .apply-select-trigger{background:#111719;border-color:#60696c;color:#fff}
+.apply-page .apply-form .apply-select-trigger:hover,.apply-page .apply-form .apply-select-wrap.is-open .apply-select-trigger{background:#242a2d;border-color:#fff!important}
+.apply-page .apply-form .apply-select-option[aria-selected=true]{color:#fff}
+.apply-page .apply-form #submitApplyDemo{background:#fff!important;border-color:#fff!important;color:#101416!important}
+.apply-page .apply-form #submitApplyDemo:hover{background:#e9eeee!important;border-color:#e9eeee!important}
+.apply-page .apply-form .form-buttons button.secondary{border-color:#626b6d!important;color:#fff!important}
+.apply-page .apply-form .form-buttons button.secondary:hover{background:#21282a!important}
+@media(max-width:1050px){
+ .apply-page .apply-hero-content{margin-left:clamp(80px,11vw,170px)}
+ .apply-page .apply-hero{background-position:34% center!important}
+}
+@media(max-width:760px){
+ .apply-page .apply-hero{padding:48px 26px!important;min-height:0;background-position:25% center!important}
+ .apply-page .apply-hero-content{margin-left:0;max-width:100%}
+ .apply-page .apply-hero h1{font-size:clamp(25px,5.5vw,32px)!important;margin-bottom:23px!important}
+ .apply-page .apply-hero-prose p{font-size:13px!important;line-height:1.8!important;margin-bottom:17px!important}
+ .apply-page .apply-hero{background-image:linear-gradient(90deg,rgba(0,0,0,.77),rgba(0,0,0,.55)),url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-102043-rectangle-3964-31a40d2d.webp")!important}
+}
+@media(max-width:430px){.apply-page .apply-hero{padding:37px 20px!important}.apply-page .apply-hero-prose p{font-size:12.5px!important;line-height:1.78!important}}
 </style>
 </head>
 <body>
@@ -890,7 +931,12 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
   const positionOptions='<option value="">지원 직군을 선택해 주세요</option>'+jobs.map(job=>'<option value="'+job.id+'" '+(job.headcount===0?'disabled':'')+' '+(job.id===initialId?'selected':'')+'>'+escapeText(job.title)+' · '+(job.headcount?job.headcount+'명 모집':'모집인원 0명')+'</option>').join("");
   $("applyPage").innerHTML=
    '<button type="button" class="detail-back" id="applyBack">← 채용공고로 돌아가기</button>'+
-   '<header class="apply-hero"><span class="apply-hero-label">TERRACLE CAREERS</span><h1>미래의 자원순환을 함께 만들어갈<br>동료를 기다립니다.</h1><p>직군을 선택하고 경험과 역량을 소개해 주세요. 모든 포지션이 하나의 지원서로 연결됩니다.</p></header>'+ 
+   '<header class="apply-hero"><div class="apply-hero-content"><h1>테라클과 함께 미래를 설계할<br>진취적인 인재를 찾습니다</h1>'+
+   '<div class="apply-hero-prose">'+
+    '<p>테라클은 2021년 7월 설립된 화학적 재활용 기업으로, 해중합 기술을 통해 폐 PET와 섬유를 원료(TPA, EG)로 되돌려 다시 시장에 공급합니다. 단순한 재활용을 넘어, 폐기물을 원료로 전환하여 산업 내 순환 구조를 구축하고 있습니다.</p>'+
+    '<p>우리는 기존 기술이 해결하지 못했던 복합·유색·저급 폐기물과 섬유까지 처리하며, 선형적인 경제 구조를 순환 구조로 전환하는 일을 합니다. 플라스틱은 이미 일회용 소재가 아니라, 섬유, 의류, 전자, 건축, 자동차 등 산업 전반을 구성하는 핵심 소재입니다.<br>우리는 “플라스틱 시대”에 살고 있습니다. 테라클은 대안 없는 탈플라스틱이 아니라, 플라스틱을 환경오염 없이 반복적으로 사용할 수 있는 구조를 만듭니다. 이를 통해 석유 기반 원료를 재생 원료로 대체하고, 매립·소각 되는 폐기물을 다시 원료로 전환합니다.</p>'+
+    '<p>테라클은 해중합 기술 분야에서 압도적인 기술력과 제품을 보유하고 시리즈A 159억원의 투자를 유치, 2023년 초격차 +1000선정, 2025년 7번째 그린예비유니콘으로 선정되었습니다. 해당 기술의 본격적인 상용화와 사업 확장을 앞두고 각 분야의 새로운 팀원을 모집하고 있습니다.</p>'+
+   '</div></div></header>'+ 
    '<div class="apply-shell"><div><header class="apply-top"><div class="apply-eyebrow">APPLICATION / DESIGN TEST</div><h1>'+safeTitle+'</h1>'+
    '<p>지원자 정보와 자기소개를 작성할 수 있는 테스트 화면입니다. <strong>사이트에서 자동 접수되지는 않습니다.</strong></p></header>'+
    '<form id="careerApplyForm" class="apply-form">'+
