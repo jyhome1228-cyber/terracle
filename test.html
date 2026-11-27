@@ -926,6 +926,52 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  background:linear-gradient(to right,transparent,rgba(0,0,0,.58))!important;
  pointer-events:none;
 }
+
+/* Careers main: stationary hero, independent scroll for filters / postings / news. */
+@media(min-width:851px){
+ #listPage.list-page:not(.hidden){
+  display:flex!important;
+  flex-direction:column!important;
+  height:calc(100dvh - 126px);
+  min-height:520px;
+  overflow:hidden;
+  background:#050505;
+ }
+ #listPage .hero{
+  flex:0 0 auto!important;
+  height:clamp(290px,42dvh,500px)!important;
+  min-height:0!important;
+  overflow:hidden!important;
+ }
+ #listPage .hero-inner{
+  height:100%!important;
+  min-height:0!important;
+  padding-top:clamp(48px,5vh,85px)!important;
+  padding-bottom:clamp(48px,5vh,85px)!important;
+ }
+ #listPage .career-scroll-region{
+  flex:1 1 auto;
+  min-height:0;
+  overflow-x:hidden;
+  overflow-y:auto;
+  overscroll-behavior-y:contain;
+  scrollbar-width:thin;
+  scrollbar-color:#575757 #111;
+  background:#050505;
+ }
+ #listPage .career-scroll-region:focus-visible{outline:2px solid #bfbfbf;outline-offset:-3px}
+ #listPage .career-scroll-region .career-search-section{position:relative;z-index:5}
+ #listPage .career-scroll-region .career-content{padding-bottom:85px}
+}
+@media(max-width:850px){
+ #listPage.list-page:not(.hidden){height:auto!important;min-height:0!important;overflow:visible!important;display:block!important}
+ #listPage .career-scroll-region{overflow:visible!important;height:auto!important;min-height:0!important}
+}
+@media(max-height:740px) and (min-width:851px){
+ #listPage.list-page:not(.hidden){min-height:0;height:calc(100dvh - 126px)}
+ #listPage .hero{height:clamp(210px,39dvh,300px)!important}
+ #listPage .hero-inner{padding-block:30px!important}
+}
 </style>
 </head>
 <body>
@@ -965,6 +1011,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
    <p>우리는 버려진 자원을 새로운 가능성으로 바꾸는 기술을 연구합니다.<br>함께 도전하고 성장할 수 있는 사람을 기다립니다.</p>
   </div>
  </section>
+ <div class="career-scroll-region" role="region" aria-label="채용공고 검색 및 목록" tabindex="0">
  <section class="career-search-section" aria-label="채용공고 검색">
   <div class="wrap career-search-inner">
    <div class="filters" role="search" aria-label="채용공고 검색 및 필터">
@@ -988,6 +1035,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
     <div class="side-foot"><strong>테라클이 궁금하신가요?</strong><p>기업 소개와 실제 기술 정보를 확인할 수 있습니다.</p><a href="./?page=about">테라클 알아보기 →</a></div>
    </aside>
   </div>
+ </div>
  </div>
 </section>
 <section id="detailPage" class="detail-page wrap" aria-live="polite" aria-label="채용공고 상세"></section>
@@ -1193,7 +1241,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
   section("지원서는 이렇게 작성하시면 좋아요",list(roleGuides[x.id].tips.concat(sharedGuides)))+
   section("테라클 합류 절차 안내",'<div class="career-process"><span>지원서 작성</span><span>서류 검토</span><span>인터뷰</span><span>결과 안내</span></div><p class="detail-secondary">위 단계는 디자인 검토용 절차 예시입니다. 실제 전형 순서, 인터뷰 및 사전과제 여부는 채용 담당자의 공식 안내를 확인해 주세요.</p>')+
   section("지원 전 꼭 확인해 주세요",list(sharedNotice))+
-  '<hr class="detail-divider">'+'<div class="detail-footer-action"><button type="button" class="detail-apply" id="applyBottom" '+(x.headcount===0?'disabled':'')+'>'+(x.headcount?'공식 채용 페이지 확인':'모집 미정')+'</button><span class="detail-note">지원 접수 기능은 연결되지 않았습니다.</span></div></div></article></div>';
+  '<hr class="detail-divider">'+'<div class="detail-footer-action"><button type="button" class="detail-apply" id="applyBottom" '+(x.headcount===0?'disabled':'')+'>'+(x.headcount?'지원하기':'모집 미정')+'</button><span class="detail-note">지원 접수 기능은 연결되지 않았습니다.</span></div></div></article></div>';
   renderSide();
   $("backToList").addEventListener("click",()=>showList());
   $("shareJob").addEventListener("click",()=>{const url=location.origin+location.pathname+"#job="+encodeURIComponent(id);if(navigator.clipboard?.writeText){navigator.clipboard.writeText(url).then(()=>notify("공고 링크를 복사했습니다.")).catch(()=>notify("주소창의 링크를 복사해 주세요."));}else notify("주소창의 링크를 복사해 주세요.");});
