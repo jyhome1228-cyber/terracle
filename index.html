@@ -2263,8 +2263,8 @@ body,#app{max-width:100%;min-width:0}
   --tc-copy:#bbc4c5;
   --tc-caption:#929fa1;
   --tc-rule:rgba(255,255,255,.13);
-  --tc-content-max:1440px;
-  --tc-content-gutter:clamp(20px,4.2vw,64px);
+  --tc-content-max:1840px;
+  --tc-content-gutter:clamp(20px,4.2vw,80px);
   --tc-type-label:clamp(11px,.8vw,12px);
   --tc-type-body:clamp(14px,1.08vw,16px);
   --tc-type-section:clamp(28px,2.5vw,38px);
@@ -3230,6 +3230,68 @@ html[lang="zh-CN"] :is(.tc-contact-page,.terracle-booking-section) :is(h1,h2,h3,
  #tc-compact-footer .tc-cf__company-grid{grid-template-columns:minmax(0,1fr)}
  #tc-compact-footer .tc-cf__sitemap{grid-template-columns:repeat(2,minmax(0,1fr))}
  #tc-compact-footer .tc-cf__map-title{font-size:13px}
+}
+</style>
+<style id="terracle-wide-layout-20261127">
+/* Wide-screen editorial layout. Full use of viewport with readable text measure. */
+@media(min-width:1201px){
+ #app .tu-main .tu-inner,
+ #app .terracle-hero-v3 .terracle-inner,
+ #app .terracle-home-news__inner,
+ #app .tc-tech-page .tu-inner,
+ #app .tc-about .tc-about-inner,
+ #app .tc-service-page .tc-service-inner,
+ #app .tc-product-detail .tc-product-inner,
+ #app .tc-black-page .tc-product-inner,
+ #app .tc-native-news .tn-inner,
+ #app .tc-contact-page :is(.tc-contact-intro__inner,.tc-contact-content__inner),
+ #app .terracle-booking-inner{
+  width:100%;max-width:var(--tc-content-max)!important;
+  margin-left:auto!important;margin-right:auto!important;
+  box-sizing:border-box;min-width:0;
+ }
+ #app .tu-main .tu-inner,
+ #app .terracle-hero-v3 .terracle-inner,
+ #app .terracle-home-news__inner,
+ #app .tc-tech-page .tu-inner,
+ #app .tc-about .tc-about-inner,
+ #app .tc-service-page .tc-service-inner,
+ #app .tc-product-detail .tc-product-inner,
+ #app .tc-black-page .tc-product-inner,
+ #app .tc-native-news .tn-inner,
+ #app .tc-contact-page :is(.tc-contact-intro__inner,.tc-contact-content__inner){
+  padding-left:var(--tc-content-gutter)!important;
+  padding-right:var(--tc-content-gutter)!important;
+ }
+ #app .tu-main .tu-split{
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:clamp(60px,6vw,118px);
+ }
+ #app .tc-tech-page #teracleDepolySection .td-copy{
+  grid-template-columns:minmax(0,1fr) minmax(0,.88fr);
+  gap:clamp(60px,6vw,115px);
+ }
+ #app .tc-tech-page #teracleDepolySection .td-flow-layout{
+  width:100%;grid-template-columns:minmax(0,.98fr) 44px minmax(0,1.08fr) 44px minmax(0,.88fr);
+ }
+ #app .tu-main .tu-body,
+ #app .tc-tech-page #teracleDepolySection .td-body,
+ #app .tc-service-page .tc-service-copy p{
+  max-width:760px;
+ }
+ #app .tu-main .tu-waste-visual img{width:100%;max-height:760px}
+ #app .tc-tech-page #teracleDepolySection .td-card-large{height:clamp(480px,31vw,560px)}
+ #app .tc-tech-page #teracleDepolySection .td-card-side{height:clamp(229px,14.9vw,269px)}
+ #app .tc-tech-page #teracleDepolySection .td-connector-branch{height:clamp(460px,30vw,540px)}
+ #app .tc-native-news .tn-article__inner{max-width:1220px}
+ #app .tc-native-news .tn-article__body,
+ #app .tc-native-news .tn-article__nav,
+ #app .tc-native-news .tn-article__source{max-width:840px}
+}
+@media(min-width:1201px) and (max-width:1500px){
+ #app .tc-tech-page #teracleDepolySection .td-card-large{height:480px}
+ #app .tc-tech-page #teracleDepolySection .td-card-side{height:229px}
+ #app .tc-tech-page #teracleDepolySection .td-connector-branch{height:460px}
 }
 </style>
 </head>
