@@ -891,6 +891,41 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 #listPage .side-foot{background:#151515!important;border-color:#3a3a3a!important}
 #listPage .results-head{border-bottom-color:#343434!important}
 #listPage .results-head span,#listPage .job p,#listPage .side-card time{color:#b3b3b3!important}
+
+/* Remove bright seam at the right edge of the Careers detail artwork. */
+.detail-main .detail-banner.detail-banner--careers{
+ position:relative!important;
+ overflow:hidden!important;
+ isolation:isolate;
+ background:#050505!important;
+ border:0!important;
+ outline:0!important;
+ box-shadow:none!important;
+}
+.detail-main .detail-banner--careers img{
+ display:block;
+ width:calc(100% + 2px)!important;
+ max-width:none!important;
+ height:auto!important;
+ margin:0 -1px 0 0!important;
+ border:0!important;
+ outline:0!important;
+ object-fit:contain!important;
+ box-shadow:none!important;
+}
+.detail-main .detail-banner--careers::after{
+ content:""!important;
+ display:block!important;
+ position:absolute!important;
+ z-index:2;
+ top:0!important;
+ bottom:0!important;
+ right:0!important;
+ left:auto!important;
+ width:12px!important;
+ background:linear-gradient(to right,transparent,rgba(0,0,0,.58))!important;
+ pointer-events:none;
+}
 </style>
 </head>
 <body>
