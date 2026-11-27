@@ -368,25 +368,60 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  .detail-content .detail-section .long-copy,.detail-content .detail-section li{font-size:14px;line-height:1.87}
 }
 
-/* TERRACLE CAREERS hero image · supplied artwork */
+/* TERRACLE CAREERS hero · taller layout, adjusted artwork and subtle hover */
 .hero{
-  background-image:
-    linear-gradient(90deg,rgba(0,5,7,.78) 0%,rgba(0,5,7,.56) 45%,rgba(0,5,7,.18) 100%),
-    url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-094011-rectangle-3956-1ce14501.webp")!important;
-  background-size:cover!important;
-  background-position:center center!important;
-  background-repeat:no-repeat!important;
+ position:relative;
+ isolation:isolate;
+ overflow:visible;
+ background:#061013!important;
 }
+.hero-backdrop{
+ position:absolute;
+ inset:0;
+ overflow:hidden;
+ z-index:-1;
+ pointer-events:none;
+}
+.hero-backdrop::before{
+ content:"";
+ position:absolute;
+ inset:-2%;
+ background-image:url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-094011-rectangle-3956-1ce14501.webp");
+ background-repeat:no-repeat;
+ background-size:cover;
+ background-position:center 70%;
+ transform:scale(1);
+ transform-origin:center 58%;
+ transition:transform .9s cubic-bezier(.2,.72,.22,1),filter .7s ease;
+ will-change:transform;
+}
+.hero-backdrop::after{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:linear-gradient(90deg,rgba(0,5,7,.82) 0%,rgba(0,5,7,.57) 43%,rgba(0,5,7,.14) 100%);
+}
+.hero:hover .hero-backdrop::before{transform:scale(1.035);filter:brightness(1.06)}
 .hero::before,.hero::after{display:none!important}
-.hero-inner{padding-top:clamp(86px,7vw,116px);padding-bottom:clamp(88px,7vw,116px)}
+.hero-inner{
+ position:relative;
+ padding-top:clamp(110px,8.5vw,150px);
+ padding-bottom:clamp(112px,8.5vw,150px);
+}
 .hero h1{max-width:940px;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.18)}
 .hero p{color:#e0e9e9}
 @media(max-width:760px){
-  .hero{background-position:62% center!important}
-  .hero-inner{padding-top:70px;padding-bottom:70px}
+ .hero-backdrop::before{background-position:62% 65%}
+ .hero-backdrop::after{background:linear-gradient(90deg,rgba(0,5,7,.85),rgba(0,5,7,.4))}
+ .hero-inner{padding-top:92px;padding-bottom:96px}
 }
 @media(max-width:480px){
-  .hero{background-image:linear-gradient(90deg,rgba(0,5,7,.84),rgba(0,5,7,.44)),url("https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-094011-rectangle-3956-1ce14501.webp")!important}
+ .hero-backdrop::before{background-position:65% 64%}
+ .hero-inner{padding-top:82px;padding-bottom:90px}
+}
+@media(hover:none),(prefers-reduced-motion:reduce){
+ .hero-backdrop::before{transition:none;will-change:auto}
+ .hero:hover .hero-backdrop::before{transform:none;filter:none}
 }
 </style>
 </head>
@@ -421,6 +456,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 <main>
 <section id="listPage" class="list-page">
  <section class="hero">
+  <div class="hero-backdrop" aria-hidden="true"></div>
   <div class="wrap hero-inner">
    <h1>지속가능한 미래를 만드는 기술,<br>그 변화를 함께 설계할 동료를 찾습니다.</h1>
    <p>우리는 버려진 자원을 새로운 가능성으로 바꾸는 기술을 연구합니다.<br>함께 도전하고 성장할 수 있는 사람을 기다립니다.</p>
