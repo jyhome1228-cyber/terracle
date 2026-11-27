@@ -550,6 +550,17 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
  .detail-about-image{margin-bottom:42px}
 }
 @media(prefers-reduced-motion:reduce){.detail-banner--careers img{transition:none}}
+
+/* One recruitment visual, followed by an editorial letter outside the image. */
+.detail-banner.detail-banner--careers{margin-bottom:clamp(48px,5.5vw,82px)!important}
+.detail-banner--careers+.detail-content{width:100%;max-width:960px}
+.career-letter{max-width:900px}
+.career-letter p{font-size:15px;line-height:1.98;color:#bec9ca;margin:0 0 23px;white-space:pre-line;overflow-wrap:break-word}
+.career-letter .career-letter__lead{font-size:clamp(17px,1.3vw,20px);font-weight:580;line-height:1.7;color:#f1f4f4;margin-bottom:28px}
+.career-letter .career-letter__closing{margin-top:30px;color:#e8eeee}
+.detail-content>.detail-section:first-child{margin-bottom:clamp(55px,6vw,88px);padding-bottom:clamp(38px,4vw,56px);border-bottom:1px solid rgba(255,255,255,.14)}
+.detail-content>.detail-section:first-child h2{font-size:clamp(23px,2vw,30px);margin-bottom:28px}
+@media(max-width:600px){.detail-banner.detail-banner--careers{margin-bottom:36px!important}.career-letter p{font-size:14px;line-height:1.88}.career-letter .career-letter__lead{font-size:17px}}
 </style>
 </head>
 <body>
@@ -804,9 +815,8 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
   $("applyPage").classList.remove("active");
   const x=jobs.find(job=>job.id===id);if(!x){showList(false);return;}
   activeJob=id;$("listPage").classList.add("hidden");$("detailPage").classList.add("active");
-  $("detailPage").innerHTML='<div class="detail-layout"><aside class="detail-left"><button type="button" class="detail-back" id="backToList">← 전체 공고로 돌아가기</button><p class="detail-list-label">포지션 <em>6개</em></p><div class="detail-side-list" id="detailSideList" aria-label="다른 채용 포지션"></div></aside><article class="detail-main"><div class="detail-top"><div><h1>'+escapeText(x.title)+'</h1><div class="detail-sub">'+escapeText(jobMeta(x))+' · 디자인 검토용</div></div><div class="detail-controls"><button class="detail-icon-btn" id="shareJob" aria-label="공고 링크 복사" title="공고 링크 복사">'+icons().share+'</button><button class="detail-icon-btn" id="bookmarkJob" aria-label="관심 공고 저장" title="관심 공고 저장" aria-pressed="'+bookmarked.has(id)+'">'+icons().mark+'</button><button class="detail-apply" id="applyJob" '+(x.headcount===0?'disabled':'')+'>'+(x.headcount?'지원하기':'모집 미정')+'</button></div></div><div class="detail-banner detail-banner--careers"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-100357-image-4-2e741a26.webp" alt="Terracle We Are Hiring 채용 대표 이미지" loading="eager" decoding="async"></div><div class="detail-about-image"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-100357-rectangle-3964-650dbf11.webp" alt="테라클 기업소개: 화학적 재활용 기술과 자원순환 비전을 소개하는 이미지" loading="lazy" decoding="async"></div><div class="detail-content">'+
-  section("테라클 소개",'<p class="long-copy">테라클은 폐플라스틱을 화학적으로 재활용하여 다시 원료로 활용할 수 있도록 관련 기술과 공정을 연구·개발하는 기업입니다. 연구개발, 생산기술, 설비 인프라, 환경안전 업무가 연결되어 자원순환 기술의 실제 적용을 뒷받침합니다.</p>')+
-  section("이 포지션은 이런 역할을 해요",'<p class="long-copy">'+escapeText(roleGuides[x.id].summary)+'\n\n'+escapeText(x.intro)+'</p>')+
+  $("detailPage").innerHTML='<div class="detail-layout"><aside class="detail-left"><button type="button" class="detail-back" id="backToList">← 전체 공고로 돌아가기</button><p class="detail-list-label">포지션 <em>6개</em></p><div class="detail-side-list" id="detailSideList" aria-label="다른 채용 포지션"></div></aside><article class="detail-main"><div class="detail-top"><div><h1>'+escapeText(x.title)+'</h1><div class="detail-sub">'+escapeText(jobMeta(x))+' · 디자인 검토용</div></div><div class="detail-controls"><button class="detail-icon-btn" id="shareJob" aria-label="공고 링크 복사" title="공고 링크 복사">'+icons().share+'</button><button class="detail-icon-btn" id="bookmarkJob" aria-label="관심 공고 저장" title="관심 공고 저장" aria-pressed="'+bookmarked.has(id)+'">'+icons().mark+'</button><button class="detail-apply" id="applyJob" '+(x.headcount===0?'disabled':'')+'>'+(x.headcount?'지원하기':'모집 미정')+'</button></div></div><div class="detail-banner detail-banner--careers"><img src="https://nineworksdatabase.planus253.workers.dev/cdn/uncategorized/20261127-100357-image-4-2e741a26.webp" alt="Terracle We Are Hiring 채용 대표 이미지" loading="eager" decoding="async"></div><div class="detail-content">'+
+  section(x.title,'<div class="career-letter"><p class="career-letter__lead">테라클의 '+escapeText(x.role)+'에서 자원순환 기술의 현장 적용을 함께 이끌어갈 동료를 찾습니다.</p><p>테라클은 폐플라스틱을 화학적으로 재활용해 다시 원료로 활용할 수 있도록 기술과 공정을 연구·개발하고 있습니다. 연구개발과 생산기술, 설비 인프라, 환경안전 업무가 유기적으로 연결되어 자원순환의 가능성을 현실로 만들어 갑니다.</p><p>'+escapeText(roleGuides[x.id].summary)+'</p><p>'+escapeText(x.intro)+'</p><p class="career-letter__closing">지금까지 쌓아온 경험을 바탕으로, 테라클과 함께 다음 과제를 해결해 나갈 분을 기다립니다.</p></div>')+
   section("이런 업무를 해요 (주요 업무)",list(x.tasks))+
   section("이런 분을 찾고 있어요 (자격 요건)",list(x.qual))+
   section("이런 분이면 더 좋아요 (우대 사항)",list(x.extra))+
