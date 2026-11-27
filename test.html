@@ -466,6 +466,29 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 .hero-apply-link{color:#fff;border-color:#858e90}
 .hero-apply-link:hover{background:#252b2e;border-color:#fff}
 :where(.job,.detail-side-job,.side-card,.clear,.tc-select-trigger,.tc-select-menu,.tc-select-option,.detail-apply,.detail-icon-btn,.sample-label,.job-tags span,.side-foot){border-radius:0!important}
+
+/* Careers readability QA: larger metadata and better hierarchy across job list */
+.results-head{gap:24px;padding-bottom:26px}
+.results-head strong{font-size:17px!important;font-weight:640!important;line-height:1.5;color:#f7f8f8}
+.results-head span{font-size:14px!important;line-height:1.65;color:#b5bfc1!important}
+.job{padding-block:32px!important;min-height:120px;gap:26px}
+.job h3{font-size:clamp(19px,1.23vw,22px)!important;font-weight:640!important;line-height:1.45!important;margin-bottom:12px!important}
+.job p{font-size:15px!important;line-height:1.7!important;color:#c0cbcd!important;letter-spacing:-.01em}
+.job-tags{gap:9px;align-items:center}
+.job-tags span{font-size:13px!important;font-weight:570!important;line-height:1.45!important;padding:8px 12px!important;min-height:36px;display:inline-flex;align-items:center;justify-content:center}
+.sample-label{font-size:12px!important;padding:6px 9px!important;line-height:1.4!important}
+.sidebar .side-title{font-size:15px!important;line-height:1.5}
+.sidebar .side-title a{font-size:13px!important}
+.side-card strong{font-size:15px!important;line-height:1.65!important}
+.side-card time{font-size:12px!important;line-height:1.6!important;color:#aab6b8!important}
+@media(max-width:760px){
+ .results-head{align-items:flex-start;flex-wrap:wrap;gap:10px}
+ .job{min-height:110px;padding-block:27px!important;gap:14px}
+ .job h3{font-size:19px!important}
+ .job p{font-size:14px!important}
+ .job-tags span{font-size:12px!important;padding:7px 10px!important;min-height:32px}
+ .results-head span{font-size:13px!important}
+}
 </style>
 </head>
 <body>
