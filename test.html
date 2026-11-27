@@ -307,6 +307,66 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 .apply-form .apply-select-option:disabled{opacity:.4;cursor:not-allowed}
 .career-process span:before{width:8px!important;height:8px!important;flex:0 0 8px!important;border-radius:50%!important;margin-right:12px!important}
 .apply-form #submitApplyDemo{min-width:170px}
+
+/* Careers detail editorial QA: NHN reference proportions, Terracle visual language. */
+@media(min-width:1101px){
+ .detail-page{max-width:1700px;padding-top:clamp(46px,4vw,66px);padding-bottom:145px}
+ .detail-layout{
+  grid-template-columns:minmax(265px,310px) minmax(0,1fr)!important;
+  column-gap:clamp(54px,5.8vw,112px)!important;
+  align-items:start;
+ }
+ .detail-left{top:118px;max-height:calc(100dvh - 142px)}
+ .detail-main{min-width:0}
+ .detail-content{max-width:960px!important;width:100%}
+ .detail-side-list{gap:10px}
+ .detail-side-job{min-height:105px;padding:18px 21px!important}
+}
+.detail-back{font-size:14px;font-weight:590;line-height:1.6;margin-bottom:34px}
+.detail-list-label{font-size:14px;font-weight:610;line-height:1.5;margin-bottom:18px}
+.detail-side-job .unit{font-size:11px;line-height:1.6;letter-spacing:.01em;margin-bottom:10px}
+.detail-side-job strong{font-size:16px!important;font-weight:620!important;line-height:1.48!important;letter-spacing:-.02em}
+.detail-side-job small{font-size:12px;line-height:1.6;margin-top:13px}
+.detail-top{margin-bottom:35px;gap:25px}
+.detail-top h1{font-size:clamp(31px,2.75vw,43px);line-height:1.26;font-weight:640;letter-spacing:-.038em;margin-bottom:13px}
+.detail-sub{font-size:14px;line-height:1.7;color:#acbbbd}
+.detail-banner{height:clamp(225px,20vw,300px);margin-bottom:60px}
+.detail-content{max-width:960px}
+.detail-content .detail-section{margin-bottom:clamp(47px,4.5vw,66px)}
+.detail-content .detail-section h2{font-size:clamp(21px,1.45vw,24px);font-weight:640;line-height:1.44;letter-spacing:-.024em;margin-bottom:21px;color:#f5f8f8}
+.detail-content .detail-section .long-copy,
+.detail-content .detail-section li{
+ font-size:16px;line-height:1.95;letter-spacing:-.006em;
+ color:#c9d3d4;overflow-wrap:break-word;
+}
+.detail-content .detail-section ul{padding-left:22px}
+.detail-content .detail-section li{margin-bottom:10px;padding-left:4px}
+.detail-content .detail-secondary{font-size:14px;line-height:1.85;color:#a5b5b7}
+.detail-content .detail-divider{margin-block:65px}
+.detail-content .career-process span{font-size:14px;min-height:83px}
+.detail-content .detail-footer-action{padding-block:10px 26px}
+@media(min-width:851px) and (max-width:1100px){
+ .detail-layout{grid-template-columns:minmax(215px,245px) minmax(0,1fr);gap:clamp(25px,3.5vw,48px)}
+ .detail-side-job{padding:17px!important;min-height:98px}
+ .detail-content .detail-section .long-copy,.detail-content .detail-section li{font-size:15px;line-height:1.88}
+ .detail-top h1{font-size:clamp(29px,3vw,36px)}
+}
+@media(max-width:850px){
+ .detail-layout{grid-template-columns:minmax(0,1fr)!important;gap:26px!important}
+ .detail-side-job{min-height:108px;padding:17px!important}
+ .detail-top h1{font-size:clamp(28px,5vw,35px)}
+ .detail-banner{margin-bottom:43px}
+ .detail-content .detail-section .long-copy,.detail-content .detail-section li{font-size:15px;line-height:1.87}
+}
+@media(max-width:480px){
+ .detail-page{padding-top:30px;padding-bottom:85px}
+ .detail-side-job{flex-basis:205px}
+ .detail-side-job strong{font-size:14px!important}
+ .detail-top h1{font-size:28px}
+ .detail-content .detail-section{margin-bottom:40px}
+ .detail-content .detail-section h2{font-size:20px;margin-bottom:15px}
+ .detail-content .detail-section .long-copy,.detail-content .detail-section li{font-size:14px;line-height:1.87}
+}
 </style>
 </head>
 <body>
