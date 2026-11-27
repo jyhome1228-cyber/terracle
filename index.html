@@ -3294,6 +3294,86 @@ html[lang="zh-CN"] :is(.tc-contact-page,.terracle-booking-section) :is(h1,h2,h3,
  #app .tc-tech-page #teracleDepolySection .td-connector-branch{height:460px}
 }
 </style>
+<style id="terracle-viewport-width-fix-20261127">
+/* Wide-layout correction: eliminate remaining inherited centered 1440px containers.
+   Preserve editorial line lengths, not narrow entire sections. */
+@media(min-width:1201px){
+ #app{width:100%;max-width:none!important}
+ #app #terracleUnifiedMain,
+ #app #terracleUnifiedMain>.tu-section{
+   width:100%!important;max-width:none!important;margin-inline:0!important;
+ }
+ #app #terracleUnifiedMain .tu-inner,
+ #app #terracleUnifiedMain .tu-section>.tu-inner,
+ #app #terracleUnifiedMain .tu-split,
+ #app #terracleUnifiedMain #teracleDepolySection .td-wrap{
+   width:100%!important;
+   max-width:none!important;
+   margin-left:auto!important;margin-right:auto!important;
+   min-width:0;
+   box-sizing:border-box;
+ }
+ #app #terracleUnifiedMain .tu-section>.tu-inner{
+   padding-left:clamp(44px,4.4vw,96px)!important;
+   padding-right:clamp(44px,4.4vw,96px)!important;
+ }
+ #app #terracleUnifiedMain #teracleDepolySection{
+   width:100%!important;max-width:none!important;
+   padding-left:clamp(44px,4.4vw,96px)!important;
+   padding-right:clamp(44px,4.4vw,96px)!important;
+ }
+ #app #terracleUnifiedMain #teracleDepolySection .td-wrap{
+   padding:0!important;
+ }
+ #app #terracleUnifiedMain .tu-split{
+   grid-template-columns:minmax(0,.97fr) minmax(0,1.03fr)!important;
+   gap:clamp(52px,5vw,108px)!important;
+ }
+ #app #terracleUnifiedMain .tu-copy,
+ #app #terracleUnifiedMain .tu-waste-visual,
+ #app #terracleUnifiedMain .td-copy,
+ #app #terracleUnifiedMain .td-flow-layout{
+   min-width:0;
+ }
+ #app #terracleUnifiedMain .tu-copy .tu-body{
+   max-width:720px!important;
+ }
+ #app #terracleUnifiedMain .tu-waste-visual img{
+   display:block;width:100%;max-height:840px;object-fit:contain;
+ }
+ #app #terracleUnifiedMain #teracleDepolySection .td-flow-layout{
+   width:100%;max-width:none!important;
+ }
+ #app #terracleUnifiedMain #teracleDepolySection .td-copy{
+   grid-template-columns:minmax(0,1fr) minmax(0,.94fr);
+   gap:clamp(45px,5vw,110px);
+ }
+ #app #terracleUnifiedMain #teracleDepolySection .td-body{
+   max-width:750px;
+ }
+ #app #terracleUnifiedMain #teracleDepolySection .td-detail-panel{
+   width:100%;max-width:none;
+ }
+ /* Other top-level editorial pages follow the same viewport-based gutters. */
+ #app .tc-about .tc-about-inner,
+ #app .tc-tech-page .tu-inner,
+ #app .tc-product-detail .tc-product-inner,
+ #app .tc-black-page .tc-product-inner,
+ #app .tc-service-page .tc-service-inner,
+ #app .tc-native-news .tn-inner,
+ #app .tc-contact-page :is(.tc-contact-intro__inner,.tc-contact-content__inner),
+ #app .terracle-home-news__inner{
+   width:100%!important;max-width:none!important;
+   margin-inline:auto!important;
+   padding-inline:clamp(44px,4.4vw,96px)!important;
+   box-sizing:border-box;
+ }
+}
+@media(min-width:801px) and (max-width:1200px){
+ #app #terracleUnifiedMain>.tu-section>.tu-inner{width:100%;max-width:none;padding-inline:clamp(26px,4vw,52px)}
+ #app #terracleUnifiedMain #teracleDepolySection{padding-inline:clamp(26px,4vw,52px)}
+}
+</style>
 </head>
 <body>
 <div id="terracleIntro" class="terracle-intro" aria-label="Terracle 시작 화면" role="status"><span class="terracle-intro__symbol terracle-intro__mark" role="img" aria-label="Terracle"></span></div>
