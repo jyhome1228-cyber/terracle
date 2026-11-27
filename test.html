@@ -1096,6 +1096,29 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 #applyPage .apply-summary{background:#111!important;border-color:#454545!important}
 #applyPage .apply-notice{background:#171717!important;border-left-color:#fff!important}
 #applyPage .apply-form .form-help{color:#a8a8a8!important}
+
+/* Hero height tuning: modestly taller, no flex shrink; filters remain fixed. */
+@media(min-width:851px) and (min-height:741px){
+ #listPage.list-page:not(.hidden)>.hero{
+  flex:0 0 auto!important;
+  height:clamp(320px,40dvh,475px)!important;
+  min-height:0!important;
+ }
+ #listPage.list-page:not(.hidden)>.hero .hero-inner{
+  height:100%!important;
+  min-height:0!important;
+  padding-block:clamp(45px,5.2vh,76px)!important;
+ }
+}
+@media(min-width:851px) and (max-height:740px){
+ #listPage.list-page:not(.hidden)>.hero{
+  flex:0 0 auto!important;
+  height:clamp(235px,41dvh,320px)!important;
+ }
+ #listPage.list-page:not(.hidden)>.hero .hero-inner{
+  padding-block:clamp(23px,4vh,40px)!important;
+ }
+}
 </style>
 </head>
 <body>
