@@ -176,6 +176,45 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 .sample-label{border-radius:99px}
 @media(max-width:1100px){.filters{gap:10px}}
 @media(max-width:600px){.hero-inner{padding-top:65px;padding-bottom:63px}.hero h1{font-size:clamp(29px,7vw,37px)}.filters{gap:9px}.filter-field,.tc-select-trigger{min-height:52px}.tc-select-menu{max-height:230px}.job h3{font-size:18px}.results-head{flex-wrap:wrap}}
+
+/* Terracle Careers — square geometry and restrained job-hover system. */
+:where(.filter-field,.filter-field.select,.tc-select-trigger,.tc-select-menu,.tc-select-option,.job-tags span,.sample-label,.side-foot,.detail-side-job,.detail-icon-btn,.detail-apply,.detail-banner,.detail-side-list,.side-card,.toast,.detail-banner,.header-action){border-radius:0!important}
+.detail-side-job{
+ position:relative;
+ border:1px solid #2b3d40;
+ background:#0c1416;
+ box-shadow:none!important;
+ color:#eff5f5;
+ padding:20px 22px;
+ transition:background-color .2s ease,border-color .2s ease,color .2s ease!important;
+}
+.detail-side-job::before{
+ content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
+ background:transparent;transition:background-color .2s ease;
+}
+.detail-side-job:hover{
+ background:#142124!important;
+ border-color:#65888b!important;
+ box-shadow:none!important;
+}
+.detail-side-job:hover::before{background:#658e91}
+.detail-side-job.is-active,
+.detail-side-job.is-active:hover{
+ background:#102023!important;
+ border-color:#8fc9cd!important;
+ box-shadow:none!important;
+}
+.detail-side-job.is-active::before{background:#9edbe5;width:3px}
+.detail-side-job strong{color:#f6f8f8!important;line-height:1.48}
+.detail-side-job:hover strong{color:#fff!important}
+.detail-side-job .unit{color:#aebec0!important}
+.detail-side-job small{color:#a5b6b8!important}
+.detail-side-job:focus-visible{outline:2px solid #9edbe5;outline-offset:2px}
+.job:hover{background:#101a1c!important}
+.job:hover h3{color:#b1e8ea!important}
+.job{transition:background-color .2s ease}
+.tc-select-option:hover,.tc-select-option.is-focused{background:#26393d}
+@media(hover:none){.detail-side-job:hover{border-color:#2b3d40!important;background:#0c1416!important}.detail-side-job.is-active:hover{border-color:#8fc9cd!important;background:#102023!important}}
 </style>
 </head>
 <body>
